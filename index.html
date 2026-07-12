@@ -369,59 +369,49 @@
 <text x="150" y="22" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Discard any case showing damage below</text>
 
 <!--
-  .308 WIN case anatomy (side view, pointing UP, y increases downward):
-  Each case centered at CX. Bottom of case (base/rim) at y=108.
-
-  DIMENSIONS (SVG units, proportional to real .308):
-    Base/rim:     CX±13  y=108..103   (wide flat base)
-    Rim step:     CX±11  y=103        (slight step in at top of rim)
-    Body:         CX±11  y=103..58    (long straight body, ~45px tall)
-    Shoulder top: CX±11→CX±5  y=58..46  (sharp shoulder taper — most critical feature)
-    Neck:         CX±5   y=46..28     (narrow neck, ~18px tall)
-    Case mouth:   CX±5   y=28         (open top)
-
-  Path goes: clockwise from bottom-left of base
+  .308 case: body 26px wide, neck 10px wide, shoulder is near-horizontal (4px drop, 8px step each side)
+  cx=38, base y=108:
+    Rim:      x=22..54  y=108..103
+    Body:     x=25..51  y=103..56
+    Shoulder: 25→31 and 51→45  over y=56..52  (near-horizontal shelf)
+    Neck:     x=31..45  y=52..28
 -->
 
 <!-- CASE 1: GOOD  cx=38 -->
-<path d="M25,108 L51,108 L51,103 L49,103 L49,58 L43,46 L43,28 L33,28 L33,46 L27,58 L27,103 L25,103 Z"
+<path d="M22,108 L54,108 L54,103 L51,103 L51,56 L45,52 L45,28 L31,28 L31,52 L25,56 L25,103 L22,103 Z"
       fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
-<line x1="27" y1="101" x2="49" y2="101" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
+<line x1="25" y1="100" x2="51" y2="100" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
 <line x1="38" y1="26" x2="38" y2="110" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<text x="38" y="121" text-anchor="middle" fill="#4CBB6A" font-size="14">✓</text>
-<text x="38" y="133" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
+<text x="38" y="120" text-anchor="middle" fill="#4CBB6A" font-size="14">✓</text>
+<text x="38" y="132" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
 
 <!-- CASE 2: CRACK  cx=103 -->
-<path d="M90,108 L116,108 L116,103 L114,103 L114,58 L108,46 L108,28 L98,28 L98,46 L92,58 L92,103 L90,103 Z"
+<path d="M87,108 L119,108 L119,103 L116,103 L116,56 L110,52 L110,28 L96,28 L96,52 L90,56 L90,103 L87,103 Z"
       fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
-<line x1="92" y1="101" x2="114" y2="101" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
-<!-- crack zigzag on neck -->
-<path d="M106,30 L111,36 L107,41 L112,47 L108,52" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="90" y1="100" x2="116" y2="100" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
+<path d="M107,30 L112,37 L107,43 L112,50" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
 <line x1="103" y1="26" x2="103" y2="110" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<text x="103" y="121" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
-<text x="103" y="133" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
+<text x="103" y="120" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
+<text x="103" y="132" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
 
 <!-- CASE 3: BRIGHT RING  cx=168 -->
-<path d="M155,108 L181,108 L181,103 L179,103 L179,58 L173,46 L173,28 L163,28 L163,46 L157,58 L157,103 L155,103 Z"
+<path d="M152,108 L184,108 L184,103 L181,103 L181,56 L175,52 L175,28 L161,28 L161,52 L155,56 L155,103 L152,103 Z"
       fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
-<line x1="157" y1="101" x2="179" y2="101" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
-<!-- bright ring: yellow band near base, just above rim step -->
-<rect x="155" y="96" width="26" height="5" fill="#FFE040" opacity="0.5" rx="0"/>
-<line x1="155" y1="98" x2="181" y2="98" stroke="#FFE040" stroke-width="2.5" opacity="0.95"/>
+<line x1="155" y1="100" x2="181" y2="100" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
+<line x1="152" y1="97" x2="184" y2="97" stroke="#FFE040" stroke-width="3" opacity="0.9"/>
 <line x1="168" y1="26" x2="168" y2="110" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<text x="168" y="121" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
-<text x="168" y="131" text-anchor="middle" fill="#FFE040" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT RING</text>
-<text x="168" y="140" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">(incipient separation)</text>
+<text x="168" y="120" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
+<text x="168" y="130" text-anchor="middle" fill="#FFE040" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT RING</text>
+<text x="168" y="139" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">(near separation)</text>
 
 <!-- CASE 4: DENT  cx=238 -->
-<path d="M225,108 L251,108 L251,103 L249,103 L249,58 L243,46 L243,28 L233,28 L233,46 L227,58 L227,103 L225,103 Z"
+<path d="M222,108 L254,108 L254,103 L251,103 L251,56 L245,52 L245,28 L231,28 L231,52 L225,56 L225,103 L222,103 Z"
       fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
-<line x1="227" y1="101" x2="249" y2="101" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
-<!-- dent: concave dimple on body -->
-<path d="M227,72 Q221,80 227,88" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="225" y1="100" x2="251" y2="100" stroke="#7A5000" stroke-width="1" opacity="0.6"/>
+<path d="M225,68 Q219,78 225,88" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round"/>
 <line x1="238" y1="26" x2="238" y2="110" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<text x="238" y="121" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
-<text x="238" y="133" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DENT</text>
+<text x="238" y="120" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
+<text x="238" y="132" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DENT</text>
 
 <!-- divider lines -->
 <line x1="70"  y1="24" x2="70"  y2="150" stroke="#3A3A50" stroke-width="0.6"/>
