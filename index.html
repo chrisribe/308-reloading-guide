@@ -436,32 +436,50 @@
     <div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">4</div>
-        <div class="step-label"><strong>Clean Primer Pocket</strong><br><span>Remove carbon buildup</span></div>
+        <div class="step-label"><strong>Clean &amp; Deburr Primer Pocket</strong><br><span>Brush carbon out, then uniform the pocket</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
       </div>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 100">
-          <!-- Case base close-up -->
-          <rect x="100" y="25" width="100" height="55" rx="4" fill="#c8973a" stroke="#e0a820" stroke-width="1.5"/>
-          <!-- Primer pocket (empty) -->
-          <rect x="140" y="35" width="20" height="16" rx="2" fill="#111" stroke="#555" stroke-width="1"/>
-          <!-- Brush -->
-          <rect x="146" y="10" width="8" height="25" rx="2" fill="#888"/>
-          <path d="M143 33 Q150 38 157 33" fill="none" stroke="#aaa" stroke-width="2"/>
-          <!-- Carbon dots (dirty) -->
-          <circle cx="145" cy="40" r="2" fill="#333"/>
-          <circle cx="155" cy="43" r="1.5" fill="#333"/>
-          <circle cx="150" cy="46" r="2" fill="#333"/>
-          <text x="150" y="18" text-anchor="middle" fill="#c8973a" font-size="10" font-weight="bold" font-family="sans-serif">Primer Pocket Brush — rotate to clean</text>
-          <!-- Arrow down -->
-          <path d="M150 36 L150 27" stroke="#c8973a" stroke-width="1.5" marker-end="url(#a3)" stroke-dasharray="2,2"/>
-          <defs>
-            <marker id="a3" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#c8973a"/></marker>
-          </defs>
+        <svg viewBox="0 0 300 130">
+          <text x="150" y="14" text-anchor="middle" fill="#c8973a" font-size="10" font-weight="bold" font-family="sans-serif">Two tools — brush first, then deburr</text>
+
+          <!-- TOOL 1: Brush (left) -->
+          <!-- Case base -->
+          <rect x="25" y="40" width="80" height="55" rx="4" fill="#c8973a" stroke="#e0a820" stroke-width="1.5"/>
+          <!-- Primer pocket dirty -->
+          <rect x="55" y="50" width="20" height="16" rx="2" fill="#111" stroke="#555" stroke-width="1"/>
+          <circle cx="60" cy="57" r="2" fill="#333"/>
+          <circle cx="68" cy="60" r="1.5" fill="#333"/>
+          <circle cx="64" cy="55" r="1.5" fill="#333"/>
+          <!-- Brush tool -->
+          <rect x="61" y="22" width="8" height="28" rx="2" fill="#888"/>
+          <path d="M58 48 Q65 53 72 48" fill="none" stroke="#aaa" stroke-width="2"/>
+          <text x="65" y="110" text-anchor="middle" fill="#7ab3e0" font-size="9" font-family="sans-serif" font-weight="bold">① Pocket Brush</text>
+          <text x="65" y="121" text-anchor="middle" fill="#aaa" font-size="8" font-family="sans-serif">rotate, remove carbon</text>
+
+          <!-- Arrow -->
+          <text x="148" y="72" text-anchor="middle" fill="#888" font-size="22">→</text>
+
+          <!-- TOOL 2: Deburring reamer (right) -->
+          <!-- Case base clean -->
+          <rect x="190" y="40" width="80" height="55" rx="4" fill="#c8973a" stroke="#e0a820" stroke-width="1.5"/>
+          <!-- Pocket clean + uniform edge -->
+          <rect x="220" y="50" width="20" height="16" rx="1" fill="#111" stroke="#8fbc5a" stroke-width="1.5"/>
+          <!-- Uniform pocket reamer tool -->
+          <rect x="227" y="22" width="6" height="20" rx="1" fill="#777"/>
+          <!-- Reamer flutes/tip -->
+          <path d="M227 42 L224 50 L233 50 L230 42 Z" fill="#aaa" stroke="#888" stroke-width="1"/>
+          <!-- Clean pocket indicator -->
+          <text x="230" y="78" text-anchor="middle" fill="#8fbc5a" font-size="9" font-family="sans-serif">✓ clean</text>
+          <text x="230" y="110" text-anchor="middle" fill="#8fbc5a" font-size="9" font-family="sans-serif" font-weight="bold">② Pocket Deburrer</text>
+          <text x="230" y="121" text-anchor="middle" fill="#aaa" font-size="8" font-family="sans-serif">uniform depth + edge</text>
         </svg>
-        <p>Use a primer pocket brush (large rifle size for .308). Rotate several times in each pocket until the black carbon is gone. A dirty pocket causes primers to sit unevenly, leading to misfires.</p>
-        <div class="warn">⚠️ Military brass often has a <strong>crimped primer pocket</strong> — this needs to be reamed out before you can seat a new primer.</div>
+
+        <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — use the large rifle brush. Insert and rotate several times until all black carbon is gone. The ultrasonic bath will have done most of this already — you're just finishing any stubborn spots.</p>
+        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Primer Pocket Deburrer (Uniformer)</strong> — after brushing, run the reamer tool into the pocket with light pressure and rotate a few turns. This cuts the pocket to a consistent depth and removes the sharp edge left from the flash hole. Consistent pocket depth = primers seat to the same depth every time = more reliable ignition.</p>
+        <div class="tip">✅ Brush first (remove carbon), deburr second (uniform the pocket). Takes about 10 seconds per case.</div>
+        <div class="warn">⚠️ Military brass often has a <strong>crimped primer pocket</strong> — the crimp must be swaged or reamed out before you can seat a new primer. You'll feel it when the primer won't go in.</div>
       </div></div>
     </div>
 
