@@ -301,15 +301,14 @@
       <!-- Neck -->
       <rect x="222" y="62" width="30" height="38" rx="2" fill="#c8973a" stroke="#e0a820" stroke-width="1"/>
 
-      <!-- BULLET — clean ogive shape -->
-      <!-- Body cylinder -->
-      <rect x="252" y="64" width="18" height="34" rx="2" fill="#888" stroke="#666" stroke-width="1"/>
+      <!-- BULLET — clean solid side profile -->
+      <!-- Full bullet outline as one path: base flat, body, ogive taper to tip -->
+      <path d="M252,98 L252,70 Q252,56 261,50 Q270,56 270,70 L270,98 Z"
+            fill="#999" stroke="#666" stroke-width="1"/>
       <!-- Cannelure groove -->
-      <rect x="252" y="79" width="18" height="3" rx="0" fill="#555"/>
-      <!-- Ogive: smooth curved tip using a path -->
-      <path d="M252,64 C252,64 252,52 261,46 C270,52 270,64 270,64 Z" fill="#aaa" stroke="#777" stroke-width="1"/>
-      <!-- Tip highlight line -->
-      <path d="M254,62 C254,58 258,52 261,47" fill="none" stroke="#ccc" stroke-width="1" opacity="0.5"/>
+      <rect x="252" y="83" width="18" height="3" fill="#555"/>
+      <!-- Subtle highlight on left side -->
+      <path d="M254,70 Q254,58 261,52" fill="none" stroke="#ccc" stroke-width="1" opacity="0.4"/>
 
       <!-- LABEL ARROWS & TEXT -->
       <!-- Primer -->
