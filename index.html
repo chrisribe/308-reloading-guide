@@ -354,63 +354,80 @@
         <span class="chevron">▼</span>
       </div>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 148" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 300 155" xmlns="http://www.w3.org/2000/svg">
 <defs>
   <linearGradient id="g-brass-1" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="15%" stop-color="#F0D060"/>
-    <stop offset="40%" stop-color="#D4A828"/><stop offset="70%" stop-color="#8A6810"/>
+    <stop offset="0%"   stop-color="#C09830"/>
+    <stop offset="15%"  stop-color="#F0D060"/>
+    <stop offset="40%"  stop-color="#D4A828"/>
+    <stop offset="70%"  stop-color="#8A6810"/>
     <stop offset="100%" stop-color="#7A5818"/>
   </linearGradient>
 </defs>
 <!-- Title -->
 <text x="150" y="12" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">INSPECT BRASS — 4 CONDITIONS</text>
 <text x="150" y="22" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Discard any case showing damage below</text>
-<!-- centerlines -->
-<line x1="8" y1="62" x2="62" y2="62" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<line x1="73" y1="62" x2="127" y2="62" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<line x1="138" y1="62" x2="192" y2="62" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<line x1="203" y1="62" x2="292" y2="62" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<!-- CASE 1: GOOD -->
-<rect x="18" y="33" width="14" height="52" rx="1.5" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="15" y="78" width="20" height="6" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<path d="M32 33 L42 39 L42 57 L32 63" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="round"/>
-<rect x="42" y="39" width="10" height="18" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<text x="34" y="100" text-anchor="middle" fill="#4CBB6A" font-size="13">✓</text>
-<text x="34" y="112" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
-<!-- CASE 2: CRACK -->
-<rect x="83" y="33" width="14" height="52" rx="1.5" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="80" y="78" width="20" height="6" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<path d="M97 33 L107 39 L107 57 L97 63" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="round"/>
-<rect x="107" y="39" width="10" height="18" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<path d="M108 41 L112 46 L109 50 L113 55 L110 59" fill="none" stroke="#E05050" stroke-width="2"/>
-<text x="99" y="100" text-anchor="middle" fill="#E05050" font-size="13">✕</text>
-<text x="99" y="112" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
-<!-- CASE 3: BRIGHT RING -->
-<rect x="148" y="33" width="14" height="52" rx="1.5" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="145" y="78" width="20" height="6" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<path d="M162 33 L172 39 L172 57 L162 63" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="round"/>
-<rect x="172" y="39" width="10" height="18" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<line x1="148" y1="72" x2="162" y2="72" stroke="#FFE040" stroke-width="3"/>
-<text x="164" y="100" text-anchor="middle" fill="#E05050" font-size="13">✕</text>
-<text x="164" y="110" text-anchor="middle" fill="#FFE040" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT</text>
-<text x="164" y="120" text-anchor="middle" fill="#FFE040" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">RING</text>
-<!-- CASE 4: DENT -->
-<rect x="215" y="33" width="14" height="52" rx="1.5" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="212" y="78" width="20" height="6" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<path d="M229 33 L239 39 L239 57 L229 63" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="round"/>
-<rect x="239" y="39" width="10" height="18" rx="1" fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.2"/>
-<path d="M215 46 Q210 52 215 58" fill="none" stroke="#E05050" stroke-width="2.2"/>
-<text x="229" y="100" text-anchor="middle" fill="#E05050" font-size="13">✕</text>
-<text x="229" y="112" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DENT</text>
-<!-- case number labels at top -->
-<text x="34" y="30" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">①</text>
-<text x="99" y="30" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">②</text>
-<text x="164" y="30" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">③</text>
-<text x="229" y="30" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">④</text>
+
+<!-- .308 bottleneck case shape helper:
+     Origin at case BASE (bottom). Pointing UP.
+     Rim:      full width at very bottom, short height
+     Body:     slightly tapered from rim to shoulder
+     Shoulder: short angled taper inward
+     Neck:     narrow straight section at top
+     Each case is drawn at its center-x.
+     Anatomy for center-x=CX, case bottom y=BY:
+       rim:      CX±11  BY-0  → BY-5
+       body:     CX±10  BY-5  → BY-52   (slight taper to CX±9 at top)
+       shoulder: CX±9   BY-52 → CX±5   BY-64
+       neck:     CX±5   BY-64 → CX±5   BY-95   (top)
+     Use path for clean single outline -->
+
+<!-- CASE 1: GOOD  cx=38 -->
+<path d="M27,100 L49,100 L49,95 L47,95 L47,48 L49,36 L43,28 L33,28 L27,36 L29,48 L29,95 L27,95 Z"
+      fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.3" stroke-linejoin="round"/>
+<!-- rim groove line -->
+<line x1="29" y1="93" x2="47" y2="93" stroke="#90700A" stroke-width="0.8" opacity="0.7"/>
+<!-- centerline -->
+<line x1="38" y1="26" x2="38" y2="102" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<text x="38" y="114" text-anchor="middle" fill="#4CBB6A" font-size="14">✓</text>
+<text x="38" y="126" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
+
+<!-- CASE 2: CRACK  cx=103 -->
+<path d="M92,100 L114,100 L114,95 L112,95 L112,48 L114,36 L108,28 L98,28 L92,36 L94,48 L94,95 L92,95 Z"
+      fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.3" stroke-linejoin="round"/>
+<line x1="94" y1="93" x2="112" y2="93" stroke="#90700A" stroke-width="0.8" opacity="0.7"/>
+<!-- crack on neck -->
+<path d="M108,30 L112,35 L109,40 L113,46 L110,51" fill="none" stroke="#E05050" stroke-width="2" stroke-linejoin="round"/>
+<line x1="103" y1="26" x2="103" y2="102" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<text x="103" y="114" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
+<text x="103" y="126" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
+
+<!-- CASE 3: BRIGHT RING  cx=168 -->
+<path d="M157,100 L179,100 L179,95 L177,95 L177,48 L179,36 L173,28 L163,28 L157,36 L159,48 L159,95 L157,95 Z"
+      fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.3" stroke-linejoin="round"/>
+<line x1="159" y1="93" x2="177" y2="93" stroke="#90700A" stroke-width="0.8" opacity="0.7"/>
+<!-- bright ring near base — yellow highlight band -->
+<rect x="157" y="86" width="22" height="4" fill="#FFE040" opacity="0.55" rx="0.5"/>
+<line x1="157" y1="88" x2="179" y2="88" stroke="#FFE040" stroke-width="2" opacity="0.9"/>
+<line x1="168" y1="26" x2="168" y2="102" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<text x="168" y="114" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
+<text x="168" y="124" text-anchor="middle" fill="#FFE040" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT RING</text>
+<text x="168" y="133" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">(near separation)</text>
+
+<!-- CASE 4: DENT  cx=238 -->
+<path d="M227,100 L249,100 L249,95 L247,95 L247,48 L249,36 L243,28 L233,28 L227,36 L229,48 L229,95 L227,95 Z"
+      fill="url(#g-brass-1)" stroke="#D8DCF0" stroke-width="1.3" stroke-linejoin="round"/>
+<line x1="229" y1="93" x2="247" y2="93" stroke="#90700A" stroke-width="0.8" opacity="0.7"/>
+<!-- dent on body: concave indent on left side -->
+<path d="M229,58 Q224,65 229,72" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="238" y1="26" x2="238" y2="102" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<text x="238" y="114" text-anchor="middle" fill="#E05050" font-size="14">✕</text>
+<text x="238" y="126" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DENT</text>
+
 <!-- divider lines -->
-<line x1="68" y1="28" x2="68" y2="130" stroke="#333" stroke-width="0.5" opacity="0.6"/>
-<line x1="133" y1="28" x2="133" y2="130" stroke="#333" stroke-width="0.5" opacity="0.6"/>
-<line x1="198" y1="28" x2="198" y2="130" stroke="#333" stroke-width="0.5" opacity="0.6"/>
+<line x1="70"  y1="24" x2="70"  y2="140" stroke="#3A3A50" stroke-width="0.6"/>
+<line x1="135" y1="24" x2="135" y2="140" stroke="#3A3A50" stroke-width="0.6"/>
+<line x1="200" y1="24" x2="200" y2="140" stroke="#3A3A50" stroke-width="0.6"/>
         </svg>
         <p>Look at every case. Throw out any with cracks in the neck, splits on the body, or a bright ring near the base (that means the brass is about to split). Better to lose one case than ruin your rifle.</p>
         <div class="tip">✅ Good brass: smooth, no cracks, no bright rings near the base.</div>
