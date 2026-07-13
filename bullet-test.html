@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>.308 Bullet Diagrams — SVG Test</title>
+<style>
+  body { background:#1C1C24; color:#C8D0E8; font-family:'Arial Narrow',Arial,sans-serif; padding:14px; }
+  h1 { text-align:center; color:#C8973A; font-size:1.1rem; letter-spacing:.1em; margin-bottom:12px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .panel { background:#22222C; border:1px solid #383848; border-radius:4px; padding:8px; }
+  .panel-title { font-size:.7rem; font-weight:bold; color:#7080A8; text-transform:uppercase;
+                 letter-spacing:.08em; margin-bottom:6px; text-align:center; }
+  svg { display:block; width:100%; }
+</style>
+</head>
+<body>
+<h1>⬡ .308 BULLET — SVG DIAGRAM TEST · 6 PANELS</h1>
+<div class="grid">
+
+<!-- ═══════════════════════════════════════════════════════
+     D1 · BULLET ANATOMY
+     Bullet: cx=95, base y=145, tip y=55 (90px tall)
+     Boat tail: base ±6px→ bearing ±9px over 12px
+     Bearing: ±9px from y=133 to y=100
+     Ogive: Q bezier ±9→0 from y=100 to y=55
+     Cannelure: y=120–124 on bearing surface
+════════════════════════════════════════════════════════ -->
+<div class="panel">
+  <div class="panel-title">1 · Bullet Anatomy</div>
+  <svg viewBox="0 0 280 165">
+  <rect width="280" height="165" fill="#1C1C24"/>
+  <!-- Centreline -->
+  <line x1="95" y1="50" x2="95" y2="150" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.45"/>
+  <!-- Bullet body -->
+  <!-- BT:145-133, Bearing:133-80 (53px=59%), Ogive:80-55 (25px=28%) cubic steep -->
+  <path d="M95,145 L101,145 L104,133 L104,80 C104,72 100,58 95,55 C90,58 86,72 86,80 L86,133 L89,145 Z"
+        fill="#C09830" stroke="#D8A820" stroke-width="1.2"/>
+  <!-- Cannelure groove (bearing surface) -->
+  <rect x="86" y="119" width="18" height="4" fill="#1C1C24" stroke="#9A7818" stroke-width="0.8"/>
+  <!-- Labels — right -->
+  <circle cx="95" cy="55" r="1.3" fill="#C8D0E8"/>
+  <line x1="96" y1="55" x2="160" y2="42" stroke="#C8D0E8" stroke-width="0.7"/>
+  <text x="162" y="45" fill="#C8D0E8" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Tip</text>
+
+  <circle cx="101" cy="82" r="1.3" fill="#D8A820"/>
+  <line x1="101" y1="82" x2="160" y2="72" stroke="#D8A820" stroke-width="0.7"/>
+  <text x="162" y="75" fill="#D8A820" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Ogive</text>
+
+  <circle cx="104" cy="110" r="1.3" fill="#4CBB6A"/>
+  <line x1="104" y1="110" x2="160" y2="104" stroke="#4CBB6A" stroke-width="0.7"/>
+  <text x="162" y="107" fill="#4CBB6A" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Bearing surface</text>
+
+  <!-- Labels — left -->
+  <circle cx="90" cy="121" r="1.3" fill="#FFD060"/>
+  <line x1="86" y1="121" x2="40" y2="114" stroke="#FFD060" stroke-width="0.7"/>
+  <text x="2" y="117" fill="#FFD060" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Cannelure</text>
+
+  <circle cx="92" cy="139" r="1.3" fill="#C8973A"/>
+  <line x1="89" y1="139" x2="40" y2="139" stroke="#C8973A" stroke-width="0.7"/>
+  <text x="2" y="142" fill="#C8973A" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Boat tail</text>
+
+  <circle cx="95" cy="145" r="1.3" fill="#E05050"/>
+  <line x1="95" y1="147" x2="40" y2="155" stroke="#E05050" stroke-width="0.7"/>
+  <text x="2" y="158" fill="#E05050" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Base</text>
+
+  <text x="140" y="158" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">168gr Sierra MatchKing profile</text>
+  </svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     D2 · SEATING DEPTH COMPARISON
+     Three bullets in necks: too deep / correct / too long
+     Each neck: inner ±5px wide, outer ±8px. Center at cx=50, 140, 230
+     Case body block below neck at y=120
+     Bullet scale: base to tip ~55px
+     Too deep:  bullet base y=105, tip y=50  (base deep in neck)
+     Correct:   bullet base y=90,  tip y=35
+     Too long:  bullet base y=75,  tip y=20
+════════════════════════════════════════════════════════ -->
+<div class="panel">
+  <div class="panel-title">2 · Seating Depth</div>
+  <svg viewBox="0 0 280 165">
+  <rect width="280" height="165" fill="#1C1C24"/>
+  <text x="140" y="11" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">OAL COMPARISON — SIDE VIEW</text>
+
+  <!-- ── LEFT: Too deep (cx=50) ── -->
+  <text x="50" y="23" text-anchor="middle" fill="#E05050" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">TOO DEEP</text>
+  <!-- Neck walls: left x=42–46, right x=54–58 -->
+  <rect x="42" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <rect x="54" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <!-- Case body below neck -->
+  <rect x="36" y="116" width="28" height="18" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
+  <!-- Bullet: base at y=105, tip at y=50 -->
+  <!-- Bearing y=98-68 (30px=55%), Ogive y=68-50 (18px=33%) -->
+  <path d="M50,105 L54,105 L55,98 L55,68 C55,61 52,53 50,50 C48,53 45,61 45,68 L45,98 L46,105 Z"
+        fill="#C09830" stroke="#D8A820" stroke-width="0.9"/>
+  <!-- OAL arrow: tip to case base -->
+  <line x1="62" y1="50" x2="62" y2="134" stroke="#E05050" stroke-width="1"/>
+  <line x1="59" y1="50" x2="65" y2="50" stroke="#E05050" stroke-width="1"/>
+  <line x1="59" y1="134" x2="65" y2="134" stroke="#E05050" stroke-width="1"/>
+  <text x="50" y="155" text-anchor="middle" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">↑ pressure ⚠</text>
+
+  <!-- ── CENTER: Correct (cx=140) ── -->
+  <text x="140" y="23" text-anchor="middle" fill="#4CBB6A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ CORRECT</text>
+  <rect x="132" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <rect x="144" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <rect x="126" y="116" width="28" height="18" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
+  <!-- Bullet: base at y=90, tip at y=35 -->
+  <path d="M140,90 L144,90 L145,83 L145,53 C145,46 142,38 140,35 C138,38 135,46 135,53 L135,83 L136,90 Z"
+        fill="#C09830" stroke="#D8A820" stroke-width="0.9"/>
+  <!-- OAL arrow -->
+  <line x1="152" y1="35" x2="152" y2="134" stroke="#4CBB6A" stroke-width="1"/>
+  <line x1="149" y1="35" x2="155" y2="35" stroke="#4CBB6A" stroke-width="1"/>
+  <line x1="149" y1="134" x2="155" y2="134" stroke="#4CBB6A" stroke-width="1"/>
+  <text x="140" y="155" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">per manual</text>
+
+  <!-- ── RIGHT: Too long (cx=230) ── -->
+  <text x="230" y="23" text-anchor="middle" fill="#FFD060" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">TOO LONG</text>
+  <rect x="222" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <rect x="234" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <rect x="216" y="116" width="28" height="18" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
+  <!-- Bullet: base at y=75, tip at y=20 -->
+  <path d="M230,75 L234,75 L235,68 L235,38 C235,31 232,23 230,20 C228,23 225,31 225,38 L225,68 L226,75 Z"
+        fill="#C09830" stroke="#D8A820" stroke-width="0.9"/>
+  <!-- OAL arrow -->
+  <line x1="242" y1="20" x2="242" y2="134" stroke="#FFD060" stroke-width="1"/>
+  <line x1="239" y1="20" x2="245" y2="20" stroke="#FFD060" stroke-width="1"/>
+  <line x1="239" y1="134" x2="245" y2="134" stroke="#FFD060" stroke-width="1"/>
+  <text x="230" y="155" text-anchor="middle" fill="#FFD060" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">won't chamber</text>
+  </svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     D3 · BOAT TAIL vs FLAT BASE
+     Side by side at cx=75 and cx=200, base y=145, tip y=60
+     Boat tail: base tapers ±5→±9 over 12px
+     Flat base: straight ±9 to base, 90° cut
+════════════════════════════════════════════════════════ -->
+<div class="panel">
+  <div class="panel-title">3 · Boat Tail vs Flat Base</div>
+  <svg viewBox="0 0 280 165">
+  <rect width="280" height="165" fill="#1C1C24"/>
+
+  <!-- Divider -->
+  <line x1="140" y1="8" x2="140" y2="155" stroke="#383848" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- ── LEFT: Boat tail (cx=75) ── -->
+  <text x="75" y="14" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BOAT TAIL</text>
+  <text x="75" y="23" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">168gr SMK · ELD-M</text>
+  <!-- base ±5 at y=145, shoulder of boat tail ±9 at y=133, bearing to y=105, ogive Q to tip y=60 -->
+  <!-- BT:12px, Bear:133-82=51px(60%), Ogive:82-60=22px(26%) cubic -->
+  <path d="M75,145 L80,145 L84,133 L84,82 C84,73 80,63 75,60 C70,63 66,73 66,82 L66,133 L70,145 Z"
+        fill="#C09830" stroke="#D8A820" stroke-width="1.2"/>
+  <!-- Boat tail taper callout lines -->
+  <line x1="70" y1="133" x2="56" y2="150" stroke="#4CBB6A" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="80" y1="133" x2="94" y2="150" stroke="#4CBB6A" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="75" y="160" text-anchor="middle" fill="#4CBB6A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">tapered base</text>
+  <!-- Bearing dimension tick -->
+  <line x1="88" y1="105" x2="88" y2="133" stroke="#D8A820" stroke-width="0.8"/>
+  <line x1="85" y1="105" x2="91" y2="105" stroke="#D8A820" stroke-width="0.8"/>
+  <line x1="85" y1="133" x2="91" y2="133" stroke="#D8A820" stroke-width="0.8"/>
+  <text x="93" y="123" fill="#D8A820" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">bearing</text>
+
+  <!-- ── RIGHT: Flat base (cx=205) ── -->
+  <text x="205" y="14" text-anchor="middle" fill="#7080A8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">FLAT BASE</text>
+  <text x="205" y="23" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">155gr Scenar · match</text>
+  <!-- Flat base: ±9 all the way to y=145, 90° corners -->
+  <path d="M196,145 L214,145 L214,105 Q210,76 205,60 Q200,76 196,105 Z"
+        fill="#A08828" stroke="#C0A030" stroke-width="1.2"/>
+  <!-- Flat base indicator -->
+  <line x1="188" y1="145" x2="222" y2="145" stroke="#7080A8" stroke-width="1.5"/>
+  <text x="205" y="160" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">flat 90° base</text>
+  </svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     D4 · NECK TENSION — cross-section
+     Case neck walls shown in cross section with bullet bearing inside
+     Neck: outer ±14px, inner ±10px from cx=95
+     Bullet: ±9px (slightly smaller → neck squeezes bullet)
+     Height: y=25 to y=135
+════════════════════════════════════════════════════════ -->
+<div class="panel">
+  <div class="panel-title">4 · Neck Tension</div>
+  <svg viewBox="0 0 280 165">
+  <defs>
+    <pattern id="hatch-steel" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="4" x2="4" y2="0" stroke="#D8DCF0" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arr-in-l" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M6,0 L0,3 L6,6 Z" fill="#E05050"/>
+    </marker>
+    <marker id="arr-in-r" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#E05050"/>
+    </marker>
+  </defs>
+  <rect width="280" height="165" fill="#1C1C24"/>
+  <text x="140" y="11" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE NECK — SIDE VIEW (enlarged)</text>
+
+  <!-- Left neck wall: x=50–74 (24px wide). Inner edge x=74 -->
+  <rect x="50" y="22" width="24" height="120" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
+  <rect x="50" y="22" width="12" height="120" fill="url(#hatch-steel)" opacity="0.7"/>
+
+  <!-- Right neck wall: inner edge x=106, outer x=130 (24px wide) -->
+  <rect x="106" y="22" width="24" height="120" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
+  <rect x="118" y="22" width="12" height="120" fill="url(#hatch-steel)" opacity="0.7"/>
+
+  <!-- Bullet bearing: x=74–106 (32px wide, fills inner neck gap) -->
+  <rect x="74" y="28" width="32" height="108" fill="#C09830" stroke="#D8A820" stroke-width="1.4" rx="1"/>
+
+  <!-- Cannelure groove at mid-bullet y=82–90 -->
+  <rect x="74" y="82" width="32" height="8" fill="#9A7020" stroke="#9A7818" stroke-width="0.8"/>
+  <line x1="74" y1="86" x2="106" y2="86" stroke="#7A5010" stroke-width="0.7"/>
+
+  <!-- Grip arrows — from outside walls pointing in at bullet surface -->
+  <line x1="36" y1="60" x2="73" y2="60" stroke="#E05050" stroke-width="1.5" marker-end="url(#arr-in-r)"/>
+  <line x1="144" y1="60" x2="107" y2="60" stroke="#E05050" stroke-width="1.5" marker-end="url(#arr-in-l)"/>
+  <text x="26" y="57" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GRIP</text>
+  <text x="148" y="57" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GRIP</text>
+
+  <!-- Labels right -->
+  <circle cx="130" cy="32" r="1.5" fill="#D8DCF0"/>
+  <line x1="130" y1="32" x2="175" y2="25" stroke="#D8DCF0" stroke-width="0.8"/>
+  <text x="177" y="28" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Neck wall (brass)</text>
+
+  <circle cx="106" cy="58" r="1.5" fill="#C09830"/>
+  <line x1="106" y1="58" x2="175" y2="52" stroke="#C09830" stroke-width="0.8"/>
+  <text x="177" y="55" fill="#C09830" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Bullet bearing</text>
+
+  <circle cx="106" cy="86" r="1.5" fill="#FFD060"/>
+  <line x1="106" y1="86" x2="175" y2="86" stroke="#FFD060" stroke-width="0.8"/>
+  <text x="177" y="89" fill="#FFD060" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cannelure groove</text>
+
+  <circle cx="130" cy="110" r="1.5" fill="#D8DCF0"/>
+  <line x1="130" y1="110" x2="175" y2="116" stroke="#D8DCF0" stroke-width="0.8"/>
+  <text x="177" y="119" fill="#7080A8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">neck grips bullet</text>
+
+  <text x="90" y="156" text-anchor="middle" fill="#4CBB6A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Bushing OD = loaded neck OD − 0.001"–0.002"</text>
+  </svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     D5 · CANNELURE CRIMP — detail close-up
+     Bullet bearing surface, case mouth crimped into groove
+     Bullet: x=94–106 (±6 from cx=100), y=15 to y=145
+     Cannelure: y=72–82
+     Case walls: outer x=82–92 (left), x=108–118 (right)
+     Case mouth top at y=70 — aligns with top of cannelure
+     Crimp: case mouth bends inward at y=70
+════════════════════════════════════════════════════════ -->
+<div class="panel">
+  <div class="panel-title">5 · Cannelure Crimp</div>
+  <svg viewBox="0 0 280 165">
+  <rect width="280" height="165" fill="#1C1C24"/>
+  <text x="140" y="11" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE MOUTH CRIMP INTO CANNELURE</text>
+
+  <!-- cx=110 centre. Bullet: x=78–142 (64px wide). Cannelure y=72–88. Case mouth y=80 -->
+
+  <!-- Bullet above case mouth (y=16–80) -->
+  <rect x="78" y="16" width="64" height="64" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
+  <!-- Cannelure groove (y=80–88 straddles case mouth) -->
+  <rect x="78" y="80" width="64" height="14" fill="#9A7020" stroke="#D8A820" stroke-width="1"/>
+  <line x1="78" y1="85" x2="142" y2="85" stroke="#7A5010" stroke-width="1"/>
+  <line x1="78" y1="89" x2="142" y2="89" stroke="#7A5010" stroke-width="0.6"/>
+  <!-- Bullet below cannelure (y=94–150) -->
+  <rect x="78" y="94" width="64" height="56" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
+
+  <!-- Left case wall: outer x=44, inner x=78. y=80 downward -->
+  <rect x="44" y="80" width="34" height="72" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+  <!-- Right case wall: inner x=142, outer x=176 -->
+  <rect x="142" y="80" width="34" height="72" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+
+  <!-- Crimp: case mouth inner edges curve inward into cannelure — bold yellow -->
+  <!-- Left crimp: from x=78,y=80 curves in to x=82,y=87 -->
+  <path d="M78,80 Q76,87 82,88" fill="none" stroke="#FFD060" stroke-width="3" stroke-linecap="round"/>
+  <!-- Right crimp: from x=142,y=80 curves in to x=138,y=87 -->
+  <path d="M142,80 Q144,87 138,88" fill="none" stroke="#FFD060" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Case mouth line (dashed) showing where mouth is -->
+  <line x1="40" y1="80" x2="78" y2="80" stroke="#C8D0E8" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="142" y1="80" x2="176" y2="80" stroke="#C8D0E8" stroke-width="1" stroke-dasharray="4,2"/>
+
+  <!-- Labels left -->
+  <circle cx="78" cy="40" r="1.8" fill="#C09830"/>
+  <line x1="78" y1="40" x2="36" y2="32" stroke="#C09830" stroke-width="0.8"/>
+  <text x="2" y="30" fill="#C09830" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Bullet</text>
+
+  <circle cx="44" cy="110" r="1.8" fill="#D8DCF0"/>
+  <line x1="44" y1="110" x2="20" y2="120" stroke="#D8DCF0" stroke-width="0.8"/>
+  <text x="2" y="123" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case wall</text>
+
+  <circle cx="56" cy="80" r="1.8" fill="#C8D0E8"/>
+  <line x1="56" y1="80" x2="20" y2="68" stroke="#C8D0E8" stroke-width="0.8"/>
+  <text x="2" y="65" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case mouth</text>
+
+  <!-- Labels right -->
+  <circle cx="142" cy="85" r="1.8" fill="#C8973A"/>
+  <line x1="142" y1="85" x2="186" y2="78" stroke="#C8973A" stroke-width="0.8"/>
+  <text x="188" y="81" fill="#C8973A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cannelure</text>
+
+  <circle cx="142" cy="80" r="1.8" fill="#FFD060"/>
+  <line x1="142" y1="80" x2="186" y2="95" stroke="#FFD060" stroke-width="0.8"/>
+  <text x="188" y="98" fill="#FFD060" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Crimp</text>
+
+  <text x="110" y="160" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Crimp locks bullet — prevents setback on feeding</text>
+  </svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     D6 · JUMP TO RIFLING LANDS — horizontal view
+     Cartridge horizontal, bullet nose pointing RIGHT
+     Case neck: x=15 to x=105 (center y=85)
+     Neck walls: y=77–81 (top) and y=89–93 (bottom)  ← ±4px half-width from y=85
+     Bullet: base x=65, tip x=130 (65px long, ±5px wide at bearing)
+     Freebore: x=105 to x=155 (smooth bore, no lands)
+     Lands start: x=155
+     Jump = x=130 (bullet tip) to x=155 (first land) = 25px
+════════════════════════════════════════════════════════ -->
+<div class="panel">
+  <div class="panel-title">6 · Jump to Rifling Lands</div>
+  <svg viewBox="0 0 280 165">
+  <rect width="280" height="165" fill="#1C1C24"/>
+  <text x="140" y="11" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BULLET JUMP — LANDS &amp; GROOVES</text>
+
+  <!-- Case neck top wall: y=76–80 -->
+  <rect x="15" y="76" width="90" height="5" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <!-- Case neck bottom wall: y=90–94 -->
+  <rect x="15" y="90" width="90" height="5" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+  <!-- Case body implied left -->
+  <rect x="5" y="68" width="14" height="30" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
+
+  <!-- Freebore (smooth bore, y=76–94, x=105–155) -->
+  <rect x="105" y="76" width="50" height="5"  fill="#2a2a3a" stroke="#555" stroke-width="0.6"/>
+  <rect x="105" y="90" width="50" height="5"  fill="#2a2a3a" stroke="#555" stroke-width="0.6"/>
+
+  <!-- Barrel with lands+grooves (x=155 to x=270) -->
+  <!-- Top barrel wall (y=68–80) with groove notches cut out (y=68–72 = groove depth 4px) -->
+  <rect x="155" y="68" width="115" height="12" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>
+  <!-- Bottom barrel wall (y=85–97) -->
+  <rect x="155" y="85" width="115" height="12" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>
+  <!-- Groove notches top (every 12px, 5px wide, 4px deep into y=68) -->
+  <rect x="158" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="170" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="182" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="194" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="206" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="218" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="230" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="242" y="68" width="5" height="4" fill="#1C1C24"/>
+  <rect x="254" y="68" width="5" height="4" fill="#1C1C24"/>
+  <!-- Groove notches bottom -->
+  <rect x="158" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="170" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="182" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="194" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="206" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="218" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="230" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="242" y="93" width="5" height="4" fill="#1C1C24"/>
+  <rect x="254" y="93" width="5" height="4" fill="#1C1C24"/>
+
+  <!-- Bullet: nose pointing RIGHT. Base at x=65, tip at x=130.
+       Bearing: ±4px (y=81–89). Boat tail base: ±3px.
+       Path: base-top(65,82), boat-shoulder(65,80), bearing-top(70,80),
+             tip-top(128,80), tip(130,85), tip-bottom(128,90),
+             bearing-bottom(70,90), boat-shoulder(65,90), base-bottom(65,88) -->
+  <!-- BT:8px, Bearing:73-104(31px=48%), Ogive:104-130(26px=40%) cubic steep -->
+  <path d="M65,82 L65,80 L73,80 L104,80 C118,80 128,82 130,85 C128,88 118,90 104,90 L73,90 L65,90 L65,88 Z"
+        fill="#C09830" stroke="#D8A820" stroke-width="1"/>
+  <!-- Cannelure on bullet (x=78–82) -->
+  <rect x="78" y="80" width="4" height="10" fill="#9A7020" stroke="#9A7818" stroke-width="0.5"/>
+
+  <!-- JUMP gap indicator: bullet tip x=130 to first land x=155, at y=73 -->
+  <line x1="130" y1="72" x2="155" y2="72" stroke="#FFD060" stroke-width="1.5"/>
+  <line x1="130" y1="69" x2="130" y2="75" stroke="#FFD060" stroke-width="1.2"/>
+  <line x1="155" y1="69" x2="155" y2="75" stroke="#FFD060" stroke-width="1.2"/>
+  <text x="142" y="68" text-anchor="middle" fill="#FFD060" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">JUMP</text>
+
+  <!-- Labels -->
+  <line x1="20" y1="76" x2="12" y2="58" stroke="#D8DCF0" stroke-width="0.7"/>
+  <text x="2"   y="55" fill="#C8D0E8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Neck</text>
+
+  <line x1="130" y1="80" x2="130" y2="112" stroke="#C09830" stroke-width="0.7"/>
+  <text x="112" y="120" fill="#C09830" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Bullet tip</text>
+
+  <line x1="200" y1="68" x2="210" y2="52" stroke="#D8DCF0" stroke-width="0.7"/>
+  <text x="196" y="49" fill="#C8D0E8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Land</text>
+
+  <line x1="163" y1="68" x2="163" y2="52" stroke="#7080A8" stroke-width="0.7"/>
+  <text x="148" y="49" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Groove</text>
+
+  <text x="140" y="138" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Shorter jump = less bullet yaw = better accuracy</text>
+  <text x="140" y="149" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Typical .308 match: 0.020"–0.050" off the lands</text>
+  </svg>
+</div>
+
+</div><!-- /grid -->
+</body>
+</html>
