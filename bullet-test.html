@@ -322,75 +322,91 @@
   <rect width="280" height="165" fill="#1C1C24"/>
   <text x="140" y="11" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BULLET JUMP — LANDS &amp; GROOVES</text>
 
-  <!-- Case neck top wall: y=76–80 -->
-  <rect x="15" y="76" width="90" height="5" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
-  <!-- Case neck bottom wall: y=90–94 -->
-  <rect x="15" y="90" width="90" height="5" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
-  <!-- Case body implied left -->
-  <rect x="5" y="68" width="14" height="30" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
+  <!-- ── CASE BODY (left block) ── -->
+  <rect x="5" y="66" width="14" height="34" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
 
-  <!-- Freebore (smooth bore, y=76–94, x=105–155) -->
-  <rect x="105" y="76" width="50" height="5"  fill="#2a2a3a" stroke="#555" stroke-width="0.6"/>
-  <rect x="105" y="90" width="50" height="5"  fill="#2a2a3a" stroke="#555" stroke-width="0.6"/>
+  <!-- ── NECK walls  (inner bore = y=80 top / y=90 bottom) ── -->
+  <rect x="19" y="70" width="86" height="10" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>  <!-- top wall y=70–80 -->
+  <rect x="19" y="90" width="86" height="10" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>  <!-- bot wall y=90–100 -->
 
-  <!-- Barrel with lands+grooves (x=155 to x=270) -->
-  <!-- Top barrel wall (y=68–80) with groove notches cut out (y=68–72 = groove depth 4px) -->
-  <rect x="155" y="68" width="115" height="12" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>
-  <!-- Bottom barrel wall (y=85–97) -->
-  <rect x="155" y="85" width="115" height="12" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>
-  <!-- Groove notches top (every 12px, 5px wide, 4px deep into y=68) -->
-  <rect x="158" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="170" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="182" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="194" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="206" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="218" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="230" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="242" y="68" width="5" height="4" fill="#1C1C24"/>
-  <rect x="254" y="68" width="5" height="4" fill="#1C1C24"/>
-  <!-- Groove notches bottom -->
-  <rect x="158" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="170" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="182" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="194" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="206" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="218" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="230" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="242" y="93" width="5" height="4" fill="#1C1C24"/>
-  <rect x="254" y="93" width="5" height="4" fill="#1C1C24"/>
+  <!-- ── LEADE / THROAT  (x=105–118): chamber tapers to match bullet ogive profile ──
+       Top inner surface: tapers from y=80 (neck) keeping y=80 (bore matches bearing).
+       Draw a visible leade shoulder line showing the chamber mouth step. -->
+  <!-- leade top wedge: outer flat, inner steps down to bore diameter -->
+  <polygon points="105,70 118,70 118,80 105,80" fill="#343444" stroke="#8898B8" stroke-width="0.7"/>
+  <!-- leade bottom wedge mirrored -->
+  <polygon points="105,90 118,90 118,100 105,100" fill="#343444" stroke="#8898B8" stroke-width="0.7"/>
 
-  <!-- Bullet: nose pointing RIGHT. Base at x=65, tip at x=130.
-       Bearing: ±4px (y=81–89). Boat tail base: ±3px.
-       Path: base-top(65,82), boat-shoulder(65,80), bearing-top(70,80),
-             tip-top(128,80), tip(130,85), tip-bottom(128,90),
-             bearing-bottom(70,90), boat-shoulder(65,90), base-bottom(65,88) -->
-  <!-- BT:8px, Bearing:73-104(31px=48%), Ogive:104-130(26px=40%) cubic steep -->
-  <path d="M65,82 L65,80 L73,80 L104,80 C118,80 128,82 130,85 C128,88 118,90 104,90 L73,90 L65,90 L65,88 Z"
+  <!-- ── FREEBORE  (smooth bore, x=118–155, bore = y=80–90) ── -->
+  <rect x="118" y="70" width="37" height="10" fill="#2a2a3a" stroke="#556" stroke-width="0.6"/>  <!-- top -->
+  <rect x="118" y="90" width="37" height="10" fill="#2a2a3a" stroke="#556" stroke-width="0.6"/>  <!-- bot -->
+
+  <!-- ── BARREL  lands+grooves (x=155–270) ── -->
+  <rect x="155" y="70" width="115" height="10" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>  <!-- top wall -->
+  <rect x="155" y="90" width="115" height="10" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>  <!-- bot wall -->
+  <!-- Groove notches top (y=70–74 = 4px deep, every 12px) -->
+  <rect x="158" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="170" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="182" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="194" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="206" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="218" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="230" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="242" y="70" width="5" height="4" fill="#1C1C24"/>
+  <rect x="254" y="70" width="5" height="4" fill="#1C1C24"/>
+  <!-- Groove notches bottom (y=96–100) -->
+  <rect x="158" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="170" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="182" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="194" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="206" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="218" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="230" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="242" y="96" width="5" height="4" fill="#1C1C24"/>
+  <rect x="254" y="96" width="5" height="4" fill="#1C1C24"/>
+
+  <!-- ── BULLET  (base x=62, tip x=130, centre y=85) ──
+       Boat tail: x=62–70 (±3px base, ±5px shoulder)
+       Bearing:   x=70–104  (±5px = y=80–90)
+       Ogive:     x=104–130 cubic bezier → tip (130,85) -->
+  <path d="M62,83 L62,80 L70,80 L104,80 C118,80 128,82 130,85 C128,88 118,90 104,90 L70,90 L62,90 L62,87 Z"
         fill="#C09830" stroke="#D8A820" stroke-width="1"/>
-  <!-- Cannelure on bullet (x=78–82) -->
-  <rect x="78" y="80" width="4" height="10" fill="#9A7020" stroke="#9A7818" stroke-width="0.5"/>
+  <!-- Cannelure groove (x=76–80) -->
+  <rect x="76" y="80" width="4" height="10" fill="#9A7020" stroke="#9A7818" stroke-width="0.5"/>
 
-  <!-- JUMP gap indicator: bullet tip x=130 to first land x=155, at y=73 -->
-  <line x1="130" y1="72" x2="155" y2="72" stroke="#FFD060" stroke-width="1.5"/>
-  <line x1="130" y1="69" x2="130" y2="75" stroke="#FFD060" stroke-width="1.2"/>
-  <line x1="155" y1="69" x2="155" y2="75" stroke="#FFD060" stroke-width="1.2"/>
-  <text x="142" y="68" text-anchor="middle" fill="#FFD060" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">JUMP</text>
+  <!-- ── NECK GRIP highlight — bold gold lines on bearing inside neck ──
+       Bearing runs x=70–104; neck ends x=105. Show grip zone x=70–104. -->
+  <line x1="70" y1="80" x2="104" y2="80" stroke="#FFE040" stroke-width="2.5"/>  <!-- top grip -->
+  <line x1="70" y1="90" x2="104" y2="90" stroke="#FFE040" stroke-width="2.5"/>  <!-- bot grip -->
+  <!-- grip label -->
+  <line x1="87" y1="80" x2="87" y2="62" stroke="#FFE040" stroke-width="0.8"/>
+  <text x="57" y="60" fill="#FFE040" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif" font-weight="bold">NECK GRIP</text>
 
-  <!-- Labels -->
-  <line x1="20" y1="76" x2="12" y2="58" stroke="#D8DCF0" stroke-width="0.7"/>
-  <text x="2"   y="55" fill="#C8D0E8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Neck</text>
+  <!-- ── JUMP bracket (tip x=130 to first land x=155) ── -->
+  <line x1="130" y1="73" x2="155" y2="73" stroke="#FFD060" stroke-width="1.5"/>
+  <line x1="130" y1="70" x2="130" y2="76" stroke="#FFD060" stroke-width="1.2"/>
+  <line x1="155" y1="70" x2="155" y2="76" stroke="#FFD060" stroke-width="1.2"/>
+  <text x="142" y="69" text-anchor="middle" fill="#FFD060" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">JUMP</text>
 
-  <line x1="130" y1="80" x2="130" y2="112" stroke="#C09830" stroke-width="0.7"/>
-  <text x="112" y="120" fill="#C09830" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Bullet tip</text>
+  <!-- ── LABELS ── -->
+  <!-- Neck -->
+  <line x1="40" y1="70" x2="35" y2="56" stroke="#D8DCF0" stroke-width="0.7"/>
+  <text x="20" y="53" fill="#C8D0E8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Neck</text>
+  <!-- Leade / throat -->
+  <line x1="111" y1="70" x2="118" y2="56" stroke="#8898B8" stroke-width="0.7"/>
+  <text x="105" y="53" fill="#8898B8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Leade</text>
+  <!-- Land -->
+  <line x1="200" y1="70" x2="210" y2="54" stroke="#D8DCF0" stroke-width="0.7"/>
+  <text x="196" y="51" fill="#C8D0E8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Land</text>
+  <!-- Groove -->
+  <line x1="163" y1="70" x2="163" y2="54" stroke="#7080A8" stroke-width="0.7"/>
+  <text x="148" y="51" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Groove</text>
+  <!-- Bullet tip -->
+  <line x1="130" y1="82" x2="135" y2="112" stroke="#C09830" stroke-width="0.7"/>
+  <text x="120" y="120" fill="#C09830" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Bullet tip</text>
 
-  <line x1="200" y1="68" x2="210" y2="52" stroke="#D8DCF0" stroke-width="0.7"/>
-  <text x="196" y="49" fill="#C8D0E8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Land</text>
-
-  <line x1="163" y1="68" x2="163" y2="52" stroke="#7080A8" stroke-width="0.7"/>
-  <text x="148" y="49" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Groove</text>
-
-  <text x="140" y="138" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Shorter jump = less bullet yaw = better accuracy</text>
-  <text x="140" y="149" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Typical .308 match: 0.020"–0.050" off the lands</text>
+  <text x="140" y="136" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Shorter jump = less bullet yaw = better accuracy</text>
+  <text x="140" y="147" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Typical .308 match: 0.020"–0.050" off the lands</text>
   </svg>
 </div>
 
