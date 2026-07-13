@@ -1231,9 +1231,12 @@
 <!-- Thumb wheel (small knurled circle on bottom of carriage) -->
 <circle cx="185" cy="72" r="5" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
 <circle cx="185" cy="72" r="5" fill="url(#knurl-7)" opacity="0.6"/>
-<!-- Case horizontal: #g-case rotated -90°, scale=5.15 -->
-<!-- Rim left edge at x=24, CY=75. translateX = 24 + 6.5*5.15 = 57.5 -->
-<use href="#g-case" transform="translate(57,75) rotate(-90) scale(5.15)" fill="#C09830" color="#C09830"/>
+<!-- Case horizontal: rotate(90) → base LEFT (fixed jaw), neck RIGHT (sliding jaw)
+     rim left edge at x=25 (fixed jaw face) → translate x=25
+     neck tip at x = 25 + 27*5.15 = 164 → sliding jaw at ~200 ✓
+-->
+<use href="#g-case" transform="translate(25,75) rotate(90) scale(5.15)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(25,75) rotate(90) scale(5.15)" fill="none" stroke="#D8A820" stroke-width="0.2"/>
 <!-- Measurement span arrow -->
 <line x1="26" y1="100" x2="200" y2="100" stroke="#C8973A" stroke-width="1.2"/>
 <line x1="26" y1="96" x2="26" y2="104" stroke="#C8973A" stroke-width="1.2"/>
