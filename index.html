@@ -525,24 +525,18 @@
       </div>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 155" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="g-body-3" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="22%" stop-color="#BCC4CC"/>
-    <stop offset="55%" stop-color="#6A7280"/><stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-  <linearGradient id="g-brass-3" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="40%" stop-color="#D4A828"/><stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
-</defs>
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">ULTRASONIC CLEANER — 30–45 MIN</text>
 <!-- Outer body / base (black plastic) -->
-<rect x="25" y="68" width="250" height="72" rx="5" fill="#141414" stroke="#555" stroke-width="1.5"/>
+<rect x="25" y="68" width="250" height="72" fill="#141414" stroke="#555" stroke-width="1.5"/>
+<!-- Rubber feet -->
+<rect x="30" y="136" width="14" height="6" fill="#0a0a0a" stroke="#333" stroke-width="0.8"/>
+<rect x="256" y="136" width="14" height="6" fill="#0a0a0a" stroke="#333" stroke-width="0.8"/>
 <!-- Stainless tank outer wall -->
-<rect x="40" y="18" width="220" height="78" rx="4" fill="#3a3a3a" stroke="url(#g-body-3)" stroke-width="2"/>
+<rect x="40" y="18" width="220" height="78" fill="#3a3a3a" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Tank inner (stainless) -->
-<rect x="46" y="23" width="208" height="68" rx="3" fill="#585858"/>
+<rect x="46" y="23" width="208" height="68" fill="#585858"/>
 <!-- Mesh basket border -->
-<rect x="52" y="26" width="196" height="58" rx="2" fill="none" stroke="#AAAAAA" stroke-width="1.2"/>
+<rect x="52" y="26" width="196" height="58" fill="none" stroke="#AAAAAA" stroke-width="1.2"/>
 <!-- Mesh horizontal lines -->
 <line x1="52" y1="35" x2="248" y2="35" stroke="#888" stroke-width="0.5" opacity="0.7"/>
 <line x1="52" y1="44" x2="248" y2="44" stroke="#888" stroke-width="0.5" opacity="0.7"/>
@@ -556,44 +550,89 @@
 <line x1="172" y1="26" x2="172" y2="84" stroke="#888" stroke-width="0.5" opacity="0.7"/>
 <line x1="196" y1="26" x2="196" y2="84" stroke="#888" stroke-width="0.5" opacity="0.7"/>
 <line x1="220" y1="26" x2="220" y2="84" stroke="#888" stroke-width="0.5" opacity="0.7"/>
-<!-- Basket lift handles hooking over rim -->
-<path d="M68 26 Q68 15 78 15 Q88 15 88 26" fill="none" stroke="#AAAAAA" stroke-width="1.8"/>
-<path d="M205 26 Q205 15 215 15 Q225 15 225 26" fill="none" stroke="#AAAAAA" stroke-width="1.8"/>
-<!-- Brass cases standing in basket (8 cases) -->
-<rect x="58"  y="35" width="7" height="26" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="70"  y="31" width="7" height="30" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="82"  y="34" width="7" height="27" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="107" y="32" width="7" height="29" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="132" y="35" width="7" height="26" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="157" y="33" width="7" height="28" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="182" y="30" width="7" height="31" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="230" y="34" width="7" height="26" rx="1" fill="url(#g-brass-3)" stroke="#D8DCF0" stroke-width="0.6"/>
-<!-- Ultrasonic wave lines at tank bottom -->
-<path d="M55 76 Q68 72 81 76 Q94 80 107 76 Q120 72 133 76 Q146 80 159 76 Q172 72 185 76 Q198 80 211 76 Q224 72 237 76" fill="none" stroke="#4090FF" stroke-width="1.2" opacity="0.5"/>
+<!-- Basket lift handles: straight bent lines, NO Q curves -->
+<polyline points="68,26 68,18 78,14 88,14 88,18 88,26" fill="none" stroke="#AAAAAA" stroke-width="1.8" stroke-linejoin="miter"/>
+<polyline points="205,26 205,18 215,14 225,14 225,18 225,26" fill="none" stroke="#AAAAAA" stroke-width="1.8" stroke-linejoin="miter"/>
+<!-- 8 small brass cases standing in basket — mini bottleneck paths -->
+<!-- Case helper: rim ±5.5, body ±4.5, neck ±2.5, body 18px, neck 4px, shoulder 1px -->
+<!-- Case at x=59 -->
+<path d="M53.5,84 L64.5,84 L64.5,82.5 L63.5,82.5 L63.5,64.5 L61,63 L61,59 L57,59 L57,63 L54.5,64.5 L54.5,82.5 L53.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Case at x=75 -->
+<path d="M69.5,84 L80.5,84 L80.5,82.5 L79.5,82.5 L79.5,64.5 L77,63 L77,59 L73,59 L73,63 L70.5,64.5 L70.5,82.5 L69.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Case at x=91 -->
+<path d="M85.5,84 L96.5,84 L96.5,82.5 L95.5,82.5 L95.5,64.5 L93,63 L93,59 L89,59 L89,63 L86.5,64.5 L86.5,82.5 L85.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Case at x=113 -->
+<path d="M107.5,84 L118.5,84 L118.5,82.5 L117.5,82.5 L117.5,64.5 L115,63 L115,59 L111,59 L111,63 L108.5,64.5 L108.5,82.5 L107.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Case at x=137 -->
+<path d="M131.5,84 L142.5,84 L142.5,82.5 L141.5,82.5 L141.5,64.5 L139,63 L139,59 L135,59 L135,63 L132.5,64.5 L132.5,82.5 L131.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Case at x=160 -->
+<path d="M154.5,84 L165.5,84 L165.5,82.5 L164.5,82.5 L164.5,64.5 L162,63 L162,59 L158,59 L158,63 L155.5,64.5 L155.5,82.5 L154.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Case at x=183 -->
+<path d="M177.5,84 L188.5,84 L188.5,82.5 L187.5,82.5 L187.5,64.5 L185,63 L185,59 L181,59 L181,63 L178.5,64.5 L178.5,82.5 L177.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Case at x=228 -->
+<path d="M222.5,84 L233.5,84 L233.5,82.5 L232.5,82.5 L232.5,64.5 L230,63 L230,59 L226,59 L226,63 L223.5,64.5 L223.5,82.5 L222.5,82.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6" stroke-linejoin="miter"/>
+<!-- Ultrasonic wave lines: short line segments, NO Q curves -->
+<line x1="55" y1="74" x2="60" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="60" y1="71" x2="65" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="65" y1="74" x2="70" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="70" y1="71" x2="75" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="75" y1="74" x2="80" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="80" y1="71" x2="85" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="85" y1="74" x2="90" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="90" y1="71" x2="95" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="95" y1="74" x2="100" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="100" y1="71" x2="105" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="105" y1="74" x2="110" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="110" y1="71" x2="115" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="115" y1="74" x2="120" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="120" y1="71" x2="125" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="125" y1="74" x2="130" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="130" y1="71" x2="135" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="135" y1="74" x2="140" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="140" y1="71" x2="145" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="145" y1="74" x2="150" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="150" y1="71" x2="155" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="155" y1="74" x2="160" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="160" y1="71" x2="165" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="165" y1="74" x2="170" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="170" y1="71" x2="175" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="175" y1="74" x2="180" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="180" y1="71" x2="185" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="185" y1="74" x2="190" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="190" y1="71" x2="195" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="195" y1="74" x2="200" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="200" y1="71" x2="205" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="205" y1="74" x2="210" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="210" y1="71" x2="215" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="215" y1="74" x2="220" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="220" y1="71" x2="225" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="225" y1="74" x2="230" y2="71" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
+<line x1="230" y1="71" x2="235" y2="74" stroke="#4090FF" stroke-width="1" opacity="0.5"/>
 <!-- Control panel (dark front face) -->
-<rect x="70" y="76" width="55" height="22" rx="3" fill="#0A0A0A" stroke="#333" stroke-width="1"/>
-<rect x="73" y="79" width="49" height="15" rx="2" fill="#091409"/>
+<rect x="70" y="76" width="55" height="22" fill="#0A0A0A" stroke="#333" stroke-width="1"/>
+<rect x="73" y="79" width="49" height="15" fill="#091409"/>
 <text x="97" y="91" text-anchor="middle" fill="#40E040" font-size="11" font-weight="bold" font-family="monospace">30:00</text>
 <!-- Buttons -->
-<rect x="140" y="80" width="28" height="9" rx="2" fill="#222" stroke="#555" stroke-width="1"/>
+<rect x="140" y="80" width="28" height="9" fill="#222" stroke="#555" stroke-width="1"/>
 <text x="154" y="88" text-anchor="middle" fill="#aaa" font-size="6" font-family="Arial Narrow,Arial,sans-serif">POWER</text>
-<rect x="174" y="80" width="28" height="9" rx="2" fill="#1a3a1a" stroke="#2a6a2a" stroke-width="1"/>
+<rect x="174" y="80" width="28" height="9" fill="#1a3a1a" stroke="#2a6a2a" stroke-width="1"/>
 <text x="188" y="88" text-anchor="middle" fill="#8fbc5a" font-size="6" font-family="Arial Narrow,Arial,sans-serif">START</text>
-<!-- Rubber feet -->
-<rect x="32" y="136" width="12" height="5" rx="2" fill="#0a0a0a" stroke="#333" stroke-width="0.8"/>
-<rect x="256" y="136" width="12" height="5" rx="2" fill="#0a0a0a" stroke="#333" stroke-width="0.8"/>
-<!-- Leader callouts -->
+<!-- Leader callouts — horizontal, dot-terminated -->
 <line x1="46" y1="50" x2="20" y2="42" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="20" y1="42" x2="5" y2="42" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="5" y="39" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Tank</text>
+<circle cx="5" cy="42" r="1" fill="#D8DCF0"/>
+<text x="5" y="39" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Tank.</text>
 <line x1="100" y1="37" x2="100" y2="10" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="85" y="8" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Basket</text>
-<line x1="97" y1="91" x2="70" y2="100" stroke="#D8DCF0" stroke-width="0.75"/>
+<circle cx="100" cy="10" r="1" fill="#D8DCF0"/>
+<text x="83" y="8" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Basket.</text>
+<line x1="97" y1="87" x2="70" y2="100" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="70" y1="100" x2="5" y2="100" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="5" y="97" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Timer</text>
-<line x1="186" y1="38" x2="270" y2="25" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="270" y1="25" x2="290" y2="25" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="253" y="22" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cases</text>
+<circle cx="5" cy="100" r="1" fill="#D8DCF0"/>
+<text x="5" y="97" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Timer.</text>
+<line x1="186" y1="65" x2="260" y2="50" stroke="#D8DCF0" stroke-width="0.75"/>
+<line x1="260" y1="50" x2="295" y2="50" stroke="#D8DCF0" stroke-width="0.75"/>
+<circle cx="295" cy="50" r="1" fill="#D8DCF0"/>
+<text x="260" y="47" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cases.</text>
         </svg>
         <p>Run deprimed cases in your ultrasonic cleaner with diluted brass solution for 30–45 minutes. Because the primer pocket is already open, the ultrasonic waves clean inside it — no brush needed. <strong>Dry completely before moving on.</strong> Moisture near primers is dangerous.</p>
         <div class="tip">✅ Cases bright inside and out. If any pockets still have black carbon, a quick 5-second brush fixes it.</div>
@@ -610,12 +649,6 @@
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 155" xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <linearGradient id="g-body-4" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="22%" stop-color="#BCC4CC"/><stop offset="55%" stop-color="#6A7280"/><stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-  <linearGradient id="g-brass-4" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="40%" stop-color="#D4A828"/><stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
   <pattern id="knurl-4" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
     <line x1="0" y1="6" x2="6" y2="0" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
     <line x1="0" y1="0" x2="6" y2="6" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
@@ -626,9 +659,9 @@
 <line x1="150" y1="15" x2="150" y2="145" stroke="#333" stroke-width="0.8" opacity="0.6"/>
 <!-- ===== LEFT: BRUSH TOOL ===== -->
 <!-- T-Handle crossbar -->
-<rect x="28" y="18" width="44" height="7" rx="3" fill="url(#g-body-4)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="28" y="18" width="44" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Vertical rod -->
-<rect x="47" y="25" width="6" height="30" rx="1.5" fill="url(#g-body-4)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="47" y="25" width="6" height="30" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Bristle head (bottle-brush — wider) -->
 <ellipse cx="50" cy="62" rx="10" ry="6" fill="none" stroke="#D8DCF0" stroke-width="1.2"/>
 <line x1="40" y1="57" x2="60" y2="67" stroke="#D8DCF0" stroke-width="0.8" opacity="0.7"/>
@@ -637,10 +670,10 @@
 <!-- Arrow downward -->
 <line x1="50" y1="68" x2="50" y2="78" stroke="#C8D0E8" stroke-width="1.2"/>
 <path d="M46 75 L50 80 L54 75" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- Case base (dirty pocket) -->
-<rect x="22" y="88" width="56" height="38" rx="3" fill="url(#g-brass-4)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Case base (dirty pocket) — flat brass -->
+<rect x="22" y="88" width="56" height="38" fill="#C09830" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Primer pocket (dirty) -->
-<rect x="41" y="95" width="18" height="14" rx="1.5" fill="#111" stroke="#555" stroke-width="1"/>
+<rect x="41" y="95" width="18" height="14" fill="#111" stroke="#555" stroke-width="1"/>
 <!-- Carbon dots -->
 <circle cx="47" cy="100" r="1.5" fill="#444"/>
 <circle cx="52" cy="103" r="1.2" fill="#444"/>
@@ -650,20 +683,20 @@
 <text x="50" y="140" text-anchor="middle" fill="#7AB3E0" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">① Pocket Brush</text>
 <text x="50" y="150" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">remove carbon</text>
 <!-- ===== RIGHT: UNIFORMER TOOL ===== -->
-<!-- Knurled handle -->
-<rect x="165" y="18" width="24" height="40" rx="4" fill="url(#g-body-4)" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="165" y="18" width="24" height="40" rx="4" fill="url(#knurl-4)" opacity="0.6"/>
-<!-- Shank tapering to tip -->
-<path d="M174 58 L174 72 L178 78 L180 78 L182 72 L182 58" fill="url(#g-body-4)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Knurled handle — flat fill + crosshatch pattern -->
+<rect x="165" y="18" width="24" height="40" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<rect x="165" y="18" width="24" height="40" fill="url(#knurl-4)" opacity="0.6"/>
+<!-- Shank tapering to tip — straight lines only -->
+<polygon points="174,58 174,72 178,78 180,78 182,72 182,58" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Pilot pin at tip -->
-<rect x="176" y="78" width="4" height="5" rx="1" fill="#D8DCF0"/>
+<rect x="176" y="78" width="4" height="5" fill="#D8DCF0"/>
 <!-- Arrow downward -->
 <line x1="177" y1="83" x2="177" y2="88" stroke="#C8D0E8" stroke-width="1.2"/>
 <path d="M173 85 L177 90 L181 85" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- Case base (clean pocket) -->
-<rect x="152" y="95" width="56" height="38" rx="3" fill="url(#g-brass-4)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Case base (clean pocket) — flat brass -->
+<rect x="152" y="95" width="56" height="38" fill="#C09830" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Primer pocket (clean, green border) -->
-<rect x="168" y="100" width="18" height="14" rx="1.5" fill="#111" stroke="#4CBB6A" stroke-width="1.5"/>
+<rect x="168" y="100" width="18" height="14" fill="#111" stroke="#4CBB6A" stroke-width="1.5"/>
 <!-- Clean indicator -->
 <text x="177" y="113" text-anchor="middle" fill="#4CBB6A" font-size="7">✓</text>
 <!-- Label -->
@@ -687,53 +720,44 @@
       </div>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="g-brass-5" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="15%" stop-color="#F0D060"/>
-    <stop offset="40%" stop-color="#D4A828"/><stop offset="70%" stop-color="#8A6810"/>
-    <stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
-</defs>
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LUBE CASES — BODY ONLY, NOT SHOULDER</text>
-<!-- Lube pad / tray -->
-<rect x="30" y="60" width="130" height="40" rx="4" fill="#2a3a1a" stroke="#5a7030" stroke-width="1.5"/>
-<rect x="34" y="63" width="122" height="34" rx="3" fill="#3a5020" stroke="#6a8840" stroke-width="0.8"/>
+<!-- Lube pad / tray — flat fills -->
+<rect x="30" y="60" width="130" height="40" fill="#2a3a1a" stroke="#5a7030" stroke-width="1.5"/>
+<rect x="34" y="63" width="122" height="34" fill="#3a5020" stroke="#6a8840" stroke-width="0.8"/>
 <!-- Felt texture lines -->
 <line x1="34" y1="70" x2="156" y2="70" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
 <line x1="34" y1="77" x2="156" y2="77" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
 <line x1="34" y1="84" x2="156" y2="84" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
-<!-- Horizontal case rolling on pad, with lube sheen on body only -->
-<!-- Case body -->
-<rect x="48" y="44" width="80" height="18" rx="3" fill="url(#g-brass-5)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Lube sheen on body -->
-<rect x="50" y="45" width="60" height="5" rx="2" fill="#E8D880" opacity="0.3"/>
-<!-- Shoulder taper -->
-<path d="M128 44 L138 49 L138 57 L128 62" fill="url(#g-brass-5)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Neck -->
-<rect x="138" y="49" width="16" height="13" rx="1.5" fill="url(#g-brass-5)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Red X over shoulder -->
-<line x1="130" y1="46" x2="142" y2="60" stroke="#E05050" stroke-width="2"/>
-<line x1="142" y1="46" x2="130" y2="60" stroke="#E05050" stroke-width="2"/>
-<!-- Rim at left end -->
-<rect x="44" y="42" width="6" height="22" rx="1" fill="url(#g-brass-5)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Rolling arrow -->
-<path d="M78 40 Q82 34 90 36 Q98 34 102 40" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<path d="M100 37 L103 41 L106 37" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
+<!-- Horizontal case: proper bottleneck path rotated 90° (pointing right) -->
+<!-- Rim on LEFT (base), body middle, shoulder step, short neck at RIGHT -->
+<!-- Rim: y=42–64 (22px wide), Body: x=50–128 (78px = ~body), Shoulder: 4px drop, Neck: x=132–150 (18px = ~neck) -->
+<path d="M44,42 L44,64 L46,64 L46,62 L124,62 L128,60 L128,48 L132,46 L132,40 L128,38 L128,44 L124,44 L46,44 L46,42 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- Red X over shoulder area -->
+<line x1="122" y1="40" x2="134" y2="64" stroke="#E05050" stroke-width="2"/>
+<line x1="134" y1="40" x2="122" y2="64" stroke="#E05050" stroke-width="2"/>
+<!-- Rolling arrow — straight lines only -->
+<line x1="75" y1="40" x2="83" y2="34" stroke="#C8D0E8" stroke-width="1.2"/>
+<line x1="83" y1="34" x2="95" y2="34" stroke="#C8D0E8" stroke-width="1.2"/>
+<line x1="93" y1="31" x2="96" y2="35" stroke="#C8D0E8" stroke-width="1.2"/>
+<line x1="96" y1="35" x2="93" y2="38" stroke="#C8D0E8" stroke-width="1.2"/>
 <!-- Lube pad label -->
 <text x="95" y="108" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lube Pad</text>
 <text x="95" y="118" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">felt / lube pad</text>
 <!-- Callout: body zone -->
 <line x1="80" y1="44" x2="68" y2="28" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="68" y1="28" x2="20" y2="28" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="20" y="25" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ Body</text>
+<circle cx="20" cy="28" r="1" fill="#D8DCF0"/>
+<text x="20" y="25" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ Body.</text>
 <text x="20" y="34" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">apply lube here</text>
 <!-- Callout: shoulder NO LUBE -->
-<line x1="136" y1="50" x2="190" y2="30" stroke="#E05050" stroke-width="0.75"/>
+<line x1="130" y1="50" x2="190" y2="30" stroke="#E05050" stroke-width="0.75"/>
 <line x1="190" y1="30" x2="250" y2="30" stroke="#E05050" stroke-width="0.75"/>
-<text x="194" y="27" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ Shoulder</text>
+<circle cx="250" cy="30" r="1" fill="#E05050"/>
+<text x="194" y="27" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ Shoulder.</text>
 <text x="194" y="36" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">NO LUBE here</text>
 <!-- Warning label -->
-<rect x="170" y="60" width="120" height="40" rx="5" fill="#2e1a0a" stroke="#7a4010" stroke-width="1"/>
+<rect x="170" y="60" width="120" height="40" fill="#2e1a0a" stroke="#7a4010" stroke-width="1"/>
 <text x="230" y="76" text-anchor="middle" fill="#F0A050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">⚠ Lube on shoulder</text>
 <text x="230" y="87" text-anchor="middle" fill="#F0A050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">= shoulder DENTS</text>
 <text x="230" y="97" text-anchor="middle" fill="#F0A050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">in the die!</text>
@@ -753,21 +777,12 @@
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 175" xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <linearGradient id="g-body-6" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="8%" stop-color="#909AA8"/>
-    <stop offset="22%" stop-color="#BCC4CC"/><stop offset="42%" stop-color="#8890A0"/>
-    <stop offset="68%" stop-color="#464E5C"/><stop offset="88%" stop-color="#2A3240"/>
-    <stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-  <linearGradient id="g-sureloc-6" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#383E4C"/><stop offset="28%" stop-color="#AEB6BE"/>
-    <stop offset="60%" stop-color="#8A9098"/><stop offset="100%" stop-color="#464C58"/>
-  </linearGradient>
-  <linearGradient id="g-brass-6" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="15%" stop-color="#F0D060"/>
-    <stop offset="40%" stop-color="#D4A828"/><stop offset="70%" stop-color="#8A6810"/>
-    <stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
+  <pattern id="h-steel-6" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="5" stroke="#B0B8C8" stroke-width="0.5"/>
+  </pattern>
+  <pattern id="h-brass-6" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+    <line x1="0" y1="0" x2="0" y2="5" stroke="#C09020" stroke-width="0.5"/>
+  </pattern>
   <pattern id="knurl-6" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
     <line x1="0" y1="6" x2="6" y2="0" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
     <line x1="0" y1="0" x2="6" y2="6" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
@@ -777,24 +792,27 @@
 <!-- Centerline -->
 <line x1="108" y1="14" x2="108" y2="150" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
 <!-- Press top collar/bushing -->
-<rect x="78" y="100" width="60" height="14" rx="2" fill="url(#g-body-6)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="78" y="100" width="60" height="14" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
 <!-- Decapping rod collar (top) -->
-<rect x="100" y="18" width="16" height="8" rx="2" fill="url(#g-body-6)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="100" y="18" width="16" height="8" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Decapping rod -->
-<rect x="105" y="14" width="6" height="10" rx="1" fill="url(#g-body-6)" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Die body upper smooth section -->
-<rect x="91" y="26" width="34" height="26" rx="2" fill="url(#g-body-6)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="105" y="14" width="6" height="10" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
+<!-- Die body upper smooth section — right half solid, left half hatched steel -->
+<rect x="91" y="26" width="34" height="26" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="26" width="17" height="26" fill="url(#h-steel-6)" opacity="0.8"/>
 <text x="108" y="35" text-anchor="middle" fill="#C8D0E8" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">HORNADY</text>
 <!-- Knurl grip zone -->
-<rect x="91" y="52" width="34" height="22" rx="1" fill="url(#g-body-6)" stroke="#D8DCF0" stroke-width="1.3"/>
-<rect x="91" y="52" width="34" height="22" fill="url(#knurl-6)" opacity="0.7"/>
-<!-- Sure-Loc hex ring (thin, bright) -->
-<rect x="85" y="74" width="46" height="7" rx="1" fill="url(#g-sureloc-6)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="91" y="52" width="34" height="22" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="52" width="17" height="22" fill="url(#h-steel-6)" opacity="0.8"/>
+<rect x="91" y="52" width="34" height="22" fill="url(#knurl-6)" opacity="0.5"/>
+<!-- Sure-Loc hex ring — flat #383848 -->
+<rect x="85" y="74" width="46" height="7" fill="#383848" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Thread chamfer lines on Sure-Loc -->
 <line x1="85" y1="74" x2="88" y2="77" stroke="#D8DCF0" stroke-width="0.6"/>
 <line x1="131" y1="74" x2="128" y2="77" stroke="#D8DCF0" stroke-width="0.6"/>
 <!-- Thread section -->
-<rect x="91" y="81" width="34" height="24" rx="1" fill="url(#g-body-6)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="81" width="34" height="24" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="81" width="17" height="24" fill="url(#h-steel-6)" opacity="0.8"/>
 <!-- Thread crest marks -->
 <line x1="91" y1="85" x2="125" y2="85" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
 <line x1="91" y1="89" x2="125" y2="89" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
@@ -803,41 +821,49 @@
 <!-- Thread minor dia dashed lines -->
 <line x1="93" y1="81" x2="93" y2="105" stroke="#D8DCF0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.35"/>
 <line x1="123" y1="81" x2="123" y2="105" stroke="#D8DCF0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.35"/>
-<!-- Case being pushed up into die (partially inside) -->
-<!-- Rim -->
-<rect x="103" y="148" width="10" height="5" rx="1" fill="url(#g-brass-6)" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Body -->
-<rect x="100" y="122" width="16" height="28" rx="1.5" fill="url(#g-brass-6)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Shoulder -->
-<path d="M116 122 L120 125 L120 134 L116 137" fill="url(#g-brass-6)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Neck into die -->
-<rect x="120" y="125" width="8" height="12" rx="1" fill="url(#g-brass-6)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Case being pushed up — single proper bottleneck path, neck at top -->
+<!-- Base y=165 (rim bottom), total ~100px tall scaled to ~50px for this view -->
+<!-- Scaled: rim ±8px wide, body ±7px, neck ±3.5px, body 37px, shoulder 2px, neck 8.5px -->
+<!-- cx=108, base rim y=165 -->
+<path d="M100,165 L116,165 L116,162 L115,162 L115,125 L111.5,123 L111.5,115 L104.5,115 L104.5,123 L101,125 L101,162 L100,162 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- Left half of case shows brass hatch (half-section) -->
+<clipPath id="case-left-6">
+  <rect x="91" y="115" width="17" height="50"/>
+</clipPath>
+<path d="M100,165 L116,165 L116,162 L115,162 L115,125 L111.5,123 L111.5,115 L104.5,115 L104.5,123 L101,125 L101,162 L100,162 Z"
+      fill="url(#h-brass-6)" opacity="0.9" clip-path="url(#case-left-6)"/>
 <!-- Up arrow -->
-<line x1="108" y1="158" x2="108" y2="153" stroke="#4090FF" stroke-width="1.5"/>
-<path d="M105 155 L108 150 L111 155" fill="#4090FF"/>
+<line x1="108" y1="170" x2="108" y2="165" stroke="#4090FF" stroke-width="1.5"/>
+<path d="M105 168 L108 163 L111 168" fill="#4090FF"/>
 <!-- Compression arrows -->
-<line x1="80" y1="130" x2="98" y2="130" stroke="#F0A050" stroke-width="1.5"/>
-<path d="M95 127 L99 130 L95 133" fill="#F0A050"/>
-<line x1="136" y1="130" x2="118" y2="130" stroke="#F0A050" stroke-width="1.5"/>
-<path d="M121 127 L117 130 L121 133" fill="#F0A050"/>
+<line x1="80" y1="140" x2="99" y2="140" stroke="#F0A050" stroke-width="1.5"/>
+<path d="M96 137 L100 140 L96 143" fill="#F0A050"/>
+<line x1="136" y1="140" x2="117" y2="140" stroke="#F0A050" stroke-width="1.5"/>
+<path d="M120 137 L116 140 L120 143" fill="#F0A050"/>
 <!-- Leader callouts - right side -->
 <line x1="125" y1="30" x2="175" y2="22" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="175" y1="22" x2="225" y2="22" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="178" y="19" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Hornady Die</text>
+<circle cx="225" cy="22" r="1" fill="#D8DCF0"/>
+<text x="178" y="19" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Hornady Die.</text>
 <line x1="125" y1="62" x2="175" y2="55" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="175" y1="55" x2="225" y2="55" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="178" y="52" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Knurl Grip</text>
+<circle cx="225" cy="55" r="1" fill="#D8DCF0"/>
+<text x="178" y="52" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Knurl Grip.</text>
 <line x1="131" y1="77" x2="175" y2="77" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="175" y1="77" x2="225" y2="77" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="178" y="74" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sure-Loc Ring</text>
+<circle cx="225" cy="77" r="1" fill="#D8DCF0"/>
+<text x="178" y="74" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sure-Loc Ring.</text>
 <line x1="125" y1="90" x2="175" y2="96" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="175" y1="96" x2="225" y2="96" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="178" y="93" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Threads</text>
+<circle cx="225" cy="96" r="1" fill="#D8DCF0"/>
+<text x="178" y="93" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Threads.</text>
 <text x="178" y="102" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">7/8-14 TPI</text>
-<line x1="118" y1="135" x2="175" y2="130" stroke="#F0A050" stroke-width="0.75"/>
-<line x1="175" y1="130" x2="225" y2="130" stroke="#F0A050" stroke-width="0.75"/>
-<text x="178" y="127" fill="#F0A050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case Being Sized</text>
-<text x="178" y="136" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">pushed upward</text>
+<line x1="116" y1="145" x2="175" y2="140" stroke="#F0A050" stroke-width="0.75"/>
+<line x1="175" y1="140" x2="225" y2="140" stroke="#F0A050" stroke-width="0.75"/>
+<circle cx="225" cy="140" r="1" fill="#F0A050"/>
+<text x="178" y="137" fill="#F0A050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case Being Sized.</text>
+<text x="178" y="146" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">pushed upward</text>
         </svg>
         <p>Run each lubed case fully into the sizing die and back out in one smooth motion. The die squeezes the case back to SAAMI spec. After sizing, use your <strong>digital calipers</strong> to verify:</p>
         <ul style="padding-left:18px; color:#ddd; font-size:0.92rem; line-height:1.9; margin-top:6px">
@@ -859,70 +885,62 @@
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <linearGradient id="g-body-7" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="22%" stop-color="#BCC4CC"/>
-    <stop offset="55%" stop-color="#6A7280"/><stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-  <linearGradient id="g-brass-7" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="40%" stop-color="#D4A828"/><stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
   <pattern id="knurl-7" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse">
     <line x1="0" y1="5" x2="5" y2="0" stroke="#D8DCF0" stroke-width="0.5" opacity="0.5"/>
     <line x1="0" y1="0" x2="5" y2="5" stroke="#D8DCF0" stroke-width="0.5" opacity="0.5"/>
   </pattern>
 </defs>
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DIGITAL CALIPERS — MEASURE CASE LENGTH</text>
-<!-- Caliper beam (flat stainless) -->
-<rect x="15" y="50" width="220" height="10" rx="2" fill="url(#g-body-7)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Caliper beam (flat stainless) — flat fill -->
+<rect x="15" y="50" width="220" height="10" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Fixed jaw (left) -->
-<rect x="15" y="60" width="10" height="32" rx="1" fill="url(#g-body-7)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="15" y="60" width="10" height="32" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Depth rod -->
-<rect x="17" y="90" width="3" height="15" rx="1" fill="#D8DCF0" opacity="0.6"/>
+<rect x="17" y="90" width="3" height="15" fill="#D8DCF0" opacity="0.6"/>
 <!-- Sliding carriage block -->
-<rect x="160" y="43" width="40" height="25" rx="3" fill="url(#g-body-7)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="160" y="43" width="40" height="25" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- LCD display on carriage -->
-<rect x="164" y="47" width="32" height="14" rx="2" fill="#0d1a0d" stroke="#2a6a2a" stroke-width="1"/>
+<rect x="164" y="47" width="32" height="14" fill="#0d1a0d" stroke="#2a6a2a" stroke-width="1"/>
 <text x="180" y="58" text-anchor="middle" fill="#40E040" font-size="9" font-weight="bold" font-family="monospace">2.008"</text>
 <!-- Sliding jaw (right, attached to carriage) -->
-<rect x="200" y="60" width="10" height="32" rx="1" fill="url(#g-body-7)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="200" y="60" width="10" height="32" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Zero/ON button on carriage -->
-<rect x="165" y="63" width="14" height="6" rx="2" fill="#222" stroke="#555" stroke-width="0.8"/>
+<rect x="165" y="63" width="14" height="6" fill="#222" stroke="#555" stroke-width="0.8"/>
 <text x="172" y="68" text-anchor="middle" fill="#aaa" font-size="5" font-family="Arial Narrow,Arial,sans-serif">ZERO</text>
 <!-- Thumb wheel (small knurled circle on bottom of carriage) -->
-<circle cx="185" cy="72" r="5" fill="url(#g-body-7)" stroke="#D8DCF0" stroke-width="1"/>
+<circle cx="185" cy="72" r="5" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
 <circle cx="185" cy="72" r="5" fill="url(#knurl-7)" opacity="0.6"/>
-<!-- Case held between jaws (horizontal brass case) -->
-<!-- Rim -->
-<rect x="24" y="63" width="6" height="25" rx="1" fill="url(#g-brass-7)" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Body -->
-<rect x="30" y="65" width="130" height="22" rx="2" fill="url(#g-brass-7)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Shoulder -->
-<path d="M160 65 L168 70 L168 81 L160 87" fill="url(#g-brass-7)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Neck (to sliding jaw) -->
-<rect x="168" y="70" width="32" height="11" rx="1" fill="url(#g-brass-7)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Case held between jaws — proper horizontal bottleneck path -->
+<!-- Rim on LEFT (base), body, shoulder, short neck at RIGHT into sliding jaw -->
+<!-- rim y=62–89(27px), body x=25–155(130px long), shoulder 4px, neck x=159–200(41px) -->
+<path d="M24,62 L24,89 L26,89 L26,87 L155,87 L159,85 L159,76 L163,74 L163,77 L163,74 L159,72 L155,70 L26,70 L26,62 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
 <!-- Measurement span arrow -->
 <line x1="26" y1="100" x2="200" y2="100" stroke="#C8973A" stroke-width="1.2"/>
 <line x1="26" y1="96" x2="26" y2="104" stroke="#C8973A" stroke-width="1.2"/>
 <line x1="200" y1="96" x2="200" y2="104" stroke="#C8973A" stroke-width="1.2"/>
 <text x="113" y="113" text-anchor="middle" fill="#C8973A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case Length — base to mouth</text>
 <!-- Reference table -->
-<rect x="15" y="122" width="270" height="38" rx="4" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
+<rect x="15" y="122" width="270" height="38" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
 <text x="25" y="133" fill="#C8973A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">.308 Winchester Case Length Reference:</text>
 <text x="25" y="146" fill="#E05050" font-size="8" font-family="Arial Narrow,Arial,sans-serif">⚠ Max: 2.015" — trim if at or over</text>
 <text x="25" y="157" fill="#4CBB6A" font-size="8" font-family="Arial Narrow,Arial,sans-serif">✓ Trim-to: 2.005" — target length</text>
 <!-- Leader callouts -->
 <line x1="15" y1="75" x2="5" y2="62" stroke="#D8DCF0" stroke-width="0.75"/>
 <text x="0" y="59" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Fixed</text>
-<text x="0" y="68" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Jaw</text>
+<text x="0" y="68" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Jaw.</text>
 <line x1="205" y1="68" x2="240" y2="55" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="240" y1="55" x2="285" y2="55" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="243" y="52" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sliding Jaw</text>
+<circle cx="285" cy="55" r="1" fill="#D8DCF0"/>
+<text x="243" y="52" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sliding Jaw.</text>
 <line x1="196" y1="51" x2="240" y2="38" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="240" y1="38" x2="285" y2="38" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="243" y="35" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LCD Display</text>
+<circle cx="285" cy="38" r="1" fill="#D8DCF0"/>
+<text x="243" y="35" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LCD Display.</text>
 <line x1="190" y1="72" x2="240" y2="78" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="240" y1="78" x2="285" y2="78" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="243" y="75" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Thumb Wheel</text>
+<circle cx="285" cy="78" r="1" fill="#D8DCF0"/>
+<text x="243" y="75" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Thumb Wheel.</text>
         </svg>
         <p>Brass grows longer every time it's fired. After sizing, <strong>measure every case</strong> from base to mouth with your digital calipers. The target is <strong>2.005"</strong>. If any case is at or over <strong>2.015"</strong>, trim it.</p>
         <p style="margin-top:8px"><strong style="color:#c8973a">How to use the calipers:</strong></p>
@@ -946,19 +964,10 @@
       </div>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="g-body-8" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="22%" stop-color="#BCC4CC"/>
-    <stop offset="55%" stop-color="#6A7280"/><stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-  <linearGradient id="g-brass-8" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="40%" stop-color="#D4A828"/><stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
-</defs>
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DEBURR &amp; CHAMFER CASE MOUTH</text>
 <!-- LEFT: BEFORE -->
 <!-- Case body (vertical cross-section) -->
-<rect x="22" y="30" width="16" height="60" rx="1.5" fill="url(#g-brass-8)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="22" y="30" width="16" height="60" rx="1.5" fill="#C09830" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Sharp right-angle burr at top (case mouth) -->
 <line x1="22" y1="30" x2="38" y2="30" stroke="#E05050" stroke-width="3"/>
 <path d="M21 32 L22 29 L25 32" fill="none" stroke="#E05050" stroke-width="1.5"/>
@@ -971,9 +980,9 @@
 <path d="M57 67 L61 70 L57 73" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
 <!-- CENTER: Deburring tool -->
 <!-- Handle cylinder -->
-<rect x="64" y="28" width="14" height="40" rx="3" fill="url(#g-body-8)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="64" y="28" width="14" height="40" rx="3" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Taper / cone cutter tip -->
-<path d="M64 68 L71 84 L78 68 Z" fill="url(#g-body-8)" stroke="#D8DCF0" stroke-width="1.2"/>
+<path d="M64 68 L71 84 L78 68 Z" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Outer bevel edge -->
 <path d="M64 68 L60 72 L71 84" fill="none" stroke="#D8DCF0" stroke-width="0.8" opacity="0.5"/>
 <text x="71" y="22" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Tool</text>
@@ -983,7 +992,7 @@
 <path d="M83 70 L100 70" stroke="#C8D0E8" stroke-width="1.2"/>
 <path d="M97 67 L101 70 L97 73" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
 <!-- RIGHT: AFTER -->
-<rect x="104" y="30" width="16" height="60" rx="1.5" fill="url(#g-brass-8)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="104" y="30" width="16" height="60" rx="1.5" fill="#C09830" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Smooth 45° chamfer inside + bevel outside -->
 <path d="M104 30 L107 30 L107 33 L104 36" fill="none" stroke="#4CBB6A" stroke-width="2"/>
 <path d="M120 30 L117 30 L117 33 L120 36" fill="none" stroke="#4CBB6A" stroke-width="2"/>
@@ -994,14 +1003,14 @@
 <rect x="145" y="18" width="140" height="100" rx="5" fill="#1a1a2a" stroke="#333" stroke-width="1"/>
 <text x="215" y="30" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case Mouth Cross-Section</text>
 <!-- Before close-up -->
-<rect x="160" y="40" width="8" height="55" fill="url(#g-brass-8)" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="160" y="40" width="8" height="55" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
 <path d="M160 40 L168 40" stroke="#E05050" stroke-width="2.5"/>
 <text x="164" y="36" text-anchor="middle" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">burr</text>
 <text x="164" y="108" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">before</text>
 <!-- Arrow -->
 <text x="182" y="72" text-anchor="middle" fill="#555" font-size="14">→</text>
 <!-- After close-up -->
-<rect x="196" y="40" width="8" height="55" fill="url(#g-brass-8)" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="196" y="40" width="8" height="55" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
 <path d="M196 40 L199 40 L199 43 L196 46" fill="none" stroke="#4CBB6A" stroke-width="2"/>
 <path d="M204 40 L201 40 L201 43 L204 46" fill="none" stroke="#4CBB6A" stroke-width="2"/>
 <text x="200" y="36" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">chamfer</text>
@@ -1022,22 +1031,13 @@
       </div>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="g-brass-9" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="40%" stop-color="#D4A828"/><stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
-  <linearGradient id="g-body-9" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="22%" stop-color="#BCC4CC"/>
-    <stop offset="55%" stop-color="#6A7280"/><stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-</defs>
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LEE HAND PRIMING TOOL</text>
-<!-- Two red plastic handles (clam-shell) -->
-<!-- Left handle -->
-<path d="M80 90 Q65 95 60 110 Q58 125 75 130 L115 128 L115 90 Z" fill="#CC2200" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Right handle -->
-<path d="M175 90 Q190 95 195 110 Q197 125 180 130 L140 128 L140 90 Z" fill="#CC2200" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Coil spring between handles -->
+<!-- Two red plastic handles — polygon, NO Q curves -->
+<!-- Left handle: trapezoid -->
+<polygon points="80,90 115,90 115,128 72,130 65,110 72,94" fill="#CC2200" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Right handle: mirror -->
+<polygon points="175,90 140,90 140,128 183,130 190,110 183,94" fill="#CC2200" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Coil spring between handles — zigzag lines only -->
 <line x1="115" y1="108" x2="118" y2="103" stroke="#D8DCF0" stroke-width="1.2"/>
 <line x1="118" y1="103" x2="122" y2="108" stroke="#D8DCF0" stroke-width="1.2"/>
 <line x1="122" y1="108" x2="126" y2="103" stroke="#D8DCF0" stroke-width="1.2"/>
@@ -1045,43 +1045,43 @@
 <line x1="130" y1="108" x2="134" y2="103" stroke="#D8DCF0" stroke-width="1.2"/>
 <line x1="134" y1="103" x2="138" y2="108" stroke="#D8DCF0" stroke-width="1.2"/>
 <line x1="138" y1="108" x2="142" y2="103" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Primer tray (circular disc on top) -->
+<!-- Primer tray (circular disc on top — ellipse OK for circular feature) -->
 <ellipse cx="127" cy="68" rx="24" ry="8" fill="#EEEEDD" stroke="#D8DCF0" stroke-width="1.2" opacity="0.85"/>
 <ellipse cx="127" cy="64" rx="24" ry="8" fill="#F5F5E8" stroke="#D8DCF0" stroke-width="1.2" opacity="0.85"/>
 <text x="127" y="67" text-anchor="middle" fill="#888" font-size="6" font-family="Arial Narrow,Arial,sans-serif">primer tray</text>
-<!-- Shell holder / mechanical body -->
-<rect x="108" y="72" width="38" height="20" rx="3" fill="url(#g-body-9)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Case inserted from above -->
-<!-- Case body (vertical) -->
-<rect x="118" y="38" width="18" height="36" rx="1.5" fill="url(#g-brass-9)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Rim at base -->
-<rect x="115" y="71" width="24" height="4" rx="1" fill="url(#g-brass-9)" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Primer in case head -->
-<rect x="122" y="72" width="10" height="4" rx="0.5" fill="#E05050" stroke="#FF7070" stroke-width="0.8"/>
+<!-- Shell holder / mechanical body — flat steel -->
+<rect x="108" y="72" width="38" height="20" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Case — single proper bottleneck path, vertical pointing up -->
+<!-- cx=127, base y=73, scaled small: body=22px, neck=5px, shoulder=1px -->
+<!-- rim ±5, body ±4.5, neck ±2.5 -->
+<path d="M122,73 L132,73 L132,71.5 L131.5,71.5 L131.5,50 L129.5,49 L129.5,44 L124.5,44 L124.5,49 L122.5,50 L122.5,71.5 L122,71.5 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="miter"/>
+<!-- Primer in case head — red -->
+<rect x="124" y="71" width="6" height="3" fill="#E05050" stroke="#FF7070" stroke-width="0.8"/>
 <!-- Flush indicator line -->
-<line x1="105" y1="75" x2="148" y2="75" stroke="#4CBB6A" stroke-width="1.2" stroke-dasharray="4,2"/>
+<line x1="105" y1="74" x2="148" y2="74" stroke="#4CBB6A" stroke-width="1.2" stroke-dasharray="4,2"/>
 <!-- Primer below flush check -->
-<text x="127" y="90" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">✓ below flush</text>
+<text x="127" y="92" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">✓ below flush</text>
 <!-- INSET BOX: correct vs high primer -->
-<rect x="200" y="18" width="90" height="80" rx="5" fill="#1a1a2a" stroke="#333" stroke-width="1"/>
+<rect x="200" y="18" width="90" height="80" fill="#1a1a2a" stroke="#333" stroke-width="1"/>
 <text x="245" y="30" text-anchor="middle" fill="#C8D0E8" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Primer Depth</text>
 <!-- Good primer (below flush) -->
-<rect x="208" y="35" width="30" height="20" rx="2" fill="url(#g-brass-9)" stroke="#D8DCF0" stroke-width="1"/>
-<rect x="218" y="36" width="10" height="4" rx="0.5" fill="#E05050"/>
+<rect x="208" y="35" width="30" height="20" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="218" y="36" width="10" height="4" fill="#E05050"/>
 <line x1="205" y1="55" x2="245" y2="55" stroke="#4CBB6A" stroke-width="1" stroke-dasharray="3,2"/>
 <text x="223" y="64" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">✓ CORRECT</text>
 <text x="223" y="72" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">below flush</text>
 <!-- Bad primer (high) -->
-<rect x="255" y="35" width="30" height="20" rx="2" fill="url(#g-brass-9)" stroke="#D8DCF0" stroke-width="1"/>
-<rect x="265" y="31" width="10" height="8" rx="0.5" fill="#E05050" stroke="#FF4040" stroke-width="1"/>
+<rect x="255" y="35" width="30" height="20" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="265" y="31" width="10" height="8" fill="#E05050" stroke="#FF4040" stroke-width="1"/>
 <line x1="250" y1="55" x2="290" y2="55" stroke="#E05050" stroke-width="1" stroke-dasharray="3,2"/>
 <text x="270" y="64" text-anchor="middle" fill="#E05050" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ HIGH!</text>
 <text x="270" y="72" text-anchor="middle" fill="#E05050" font-size="6" font-family="Arial Narrow,Arial,sans-serif">DANGER</text>
 <!-- Labels -->
-<text x="75" y="140" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Red Handles</text>
-<text x="75" y="149" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Lee red #CC2200</text>
-<line x1="75" y1="128" x2="75" y2="138" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="150" y="140" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shell Holder</text>
+<text x="75" y="140" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Red Handles.</text>
+<line x1="75" y1="128" x2="75" y2="137" stroke="#D8DCF0" stroke-width="0.75"/>
+<circle cx="75" cy="140" r="1" fill="#D8DCF0"/>
+<text x="150" y="140" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shell Holder.</text>
 <line x1="127" y1="92" x2="150" y2="135" stroke="#D8DCF0" stroke-width="0.75"/>
         </svg>
         <p>Use a hand priming tool (Lee, RCBS, or Frankford Arsenal). Feel for resistance as it seats — a slight "crush fit" is correct. The primer face must be <strong>0.002"–0.005" below flush</strong> with the case base. Never above.</p>
@@ -1099,25 +1099,20 @@
       </div>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="g-body-10" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="22%" stop-color="#BCC4CC"/>
-    <stop offset="55%" stop-color="#6A7280"/><stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-</defs>
 <text x="120" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">RCBS 5-0-5 BEAM SCALE</text>
 <!-- Base rectangle (black crinkle) -->
-<rect x="18" y="100" width="200" height="45" rx="4" fill="#1a1a1a" stroke="#444" stroke-width="1.5"/>
-<!-- Magnetic damper (horseshoe shape at base) -->
-<path d="M95 110 Q90 108 88 100 Q88 92 95 92 Q100 88 105 92 Q112 92 112 100 Q110 108 105 110" fill="none" stroke="#1a1a1a" stroke-width="8"/>
-<path d="M95 110 Q90 108 88 100 Q88 92 95 92 Q100 88 105 92 Q112 92 112 100 Q110 108 105 110" fill="none" stroke="#333" stroke-width="5"/>
+<rect x="18" y="100" width="200" height="45" fill="#1a1a1a" stroke="#444" stroke-width="1.5"/>
+<!-- Magnetic damper — two straight-sided rects forming a U shape (NO Q curves) -->
+<rect x="88" y="92" width="8" height="20" fill="#1a1a1a" stroke="#333" stroke-width="5"/>
+<rect x="104" y="92" width="8" height="20" fill="#1a1a1a" stroke="#333" stroke-width="5"/>
+<rect x="88" y="92" width="24" height="4" fill="#333" stroke="#444" stroke-width="1"/>
 <text x="100" y="125" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Mag. Damper</text>
 <!-- Vertical center post -->
-<rect x="98" y="52" width="8" height="55" rx="2" fill="url(#g-body-10)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="98" y="52" width="8" height="55" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Pivot triangle at center of beam -->
-<path d="M97 60 L102 52 L107 60 Z" fill="url(#g-body-10)" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Horizontal beam (silver aluminum) -->
-<rect x="22" y="56" width="200" height="7" rx="1.5" fill="url(#g-body-10)" stroke="#D8DCF0" stroke-width="1.2"/>
+<polygon points="97,60 102,52 107,60" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
+<!-- Horizontal beam (silver aluminum) — flat fill -->
+<rect x="22" y="56" width="200" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Graduated tick marks on beam top edge -->
 <line x1="35" y1="56" x2="35" y2="51" stroke="#D8DCF0" stroke-width="0.8"/>
 <line x1="50" y1="56" x2="50" y2="52" stroke="#D8DCF0" stroke-width="0.6"/>
@@ -1130,15 +1125,15 @@
 <line x1="175" y1="56" x2="175" y2="52" stroke="#D8DCF0" stroke-width="0.6"/>
 <line x1="190" y1="56" x2="190" y2="51" stroke="#D8DCF0" stroke-width="0.8"/>
 <!-- Pointer/indicator needle at center pivot -->
-<rect x="101" y="63" width="2" height="20" rx="0.5" fill="#4090FF"/>
+<rect x="101" y="63" width="2" height="20" fill="#4090FF"/>
 <polygon points="100,83 102,90 104,83" fill="#4090FF"/>
-<!-- Sliding poise weight (on right side of beam) -->
-<rect x="155" y="53" width="20" height="13" rx="2" fill="url(#g-body-10)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Sliding poise weight (on right side of beam) — flat fill -->
+<rect x="155" y="53" width="20" height="13" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <line x1="165" y1="53" x2="165" y2="50" stroke="#D8DCF0" stroke-width="1.2"/>
 <text x="165" y="48" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">44.5gr</text>
-<!-- Aluminum pan (hanging from left end) -->
-<path d="M22 63 L15 90 L45 90 L38 63" fill="url(#g-body-10)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Powder granules in pan (tan/gold) -->
+<!-- Aluminum pan (hanging from left end) — flat fill -->
+<path d="M22 63 L15 90 L45 90 L38 63" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Powder granules in pan (tan/gold circles — OK) -->
 <circle cx="25" cy="86" r="1.5" fill="#C09830"/>
 <circle cx="30" cy="83" r="1.5" fill="#D4A828"/>
 <circle cx="35" cy="87" r="1.5" fill="#C09830"/>
@@ -1147,8 +1142,8 @@
 <circle cx="32" cy="78" r="1" fill="#D4A828"/>
 <circle cx="22" cy="84" r="1" fill="#C09830"/>
 <!-- VARGET powder container (right side) -->
-<rect x="232" y="62" width="44" height="66" rx="5" fill="#3a2010" stroke="#7a5020" stroke-width="1.5"/>
-<rect x="234" y="68" width="40" height="14" rx="2" fill="#cc2200" opacity="0.8"/>
+<rect x="232" y="62" width="44" height="66" fill="#3a2010" stroke="#7a5020" stroke-width="1.5"/>
+<rect x="234" y="68" width="40" height="14" fill="#cc2200" opacity="0.8"/>
 <text x="254" y="78" text-anchor="middle" fill="#fff" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">VARGET</text>
 <text x="254" y="95" text-anchor="middle" fill="#C8973A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">VARGET</text>
 <text x="254" y="105" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">Extruded</text>
@@ -1156,16 +1151,20 @@
 <!-- Leader callouts -->
 <line x1="30" y1="63" x2="12" y2="50" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="12" y1="50" x2="0" y2="50" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="0" y="47" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pan</text>
+<circle cx="0" cy="50" r="1" fill="#D8DCF0"/>
+<text x="0" y="47" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pan.</text>
 <line x1="102" y1="56" x2="80" y2="40" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="80" y1="40" x2="20" y2="40" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="20" y="37" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pivot</text>
+<circle cx="20" cy="40" r="1" fill="#D8DCF0"/>
+<text x="20" y="37" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pivot.</text>
 <line x1="165" y1="56" x2="185" y2="35" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="185" y1="35" x2="225" y2="35" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="183" y="32" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sliding Poise</text>
+<circle cx="225" cy="35" r="1" fill="#D8DCF0"/>
+<text x="183" y="32" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sliding Poise.</text>
 <line x1="120" y1="60" x2="135" y2="18" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="135" y1="18" x2="225" y2="18" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="140" y="15" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Beam (aluminum)</text>
+<circle cx="225" cy="18" r="1" fill="#D8DCF0"/>
+<text x="140" y="15" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Beam (aluminum).</text>
         </svg>
         <p>Use your reloading manual to find the correct charge for your bullet. Good beginner powder for .308: <strong>Varget</strong>. Weigh every single charge on your scale. Keep only ONE powder on the bench at a time — label it clearly.</p>
         <div class="warn">⚠️ After charging cases, look across all of them in the loading block. All powder levels should look the same height. An empty case or overfull case is a double-charge or missed charge — stop and investigate.</div>
@@ -1183,21 +1182,6 @@
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 175" xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <linearGradient id="g-body-11" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="8%" stop-color="#909AA8"/>
-    <stop offset="22%" stop-color="#BCC4CC"/><stop offset="42%" stop-color="#8890A0"/>
-    <stop offset="68%" stop-color="#464E5C"/><stop offset="88%" stop-color="#2A3240"/>
-    <stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-  <linearGradient id="g-sureloc-11" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#383E4C"/><stop offset="28%" stop-color="#AEB6BE"/>
-    <stop offset="60%" stop-color="#8A9098"/><stop offset="100%" stop-color="#464C58"/>
-  </linearGradient>
-  <linearGradient id="g-brass-11" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="15%" stop-color="#F0D060"/>
-    <stop offset="40%" stop-color="#D4A828"/><stop offset="70%" stop-color="#8A6810"/>
-    <stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
   <pattern id="knurl-11" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
     <line x1="0" y1="6" x2="6" y2="0" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
     <line x1="0" y1="0" x2="6" y2="6" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
@@ -1206,58 +1190,62 @@
 <text x="110" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">HORNADY SEATING DIE — OAL 2.800"</text>
 <!-- Centerline -->
 <line x1="108" y1="14" x2="108" y2="160" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<!-- Large knurled adj cap (top, wider than body) -->
-<rect x="86" y="16" width="44" height="18" rx="5" fill="url(#g-body-11)" stroke="#D8DCF0" stroke-width="1.3"/>
-<rect x="86" y="16" width="44" height="18" rx="5" fill="url(#knurl-11)" opacity="0.7"/>
+<!-- Large knurled adj cap (top, wider than body) — flat steel -->
+<rect x="86" y="16" width="44" height="18" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="86" y="16" width="44" height="18" fill="url(#knurl-11)" opacity="0.7"/>
 <!-- Die body upper smooth -->
-<rect x="91" y="34" width="34" height="24" rx="2" fill="url(#g-body-11)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="34" width="34" height="24" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
 <text x="108" y="44" text-anchor="middle" fill="#C8D0E8" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">HORNADY</text>
 <!-- Knurl grip zone -->
-<rect x="91" y="58" width="34" height="16" rx="1" fill="url(#g-body-11)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="58" width="34" height="16" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
 <rect x="91" y="58" width="34" height="16" fill="url(#knurl-11)" opacity="0.7"/>
-<!-- Sure-Loc hex ring -->
-<rect x="85" y="74" width="46" height="7" rx="1" fill="url(#g-sureloc-11)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Second lock ring (crimp adj) near bottom -->
-<rect x="87" y="96" width="42" height="6" rx="1" fill="url(#g-sureloc-11)" stroke="#D8DCF0" stroke-width="1.1"/>
+<!-- Sure-Loc hex ring — flat #383848 -->
+<rect x="85" y="74" width="46" height="7" fill="#383848" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Second lock ring (crimp adj) near bottom — flat #383848 -->
+<rect x="87" y="96" width="42" height="6" fill="#383848" stroke="#D8DCF0" stroke-width="1.1"/>
 <!-- Thread section -->
-<rect x="91" y="81" width="34" height="20" rx="1" fill="url(#g-body-11)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="81" width="34" height="20" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
 <line x1="91" y1="85" x2="125" y2="85" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
 <line x1="91" y1="89" x2="125" y2="89" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
 <line x1="91" y1="93" x2="125" y2="93" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
 <line x1="93" y1="81" x2="93" y2="102" stroke="#D8DCF0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.35"/>
 <line x1="123" y1="81" x2="123" y2="102" stroke="#D8DCF0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.35"/>
 <!-- Press top collar -->
-<rect x="78" y="102" width="60" height="12" rx="2" fill="url(#g-body-11)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Case with bullet partially seated -->
-<!-- Bullet (in die) -->
-<path d="M100 103 L100 125 L108 136 L116 125 L116 103 Z" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Case body -->
-<rect x="100" y="125" width="16" height="28" rx="1.5" fill="url(#g-brass-11)" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Rim -->
-<rect x="97" y="150" width="22" height="5" rx="1" fill="url(#g-brass-11)" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="78" y="102" width="60" height="12" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Case with bullet seated — single bottleneck path, neck at top -->
+<!-- cx=108, base y=158, scaled: rim ±8, body ±7, neck ±3.5, body 34px, shoulder 2px, neck 8px -->
+<path d="M100,158 L116,158 L116,155 L115,155 L115,124 L111.5,122 L111.5,114 L104.5,114 L104.5,122 L101,124 L101,155 L100,155 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- Bullet seated in neck — simple tapered polygon (ogive = angled straight lines) -->
+<!-- Tip at 108,103, base at 104.5–111.5 at y=114 -->
+<polygon points="104.5,114 111.5,114 112,118 108,125 104,118" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- OAL dimension arrow (left side) -->
-<line x1="88" y1="112" x2="88" y2="155" stroke="#C8973A" stroke-width="1"/>
+<line x1="88" y1="112" x2="88" y2="158" stroke="#C8973A" stroke-width="1"/>
 <line x1="84" y1="112" x2="92" y2="112" stroke="#C8973A" stroke-width="1"/>
-<line x1="84" y1="155" x2="92" y2="155" stroke="#C8973A" stroke-width="1"/>
+<line x1="84" y1="158" x2="92" y2="158" stroke="#C8973A" stroke-width="1"/>
 <text x="83" y="138" text-anchor="middle" fill="#C8973A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif" transform="rotate(-90 83 138)">OAL = 2.800"</text>
 <!-- Up arrow -->
-<line x1="108" y1="165" x2="108" y2="158" stroke="#4090FF" stroke-width="1.5"/>
-<path d="M105 161 L108 156 L111 161" fill="#4090FF"/>
+<line x1="108" y1="168" x2="108" y2="161" stroke="#4090FF" stroke-width="1.5"/>
+<path d="M105 164 L108 159 L111 164" fill="#4090FF"/>
 <!-- Leader callouts -->
 <line x1="130" y1="22" x2="190" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="190" y1="15" x2="240" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="193" y="12" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Adj. Cap</text>
+<circle cx="240" cy="15" r="1" fill="#D8DCF0"/>
+<text x="193" y="12" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Adj. Cap.</text>
 <text x="193" y="21" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">sets seating depth</text>
 <line x1="131" y1="77" x2="190" y2="72" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="190" y1="72" x2="240" y2="72" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="193" y="69" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sure-Loc Ring</text>
+<circle cx="240" cy="72" r="1" fill="#D8DCF0"/>
+<text x="193" y="69" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sure-Loc Ring.</text>
 <line x1="129" y1="99" x2="190" y2="105" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="190" y1="105" x2="240" y2="105" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="193" y="102" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Crimp Ring</text>
-<line x1="116" y1="130" x2="190" y2="135" stroke="#C8973A" stroke-width="0.75"/>
-<line x1="190" y1="135" x2="240" y2="135" stroke="#C8973A" stroke-width="0.75"/>
-<text x="193" y="132" fill="#C8973A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">OAL = 2.800"</text>
-<text x="193" y="141" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">measure every round</text>
+<circle cx="240" cy="105" r="1" fill="#D8DCF0"/>
+<text x="193" y="102" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Crimp Ring.</text>
+<line x1="116" y1="138" x2="190" y2="138" stroke="#C8973A" stroke-width="0.75"/>
+<line x1="190" y1="138" x2="240" y2="138" stroke="#C8973A" stroke-width="0.75"/>
+<circle cx="240" cy="138" r="1" fill="#C8973A"/>
+<text x="193" y="135" fill="#C8973A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">OAL = 2.800".</text>
+<text x="193" y="144" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">measure every round</text>
         </svg>
         <p>Set your seating die to the correct depth using your reloading manual. The finished round should measure <strong>2.800" overall length (OAL)</strong> for most .308 loads. Measure every few rounds with calipers to stay consistent.</p>
         <div class="tip">✅ Seat 3 rounds, measure each, then fine-tune the die before doing the rest of the batch.</div>
@@ -1274,14 +1262,6 @@
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <linearGradient id="g-body-12" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#1A1A30"/><stop offset="25%" stop-color="#404060"/>
-    <stop offset="50%" stop-color="#5A5A7A"/><stop offset="75%" stop-color="#303050"/>
-    <stop offset="100%" stop-color="#1E1E38"/>
-  </linearGradient>
-  <linearGradient id="g-brass-12" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="40%" stop-color="#D4A828"/><stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
   <pattern id="knurl-12" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse">
     <line x1="0" y1="5" x2="5" y2="0" stroke="#D8DCF0" stroke-width="0.5" opacity="0.4"/>
     <line x1="0" y1="0" x2="5" y2="5" stroke="#D8DCF0" stroke-width="0.5" opacity="0.4"/>
@@ -1290,62 +1270,60 @@
 <text x="110" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LEE FACTORY CRIMP DIE</text>
 <!-- Centerline -->
 <line x1="108" y1="14" x2="108" y2="155" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<!-- Simple hex cap on top -->
-<rect x="91" y="16" width="34" height="14" rx="2" fill="url(#g-body-12)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Simple hex cap on top — flat Lee blue-black -->
+<rect x="91" y="16" width="34" height="14" fill="#2A2A4A" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Chamfer corners (hex profile) -->
 <line x1="91" y1="16" x2="95" y2="20" stroke="#D8DCF0" stroke-width="0.8"/>
 <line x1="125" y1="16" x2="121" y2="20" stroke="#D8DCF0" stroke-width="0.8"/>
 <!-- Body -->
-<rect x="91" y="30" width="34" height="42" rx="1" fill="url(#g-body-12)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="30" width="34" height="42" fill="#2A2A4A" stroke="#D8DCF0" stroke-width="1.3"/>
 <text x="108" y="48" text-anchor="middle" fill="#8888AA" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LEE</text>
 <text x="108" y="56" text-anchor="middle" fill="#8888AA" font-size="5" font-family="Arial Narrow,Arial,sans-serif">FACTORY</text>
 <text x="108" y="63" text-anchor="middle" fill="#8888AA" font-size="5" font-family="Arial Narrow,Arial,sans-serif">CRIMP</text>
 <!-- Lock ring (Lee blue-black) with set screw -->
-<rect x="85" y="72" width="46" height="7" rx="1" fill="url(#g-body-12)" stroke="#D8DCF0" stroke-width="1.2"/>
+<rect x="85" y="72" width="46" height="7" fill="#2A2A4A" stroke="#D8DCF0" stroke-width="1.2"/>
 <circle cx="108" cy="75" r="2" fill="none" stroke="#D8DCF0" stroke-width="0.8"/>
 <!-- 4 collet finger slots (bottom of die) — the distinctive Lee feature -->
-<rect x="91" y="79" width="34" height="28" rx="1" fill="url(#g-body-12)" stroke="#D8DCF0" stroke-width="1.3"/>
+<rect x="91" y="79" width="34" height="28" fill="#2A2A4A" stroke="#D8DCF0" stroke-width="1.3"/>
 <!-- 4 longitudinal slots -->
 <line x1="99" y1="79" x2="99" y2="107" stroke="#111" stroke-width="2.5"/>
 <line x1="108" y1="79" x2="108" y2="107" stroke="#111" stroke-width="2.5"/>
 <line x1="117" y1="79" x2="117" y2="107" stroke="#111" stroke-width="2.5"/>
 <!-- Bottom chamfer / opening -->
-<path d="M91 107 L89 111 L127 111 L125 107" fill="url(#g-body-12)" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Case with bullet being crimped -->
-<!-- Bullet tip -->
-<path d="M100 110 L108 120 L116 110" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Bullet body inside die -->
-<rect x="100" y="107" width="16" height="8" rx="0.5" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Case body below die -->
-<rect x="100" y="114" width="16" height="28" rx="1.5" fill="url(#g-brass-12)" stroke="#D8DCF0" stroke-width="1.2"/>
+<path d="M91 107 L89 111 L127 111 L125 107" fill="#2A2A4A" stroke="#D8DCF0" stroke-width="1"/>
+<!-- Case with bullet — single bottleneck path for case -->
+<!-- cx=108, base y=143, scaled: rim ±8, body ±7, neck ±3.5, body 26px, shoulder 2px, neck 6px -->
+<path d="M100,143 L116,143 L116,140 L115,140 L115,117 L111.5,115 L111.5,109 L104.5,109 L104.5,115 L101,117 L101,140 L100,140 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- Bullet (tapered polygon, tip pointing up) — seated in neck -->
+<polygon points="104.5,109 111.5,109 112,113 108,120 104,113" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Cannelure/crimp groove on bullet -->
-<rect x="100" y="112" width="16" height="2.5" rx="0.5" fill="#4090FF" opacity="0.7"/>
-<!-- Rim -->
-<rect x="97" y="139" width="22" height="5" rx="1" fill="url(#g-brass-12)" stroke="#D8DCF0" stroke-width="1"/>
+<line x1="104.5" y1="111" x2="111.5" y2="111" stroke="#4090FF" stroke-width="2" opacity="0.7"/>
 <!-- BEFORE/AFTER inset panel -->
-<rect x="165" y="48" width="120" height="80" rx="5" fill="#1a1a2a" stroke="#333" stroke-width="1"/>
+<rect x="165" y="48" width="120" height="80" fill="#1a1a2a" stroke="#333" stroke-width="1"/>
 <text x="225" y="61" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case Mouth</text>
 <!-- Before -->
-<rect x="172" y="68" width="8" height="30" fill="url(#g-brass-12)" stroke="#D8DCF0" stroke-width="1"/>
-<rect x="172" y="68" width="8" height="8" rx="0.5" fill="#A0A8B0"/>
+<rect x="172" y="68" width="8" height="30" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="172" y="68" width="8" height="8" fill="#A0A8B0"/>
 <text x="176" y="64" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">before</text>
 <text x="176" y="110" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">no crimp</text>
 <!-- Arrow -->
 <text x="198" y="85" text-anchor="middle" fill="#555" font-size="12">→</text>
 <!-- After -->
-<rect x="210" y="68" width="8" height="30" fill="url(#g-brass-12)" stroke="#D8DCF0" stroke-width="1"/>
-<rect x="210" y="68" width="8" height="8" rx="0.5" fill="#A0A8B0"/>
-<rect x="210" y="76" width="8" height="2.5" rx="0.5" fill="#4090FF"/>
+<rect x="210" y="68" width="8" height="30" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="210" y="68" width="8" height="8" fill="#A0A8B0"/>
+<rect x="210" y="76" width="8" height="2.5" fill="#4090FF"/>
 <text x="214" y="64" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">after</text>
 <text x="214" y="110" text-anchor="middle" fill="#4CBB6A" font-size="6" font-family="Arial Narrow,Arial,sans-serif">✓ crimped</text>
 <!-- Leader callouts -->
 <line x1="125" y1="22" x2="165" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="165" y1="15" x2="240" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="168" y="12" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lee FCD</text>
+<circle cx="240" cy="15" r="1" fill="#D8DCF0"/>
+<text x="168" y="12" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lee FCD.</text>
 <text x="168" y="21" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">blue-black anodized</text>
 <line x1="117" y1="93" x2="165" y2="92" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="165" y1="92" x2="165" y2="46" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="125" y="150" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Collet Fingers (4)</text>
+<text x="125" y="150" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Collet Fingers (4).</text>
 <line x1="117" y1="95" x2="125" y2="145" stroke="#D8DCF0" stroke-width="0.75"/>
         </svg>
         <p>Use the Lee Factory Crimp Die — it's the most forgiving for beginners. The crimp squeezes the case neck into the cannelure (groove) on the bullet to hold it in place during feeding. Important for semi-auto rifles.</p>
@@ -1362,33 +1340,23 @@
       </div>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="g-body-13" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4A5260"/><stop offset="8%" stop-color="#909AA8"/>
-    <stop offset="22%" stop-color="#BCC4CC"/><stop offset="42%" stop-color="#8890A0"/>
-    <stop offset="68%" stop-color="#464E5C"/><stop offset="88%" stop-color="#2A3240"/>
-    <stop offset="100%" stop-color="#3E4650"/>
-  </linearGradient>
-  <linearGradient id="g-brass-13" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#C09830"/><stop offset="40%" stop-color="#D4A828"/><stop offset="100%" stop-color="#7A5818"/>
-  </linearGradient>
-</defs>
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE GAUGE — PLUNK TEST</text>
 <!-- ===== LEFT: Case Gauge ===== -->
-<!-- Solid steel cylinder (outer) -->
-<rect x="30" y="40" width="60" height="80" rx="5" fill="url(#g-body-13)" stroke="#D8DCF0" stroke-width="1.5"/>
+<!-- Solid steel cylinder (outer) — flat fill -->
+<rect x="30" y="40" width="60" height="80" fill="#484858" stroke="#D8DCF0" stroke-width="1.5"/>
 <!-- Top face ellipse -->
-<ellipse cx="60" cy="40" rx="30" ry="6" fill="url(#g-body-13)" stroke="#D8DCF0" stroke-width="1.2"/>
+<ellipse cx="60" cy="40" rx="30" ry="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <!-- Chamber recess (circle opening on top) -->
 <ellipse cx="60" cy="40" rx="14" ry="3.5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
 <!-- Side label -->
 <text x="60" y="95" text-anchor="middle" fill="#D8DCF0" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE</text>
 <text x="60" y="104" text-anchor="middle" fill="#D8DCF0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">GAUGE</text>
-<!-- GOOD round dropping in (seated correctly) -->
-<!-- Round above gauge (about to drop in) -->
-<path d="M52 10 L60 18 L68 10" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1"/>
-<rect x="52" y="17" width="16" height="24" rx="1.5" fill="url(#g-brass-13)" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="49" y="37" width="22" height="5" rx="1" fill="url(#g-brass-13)" stroke="#D8DCF0" stroke-width="1"/>
+<!-- GOOD round dropping in — proper bottleneck path + bullet polygon -->
+<!-- Round: cx=60, base y=42, scaled tiny: rim ±7, body ±6, neck ±3, body 20px, shoulder 2px, neck 5px -->
+<path d="M53,42 L67,42 L67,39.5 L66,39.5 L66,22 L63,20.5 L63,15 L57,15 L57,20.5 L54,22 L54,39.5 L53,39.5 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="miter"/>
+<!-- Bullet tip polygon -->
+<polygon points="57,15 63,15 63.5,17 60,22 56.5,17" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="0.8"/>
 <!-- Motion arrows (dropping down) -->
 <line x1="56" y1="6" x2="56" y2="3" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
 <line x1="64" y1="6" x2="64" y2="3" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
@@ -1401,30 +1369,31 @@
 <!-- Leader callout: Case Gauge -->
 <line x1="30" y1="80" x2="15" y2="70" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="15" y1="70" x2="0" y2="70" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="0" y="67" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Gauge</text>
+<circle cx="0" cy="70" r="1" fill="#D8DCF0"/>
+<text x="0" y="67" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Gauge.</text>
 <line x1="60" y1="43" x2="50" y2="50" stroke="#D8DCF0" stroke-width="0.75"/>
 <text x="0" y="55" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Chamber</text>
-<text x="0" y="64" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Recess</text>
+<text x="0" y="64" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Recess.</text>
 <!-- ===== RIGHT: BAD result ===== -->
-<!-- Second gauge (right) -->
-<rect x="120" y="40" width="60" height="80" rx="5" fill="url(#g-body-13)" stroke="#D8DCF0" stroke-width="1.5"/>
-<ellipse cx="150" cy="40" rx="30" ry="6" fill="url(#g-body-13)" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Second gauge (right) — flat fill -->
+<rect x="120" y="40" width="60" height="80" fill="#484858" stroke="#D8DCF0" stroke-width="1.5"/>
+<ellipse cx="150" cy="40" rx="30" ry="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <ellipse cx="150" cy="40" rx="14" ry="3.5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
-<!-- Round sitting proud (sticking up = too long) -->
-<path d="M142 5 L150 13 L158 5" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1"/>
-<rect x="142" y="12" width="16" height="24" rx="1.5" fill="url(#g-brass-13)" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="139" y="32" width="22" height="5" rx="1" fill="url(#g-brass-13)" stroke="#D8DCF0" stroke-width="1"/>
+<!-- Round sitting proud — proper bottleneck path + bullet, not dropping in -->
+<path d="M143,37 L157,37 L157,34.5 L156,34.5 L156,17 L153,15.5 L153,10 L147,10 L147,15.5 L144,17 L144,34.5 L143,34.5 Z"
+      fill="#C09830" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="147,10 153,10 153.5,12 150,17 146.5,12" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="0.8"/>
 <!-- Round base is above flush line (proud) -->
 <line x1="115" y1="42" x2="185" y2="42" stroke="#E05050" stroke-width="1.2" stroke-dasharray="4,2"/>
 <text x="108" y="39" fill="#E05050" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕</text>
 <!-- Proud gap indicator -->
-<line x1="183" y1="32" x2="183" y2="42" stroke="#E05050" stroke-width="1.5"/>
-<line x1="179" y1="32" x2="187" y2="32" stroke="#E05050" stroke-width="1"/>
+<line x1="183" y1="37" x2="183" y2="42" stroke="#E05050" stroke-width="1.5"/>
+<line x1="179" y1="37" x2="187" y2="37" stroke="#E05050" stroke-width="1"/>
 <line x1="179" y1="42" x2="187" y2="42" stroke="#E05050" stroke-width="1"/>
-<text x="191" y="38" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">proud</text>
+<text x="191" y="40" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">proud</text>
 <text x="150" y="130" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ Proud = RE-TRIM</text>
 <!-- ===== Checklist panel ===== -->
-<rect x="15" y="138" width="270" height="25" rx="4" fill="#1e1e2a" stroke="#333" stroke-width="1"/>
+<rect x="15" y="138" width="270" height="25" fill="#1e1e2a" stroke="#333" stroke-width="1"/>
 <text x="25" y="148" fill="#4CBB6A" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">✓ Drops freely + base flush = GOOD</text>
 <text x="25" y="158" fill="#E05050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">✕ Sits proud = too long, re-trim</text>
 <text x="175" y="148" fill="#E05050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">✕ Won't drop = resize needed</text>
