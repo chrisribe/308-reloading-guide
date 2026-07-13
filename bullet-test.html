@@ -19,11 +19,12 @@
 
 <!-- ═══════════════════════════════════════════════════════
      D1 · BULLET ANATOMY
-     Bullet: cx=95, base y=145, tip y=55 (90px tall)
-     Boat tail: base ±6px→ bearing ±9px over 12px
-     Bearing: ±9px from y=133 to y=100
-     Ogive: Q bezier ±9→0 from y=100 to y=55
-     Cannelure: y=120–124 on bearing surface
+     A-MAX 168gr proportions (90px total base→meplat):
+       Boat tail:  15% = 13px  y=145→132  base ±5px → shoulder ±9px
+       Bearing:    35% = 31px  y=132→101  ±9px
+       Ogive:      45% = 41px  y=101→60   C bezier, CP1 OUTSIDE bearing wall (x=106/84)
+       Polymer tip: 5% =  5px  y=60→55    red polygon
+     cx=95, viewBox 280×165
 ════════════════════════════════════════════════════════ -->
 <div class="panel">
   <div class="panel-title">1 · Bullet Anatomy</div>
@@ -31,26 +32,30 @@
   <rect width="280" height="165" fill="#1C1C24"/>
   <!-- Centreline -->
   <line x1="95" y1="50" x2="95" y2="150" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.45"/>
-  <!-- Bullet body -->
-  <!-- A-MAX: BT 12px(133), Bearing 38px(133→95), Ogive 40px(95→55), Tip 5px(55→50) -->
-  <path d="M95,145 L101,145 L104,133 L104,95 C106,80 101,57 95,55 C89,57 84,80 86,95 L86,133 L89,145 Z"
+  <!-- Bullet body: base ±5 → BT shoulder ±9 at y=132 → bearing ±9 to y=101
+       Ogive: C bezier CP1 at x=106 (outside bearing wall) creates secant-ogive bulge,
+              CP2 near centreline close to tip. Meplat at y=60. -->
+  <path d="M95,145 L100,145 L104,132 L104,101
+           C106,98 97,62 95,60
+           C93,62 84,98 86,101
+           L86,132 L90,145 Z"
         fill="#C09830" stroke="#D8A820" stroke-width="1.2"/>
-  <!-- Polymer tip (A-MAX red) -->
-  <polygon points="92.5,55 97.5,55 95,50" fill="#D03820" stroke="#FF5030" stroke-width="0.9"/>
-  <!-- Cannelure groove (bearing surface) -->
+  <!-- Polymer tip (A-MAX red) — meplat base y=60, apex y=55 -->
+  <polygon points="92.5,60 97.5,60 95,55" fill="#D03820" stroke="#FF5030" stroke-width="0.9"/>
+  <!-- Cannelure groove (bearing surface, mid-bearing at y=119) -->
   <rect x="86" y="119" width="18" height="4" fill="#1C1C24" stroke="#9A7818" stroke-width="0.8"/>
   <!-- Labels — right -->
   <circle cx="95" cy="55" r="1.3" fill="#C8D0E8"/>
   <line x1="96" y1="55" x2="160" y2="42" stroke="#C8D0E8" stroke-width="0.7"/>
   <text x="162" y="45" fill="#C8D0E8" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Tip</text>
 
-  <circle cx="101" cy="82" r="1.3" fill="#D8A820"/>
-  <line x1="101" y1="82" x2="160" y2="72" stroke="#D8A820" stroke-width="0.7"/>
+  <circle cx="101" cy="80" r="1.3" fill="#D8A820"/>
+  <line x1="101" y1="80" x2="160" y2="72" stroke="#D8A820" stroke-width="0.7"/>
   <text x="162" y="75" fill="#D8A820" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Ogive</text>
 
-  <circle cx="104" cy="110" r="1.3" fill="#4CBB6A"/>
-  <line x1="104" y1="110" x2="160" y2="104" stroke="#4CBB6A" stroke-width="0.7"/>
-  <text x="162" y="107" fill="#4CBB6A" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Bearing surface</text>
+  <circle cx="104" cy="116" r="1.3" fill="#4CBB6A"/>
+  <line x1="104" y1="116" x2="160" y2="108" stroke="#4CBB6A" stroke-width="0.7"/>
+  <text x="162" y="111" fill="#4CBB6A" font-size="8" font-family="Arial Narrow,Arial,sans-serif">Bearing surface</text>
 
   <!-- Labels — left -->
   <circle cx="90" cy="121" r="1.3" fill="#FFD060"/>
@@ -71,13 +76,12 @@
 
 <!-- ═══════════════════════════════════════════════════════
      D2 · SEATING DEPTH COMPARISON
-     Three bullets in necks: too deep / correct / too long
-     Each neck: inner ±5px wide, outer ±8px. Center at cx=50, 140, 230
-     Case body block below neck at y=120
-     Bullet scale: base to tip ~55px
-     Too deep:  bullet base y=105, tip y=50  (base deep in neck)
-     Correct:   bullet base y=90,  tip y=35
-     Too long:  bullet base y=75,  tip y=20
+     All bullets: A-MAX C-bezier ogive + red polymer tip
+     Scale ~57px base→meplat, +4px tip polygon
+       BT: 9px  Bearing: 20px  Ogive: 26px  Tip: 4px
+     cx=50  base y=105  meplat y=52  tip y=48
+     cx=140 base y=90   meplat y=37  tip y=33
+     cx=230 base y=75   meplat y=22  tip y=18
 ════════════════════════════════════════════════════════ -->
 <div class="panel">
   <div class="panel-title">2 · Seating Depth</div>
@@ -92,14 +96,18 @@
   <rect x="54" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
   <!-- Case body below neck -->
   <rect x="36" y="116" width="28" height="18" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
-  <!-- Bullet: base at y=105, tip at y=50 -->
-  <!-- BT+bearing short, ogive long -->
-  <path d="M50,105 L54,105 L56,96 L56,76 C58,64 53,52 50,50 C47,52 42,64 44,76 L44,96 L46,105 Z"
+  <!-- Bullet: base±3, BT shoulder±5, bearing±5
+       BT: y=105→96(9px), Bearing: y=96→76(20px), Ogive C bezier: y=76→52(24px), meplat y=52
+       C bezier: CP1 outside bearing wall (x=56/44), CP2 near centre near tip -->
+  <path d="M50,105 L53,105 L55,96 L55,76
+           C56,73 51,53 50,52
+           C49,53 44,73 45,76
+           L45,96 L47,105 Z"
         fill="#C09830" stroke="#D8A820" stroke-width="0.9"/>
-  <polygon points="48.5,50 51.5,50 50,46" fill="#D03820" stroke="#FF5030" stroke-width="0.7"/>
+  <polygon points="48.5,52 51.5,52 50,48" fill="#D03820" stroke="#FF5030" stroke-width="0.7"/>
   <!-- OAL arrow: tip to case base -->
-  <line x1="62" y1="50" x2="62" y2="134" stroke="#E05050" stroke-width="1"/>
-  <line x1="59" y1="50" x2="65" y2="50" stroke="#E05050" stroke-width="1"/>
+  <line x1="62" y1="48" x2="62" y2="134" stroke="#E05050" stroke-width="1"/>
+  <line x1="59" y1="48" x2="65" y2="48" stroke="#E05050" stroke-width="1"/>
   <line x1="59" y1="134" x2="65" y2="134" stroke="#E05050" stroke-width="1"/>
   <text x="50" y="155" text-anchor="middle" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">↑ pressure ⚠</text>
 
@@ -108,12 +116,16 @@
   <rect x="132" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
   <rect x="144" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
   <rect x="126" y="116" width="28" height="18" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
-  <path d="M140,90 L144,90 L146,81 L146,61 C148,48 143,35 140,33 C137,35 132,48 134,61 L134,81 L136,90 Z"
+  <!-- BT: y=90→81, Bearing: y=81→61, Ogive: y=61→37, meplat y=37 -->
+  <path d="M140,90 L143,90 L145,81 L145,61
+           C146,58 141,38 140,37
+           C139,38 134,58 135,61
+           L135,81 L137,90 Z"
         fill="#C09830" stroke="#D8A820" stroke-width="0.9"/>
-  <polygon points="138.5,33 141.5,33 140,29" fill="#D03820" stroke="#FF5030" stroke-width="0.7"/>
+  <polygon points="138.5,37 141.5,37 140,33" fill="#D03820" stroke="#FF5030" stroke-width="0.7"/>
   <!-- OAL arrow -->
-  <line x1="152" y1="35" x2="152" y2="134" stroke="#4CBB6A" stroke-width="1"/>
-  <line x1="149" y1="35" x2="155" y2="35" stroke="#4CBB6A" stroke-width="1"/>
+  <line x1="152" y1="33" x2="152" y2="134" stroke="#4CBB6A" stroke-width="1"/>
+  <line x1="149" y1="33" x2="155" y2="33" stroke="#4CBB6A" stroke-width="1"/>
   <line x1="149" y1="134" x2="155" y2="134" stroke="#4CBB6A" stroke-width="1"/>
   <text x="140" y="155" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">per manual</text>
 
@@ -122,12 +134,16 @@
   <rect x="222" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
   <rect x="234" y="28" width="4" height="88" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
   <rect x="216" y="116" width="28" height="18" fill="#383848" stroke="#D8DCF0" stroke-width="0.8" rx="1"/>
-  <path d="M230,75 L234,75 L236,66 L236,46 C238,33 233,20 230,18 C227,20 222,33 224,46 L224,66 L226,75 Z"
+  <!-- BT: y=75→66, Bearing: y=66→46, Ogive: y=46→22, meplat y=22 -->
+  <path d="M230,75 L233,75 L235,66 L235,46
+           C236,43 231,23 230,22
+           C229,23 224,43 225,46
+           L225,66 L227,75 Z"
         fill="#C09830" stroke="#D8A820" stroke-width="0.9"/>
-  <polygon points="228.5,18 231.5,18 230,14" fill="#D03820" stroke="#FF5030" stroke-width="0.7"/>
+  <polygon points="228.5,22 231.5,22 230,18" fill="#D03820" stroke="#FF5030" stroke-width="0.7"/>
   <!-- OAL arrow -->
-  <line x1="242" y1="20" x2="242" y2="134" stroke="#FFD060" stroke-width="1"/>
-  <line x1="239" y1="20" x2="245" y2="20" stroke="#FFD060" stroke-width="1"/>
+  <line x1="242" y1="18" x2="242" y2="134" stroke="#FFD060" stroke-width="1"/>
+  <line x1="239" y1="18" x2="245" y2="18" stroke="#FFD060" stroke-width="1"/>
   <line x1="239" y1="134" x2="245" y2="134" stroke="#FFD060" stroke-width="1"/>
   <text x="230" y="155" text-anchor="middle" fill="#FFD060" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">won't chamber</text>
   </svg>
@@ -135,9 +151,10 @@
 
 <!-- ═══════════════════════════════════════════════════════
      D3 · BOAT TAIL vs FLAT BASE
-     Side by side at cx=75 and cx=200, base y=145, tip y=60
-     Boat tail: base tapers ±5→±9 over 12px
-     Flat base: straight ±9 to base, 90° cut
+     Boat tail (left, cx=75): A-MAX C-bezier ogive + polymer tip
+       base y=145, BT shoulder y=131(14px), bearing end y=98(33px),
+       ogive meplat y=56(42px), tip y=51(5px)
+     Flat base (right, cx=205): different bullet type — no polymer tip
 ════════════════════════════════════════════════════════ -->
 <div class="panel">
   <div class="panel-title">3 · Boat Tail vs Flat Base</div>
@@ -149,21 +166,24 @@
 
   <!-- ── LEFT: Boat tail (cx=75) ── -->
   <text x="75" y="14" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BOAT TAIL</text>
-  <text x="75" y="23" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">168gr SMK · ELD-M</text>
-  <!-- base ±5 at y=145, shoulder of boat tail ±9 at y=133, bearing to y=105, ogive Q to tip y=60 -->
-  <!-- A-MAX: BT 12px, Bearing:133→96(37px), Ogive:96→56(40px), polymer tip -->
-  <path d="M75,145 L80,145 L84,133 L84,96 C86,80 81,58 75,56 C69,58 64,80 66,96 L66,133 L70,145 Z"
+  <text x="75" y="23" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">168gr A-MAX · ELD-M</text>
+  <!-- base ±5 at y=145, BT shoulder ±9 at y=131, bearing ±9 to y=98
+       ogive C bezier: CP1 outside bearing wall (x=86/64), meplat y=56, tip y=51 -->
+  <path d="M75,145 L80,145 L84,131 L84,98
+           C86,95 80,57 75,56
+           C70,57 64,95 66,98
+           L66,131 L70,145 Z"
         fill="#C09830" stroke="#D8A820" stroke-width="1.2"/>
   <polygon points="73,56 77,56 75,51" fill="#D03820" stroke="#FF5030" stroke-width="0.8"/>
   <!-- Boat tail taper callout lines -->
-  <line x1="70" y1="133" x2="56" y2="150" stroke="#4CBB6A" stroke-width="0.8" stroke-dasharray="3,2"/>
-  <line x1="80" y1="133" x2="94" y2="150" stroke="#4CBB6A" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="70" y1="131" x2="56" y2="148" stroke="#4CBB6A" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="80" y1="131" x2="94" y2="148" stroke="#4CBB6A" stroke-width="0.8" stroke-dasharray="3,2"/>
   <text x="75" y="160" text-anchor="middle" fill="#4CBB6A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">tapered base</text>
-  <!-- Bearing dimension tick -->
-  <line x1="88" y1="105" x2="88" y2="133" stroke="#D8A820" stroke-width="0.8"/>
-  <line x1="85" y1="105" x2="91" y2="105" stroke="#D8A820" stroke-width="0.8"/>
-  <line x1="85" y1="133" x2="91" y2="133" stroke="#D8A820" stroke-width="0.8"/>
-  <text x="93" y="123" fill="#D8A820" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">bearing</text>
+  <!-- Bearing dimension tick: y=98 to y=131 -->
+  <line x1="88" y1="98" x2="88" y2="131" stroke="#D8A820" stroke-width="0.8"/>
+  <line x1="85" y1="98" x2="91" y2="98" stroke="#D8A820" stroke-width="0.8"/>
+  <line x1="85" y1="131" x2="91" y2="131" stroke="#D8A820" stroke-width="0.8"/>
+  <text x="93" y="119" fill="#D8A820" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">bearing</text>
 
   <!-- ── RIGHT: Flat base (cx=205) ── -->
   <text x="205" y="14" text-anchor="middle" fill="#7080A8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">FLAT BASE</text>
@@ -258,7 +278,7 @@
   <rect width="280" height="165" fill="#1C1C24"/>
   <text x="140" y="11" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE MOUTH CRIMP INTO CANNELURE</text>
 
-  <!-- cx=110 centre. Bullet: x=78–142 (64px wide). Cannelure y=72–88. Case mouth y=80 -->
+  <!-- cx=110 centre. Bullet: x=78–142 (64px wide). Cannelure y=80–94. Case mouth y=80 -->
 
   <!-- Bullet above case mouth (y=16–80) -->
   <rect x="78" y="16" width="64" height="64" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
@@ -312,13 +332,11 @@
 
 <!-- ═══════════════════════════════════════════════════════
      D6 · JUMP TO RIFLING LANDS — horizontal view
-     Cartridge horizontal, bullet nose pointing RIGHT
-     Case neck: x=15 to x=105 (center y=85)
-     Neck walls: y=77–81 (top) and y=89–93 (bottom)  ← ±4px half-width from y=85
-     Bullet: base x=65, tip x=130 (65px long, ±5px wide at bearing)
-     Freebore: x=105 to x=155 (smooth bore, no lands)
-     Lands start: x=155
-     Jump = x=130 (bullet tip) to x=155 (first land) = 25px
+     A-MAX proportions on 192px (x=248→440):
+       Boat tail:  15% = 29px  x=248→277  base ±7px, shoulder ±10px
+       Bearing:    35% = 67px  x=277→344  ±10px (y=90/110)
+       Ogive:      45% = 86px  x=344→430  C bezier, CP1 outside bearing (y=87/113)
+       Polymer tip: 5% = 10px  x=430→440  red triangle polygon
 ════════════════════════════════════════════════════════ -->
 <div class="panel" style="grid-column:1/-1">
   <div class="panel-title">6 · Jump to Rifling Lands — Full Cartridge Cross-Section</div>
@@ -339,9 +357,10 @@
       Lands:     x=440–850
 
     Bullet (inside case, nose pointing right):
-      Base(boat-tail): x=248–260  (bore ±12 → ±10)
-      Bearing:         x=260–370  (±10, y=90–110)
-      Ogive:           x=370–440  cubic → tip (440,100)
+      Boat-tail:  x=248–277  (bore ±7px → ±10px)
+      Bearing:    x=277–344  (±10px, y=90–110)
+      Ogive:      x=344–430  C bezier → meplat (430,100)
+      Polymer tip: x=430–440 red triangle
   -->
   <svg viewBox="0 0 860 200">
   <rect width="860" height="200" fill="#1C1C24"/>
@@ -406,35 +425,37 @@
   <rect x="642" y="116" width="8" height="4" fill="#1C1C24"/>
 
   <!-- ══ BULLET (gold, nose pointing RIGHT) ══
-       Boat tail: base x=248 (±8px) → bearing shoulder x=262 (±10px)
-       Bearing:   x=262–370  (±10px, y=90–110)
-       Ogive:     x=370–440  cubic → tip (440,100)  -->
-  <!-- A-MAX: BT x=248-262, Bearing x=262-360(98px≈37%), Ogive x=360-430(70px≈42%), polymer tip -->
-  <path d="M248,107 L248,93 L262,90 L360,90
-            C375,90 430,93 430,100
-            C430,107 375,110 360,110
-            L262,110 L248,107 Z"
+       A-MAX 168gr proportions (192px total x=248→440):
+       Boat-tail: x=248(±7) → x=277(±10)
+       Bearing:   x=277–344  (±10px, y=90/110)
+       Ogive:     x=344–430  C bezier:
+         Top:    from (344,90) C(348,87)(428,100)(430,100)
+                 CP1 at y=87 = 3px OUTSIDE bearing top (y=90) → secant-ogive bulge
+                 CP2 at y=100 (centreline) near meplat
+         Bottom: from (430,100) C(428,100)(348,113)(344,110)
+                 mirror of top
+       Polymer tip: triangle x=430→440 straddling cy=100  -->
+  <path d="M248,107 L248,93 L277,90 L344,90
+           C370,83 425,96 430,100
+           C425,104 370,117 344,110
+           L277,110 L248,107 Z"
         fill="#C09830" stroke="#E0B030" stroke-width="1.2"/>
   <!-- Polymer tip -->
-  <polygon points="430,96 430,104 440,100" fill="#D03820" stroke="#FF5030" stroke-width="1"/>
-  <!-- Cannelure (x=272–280) -->
-  <rect x="272" y="90" width="8" height="20" fill="#9A7020" stroke="#9A7818" stroke-width="0.6"/>
+  <polygon points="430,95 430,105 440,100" fill="#D03820" stroke="#FF5030" stroke-width="1"/>
+  <!-- Cannelure (x=287–295, in bearing zone x=277–344) -->
+  <rect x="287" y="90" width="8" height="20" fill="#9A7020" stroke="#9A7818" stroke-width="0.6"/>
 
-  <!-- ══ NECK GRIP — bold bright lines where neck hugs bearing ══ -->
-  <line x1="262" y1="90" x2="330" y2="90" stroke="#FFE040" stroke-width="3"/>
-  <line x1="262" y1="110" x2="330" y2="110" stroke="#FFE040" stroke-width="3"/>
+  <!-- ══ NECK GRIP — bold bright lines where neck hugs bearing ══
+       Bearing starts at x=277. Neck ends at x=330. Grip zone: x=277–330 -->
+  <line x1="277" y1="90" x2="330" y2="90" stroke="#FFE040" stroke-width="3"/>
+  <line x1="277" y1="110" x2="330" y2="110" stroke="#FFE040" stroke-width="3"/>
 
-  <!-- ══ JUMP bracket (bullet tip x=440 → first land x=440 ... wait freebore ends at 440) ══
-       Actually: bullet tip is at x=440 = first land. No jump gap shown yet.
-       To show jump: bullet tip at x=420, first land at x=440, gap = 20px -->
-  <!-- Shift: tip at x=420, land at x=440 -->
-  <!-- Override bullet path tip to x=420 by re-drawing the path above ending at x=420 -->
-
+  <!-- ══ JUMP bracket (bullet meplat x=430 → first land x=440, gap=10px) ══ -->
   <!-- JUMP dimension line above bore -->
-  <line x1="420" y1="75" x2="440" y2="75" stroke="#FFD060" stroke-width="2"/>
-  <line x1="420" y1="71" x2="420" y2="79" stroke="#FFD060" stroke-width="1.5"/>
+  <line x1="430" y1="75" x2="440" y2="75" stroke="#FFD060" stroke-width="2"/>
+  <line x1="430" y1="71" x2="430" y2="79" stroke="#FFD060" stroke-width="1.5"/>
   <line x1="440" y1="71" x2="440" y2="79" stroke="#FFD060" stroke-width="1.5"/>
-  <text x="430" y="70" text-anchor="middle" fill="#FFD060" font-size="9" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">JUMP</text>
+  <text x="435" y="70" text-anchor="middle" fill="#FFD060" font-size="9" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">JUMP</text>
 
   <!-- ══ LABELS (below diagram) ══ -->
   <!-- Rim -->
@@ -454,8 +475,8 @@
   <text x="272" y="152" fill="#C8D0E8" font-size="8.5" font-family="Arial Narrow,Arial,sans-serif">Neck</text>
 
   <!-- Neck Grip label -->
-  <line x1="296" y1="90" x2="296" y2="68" stroke="#FFE040" stroke-width="0.8"/>
-  <text x="256" y="63" fill="#FFE040" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">NECK GRIP</text>
+  <line x1="303" y1="90" x2="303" y2="68" stroke="#FFE040" stroke-width="0.8"/>
+  <text x="263" y="63" fill="#FFE040" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">NECK GRIP</text>
 
   <!-- Leade -->
   <line x1="344" y1="80" x2="344" y2="63" stroke="#8898B8" stroke-width="0.8"/>
@@ -465,12 +486,12 @@
   <line x1="394" y1="80" x2="394" y2="68" stroke="#6070A0" stroke-width="0.8"/>
   <text x="369" y="63" fill="#6070A0" font-size="8.5" font-family="Arial Narrow,Arial,sans-serif">Freebore</text>
 
-  <!-- Ogive label (on bullet, spans x=370–420) -->
-  <line x1="395" y1="93" x2="395" y2="140" stroke="#E0B030" stroke-width="0.8"/>
+  <!-- Ogive label (on bullet, spans x=344–430, midpoint x=387) -->
+  <line x1="387" y1="93" x2="387" y2="140" stroke="#E0B030" stroke-width="0.8"/>
   <text x="374" y="152" fill="#E0B030" font-size="8.5" font-family="Arial Narrow,Arial,sans-serif">Ogive</text>
 
-  <!-- Bearing label -->
-  <line x1="316" y1="110" x2="316" y2="140" stroke="#C09830" stroke-width="0.8"/>
+  <!-- Bearing label (spans x=277–344, midpoint x=310) -->
+  <line x1="310" y1="110" x2="310" y2="140" stroke="#C09830" stroke-width="0.8"/>
   <text x="298" y="152" fill="#C09830" font-size="8.5" font-family="Arial Narrow,Arial,sans-serif">Bearing</text>
 
   <!-- Lands / Grooves -->
