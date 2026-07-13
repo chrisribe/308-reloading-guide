@@ -1336,6 +1336,77 @@
     <div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">10</div>
+        <div class="step-label"><strong>Trim to Length</strong><br><span>Trim to 2.005" — trim if at or over 2.015"</span></div>
+        <span class="step-tag tag-prep">PREP</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="step-detail"><div class="step-detail-inner">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+<rect width="300" height="180" fill="#1C1C24"/>
+<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">TRIM TO LENGTH — CASE TRIMMER</text>
+<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Case mouth enters cutter · trim to 2.005" · measure after</text>
+<!-- Centerline -->
+<line x1="150" y1="22" x2="150" y2="165" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+
+<!-- ══ TRIMMER BODY (left block) ══ -->
+<!-- Main body -->
+<rect x="20" y="55" width="80" height="50" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Cutter shaft sticking right -->
+<rect x="100" y="73" width="50" height="14" fill="#585868" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Cutter head (cylinder) -->
+<rect x="148" y="68" width="16" height="24" fill="#383848" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Cutter blade (thin line at face) -->
+<line x1="164" y1="68" x2="164" y2="92" stroke="#FFD060" stroke-width="2"/>
+<!-- Pilot tip (small rod protruding into case mouth) -->
+<rect x="164" y="77" width="10" height="6" fill="#C8D0E8" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Adjustment collar -->
+<rect x="140" y="65" width="10" height="30" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Knob on trimmer body -->
+<rect x="22" y="50" width="22" height="10" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>
+<text x="33" y="58" text-anchor="middle" fill="#888" font-size="5.5" font-family="Arial Narrow,Arial,sans-serif">ADJUST</text>
+<!-- Handle crank (right side of body) -->
+<line x1="100" y1="60" x2="110" y2="48" stroke="#D8DCF0" stroke-width="1.5"/>
+<circle cx="112" cy="46" r="4" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
+
+<!-- ══ CASE — horizontal, neck-first into cutter (neck LEFT toward cutter) ══ -->
+<!-- rotate(-90)=neck left, base right. scale=4.0. Neck tip at x=174, base at x=174+27*4=282 -->
+<use href="#g-case" transform="translate(174,80) rotate(-90) scale(4.0)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(174,80) rotate(-90) scale(4.0)" fill="none" stroke="#D8A820" stroke-width="0.25"/>
+
+<!-- Brass chips / cutting indication -->
+<line x1="164" y1="68" x2="158" y2="62" stroke="#C8973A" stroke-width="1" opacity="0.8"/>
+<line x1="164" y1="75" x2="157" y2="70" stroke="#C8973A" stroke-width="1" opacity="0.8"/>
+<line x1="164" y1="82" x2="157" y2="87" stroke="#C8973A" stroke-width="1" opacity="0.8"/>
+<line x1="164" y1="90" x2="159" y2="96" stroke="#C8973A" stroke-width="1" opacity="0.8"/>
+
+<!-- ══ REFERENCE TABLE ══ -->
+<rect x="20" y="120" width="260" height="42" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
+<text x="30" y="131" fill="#C8973A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">.308 Win trim reference:</text>
+<text x="30" y="144" fill="#E05050" font-size="8" font-family="Arial Narrow,Arial,sans-serif">⚠  Trim if at or over: 2.015"</text>
+<text x="30" y="155" fill="#4CBB6A" font-size="8" font-family="Arial Narrow,Arial,sans-serif">✓  Trim to: 2.005"  (measure after trimming)</text>
+
+<!-- Labels -->
+<circle cx="100" cy="80" r="1.5" fill="#C8D0E8"/>
+<line x1="100" y1="80" x2="60" y2="108" stroke="#C8D0E8" stroke-width="0.7"/>
+<text x="20" y="113" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Trimmer body</text>
+
+<circle cx="164" cy="80" r="1.5" fill="#FFD060"/>
+<line x1="164" y1="80" x2="164" y2="110" stroke="#FFD060" stroke-width="0.7"/>
+<text x="140" y="116" fill="#FFD060" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cutter blade</text>
+
+<circle cx="252" cy="74" r="1.5" fill="#D8A820"/>
+<line x1="252" y1="74" x2="270" y2="55" stroke="#D8A820" stroke-width="0.7"/>
+<text x="240" y="51" fill="#D8A820" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case base</text>
+        </svg>
+        <p>Set the trimmer to <strong>2.005"</strong>. Insert case neck-first into the pilot, turn the crank until it stops cutting — the stop sets the length. Measure with calipers after trimming to confirm.</p>
+        <div class="tip">✅ After trimming, deburr and chamfer the case mouth — the next step.</div>
+        <div class="warn">⚠️ Trim only to 2.005". Going shorter than 2.000" weakens the case mouth and affects crimping.</div>
+      </div></div>
+    </div>
+
+    <div class="step-item prep" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div class="step-num">11</div>
         <div class="step-label"><strong>Deburr &amp; Chamfer</strong><br><span>Smooth the case mouth</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
@@ -1402,7 +1473,7 @@
 
     <div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">11</div>
+        <div class="step-num">12</div>
         <div class="step-label"><strong>Prime</strong><br><span>Seat new primer slightly below flush</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
@@ -1489,7 +1560,7 @@
 
     <div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">12</div>
+        <div class="step-num">13</div>
         <div class="step-label"><strong>Charge Powder</strong><br><span>Weigh every charge on a scale</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
@@ -1571,7 +1642,7 @@
 
     <div class="step-item load" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">13</div>
+        <div class="step-num">14</div>
         <div class="step-label"><strong>Seat Bullet</strong><br><span>Press bullet to correct depth</span></div>
         <span class="step-tag tag-load">LOAD</span>
         <span class="chevron">▼</span>
@@ -1650,7 +1721,7 @@
 
     <div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">14</div>
+        <div class="step-num">15</div>
         <div class="step-label"><strong>Final Inspect</strong><br><span>Plunk test + visual check every round</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
