@@ -362,38 +362,48 @@
 <line x1="135" y1="24" x2="135" y2="150" stroke="#3A3A50" stroke-width="0.6"/>
 <line x1="200" y1="24" x2="200" y2="150" stroke="#3A3A50" stroke-width="0.6"/>
 <!-- Centerlines -->
-<line x1="38"  y1="26" x2="38"  y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<line x1="103" y1="26" x2="103" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<line x1="168" y1="26" x2="168" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<line x1="233" y1="26" x2="233" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<!-- CASE 1: GOOD -->
-<path d="M22,115 L54,115 L54,110 L52,110 L52,82 L45,78 L45,28 L31,28 L31,78 L24,82 L24,110 L22,110 Z"
+<line x1="38"  y1="13" x2="38"  y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<line x1="103" y1="13" x2="103" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<line x1="168" y1="13" x2="168" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<line x1="233" y1="13" x2="233" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<!--
+  .308 case — CORRECT proportions:
+  Total ~100px. Base y=115. Top of neck y=15.
+  Rim:     x=CX±16  y=115..110   (32px wide, 5px tall)
+  Body:    x=CX±14  y=110..36    (28px wide, 74px tall — the LONG part)
+  Shoulder:y=36..32  steps from 28px to 14px wide (near-horizontal, 4px drop)
+  Neck:    x=CX±7   y=32..15     (14px wide, 17px tall — SHORT)
+  cx offsets: 38, 103, 168, 233
+-->
+<!-- CASE 1: GOOD (cx=38) -->
+<path d="M22,115 L54,115 L54,110 L52,110 L52,36 L45,32 L45,15 L31,15 L31,32 L24,36 L24,110 L22,110 Z"
       fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
 <line x1="24" y1="107" x2="52" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <text x="38" y="128" text-anchor="middle" fill="#4CBB6A" font-size="16">✓</text>
 <text x="38" y="140" text-anchor="middle" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
-<!-- CASE 2: CRACK -->
-<path d="M87,115 L119,115 L119,110 L117,110 L117,82 L110,78 L110,28 L96,28 L96,78 L89,82 L89,110 L87,110 Z"
+<!-- CASE 2: CRACK (cx=103) -->
+<path d="M87,115 L119,115 L119,110 L117,110 L117,36 L110,32 L110,15 L96,15 L96,32 L89,36 L89,110 L87,110 Z"
       fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
 <line x1="89" y1="107" x2="117" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
-<path d="M108,32 L113,39 L108,45 L113,52 L109,58" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<!-- crack on neck -->
+<path d="M108,17 L112,21 L108,25 L112,29" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="103" y="128" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
 <text x="103" y="140" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
-<line x1="113" y1="42" x2="132" y2="42" stroke="#E05050" stroke-width="0.6"/>
-<text x="133" y="39" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">neck</text>
-<!-- CASE 3: BRIGHT RING -->
-<path d="M152,115 L184,115 L184,110 L182,110 L182,82 L175,78 L175,28 L161,28 L161,78 L154,82 L154,110 L152,110 Z"
+<!-- CASE 3: BRIGHT RING (cx=168) -->
+<path d="M152,115 L184,115 L184,110 L182,110 L182,36 L175,32 L175,15 L161,15 L161,32 L154,36 L154,110 L152,110 Z"
       fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
 <line x1="154" y1="107" x2="182" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
+<!-- bright ring near base -->
 <line x1="152" y1="104" x2="184" y2="104" stroke="#FFE040" stroke-width="3" opacity="0.95"/>
 <text x="168" y="128" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
 <text x="168" y="138" text-anchor="middle" fill="#FFE040" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT RING</text>
 <text x="168" y="147" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">incipient separation</text>
-<!-- CASE 4: DENT -->
-<path d="M217,115 L249,115 L249,110 L247,110 L247,82 L240,78 L240,28 L226,28 L226,78 L219,82 L219,110 L217,110 Z"
+<!-- CASE 4: DENT (cx=233) -->
+<path d="M217,115 L249,115 L249,110 L247,110 L247,36 L240,32 L240,15 L226,15 L226,32 L219,36 L219,110 L217,110 Z"
       fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
 <line x1="219" y1="107" x2="247" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
-<path d="M219,88 Q213,97 219,106" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round"/>
+<!-- dent on body -->
+<path d="M219,65 Q213,75 219,85" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round"/>
 <text x="233" y="128" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
 <text x="233" y="140" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DENT</text>
         </svg>
