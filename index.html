@@ -555,111 +555,88 @@
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
 <!--
-  DEPRIME — HALF-SECTION VIEW
-  Uses #g-case symbol. Origin = center-bottom of rim.
-  Flipped vertically (scale Y negative) so BASE is at TOP (press reality: shellholder holds base).
-  scale=3.5 → case total height = 94.5px
-  translate(150, 38): base/rim sits at y=38, neck tip at y=38+94.5=132.5
-  Left half = cut (hatched brass), right half = exterior (solid brass)
-  Die sits below neck at y≈125
+  DEPRIME — SIDE VIEW
+  Case upright: base at BOTTOM, neck at TOP entering die.
+  scale=3.5: total case height=94.5px
+  translate(150,195): base/rim at y=195, neck tip at y=195-94.5=100.5
+  Die above: y=30..100, bore ±11px wide
+  Decapping pin runs down through die bore and into case neck, tip near primer pocket.
+  Solid case — no cut section, no ghost.
 -->
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DEPRIME — HALF-SECTION VIEW</text>
-<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Base up · neck enters die below · primer ejects upward</text>
+<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DEPRIME — SIDE VIEW</text>
+<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Neck enters die · pin drives primer out base</text>
 <!-- Centerline -->
 <line x1="150" y1="22" x2="150" y2="218" stroke="#4090FF" stroke-width="0.6" stroke-dasharray="12,3,3,3" opacity="0.8"/>
 
-<!-- ══ CASE — using #g-case symbol, flipped base-up ══
-     scale(3.5, -3.5) mirrors Y so rim (y=0) lands at top, neck (y=-27) points down.
-     translate(150, 38): rim center at y=38. Neck tip at y = 38 + 27*3.5 = 132.5
-     Half-widths at scale 3.5: rim=15.75px, body=14px, neck=8.75px
+<!-- ══ DIE (above case) — solid steel ══
+     Die body: x=111..189, y=28..100. Bore ±11px = x=139..161.
+     Lock ring: y=22..30
 -->
-<!-- Left half: cut view (hatched brass) — clip to left of centerline -->
-<clipPath id="cl2-left"><rect x="0" y="28" width="150" height="110"/></clipPath>
-<use href="#g-case" transform="translate(150,38) scale(3.5,-3.5)" fill="url(#g-hatch-brass)" color="url(#g-hatch-brass)" clip-path="url(#cl2-left)"/>
-<use href="#g-case" transform="translate(150,38) scale(3.5,-3.5)" fill="none" stroke="#D8A820" stroke-width="0.35" clip-path="url(#cl2-left)"/>
-<!-- Right half: exterior (solid brass) -->
-<clipPath id="cl2-right"><rect x="150" y="28" width="150" height="110"/></clipPath>
-<use href="#g-case" transform="translate(150,38) scale(3.5,-3.5)" fill="#C09830" color="#C09830" clip-path="url(#cl2-right)"/>
-<use href="#g-case" transform="translate(150,38) scale(3.5,-3.5)" fill="none" stroke="#D8A820" stroke-width="0.35" clip-path="url(#cl2-right)"/>
-
-<!-- ══ INTERIOR VOID (left half only) — hollow inside cut section ══
-     Body wall ~2.5px at scale 3.5 → inner x: 150-14+2.5=138.5, width=11.5
-     Body inner: y=38+3*3.5=48.5 (below rim) to y=38+20*3.5=108 (shoulder start)
-     Neck inner: x=150-8.75+1.5=142.75, y=108 to y=132.5
--->
-<clipPath id="cl2-void"><rect x="0" y="28" width="150" height="110"/></clipPath>
-<rect x="138" y="49" width="12" height="56" fill="#1e1e1e" clip-path="url(#cl2-void)"/>
-<rect x="143" y="105" width="7" height="26" fill="#1e1e1e" clip-path="url(#cl2-void)"/>
-
-<!-- ══ PRIMER POCKET & FLASH HOLE (at base, y≈38) ══ -->
-<!-- Pocket recess -->
-<rect x="143" y="38" width="14" height="5" fill="#2a1a08"/>
-<!-- Spent primer (red) -->
-<rect x="143.5" y="38.5" width="13" height="4" rx="0.5" fill="#E05050" stroke="#FF8080" stroke-width="0.9"/>
-<!-- Flash hole bore (pocket → hollow body) -->
-<rect x="149" y="43" width="2" height="6" fill="#1e1e1e"/>
-
-<!-- ══ DECAPPING ROD — runs from die up through neck+body, tip at primer ══ -->
-<rect x="148.5" y="42" width="3" height="88" fill="#E8E8F0" stroke="#D8DCF0" stroke-width="0.8"/>
-<!-- Tip pointing up at primer -->
-<polygon points="148.5,42 151.5,42 150,37" fill="#E8E8F0" stroke="#D8DCF0" stroke-width="0.8"/>
-
-<!-- ══ PRIMER EJECT ARROW ══ -->
-<line x1="150" y1="36" x2="150" y2="26" stroke="#E05050" stroke-width="2" marker-end="url(#g-arr-red)"/>
-
-<!-- ══ DIE — neck enters from top ══ -->
-<!-- Left half: cut section, hatched steel -->
-<rect x="111" y="121" width="29" height="72" fill="url(#g-hatch-steel)" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
-<!-- Right half: exterior solid -->
-<rect x="160" y="121" width="29" height="72" fill="#484858" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
-<!-- Lock rings -->
-<rect x="109" y="113" width="31" height="10" fill="url(#g-hatch-steel)" stroke="#D8DCF0" stroke-width="1.6"/>
-<rect x="160" y="113" width="31" height="10" fill="#383848" stroke="#D8DCF0" stroke-width="1.6"/>
-<!-- Die bore -->
-<rect x="140" y="121" width="20" height="72" fill="#1e1e1e"/>
+<!-- Lock ring -->
+<rect x="109" y="22" width="82" height="8" fill="#484858" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
+<!-- Die body left -->
+<rect x="111" y="30" width="28" height="70" fill="#484858" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
+<!-- Die body right -->
+<rect x="161" y="30" width="28" height="70" fill="#484858" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
 <!-- Thread zones -->
-<rect x="111" y="144" width="29" height="28" fill="url(#g-thread)" opacity="0.7"/>
-<rect x="160" y="144" width="29" height="28" fill="url(#g-thread)" opacity="0.7"/>
+<rect x="111" y="50" width="28" height="28" fill="url(#g-thread)" opacity="0.6"/>
+<rect x="161" y="50" width="28" height="28" fill="url(#g-thread)" opacity="0.6"/>
+<!-- Die bore (open, dark) -->
+<rect x="139" y="28" width="22" height="72" fill="#1e1e1e"/>
+
+<!-- ══ DECAPPING PIN — runs down through bore into case neck ══ -->
+<rect x="148.5" y="28" width="3" height="95" fill="#E8E8F0" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Pin tip (point, at y=123 — inside case body near primer pocket) -->
+<polygon points="148.5,123 151.5,123 150,128" fill="#E8E8F0" stroke="#D8DCF0" stroke-width="0.8"/>
+
+<!-- ══ CASE — solid brass, upright, scale=3.5, base at y=195 ══ -->
+<use href="#g-case" transform="translate(150,195) scale(3.5)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(150,195) scale(3.5)" fill="none" stroke="#D8A820" stroke-width="0.35"/>
+
+<!-- ══ PRIMER — red disc at base (y=195, inside pocket) ══ -->
+<rect x="143" y="191" width="14" height="5" rx="0.5" fill="#E05050" stroke="#FF8080" stroke-width="1"/>
+<!-- Primer eject arrow downward (primer will fall out base) -->
+<line x1="150" y1="198" x2="150" y2="208" stroke="#E05050" stroke-width="2" marker-end="url(#g-arr-red)"/>
 
 <!-- ══ LABELS right ══ -->
-<circle cx="163" cy="41" r="1.8" fill="#E05050"/>
-<line x1="163" y1="41" x2="200" y2="41" stroke="#E05050" stroke-width="0.7"/>
-<text x="202" y="44" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Spent primer ↑</text>
+<circle cx="189" cy="46" r="1.8" fill="#C8D0E8"/>
+<line x1="189" y1="46" x2="200" y2="46" stroke="#C8D0E8" stroke-width="0.7"/>
+<text x="202" y="49" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Die body</text>
 
-<circle cx="164" cy="70" r="1.8" fill="#D8A820"/>
-<line x1="164" y1="70" x2="200" y2="70" stroke="#D8A820" stroke-width="0.7"/>
-<text x="202" y="73" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case body</text>
+<circle cx="189" cy="26" r="1.8" fill="#C8D0E8"/>
+<line x1="189" y1="26" x2="200" y2="26" stroke="#C8D0E8" stroke-width="0.7"/>
+<text x="202" y="29" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock ring</text>
 
-<circle cx="160" cy="107" r="1.8" fill="#D8A820"/>
-<line x1="160" y1="107" x2="200" y2="100" stroke="#D8A820" stroke-width="0.7"/>
-<text x="202" y="103" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shoulder</text>
+<circle cx="151.5" cy="75" r="1.8" fill="#C8D0E8"/>
+<line x1="151.5" y1="75" x2="200" y2="68" stroke="#C8D0E8" stroke-width="0.7"/>
+<text x="202" y="71" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Decapping pin</text>
 
-<circle cx="158" cy="127" r="1.8" fill="#D8A820"/>
-<line x1="158" y1="127" x2="200" y2="122" stroke="#D8A820" stroke-width="0.7"/>
-<text x="202" y="125" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Neck / mouth</text>
+<circle cx="163.5" cy="115" r="1.8" fill="#D8A820"/>
+<line x1="163.5" y1="115" x2="200" y2="110" stroke="#D8A820" stroke-width="0.7"/>
+<text x="202" y="113" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case neck</text>
 
-<circle cx="189" cy="144" r="1.8" fill="#C8D0E8"/>
-<line x1="189" y1="144" x2="200" y2="144" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="202" y="147" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Die body</text>
+<circle cx="163.5" cy="150" r="1.8" fill="#D8A820"/>
+<line x1="163.5" y1="150" x2="200" y2="150" stroke="#D8A820" stroke-width="0.7"/>
+<text x="202" y="153" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case body</text>
+
+<circle cx="163.5" cy="193" r="1.8" fill="#E05050"/>
+<line x1="163.5" y1="193" x2="200" y2="188" stroke="#E05050" stroke-width="0.7"/>
+<text x="202" y="191" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Spent primer ↓</text>
 
 <!-- ══ LABELS left ══ -->
-<circle cx="135" cy="41" r="1.8" fill="#D8A820"/>
-<line x1="135" y1="41" x2="103" y2="41" stroke="#D8A820" stroke-width="0.7"/>
-<text x="2" y="44" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Rim / base</text>
+<circle cx="111" cy="26" r="1.8" fill="#C8D0E8"/>
+<line x1="111" y1="26" x2="103" y2="26" stroke="#C8D0E8" stroke-width="0.7"/>
+<text x="2" y="29" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock ring</text>
 
-<circle cx="149" cy="47" r="1.5" fill="#7080A8"/>
-<line x1="149" y1="47" x2="103" y2="57" stroke="#7080A8" stroke-width="0.6"/>
-<text x="2" y="60" fill="#7080A8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Flash hole</text>
+<circle cx="136" cy="108" r="1.8" fill="#D8A820"/>
+<line x1="136" y1="108" x2="103" y2="108" stroke="#D8A820" stroke-width="0.7"/>
+<text x="2" y="111" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shoulder</text>
 
-<circle cx="149" cy="75" r="1.8" fill="#C8D0E8"/>
-<line x1="149" y1="75" x2="103" y2="84" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="2" y="87" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Decapping rod</text>
+<circle cx="135" cy="195" r="1.8" fill="#D8A820"/>
+<line x1="135" y1="195" x2="103" y2="195" stroke="#D8A820" stroke-width="0.7"/>
+<text x="2" y="198" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base / rim</text>
 
-<circle cx="111" cy="123" r="1.8" fill="#C8D0E8"/>
-<line x1="111" y1="123" x2="103" y2="123" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="2" y="126" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock ring</text>
-
-<text x="150" y="232" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SECTION A-A  ·  Left = cut (hatched brass)  ·  Right = exterior  ·  Base at top</text>
+<text x="150" y="225" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SIDE VIEW  ·  Case enters die neck-first  ·  Pin ejects primer downward</text>
         </svg>
         <p>Do this <strong>before</strong> cleaning. Mount the decapping die in your press and run each case through to punch out the spent primer. With the pocket empty, the ultrasonic cleaner can reach inside and clean it — saving you the brush step.</p>
         <div class="tip">✅ Deprime first = ultrasonic does all the cleaning, inside pocket and out.</div>
