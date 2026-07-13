@@ -1255,87 +1255,6 @@
     <div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">9</div>
-        <div class="step-label"><strong>Trim to Length</strong><br><span>Cases stretch — must be trimmed to 2.005"</span></div>
-        <span class="step-tag tag-prep">PREP</span>
-        <span class="chevron">▼</span>
-      </div>
-      <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <pattern id="knurl-7" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse">
-    <line x1="0" y1="5" x2="5" y2="0" stroke="#D8DCF0" stroke-width="0.5" opacity="0.5"/>
-    <line x1="0" y1="0" x2="5" y2="5" stroke="#D8DCF0" stroke-width="0.5" opacity="0.5"/>
-  </pattern>
-</defs>
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DIGITAL CALIPERS — MEASURE CASE LENGTH</text>
-<!-- Caliper beam (flat stainless) — flat fill -->
-<rect x="15" y="50" width="220" height="10" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Fixed jaw (left) -->
-<rect x="15" y="60" width="10" height="32" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Depth rod -->
-<rect x="17" y="90" width="3" height="15" fill="#D8DCF0" opacity="0.6"/>
-<!-- Sliding carriage block -->
-<rect x="160" y="43" width="40" height="25" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- LCD display on carriage -->
-<rect x="164" y="47" width="32" height="14" fill="#0d1a0d" stroke="#2a6a2a" stroke-width="1"/>
-<text x="180" y="58" text-anchor="middle" fill="#40E040" font-size="9" font-weight="bold" font-family="monospace">2.008"</text>
-<!-- Sliding jaw (right, attached to carriage) -->
-<rect x="200" y="60" width="10" height="32" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Zero/ON button on carriage -->
-<rect x="165" y="63" width="14" height="6" fill="#222" stroke="#555" stroke-width="0.8"/>
-<text x="172" y="68" text-anchor="middle" fill="#aaa" font-size="5" font-family="Arial Narrow,Arial,sans-serif">ZERO</text>
-<!-- Thumb wheel (small knurled circle on bottom of carriage) -->
-<circle cx="185" cy="72" r="5" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
-<circle cx="185" cy="72" r="5" fill="url(#knurl-7)" opacity="0.6"/>
-<!-- Case horizontal: rotate(90) → base LEFT (fixed jaw), neck RIGHT (sliding jaw)
-     rim left edge at x=25 (fixed jaw face) → translate x=25
-     neck tip at x = 25 + 27*5.15 = 164 → sliding jaw at ~200 ✓
--->
-<use href="#g-case" transform="translate(25,75) rotate(90) scale(5.15)" fill="#C09830" color="#C09830"/>
-<use href="#g-case" transform="translate(25,75) rotate(90) scale(5.15)" fill="none" stroke="#D8A820" stroke-width="0.2"/>
-<!-- Measurement span arrow -->
-<line x1="26" y1="100" x2="200" y2="100" stroke="#C8973A" stroke-width="1.2"/>
-<line x1="26" y1="96" x2="26" y2="104" stroke="#C8973A" stroke-width="1.2"/>
-<line x1="200" y1="96" x2="200" y2="104" stroke="#C8973A" stroke-width="1.2"/>
-<text x="113" y="113" text-anchor="middle" fill="#C8973A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case Length — base to mouth</text>
-<!-- Reference table -->
-<rect x="15" y="122" width="270" height="38" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
-<text x="25" y="133" fill="#C8973A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">.308 Winchester Case Length Reference:</text>
-<text x="25" y="146" fill="#E05050" font-size="8" font-family="Arial Narrow,Arial,sans-serif">⚠ Max: 2.015" — trim if at or over</text>
-<text x="25" y="157" fill="#4CBB6A" font-size="8" font-family="Arial Narrow,Arial,sans-serif">✓ Trim-to: 2.005" — target length</text>
-<!-- Leader callouts -->
-<line x1="15" y1="75" x2="5" y2="62" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="0" y="59" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Fixed</text>
-<text x="0" y="68" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Jaw.</text>
-<line x1="205" y1="68" x2="240" y2="55" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="240" y1="55" x2="285" y2="55" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="285" cy="55" r="1" fill="#D8DCF0"/>
-<text x="243" y="52" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sliding Jaw.</text>
-<line x1="196" y1="51" x2="240" y2="38" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="240" y1="38" x2="285" y2="38" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="285" cy="38" r="1" fill="#D8DCF0"/>
-<text x="243" y="35" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LCD Display.</text>
-<line x1="190" y1="72" x2="240" y2="78" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="240" y1="78" x2="285" y2="78" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="285" cy="78" r="1" fill="#D8DCF0"/>
-<text x="243" y="75" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Thumb Wheel.</text>
-        </svg>
-        <p>Brass grows longer every time it's fired. After sizing, <strong>measure every case</strong> from base to mouth with your digital calipers. The target is <strong>2.005"</strong>. If any case is at or over <strong>2.015"</strong>, trim it.</p>
-        <p style="margin-top:8px"><strong style="color:#c8973a">How to use the calipers:</strong></p>
-        <ul style="padding-left:18px; color:#ddd; font-size:0.92rem; line-height:1.9; margin-top:4px">
-          <li>Close the jaws fully and press <strong>ZERO</strong> (or ORIGIN) on the display</li>
-          <li>Open jaws, place the case base against the fixed jaw</li>
-          <li>Slide the moving jaw gently to the case mouth — don't force it</li>
-          <li>Read the number. 2.005"–2.010" = good. At or over 2.015" = trim it.</li>
-          <li>After trimming, measure again to confirm you hit 2.005"</li>
-        </ul>
-        <div class="warn">⚠️ Cases too long can jam into the rifling and cause dangerous pressure spikes. Always measure — don't guess.</div>
-      </div></div>
-    </div>
-
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
-        <div class="step-num">10</div>
         <div class="step-label"><strong>Trim to Length</strong><br><span>Trim to 2.005" — trim if at or over 2.015"</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
@@ -1406,7 +1325,7 @@
 
     <div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">11</div>
+        <div class="step-num">10</div>
         <div class="step-label"><strong>Deburr &amp; Chamfer</strong><br><span>Smooth the case mouth</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
@@ -1473,7 +1392,7 @@
 
     <div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">12</div>
+        <div class="step-num">11</div>
         <div class="step-label"><strong>Prime</strong><br><span>Seat new primer slightly below flush</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
@@ -1560,7 +1479,7 @@
 
     <div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">13</div>
+        <div class="step-num">12</div>
         <div class="step-label"><strong>Charge Powder</strong><br><span>Weigh every charge on a scale</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
@@ -1642,7 +1561,7 @@
 
     <div class="step-item load" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">14</div>
+        <div class="step-num">13</div>
         <div class="step-label"><strong>Seat Bullet</strong><br><span>Press bullet to correct depth</span></div>
         <span class="step-tag tag-load">LOAD</span>
         <span class="chevron">▼</span>
@@ -1721,7 +1640,7 @@
 
     <div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
-        <div class="step-num">15</div>
+        <div class="step-num">14</div>
         <div class="step-label"><strong>Final Inspect</strong><br><span>Plunk test + visual check every round</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
