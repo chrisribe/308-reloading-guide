@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>.308 Symbol Sanity Test</title>
+<style>
+  body { background: #1C1C24; color: #D8DCF0; font-family: Arial Narrow, Arial, sans-serif; margin: 20px; }
+  h2 { color: #e0a820; border-bottom: 1px solid #333; padding-bottom: 4px; }
+  h3 { color: #7080A8; margin: 8px 0 4px; font-size: 12px; }
+  .row { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end; margin-bottom: 24px; }
+  .cell { text-align: center; }
+  .cell svg { display: block; margin: 0 auto; }
+  .label { font-size: 10px; color: #7080A8; margin-top: 4px; }
+  .pass { color: #4CBB6A; }
+  .fail { color: #E05050; }
+  .check { font-size: 11px; margin-top: 8px; }
+  hr { border-color: #333; margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<h1 style="color:#c8973a">.308 Case Symbol — Sanity Test Page</h1>
+<p style="color:#7080A8">Use this page to verify <code>#g-case</code> and <code>#g-bullet</code> render correctly before editing index.html.</p>
+
+<!-- ══ GLOBAL DEFS (copy from index.html) ══ -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <pattern id="t-hatch-brass" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(135)">
+      <line x1="0" y1="0" x2="0" y2="5" stroke="#D4A010" stroke-width="1.2"/>
+    </pattern>
+    <marker id="t-arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7080A8"/>
+    </marker>
+
+    <!--
+      #g-case — canonical .308 case symbol.
+      Origin = center-bottom of rim. Neck points UP (negative Y).
+      Total height = 27px.
+      Rim:      ±6.5px wide, 3px tall   (y=0 to y=-3)
+      Body:     ±4px wide,  17px tall   (y=-3 to y=-20)
+      Shoulder: tapers ±4px→±2.5px, 3px (y=-20 to y=-23)
+      Neck:     ±2.5px wide, 4px tall   (y=-23 to y=-27)
+      Body:neck width ratio = 3.2:1
+    -->
+    <symbol id="g-case" overflow="visible">
+      <rect x="-6.5" y="-3"  width="13"  height="3"  fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+      <rect x="-4"   y="-20" width="8"   height="17" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+      <polygon points="-4,-20 -2.5,-23 2.5,-23 4,-20" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+      <rect x="-2.5" y="-27" width="5"   height="4"  fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+    </symbol>
+
+    <!-- #g-bullet — ogive profile, origin at base, tip points UP -->
+    <symbol id="g-bullet" overflow="visible">
+      <polygon points="-2.5,0 2.5,0 2,-4 0,-12 -2,-4" fill="#A0A8B0" stroke="#C8D0E8" stroke-width="0.8" stroke-linejoin="miter"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ══ TEST 1: UPRIGHT — all scales used in guide ══ -->
+<h2>1. Upright (neck UP) — scales used in guide</h2>
+<p style="color:#7080A8;font-size:11px">Each case: base sits on baseline. Body should be clearly wider than neck. Shoulder visible. Rim slightly wider than body.</p>
+<div class="row">
+
+  <!-- scale 1.0 — reference -->
+  <div class="cell">
+    <svg width="30" height="40" viewBox="0 0 30 40">
+      <line x1="15" y1="37" x2="15" y2="0" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(15,35) scale(1.0)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=1.0<br>27px tall</div>
+  </div>
+
+  <!-- scale 2.2 -->
+  <div class="cell">
+    <svg width="40" height="70" viewBox="0 0 40 70">
+      <line x1="20" y1="65" x2="20" y2="0" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(20,62) scale(2.2)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=2.2<br>59px tall</div>
+  </div>
+
+  <!-- scale 3.18 — steps 7,8 -->
+  <div class="cell">
+    <svg width="50" height="100" viewBox="0 0 50 100">
+      <line x1="25" y1="95" x2="25" y2="0" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(25,90) scale(3.18)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=3.18<br>86px tall</div>
+  </div>
+
+  <!-- scale 3.37 — step 2 deprime -->
+  <div class="cell">
+    <svg width="55" height="105" viewBox="0 0 55 105">
+      <line x1="27" y1="100" x2="27" y2="0" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(27,95) scale(3.37)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=3.37<br>91px tall</div>
+  </div>
+
+  <!-- scale 3.7 — step 1 inspect -->
+  <div class="cell">
+    <svg width="60" height="112" viewBox="0 0 60 112">
+      <line x1="30" y1="107" x2="30" y2="0" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(30,102) scale(3.7)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=3.7<br>100px tall</div>
+  </div>
+
+  <!-- scale 5.15 — step 9 trim -->
+  <div class="cell">
+    <svg width="80" height="150" viewBox="0 0 80 150">
+      <line x1="40" y1="145" x2="40" y2="0" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(40,140) scale(5.15)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=5.15<br>139px tall</div>
+  </div>
+
+</div>
+
+<div class="check">
+  ✅ Pass criteria: body clearly wider than neck, shoulder visible as taper, rim slightly wider than body, no gaps between parts
+</div>
+
+<hr>
+
+<!-- ══ TEST 2: HORIZONTAL (neck RIGHT) ══ -->
+<h2>2. Horizontal — neck pointing RIGHT (rotate -90°)</h2>
+<p style="color:#7080A8;font-size:11px">Used in anatomy diagram and steps with horizontal case. Rim on left, neck on right. Should show bottleneck clearly.</p>
+<div class="row">
+
+  <div class="cell">
+    <svg width="120" height="40" viewBox="0 0 120 40">
+      <line x1="0" y1="20" x2="120" y2="20" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(15,20) rotate(-90) scale(2.0)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=2.0 rotate(-90)<br>rim LEFT, neck RIGHT</div>
+  </div>
+
+  <div class="cell">
+    <svg width="200" height="60" viewBox="0 0 200 60">
+      <line x1="0" y1="30" x2="200" y2="30" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(20,30) rotate(-90) scale(3.8)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=3.8 rotate(-90)<br>anatomy diagram scale</div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ══ TEST 3: HORIZONTAL (neck LEFT) ══ -->
+<h2>3. Horizontal — neck pointing LEFT (rotate 90°)</h2>
+<div class="row">
+  <div class="cell">
+    <svg width="200" height="60" viewBox="0 0 200 60">
+      <line x1="0" y1="30" x2="200" y2="30" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-case" transform="translate(185,30) rotate(90) scale(3.8)" fill="#C09830" color="#C09830"/>
+    </svg>
+    <div class="label">scale=3.8 rotate(90)<br>neck LEFT</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══ TEST 4: BULLET orientations ══ -->
+<h2>4. Bullet symbol orientations</h2>
+<div class="row">
+
+  <div class="cell">
+    <svg width="30" height="40" viewBox="0 0 30 40">
+      <use href="#g-bullet" transform="translate(15,35) scale(1.0)"/>
+    </svg>
+    <div class="label">scale=1 UP<br>(default)</div>
+  </div>
+
+  <div class="cell">
+    <svg width="30" height="40" viewBox="0 0 30 40">
+      <use href="#g-bullet" transform="translate(15,35) scale(2.5)"/>
+    </svg>
+    <div class="label">scale=2.5 UP</div>
+  </div>
+
+  <div class="cell">
+    <svg width="60" height="30" viewBox="0 0 60 30">
+      <line x1="0" y1="15" x2="60" y2="15" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-bullet" transform="translate(10,15) rotate(90) scale(2.5)"/>
+    </svg>
+    <div class="label">rotate(90)<br>tip points RIGHT ✅</div>
+  </div>
+
+  <div class="cell">
+    <svg width="60" height="30" viewBox="0 0 60 30">
+      <line x1="0" y1="15" x2="60" y2="15" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="4,2" opacity="0.4"/>
+      <use href="#g-bullet" transform="translate(50,15) rotate(-90) scale(2.5)"/>
+    </svg>
+    <div class="label">rotate(-90)<br>tip points LEFT</div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ══ TEST 5: ASSEMBLED ROUND ══ -->
+<h2>5. Assembled round — case + bullet seated in neck</h2>
+<p style="color:#7080A8;font-size:11px">Bullet base should sit at top of neck (y = baseY - 27×scale). No gap, no overlap.</p>
+<div class="row">
+
+  <div class="cell">
+    <svg width="60" height="120" viewBox="0 0 60 120">
+      <!-- base at y=110, scale=3.7 → neck top at y=110-(27*3.7)=110-99.9=10 -->
+      <use href="#g-case"   transform="translate(30,110) scale(3.7)" fill="#C09830" color="#C09830"/>
+      <use href="#g-bullet" transform="translate(30,10)  scale(3.7)"/>
+    </svg>
+    <div class="label">scale=3.7<br>assembled</div>
+  </div>
+
+  <div class="cell">
+    <svg width="40" height="80" viewBox="0 0 40 80">
+      <!-- base at y=72, scale=2.2 → neck top at y=72-(27*2.2)=72-59.4=12.6≈13 -->
+      <use href="#g-case"   transform="translate(20,72) scale(2.2)" fill="#C09830" color="#C09830"/>
+      <use href="#g-bullet" transform="translate(20,13) scale(2.2)"/>
+    </svg>
+    <div class="label">scale=2.2<br>assembled</div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ══ TEST 6: HALF-SECTION (step 2 pattern) ══ -->
+<h2>6. Half-section clip pattern — as used in step 2 Deprime</h2>
+<p style="color:#7080A8;font-size:11px">Left half = brass hatch, right half = solid brass. Should meet cleanly at centerline.</p>
+<div class="row">
+  <div class="cell">
+    <svg width="120" height="110" viewBox="0 0 120 110">
+      <defs>
+        <clipPath id="tc-left"><rect x="20" y="0" width="40" height="110"/></clipPath>
+        <clipPath id="tc-right"><rect x="60" y="0" width="40" height="110"/></clipPath>
+      </defs>
+      <line x1="60" y1="0" x2="60" y2="110" stroke="#4090FF" stroke-width="0.6" stroke-dasharray="8,3" opacity="0.7"/>
+      <!-- left: hatched -->
+      <use href="#g-case" transform="translate(60,100) scale(3.37)" fill="url(#t-hatch-brass)" color="url(#t-hatch-brass)" clip-path="url(#tc-left)"/>
+      <use href="#g-case" transform="translate(60,100) scale(3.37)" fill="none" stroke="#D8A820" stroke-width="0.5" clip-path="url(#tc-left)"/>
+      <!-- right: solid -->
+      <use href="#g-case" transform="translate(60,100) scale(3.37)" fill="#C09830" color="#C09830" clip-path="url(#tc-right)"/>
+      <use href="#g-case" transform="translate(60,100) scale(3.37)" fill="none" stroke="#D8A820" stroke-width="0.5" clip-path="url(#tc-right)"/>
+    </svg>
+    <div class="label">scale=3.37 half-section<br>left=hatch, right=solid</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══ TEST 7: PROPORTION CHECK ══ -->
+<h2>7. Proportion reference grid</h2>
+<p style="color:#7080A8;font-size:11px">At scale=3.7: body width = 8×3.7 = 29.6px, neck width = 5×3.7 = 18.5px, total height = 27×3.7 = 99.9px. Red lines show expected edges.</p>
+<div class="row">
+  <div class="cell">
+    <svg width="80" height="120" viewBox="0 0 80 120">
+      <!-- expected edges at scale=3.7, cx=40, base=112 -->
+      <!-- body: x=40±(4*3.7)=40±14.8 → 25.2 to 54.8 -->
+      <line x1="25.2" y1="0" x2="25.2" y2="120" stroke="#E05050" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+      <line x1="54.8" y1="0" x2="54.8" y2="120" stroke="#E05050" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+      <!-- neck: x=40±(2.5*3.7)=40±9.25 → 30.75 to 49.25 -->
+      <line x1="30.75" y1="0" x2="30.75" y2="120" stroke="#4090FF" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+      <line x1="49.25" y1="0" x2="49.25" y2="120" stroke="#4090FF" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+      <!-- rim: x=40±(6.5*3.7)=40±24.05 → 15.95 to 64.05 -->
+      <line x1="15.95" y1="100" x2="15.95" y2="120" stroke="#e0a820" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+      <line x1="64.05" y1="100" x2="64.05" y2="120" stroke="#e0a820" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>
+      <use href="#g-case" transform="translate(40,112) scale(3.7)" fill="#C09830" color="#C09830" opacity="0.85"/>
+      <text x="40" y="8" text-anchor="middle" fill="#7080A8" font-size="7">red=body  blue=neck  gold=rim</text>
+    </svg>
+    <div class="label">scale=3.7 with edge guides</div>
+  </div>
+</div>
+
+<hr>
+<p style="color:#4CBB6A; font-size:12px">✅ If all cases above show a clear bottleneck (wide body, visible shoulder taper, narrow neck) the symbol is correct. If anything looks like a fat rectangle, check the #g-case symbol geometry in index.html.</p>
+<p style="color:#7080A8; font-size:10px">Reference: body ±4px, neck ±2.5px, rim ±6.5px, total height 27px. Body:neck = 3.2:1</p>
+
+</body>
+</html>
