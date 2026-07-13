@@ -714,61 +714,90 @@
         <span class="chevron">▼</span>
       </div>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 155" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <pattern id="knurl-4" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-    <line x1="0" y1="6" x2="6" y2="0" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
-    <line x1="0" y1="0" x2="6" y2="6" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
-  </pattern>
-</defs>
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+<!-- COORDINATE SYSTEM
+  viewBox: 0 0 300 160
+  LEFT tool+pocket: centered at cx=90
+  RIGHT tool+pocket: centered at cx=210
+  Case head rect: y=80 h=35, full width of each panel
+  Pocket: centered in case head, width=20, depth=18, top at y=80
+  Tools: above pocket, bottom of tool at y=75 (just above or entering pocket)
+  Left labels: x<40, Right labels: x>250
+  Footer caption: y=155
+-->
+<!-- Title -->
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">PRIMER POCKET — BRUSH THEN UNIFORM</text>
 <!-- Divider line -->
-<line x1="150" y1="15" x2="150" y2="145" stroke="#333" stroke-width="0.8" opacity="0.6"/>
-<!-- ===== LEFT: BRUSH TOOL ===== -->
-<!-- T-Handle crossbar -->
-<rect x="28" y="18" width="44" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<line x1="150" y1="15" x2="150" y2="148" stroke="#333" stroke-width="0.8" opacity="0.6"/>
+
+<!-- ===== LEFT: POCKET BRUSH ===== -->
+<!-- T-handle crossbar -->
+<rect x="72" y="18" width="36" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Vertical rod -->
-<rect x="47" y="25" width="6" height="30" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Bristle head (bottle-brush — wider) -->
-<ellipse cx="50" cy="62" rx="10" ry="6" fill="none" stroke="#D8DCF0" stroke-width="1.2"/>
-<line x1="40" y1="57" x2="60" y2="67" stroke="#D8DCF0" stroke-width="0.8" opacity="0.7"/>
-<line x1="40" y1="67" x2="60" y2="57" stroke="#D8DCF0" stroke-width="0.8" opacity="0.7"/>
-<line x1="40" y1="62" x2="60" y2="62" stroke="#D8DCF0" stroke-width="0.8" opacity="0.7"/>
-<!-- Arrow downward -->
-<line x1="50" y1="68" x2="50" y2="78" stroke="#C8D0E8" stroke-width="1.2"/>
-<path d="M46 75 L50 80 L54 75" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- Case base (dirty pocket) — flat brass -->
-<rect x="22" y="88" width="56" height="38" fill="#C09830" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Primer pocket (dirty) -->
-<rect x="41" y="95" width="18" height="14" fill="#111" stroke="#555" stroke-width="1"/>
-<!-- Carbon dots -->
-<circle cx="47" cy="100" r="1.5" fill="#444"/>
-<circle cx="52" cy="103" r="1.2" fill="#444"/>
-<circle cx="56" cy="99" r="1" fill="#444"/>
-<circle cx="45" cy="105" r="1" fill="#555"/>
-<!-- Label -->
-<text x="50" y="140" text-anchor="middle" fill="#7AB3E0" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">① Pocket Brush</text>
-<text x="50" y="150" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">remove carbon</text>
+<rect x="87" y="25" width="6" height="30" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Bristle head — rect body with short vertical bristle lines -->
+<rect x="83" y="55" width="14" height="12" fill="#2E2E3A" stroke="#D8DCF0" stroke-width="1.2"/>
+<line x1="85" y1="57" x2="85" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
+<line x1="88" y1="57" x2="88" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
+<line x1="91" y1="57" x2="91" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
+<line x1="94" y1="57" x2="94" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
+<line x1="97" y1="57" x2="97" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
+<!-- Arrow downward into pocket -->
+<line x1="90" y1="67" x2="90" y2="76" stroke="#C8D0E8" stroke-width="1.2"/>
+<path d="M86,73 L90,78 L94,73" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
+<!-- Case head — brass rectangle -->
+<rect x="62" y="80" width="56" height="35" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
+<!-- Primer pocket cutout — flat square bottom, straight walls, NO rounding -->
+<!-- Left wall: x=80, Right wall: x=100, Top: y=80, Bottom: y=98 — width=20, depth=18 -->
+<rect x="80" y="80" width="20" height="18" fill="#1A1A22" stroke="none"/>
+<!-- Flash hole — small dark rect at bottom center -->
+<rect x="89" y="98" width="2" height="8" fill="#1C1C24"/>
+<!-- Carbon deposit dots -->
+<circle cx="84" cy="87" r="1.3" fill="#3A3A44"/>
+<circle cx="95" cy="91" r="1.1" fill="#3A3A44"/>
+<circle cx="88" cy="94" r="1.0" fill="#3A3A44"/>
+
+<!-- Left panel labels -->
+<!-- "Pocket brush" label — right side of left panel -->
+<line x1="96" y1="62" x2="128" y2="62" stroke="#7AB3E0" stroke-width="0.8"/>
+<circle cx="128" cy="62" r="1.2" fill="#7AB3E0"/>
+<text x="130" y="65" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pocket brush</text>
+<!-- "Flash hole" label — from flash hole down-left -->
+<line x1="89" y1="103" x2="65" y2="120" stroke="#A0A8C0" stroke-width="0.8"/>
+<circle cx="65" cy="120" r="1.2" fill="#A0A8C0"/>
+<text x="67" y="123" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole</text>
+
 <!-- ===== RIGHT: UNIFORMER TOOL ===== -->
-<!-- Knurled handle — flat fill + crosshatch pattern -->
-<rect x="165" y="18" width="24" height="40" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<rect x="165" y="18" width="24" height="40" fill="url(#knurl-4)" opacity="0.6"/>
-<!-- Shank tapering to tip — straight lines only -->
-<polygon points="174,58 174,72 178,78 180,78 182,72 182,58" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Pilot pin at tip -->
-<rect x="176" y="78" width="4" height="5" fill="#D8DCF0"/>
-<!-- Arrow downward -->
-<line x1="177" y1="83" x2="177" y2="88" stroke="#C8D0E8" stroke-width="1.2"/>
-<path d="M173 85 L177 90 L181 85" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- Case base (clean pocket) — flat brass -->
-<rect x="152" y="95" width="56" height="38" fill="#C09830" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Primer pocket (clean, green border) -->
-<rect x="168" y="100" width="18" height="14" fill="#111" stroke="#4CBB6A" stroke-width="1.5"/>
-<!-- Clean indicator -->
-<text x="177" y="113" text-anchor="middle" fill="#4CBB6A" font-size="7">✓</text>
-<!-- Label -->
-<text x="177" y="140" text-anchor="middle" fill="#8fbc5a" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">② Uniformer</text>
-<text x="177" y="150" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">uniform depth + edge</text>
+<!-- Cylinder body (handle) -->
+<rect x="201" y="18" width="18" height="40" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Shank — narrower rect connecting handle to cutting end -->
+<rect x="205" y="58" width="10" height="16" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Flat cutting end — same width as pocket (20px), perfectly flat bottom -->
+<rect x="200" y="74" width="20" height="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Case head — brass rectangle -->
+<rect x="182" y="80" width="56" height="35" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
+<!-- Primer pocket cutout — flat square bottom, straight walls -->
+<rect x="200" y="80" width="20" height="18" fill="#1A1A22" stroke="none"/>
+<!-- Flash hole -->
+<rect x="209" y="98" width="2" height="8" fill="#1C1C24"/>
+<!-- Uniformer tool sits in pocket — cutting face at pocket floor level (y=98) -->
+<!-- Redraw tool inside pocket: cutting rect overlaid -->
+<rect x="200" y="80" width="20" height="18" fill="#484858" stroke="#D8DCF0" stroke-width="1" opacity="0.85"/>
+<!-- Flash hole visible through tool — small dark gap -->
+<rect x="209" y="95" width="2" height="3" fill="#1C1C24"/>
+
+<!-- Right panel labels -->
+<!-- "Uniformer" label -->
+<line x1="220" y1="54" x2="245" y2="54" stroke="#8fbc5a" stroke-width="0.8"/>
+<circle cx="245" cy="54" r="1.2" fill="#8fbc5a"/>
+<text x="247" y="57" fill="#8fbc5a" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Uniformer</text>
+<!-- "Flash hole" label -->
+<line x1="211" y1="103" x2="245" y2="118" stroke="#A0A8C0" stroke-width="0.8"/>
+<circle cx="245" cy="118" r="1.2" fill="#A0A8C0"/>
+<text x="247" y="121" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole</text>
+
+<!-- Footer caption -->
+<text x="150" y="155" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Clean pocket, then uniform the floor — flat and square</text>
         </svg>
 
         <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — use the large rifle brush. Insert and rotate several times until all black carbon is gone. The ultrasonic bath will have done most of this already — you're just finishing any stubborn spots.</p>
@@ -786,95 +815,141 @@
         <span class="chevron">▼</span>
       </div>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 195" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="195" fill="#1C1C24"/>
-<text x="150" y="12" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">ANNEALEEZ-STYLE ROTARY FLAME ANNEALER</text>
-<!-- Base/chassis rectangle -->
-<rect x="30" y="40" width="240" height="130" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Inner base surface -->
-<rect x="36" y="46" width="228" height="118" fill="#3A3A4A" stroke="#5A5A6A" stroke-width="0.6"/>
-<!-- Speed control panel (right side) -->
-<rect x="218" y="58" width="38" height="30" fill="#2A2A3A" stroke="#D8DCF0" stroke-width="1.2"/>
-<text x="237" y="68" text-anchor="middle" fill="#C8D0E8" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">SPD</text>
-<line x1="221" y1="74" x2="254" y2="74" stroke="#444460" stroke-width="0.8"/>
-<rect x="222" y="76" width="6" height="4" fill="#C09830" stroke="#D8DCF0" stroke-width="0.6"/>
-<rect x="231" y="76" width="6" height="4" fill="#333344" stroke="#555566" stroke-width="0.6"/>
-<rect x="240" y="76" width="6" height="4" fill="#333344" stroke="#555566" stroke-width="0.6"/>
-<!-- Carousel wheel (top-down circle) -->
-<circle cx="140" cy="108" r="58" fill="#2A2A38" stroke="#D8DCF0" stroke-width="1.4"/>
-<circle cx="140" cy="108" r="14" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Hub cross -->
-<line x1="134" y1="108" x2="146" y2="108" stroke="#D8DCF0" stroke-width="0.8"/>
-<line x1="140" y1="102" x2="140" y2="114" stroke="#D8DCF0" stroke-width="0.8"/>
-<!-- 8 slot lines on carousel (spokes from hub to perimeter) -->
-<line x1="140" y1="94" x2="140" y2="50" stroke="#3A3A50" stroke-width="1"/>
-<line x1="140" y1="122" x2="140" y2="166" stroke="#3A3A50" stroke-width="1"/>
-<line x1="126" y1="108" x2="82" y2="108" stroke="#3A3A50" stroke-width="1"/>
-<line x1="154" y1="108" x2="198" y2="108" stroke="#3A3A50" stroke-width="1"/>
-<line x1="130" y1="98" x2="100" y2="68" stroke="#3A3A50" stroke-width="1"/>
-<line x1="150" y1="98" x2="180" y2="68" stroke="#3A3A50" stroke-width="1"/>
-<line x1="130" y1="118" x2="100" y2="148" stroke="#3A3A50" stroke-width="1"/>
-<line x1="150" y1="118" x2="180" y2="148" stroke="#3A3A50" stroke-width="1"/>
-<!-- Cases in slots — horizontal bottleneck shapes pointing outward -->
-<!-- Case at top (pointing up): neck at y=50, base at y=67 -->
-<!-- Scaled case: total 17px, body 12px, shoulder 1px, neck 4px, width body=7, neck=4 -->
-<path d="M136,67 L144,67 L144,66 L143.5,66 L143.5,56 L141.5,55 L141.5,51 L138.5,51 L138.5,55 L136.5,56 L136.5,66 L136,66 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.8" stroke-linejoin="miter"/>
-<!-- Case at bottom (pointing down) — COLLECTION TRAY POSITION, gold tint same -->
-<path d="M136,149 L144,149 L144,150 L143.5,150 L143.5,160 L141.5,161 L141.5,165 L138.5,165 L138.5,161 L136.5,160 L136.5,150 L136,150 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.8" stroke-linejoin="miter"/>
-<!-- Case at right (pointing right): base at x=198, neck at x=181 -->
-<path d="M181,104 L181,112 L182,112 L182,111.5 L192,111.5 L193,110.5 L193,109.5 L197,108 L193,106.5 L193,104.5 L192,104 L182,104 L182,104.5 L181,104.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.8" stroke-linejoin="miter"/>
-<!-- Case at left (pointing left) -->
-<path d="M99,104 L99,112 L98,112 L98,111.5 L88,111.5 L87,110.5 L87,109.5 L83,108 L87,106.5 L87,104.5 L88,104 L98,104 L98,104.5 L99,104.5 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.8" stroke-linejoin="miter"/>
-<!-- Case upper-right (NE direction) -->
-<path d="M177,68 L183,74 L183.7,73.3 L183.3,72.9 L176.5,66.1 L175.5,65.5 L174.8,64.2 L172.7,62.1 L171.5,63.3 L172.2,64.6 L172.5,65.5 L179.3,72.3 L178.6,73 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.7" stroke-linejoin="miter"/>
-<!-- Case upper-left (NW) -->
-<path d="M103,68 L97,74 L96.3,73.3 L96.7,72.9 L103.5,66.1 L104.5,65.5 L105.2,64.2 L107.3,62.1 L108.5,63.3 L107.8,64.6 L107.5,65.5 L100.7,72.3 L101.4,73 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.7" stroke-linejoin="miter"/>
-<!-- Case lower-right (SE) -->
-<path d="M177,148 L183,142 L183.7,142.7 L183.3,143.1 L176.5,149.9 L175.5,150.5 L174.8,151.8 L172.7,153.9 L171.5,152.7 L172.2,151.4 L172.5,150.5 L179.3,143.7 L178.6,143 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.7" stroke-linejoin="miter"/>
-<!-- Case lower-left (SW) -->
-<path d="M103,148 L97,142 L96.3,142.7 L96.7,143.1 L103.5,149.9 L104.5,150.5 L105.2,151.8 L107.3,153.9 L108.5,152.7 L107.8,151.4 L107.5,150.5 L100.7,143.7 L101.4,143 Z" fill="#C09830" stroke="#D8DCF0" stroke-width="0.7" stroke-linejoin="miter"/>
-<!-- FLAME at top position (flame station) — simple triangular polygons, NO Q curves -->
-<polygon points="140,38 133,50 147,50" fill="#FF6600" stroke="none"/>
-<polygon points="140,40 135,50 145,50" fill="#FFAA00" stroke="none"/>
-<polygon points="136,44 134,50 138,50" fill="#FF6600" stroke="none"/>
-<polygon points="144,44 146,50 142,50" fill="#FF6600" stroke="none"/>
-<polygon points="140,42 138,49 142,49" fill="#FFEE44" stroke="none"/>
-<!-- Case in flame zone highlighted -->
-<rect x="133" y="49" width="14" height="4" fill="#FF6600" opacity="0.35"/>
-<!-- Collection tray at bottom -->
-<rect x="126" y="166" width="28" height="8" fill="#383848" stroke="#D8DCF0" stroke-width="1.2"/>
-<rect x="120" y="170" width="40" height="6" fill="#2A2A3A" stroke="#D8DCF0" stroke-width="1"/>
-<!-- LABELS — dot-terminated leaders -->
-<!-- Carousel label -->
-<circle cx="195" cy="85" r="1.5" fill="#C8D0E8"/>
-<line x1="195" y1="85" x2="260" y2="80" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="260" cy="80" r="1.5" fill="#C8D0E8"/>
-<text x="263" y="77" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Carousel.</text>
-<!-- Flame label -->
-<circle cx="140" cy="44" r="1.5" fill="#FF8800"/>
-<line x1="140" y1="44" x2="140" y2="16" stroke="#FF8800" stroke-width="0.75"/>
-<line x1="140" y1="16" x2="60" y2="16" stroke="#FF8800" stroke-width="0.75"/>
-<circle cx="60" cy="16" r="1.5" fill="#FF8800"/>
-<text x="62" y="14" fill="#FF8800" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Flame.</text>
-<!-- Case spinning label -->
-<circle cx="193" cy="108" r="1.5" fill="#C09830"/>
-<line x1="193" y1="108" x2="260" y2="108" stroke="#C09830" stroke-width="0.75"/>
-<circle cx="260" cy="108" r="1.5" fill="#C09830"/>
-<text x="263" y="105" fill="#C09830" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case</text>
-<text x="263" y="114" fill="#C09830" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">(spinning).</text>
-<!-- SPD panel label -->
-<circle cx="218" cy="73" r="1.5" fill="#C8D0E8"/>
-<line x1="218" y1="73" x2="210" y2="73" stroke="#C8D0E8" stroke-width="0.75"/>
-<line x1="210" y1="73" x2="60" y2="135" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="60" cy="135" r="1.5" fill="#C8D0E8"/>
-<text x="40" y="132" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Speed</text>
-<text x="40" y="141" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Control.</text>
-<!-- Collection tray label -->
-<circle cx="140" cy="173" r="1.5" fill="#C8D0E8"/>
-<line x1="140" y1="173" x2="60" y2="183" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="60" cy="183" r="1.5" fill="#C8D0E8"/>
-<text x="3" y="181" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Collection</text>
-<text x="3" y="190" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Tray.</text>
+        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+<!-- COORDINATE SYSTEM
+  viewBox: 0 0 300 200
+  Box body: x=40 y=100 w=220 h=85
+  Disk center: cx=150 cy=88 (ellipse rx=100 ry=28)
+  Flame position: rightmost hole (angle=0), cx~228 cy~88
+-->
+<!-- Background -->
+<rect width="300" height="200" fill="#1C1C24"/>
+
+<!-- BOX CHASSIS BODY -->
+<rect x="40" y="100" width="220" height="85" fill="#2A2A3A" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Top edge of box (where disk sits) — a thin highlight -->
+<rect x="40" y="100" width="220" height="3" fill="#484858" stroke="none"/>
+
+<!-- CONTROL PANEL (inset) -->
+<rect x="65" y="115" width="170" height="55" fill="#0A0A0A" stroke="#333" stroke-width="1"/>
+<!-- Digital display -->
+<rect x="75" y="123" width="60" height="18" fill="#0D1A0D" stroke="#2A4A2A" stroke-width="0.8"/>
+<text x="105" y="136" text-anchor="middle" fill="#00CC44" font-size="9" font-family="Courier New,Courier,monospace" font-weight="bold">SPD 3</text>
+<!-- Knob 1 (speed) -->
+<circle cx="175" cy="145" r="7" fill="#383840" stroke="#D8DCF0" stroke-width="1"/>
+<line x1="175" y1="138" x2="175" y2="141" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Knob 2 (time) -->
+<circle cx="200" cy="145" r="7" fill="#383840" stroke="#D8DCF0" stroke-width="1"/>
+<line x1="200" y1="138" x2="200" y2="141" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Brand text -->
+<text x="110" y="165" text-anchor="middle" fill="#6A6A8A" font-size="7" font-family="Arial Narrow,Arial,sans-serif" font-weight="bold" letter-spacing="2">ANNEALER</text>
+
+<!-- DISK ON TOP (ellipse, 3/4 perspective) -->
+<!-- Disk shadow/depth — slightly lower ellipse to give thickness feel -->
+<ellipse cx="150" cy="92" rx="100" ry="28" fill="#26263A" stroke="none"/>
+<!-- Main disk surface -->
+<ellipse cx="150" cy="88" rx="100" ry="28" fill="#383848" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Hub center -->
+<circle cx="150" cy="88" r="8" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
+<line x1="146" y1="88" x2="154" y2="88" stroke="#D8DCF0" stroke-width="0.8"/>
+<line x1="150" y1="84" x2="150" y2="92" stroke="#D8DCF0" stroke-width="0.8"/>
+
+<!-- 8 HOLES in disk at angles 0,45,90,135,180,225,270,315 degrees -->
+<!-- Ellipse coords: px = cx + r_x*cos(a), py = cy + r_y*sin(a), r_x=78, r_y=22 -->
+<!-- angle=0   (right):   228, 88 -->
+<!-- angle=45  (NE):      205, 104 -- wait: sin(45)=0.707 → y=88+22*0.707=88+15.6=103.6, x=150+78*0.707=205.1 -->
+<!-- angle=315 (SE equiv = -45): 205, 72.4 -->
+<!-- Let me recompute: for top disk viewed in 3/4, we treat it as flat ellipse -->
+<!-- angle=0: right: (228, 88) -->
+<!-- angle=45: x=150+78*cos45=205, y=88+22*sin45=104  -->
+<!-- angle=90: bottom: (150, 110) -->
+<!-- angle=135: x=150+78*cos135=95, y=88+22*sin135=104 -->
+<!-- angle=180: left: (72, 88) -->
+<!-- angle=225: x=95, y=72 -->
+<!-- angle=270: top: (150, 66) -->
+<!-- angle=315: x=205, y=72 -->
+
+<!-- Hole angle=0 (FLAME POSITION, right) -->
+<circle cx="228" cy="88" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<!-- Hole angle=45 -->
+<circle cx="205" cy="104" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<!-- Hole angle=90 (bottom) -->
+<circle cx="150" cy="110" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<!-- Hole angle=135 -->
+<circle cx="95" cy="104" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<!-- Hole angle=180 (left) -->
+<circle cx="72" cy="88" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<!-- Hole angle=225 -->
+<circle cx="95" cy="72" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<!-- Hole angle=270 (top) -->
+<circle cx="150" cy="66" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<!-- Hole angle=315 -->
+<circle cx="205" cy="72" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+
+<!-- CASES (upright, small) in each hole — use #g-case scaled down -->
+<!-- angle=45 -->
+<use href="#g-case" transform="translate(205,104) scale(0.45) translate(-8,-22)"/>
+<!-- angle=90 (bottom) -->
+<use href="#g-case" transform="translate(150,110) scale(0.45) translate(-8,-22)"/>
+<!-- angle=135 -->
+<use href="#g-case" transform="translate(95,104) scale(0.45) translate(-8,-22)"/>
+<!-- angle=180 (left) -->
+<use href="#g-case" transform="translate(72,88) scale(0.45) translate(-8,-22)"/>
+<!-- angle=225 -->
+<use href="#g-case" transform="translate(95,72) scale(0.45) translate(-8,-22)"/>
+<!-- angle=270 (top) -->
+<use href="#g-case" transform="translate(150,66) scale(0.45) translate(-8,-22)"/>
+<!-- angle=315 -->
+<use href="#g-case" transform="translate(205,72) scale(0.45) translate(-8,-22)"/>
+
+<!-- FLAME POSITION (angle=0): orange glow highlight behind case -->
+<rect x="221" y="74" width="14" height="18" fill="#FF6600" opacity="0.30" rx="2"/>
+<!-- Case at flame position -->
+<use href="#g-case" transform="translate(228,88) scale(0.45) translate(-8,-22)"/>
+<!-- Drive roller (small rect at bottom of hole) -->
+<rect x="225" y="89" width="6" height="2" fill="#888899" stroke="#D8DCF0" stroke-width="0.5"/>
+
+<!-- FLAME (polygons only, right side of disk) -->
+<!-- Outer flame -->
+<polygon points="252,86 243,75 247,82 240,72 244,80 245,68 248,78 252,72 252,80 257,70 255,80 260,74 256,82 260,82 252,86" fill="#FF6600"/>
+<!-- Inner flame -->
+<polygon points="252,85 246,78 249,82 246,75 250,80 251,71 252,78 254,73 254,80 257,75 255,81 252,85" fill="#FFCC00"/>
+<!-- Inner bright core -->
+<polygon points="252,84 249,79 251,82 250,77 252,80 252,74 253,80 254,77 254,81 252,84" fill="#FFEE88"/>
+
+<!-- ROTATION ARROW on disk surface (polyline approximating arc) -->
+<polyline points="130,97 120,93 113,88 116,82 123,78" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
+<!-- Arrowhead -->
+<polygon points="123,78 117,74 119,81" fill="#C8D0E8"/>
+
+<!-- LEADER LINES & LABELS -->
+<!-- Left: Box body -->
+<circle cx="42" cy="135" r="1.5" fill="#C8D0E8"/>
+<line x1="42" y1="135" x2="36" y2="135" stroke="#C8D0E8" stroke-width="0.75"/>
+<text x="34" y="133" text-anchor="end" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif" font-weight="bold">Box body.</text>
+
+<!-- Left: Controls -->
+<circle cx="65" cy="148" r="1.5" fill="#C8D0E8"/>
+<line x1="65" y1="148" x2="36" y2="152" stroke="#C8D0E8" stroke-width="0.75"/>
+<text x="34" y="150" text-anchor="end" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Controls.</text>
+
+<!-- Right: Disk -->
+<circle cx="248" cy="80" r="1.5" fill="#C8D0E8"/>
+<line x1="248" y1="80" x2="264" y2="76" stroke="#C8D0E8" stroke-width="0.75"/>
+<text x="266" y="79" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif" font-weight="bold">Disk.</text>
+
+<!-- Right: Case (spinning) -->
+<circle cx="228" cy="81" r="1.5" fill="#C8D0E8"/>
+<line x1="228" y1="81" x2="264" y2="90" stroke="#C8D0E8" stroke-width="0.75"/>
+<text x="266" y="93" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Case (spinning).</text>
+
+<!-- Right: Flame -->
+<circle cx="255" cy="76" r="1.5" fill="#C8D0E8"/>
+<line x1="255" y1="76" x2="264" y2="105" stroke="#C8D0E8" stroke-width="0.75"/>
+<text x="266" y="108" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Flame.</text>
+
+<!-- CAPTION -->
+<text x="150" y="196" text-anchor="middle" fill="#7A7A9A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Rotary flame annealer — cases index through flame one at a time</text>
         </svg>
         <p>Restore brass softness — prevents neck cracking and ensures consistent neck tension. Cases spin on their axis in the flame for even heat. Only the neck and shoulder get hot — base stays cool (critical for primer pocket integrity).</p>
         <div class="tip">✅ Correct anneal: neck turns straw/light gold colour. Over-annealed: blue/purple (too hot). Under: no colour change.</div>
