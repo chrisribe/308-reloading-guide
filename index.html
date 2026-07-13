@@ -709,100 +709,90 @@
     <div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">4</div>
-        <div class="step-label"><strong>Clean &amp; Deburr Primer Pocket</strong><br><span>Brush carbon out, then uniform the pocket</span></div>
+        <div class="step-label"><strong>Brush Pocket &amp; Deburr Flash Hole</strong><br><span>Carbon out of pocket — remove machining burr from flash hole</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
       </div>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
 <!-- COORDINATE SYSTEM
-  viewBox: 0 0 300 160
-  LEFT tool+pocket: centered at cx=90
-  RIGHT tool+pocket: centered at cx=210
-  Case head rect: y=80 h=35, full width of each panel
-  Pocket: centered in case head, width=20, depth=18, top at y=80
-  Tools: above pocket, bottom of tool at y=75 (just above or entering pocket)
-  Left labels: x<40, Right labels: x>250
-  Footer caption: y=155
+  viewBox: 0 0 300 180
+  LEFT panel center: cx=80
+  RIGHT panel center: cx=210
+  Case head (left): rect x=50 y=90 w=60 h=30
+  Pocket cutout (left): x=70 y=90 w=20 h=16
+  Full case (right): use #g-case translate(210,155) scale(2.2)
+  Tool rod (right): thin rect from y=20 down to y=140, cx=210
 -->
-<!-- Title -->
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">PRIMER POCKET — BRUSH THEN UNIFORM</text>
 <!-- Divider line -->
-<line x1="150" y1="15" x2="150" y2="148" stroke="#333" stroke-width="0.8" opacity="0.6"/>
+<line x1="150" y1="10" x2="150" y2="168" stroke="#333" stroke-width="0.8" opacity="0.6"/>
 
 <!-- ===== LEFT: POCKET BRUSH ===== -->
 <!-- T-handle crossbar -->
-<rect x="72" y="18" width="36" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<rect x="62" y="18" width="36" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <!-- Vertical rod -->
-<rect x="87" y="25" width="6" height="30" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Bristle head — rect body with short vertical bristle lines -->
-<rect x="83" y="55" width="14" height="12" fill="#2E2E3A" stroke="#D8DCF0" stroke-width="1.2"/>
-<line x1="85" y1="57" x2="85" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
-<line x1="88" y1="57" x2="88" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
-<line x1="91" y1="57" x2="91" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
-<line x1="94" y1="57" x2="94" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
-<line x1="97" y1="57" x2="97" y2="66" stroke="#D8DCF0" stroke-width="0.7" opacity="0.8"/>
+<rect x="77" y="25" width="6" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Bristle head — rect body with dense short vertical bristle lines -->
+<rect x="73" y="53" width="14" height="11" fill="#2E2E3A" stroke="#D8DCF0" stroke-width="1.2"/>
+<line x1="75" y1="55" x2="75" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="77" y1="55" x2="77" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="79" y1="55" x2="79" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="81" y1="55" x2="81" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="83" y1="55" x2="83" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="85" y1="55" x2="85" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
 <!-- Arrow downward into pocket -->
-<line x1="90" y1="67" x2="90" y2="76" stroke="#C8D0E8" stroke-width="1.2"/>
-<path d="M86,73 L90,78 L94,73" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
+<line x1="80" y1="64" x2="80" y2="86" stroke="#C8D0E8" stroke-width="1.2"/>
+<path d="M76,83 L80,88 L84,83" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
 <!-- Case head — brass rectangle -->
-<rect x="62" y="80" width="56" height="35" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
+<rect x="50" y="90" width="60" height="30" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
 <!-- Primer pocket cutout — flat square bottom, straight walls, NO rounding -->
-<!-- Left wall: x=80, Right wall: x=100, Top: y=80, Bottom: y=98 — width=20, depth=18 -->
-<rect x="80" y="80" width="20" height="18" fill="#1A1A22" stroke="none"/>
-<!-- Flash hole — small dark rect at bottom center -->
-<rect x="89" y="98" width="2" height="8" fill="#1C1C24"/>
+<rect x="70" y="90" width="20" height="16" fill="#1A1A22"/>
+<!-- Flash hole — 2px wide dark rect at pocket floor center going down -->
+<rect x="79" y="106" width="2" height="10" fill="#1C1C24"/>
 <!-- Carbon deposit dots -->
-<circle cx="84" cy="87" r="1.3" fill="#3A3A44"/>
-<circle cx="95" cy="91" r="1.1" fill="#3A3A44"/>
-<circle cx="88" cy="94" r="1.0" fill="#3A3A44"/>
+<circle cx="74" cy="97" r="1.2" fill="#3A3A44"/>
+<circle cx="85" cy="100" r="1.0" fill="#3A3A44"/>
+<circle cx="78" cy="103" r="1.0" fill="#3A3A44"/>
 
 <!-- Left panel labels -->
-<!-- "Pocket brush" label — right side of left panel -->
-<line x1="96" y1="62" x2="128" y2="62" stroke="#7AB3E0" stroke-width="0.8"/>
-<circle cx="128" cy="62" r="1.2" fill="#7AB3E0"/>
-<text x="130" y="65" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pocket brush</text>
-<!-- "Flash hole" label — from flash hole down-left -->
-<line x1="89" y1="103" x2="65" y2="120" stroke="#A0A8C0" stroke-width="0.8"/>
-<circle cx="65" cy="120" r="1.2" fill="#A0A8C0"/>
-<text x="67" y="123" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole</text>
+<line x1="86" y1="59" x2="125" y2="59" stroke="#7AB3E0" stroke-width="0.8"/>
+<circle cx="125" cy="59" r="1.2" fill="#7AB3E0"/>
+<text x="127" y="62" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pocket brush.</text>
+<line x1="79" y1="113" x2="55" y2="130" stroke="#A0A8C0" stroke-width="0.8"/>
+<circle cx="55" cy="130" r="1.2" fill="#A0A8C0"/>
+<text x="10" y="133" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole.</text>
 
-<!-- ===== RIGHT: UNIFORMER TOOL ===== -->
-<!-- Cylinder body (handle) -->
-<rect x="201" y="18" width="18" height="40" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Shank — narrower rect connecting handle to cutting end -->
-<rect x="205" y="58" width="10" height="16" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Flat cutting end — same width as pocket (20px), perfectly flat bottom -->
-<rect x="200" y="74" width="20" height="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Case head — brass rectangle -->
-<rect x="182" y="80" width="56" height="35" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
-<!-- Primer pocket cutout — flat square bottom, straight walls -->
-<rect x="200" y="80" width="20" height="18" fill="#1A1A22" stroke="none"/>
-<!-- Flash hole -->
-<rect x="209" y="98" width="2" height="8" fill="#1C1C24"/>
-<!-- Uniformer tool sits in pocket — cutting face at pocket floor level (y=98) -->
-<!-- Redraw tool inside pocket: cutting rect overlaid -->
-<rect x="200" y="80" width="20" height="18" fill="#484858" stroke="#D8DCF0" stroke-width="1" opacity="0.85"/>
-<!-- Flash hole visible through tool — small dark gap -->
-<rect x="209" y="95" width="2" height="3" fill="#1C1C24"/>
+<!-- ===== RIGHT: FLASH HOLE DEBURR ===== -->
+<!-- Full bottleneck case (side view) using g-case symbol, scaled ~2.2x, standing upright -->
+<g transform="translate(210,155) scale(2.2)" fill="#C09830">
+  <use href="#g-case"/>
+</g>
+<!-- Long thin tool rod inserted from case mouth down to flash hole -->
+<!-- Rod: 3px wide, from y=20 to y=140, centered at x=210 -->
+<rect x="208.5" y="20" width="3" height="120" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Tool handle at top — wider grip block -->
+<rect x="203" y="14" width="14" height="8" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Conical cutter tip at bottom of rod — small pointed/conical shape -->
+<!-- Tip centered at x=210, tip bottom at y=142 -->
+<polygon points="207,138 213,138 210,144" fill="#6A6A7A" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Highlight circle at flash hole location (inside case head at base) -->
+<circle cx="210" cy="148" r="3.5" fill="none" stroke="#FFD060" stroke-width="1.2" opacity="0.85"/>
 
 <!-- Right panel labels -->
-<!-- "Uniformer" label -->
-<line x1="220" y1="54" x2="245" y2="54" stroke="#8fbc5a" stroke-width="0.8"/>
-<circle cx="245" cy="54" r="1.2" fill="#8fbc5a"/>
-<text x="247" y="57" fill="#8fbc5a" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Uniformer</text>
-<!-- "Flash hole" label -->
-<line x1="211" y1="103" x2="245" y2="118" stroke="#A0A8C0" stroke-width="0.8"/>
-<circle cx="245" cy="118" r="1.2" fill="#A0A8C0"/>
-<text x="247" y="121" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole</text>
+<line x1="218" y1="30" x2="248" y2="30" stroke="#7AB3E0" stroke-width="0.8"/>
+<circle cx="248" cy="30" r="1.2" fill="#7AB3E0"/>
+<text x="250" y="33" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Flash hole deburr.</text>
+<line x1="213" y1="148" x2="245" y2="158" stroke="#A0A8C0" stroke-width="0.8"/>
+<circle cx="245" cy="158" r="1.2" fill="#A0A8C0"/>
+<text x="170" y="171" fill="#A0A8C0" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Inside of case head.</text>
 
 <!-- Footer caption -->
-<text x="150" y="155" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Clean pocket, then uniform the floor — flat and square</text>
+<text x="150" y="178" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Brush pocket — deburr flash hole on new brass</text>
         </svg>
 
         <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — use the large rifle brush. Insert and rotate several times until all black carbon is gone. The ultrasonic bath will have done most of this already — you're just finishing any stubborn spots.</p>
-        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Primer Pocket Deburrer (Uniformer)</strong> — after brushing, run the reamer tool into the pocket with light pressure and rotate a few turns. This cuts the pocket to a consistent depth and removes the sharp edge left from the flash hole. Consistent pocket depth = primers seat to the same depth every time = more reliable ignition.</p>
-        <div class="tip">✅ Brush first (remove carbon), deburr second (uniform the pocket). Takes about 10 seconds per case.</div>
+        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Flash Hole Deburr</strong> — on new, unfired brass only. A small conical cutter on a long shaft is inserted from the case mouth all the way down to the flash hole. It removes the machining burr left on the inside face of the case head where the flash hole was pierced during manufacture. A sharp burr can deflect the primer's flash unevenly, causing ignition inconsistency. One or two turns is all it takes — once done, never again on that piece of brass.</p>
+        <div class="tip">✅ Flash hole deburr is a one-time operation on new brass. Brush the pocket every firing. Takes about 10 seconds per case.</div>
         <div class="warn">⚠️ Military brass often has a <strong>crimped primer pocket</strong> — the crimp must be swaged or reamed out before you can seat a new primer. You'll feel it when the primer won't go in.</div>
       </div></div>
     </div>
@@ -870,42 +860,42 @@
 <!-- angle=315: x=205, y=72 -->
 
 <!-- Hole angle=0 (FLAME POSITION, right) -->
-<circle cx="228" cy="88" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="228" cy="88" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 <!-- Hole angle=45 -->
-<circle cx="205" cy="104" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="205" cy="104" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 <!-- Hole angle=90 (bottom) -->
-<circle cx="150" cy="110" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="150" cy="110" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 <!-- Hole angle=135 -->
-<circle cx="95" cy="104" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="95" cy="104" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 <!-- Hole angle=180 (left) -->
-<circle cx="72" cy="88" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="72" cy="88" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 <!-- Hole angle=225 -->
-<circle cx="95" cy="72" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="95" cy="72" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 <!-- Hole angle=270 (top) -->
-<circle cx="150" cy="66" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="150" cy="66" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 <!-- Hole angle=315 -->
-<circle cx="205" cy="72" r="5" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
+<circle cx="205" cy="72" r="8" fill="#1C1C24" stroke="#5A5A7A" stroke-width="0.8"/>
 
 <!-- CASES (upright, small) in each hole — use #g-case scaled down -->
 <!-- angle=45 -->
-<use href="#g-case" transform="translate(205,104) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(205,104) scale(1.2) translate(-8,7)"/>
 <!-- angle=90 (bottom) -->
-<use href="#g-case" transform="translate(150,110) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(150,110) scale(1.2) translate(-8,7)"/>
 <!-- angle=135 -->
-<use href="#g-case" transform="translate(95,104) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(95,104) scale(1.2) translate(-8,7)"/>
 <!-- angle=180 (left) -->
-<use href="#g-case" transform="translate(72,88) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(72,88) scale(1.2) translate(-8,7)"/>
 <!-- angle=225 -->
-<use href="#g-case" transform="translate(95,72) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(95,72) scale(1.2) translate(-8,7)"/>
 <!-- angle=270 (top) -->
-<use href="#g-case" transform="translate(150,66) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(150,66) scale(1.2) translate(-8,7)"/>
 <!-- angle=315 -->
-<use href="#g-case" transform="translate(205,72) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(205,72) scale(1.2) translate(-8,7)"/>
 
 <!-- FLAME POSITION (angle=0): orange glow highlight behind case -->
 <rect x="221" y="74" width="14" height="18" fill="#FF6600" opacity="0.30" rx="2"/>
 <!-- Case at flame position -->
-<use href="#g-case" transform="translate(228,88) scale(0.45) translate(-8,-22)"/>
+<use href="#g-case" transform="translate(228,88) scale(1.2) translate(-8,7)"/>
 <!-- Drive roller (small rect at bottom of hole) -->
 <rect x="225" y="89" width="6" height="2" fill="#888899" stroke="#D8DCF0" stroke-width="0.5"/>
 
