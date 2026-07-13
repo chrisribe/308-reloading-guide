@@ -405,24 +405,27 @@
       <text x="170" y="16" text-anchor="middle" fill="#c8973a" font-size="11" font-weight="bold" font-family="sans-serif">.308 Winchester — Parts of a Round</text>
 
       <!--
-        Case: #g-case symbol, scale=3.8, rotated -90° so neck points RIGHT.
-        At scale=3.8: total = 27*3.8 = 102.6px horizontal.
-        Rim half-width (half of 13px * 3.8) = 24.7px.
-        Translate X = 45 + 24.7 ≈ 70 (rim left edge at x=45).
-        CY = 81.
+        .308 anatomy — drawn directly for accurate bottleneck proportions.
+        CY=81. Case runs x=45 (rim face) to x=248 (neck mouth).
+        Rim:      x=45..58,  y=62..100  (13px wide, 38px tall)
+        Body:     x=58..200, y=65..97   (142px long, 32px tall)
+        Shoulder: x=200..220, tapers 32px→16px tall (y=65→73 top, y=97→89 bottom)
+        Neck:     x=220..248, y=73..89  (28px long, 16px tall)
       -->
-      <use href="#g-case" transform="translate(70,81) rotate(-90) scale(3.8)" fill="#c8973a" color="#c8973a"/>
+      <!-- Rim -->
+      <rect x="45" y="62" width="13" height="38" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
+      <!-- Body -->
+      <rect x="58" y="65" width="142" height="32" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
+      <!-- Shoulder (trapezoid) -->
+      <polygon points="200,65 220,73 220,89 200,97" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
+      <!-- Neck -->
+      <rect x="220" y="73" width="28" height="16" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
 
-      <!-- PRIMER POCKET — cut view
-           Rim outer face = x=45. Pocket recessed 10px → floor x=55.
-           Pocket centered on CY=81: y=70 to y=92. -->
-      <!-- Pocket void -->
+      <!-- PRIMER POCKET — cut view, flush with rim face at x=45 -->
       <rect x="45" y="70" width="10" height="22" fill="#2a0e04"/>
-      <!-- Primer face flush with rim at x=45 -->
       <rect x="45" y="71" width="9" height="20" fill="#d05525" stroke="#e06030" stroke-width="0.8"/>
-      <!-- Anvil dimple -->
       <circle cx="46" cy="81" r="2" fill="#a03010"/>
-      <!-- Flash hole: channel from primer pocket through case body -->
+      <!-- Flash hole -->
       <rect x="55" y="79.5" width="35" height="3" fill="#1a0a02"/>
 
       <!-- Powder charges inside case body (x=95..200, centered vertically around y=81) -->
@@ -438,9 +441,8 @@
         Scale=2.5 → 30px tall. Base at x≈257 (neck mouth), tip at x≈287.
         CY=81.
       -->
-      <use href="#g-bullet" transform="translate(257,81) rotate(-90) scale(2.5)"/>
-      <!-- Cannelure groove near base of bullet -->
-      <rect x="257" y="78" width="3" height="6" fill="#555" opacity="0.7"/>
+      <!-- Cannelure groove near base of bullet (at neck mouth x=248) -->
+      <rect x="248" y="78" width="3" height="6" fill="#555" opacity="0.7"/>
 
       <!-- LABEL ARROWS & TEXT -->
       <!-- Rim — center of rim at x=57 (45+12), CY=81 -->
@@ -459,13 +461,14 @@
       <text x="110" y="42" text-anchor="middle" fill="#e0b860" font-size="9.5" font-family="sans-serif">Brass Case (you reload this)</text>
       <line x1="110" y1="45" x2="110" y2="54" stroke="#e0b860" stroke-width="1" marker-end="url(#a3)"/>
 
-      <!-- Neck — shoulder/neck region x≈155 -->
-      <line x1="160" y1="113" x2="160" y2="68" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
-      <text x="160" y="126" text-anchor="middle" fill="#c8973a" font-size="9.5" font-family="sans-serif" font-weight="600">Neck</text>
+      <!-- Neck — center of neck x=234 -->
+      <line x1="234" y1="113" x2="234" y2="90" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
+      <text x="234" y="126" text-anchor="middle" fill="#c8973a" font-size="9.5" font-family="sans-serif" font-weight="600">Neck</text>
 
-      <!-- Bullet — center of bullet x=272 -->
-      <line x1="272" y1="113" x2="272" y2="95" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
-      <text x="272" y="126" text-anchor="middle" fill="#aaa" font-size="9.5" font-family="sans-serif" font-weight="600">Bullet</text>
+      <!-- Bullet — base at x=248, tip ~x=295 -->
+      <use href="#g-bullet" transform="translate(248,81) rotate(-90) scale(2.5)"/>
+      <line x1="275" y1="113" x2="275" y2="88" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
+      <text x="275" y="126" text-anchor="middle" fill="#aaa" font-size="9.5" font-family="sans-serif" font-weight="600">Bullet</text>
     </svg>
   </div>
 
