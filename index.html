@@ -466,7 +466,7 @@
       <text x="234" y="126" text-anchor="middle" fill="#c8973a" font-size="9.5" font-family="sans-serif" font-weight="600">Neck</text>
 
       <!-- Bullet — base at x=248, tip ~x=295 -->
-      <use href="#g-bullet" transform="translate(248,81) rotate(-90) scale(2.5)"/>
+      <use href="#g-bullet" transform="translate(248,81) rotate(90) scale(2.5)"/>
       <line x1="275" y1="113" x2="275" y2="88" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
       <text x="275" y="126" text-anchor="middle" fill="#aaa" font-size="9.5" font-family="sans-serif" font-weight="600">Bullet</text>
     </svg>
@@ -505,19 +505,19 @@
   cx offsets: 38, 103, 168, 233
 -->
 <!-- CASE 1: GOOD (cx=38, base y=115) -->
-<use href="#g-case" transform="translate(38,115) scale(3.7)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(38,115) scale(2.4)" fill="#C09830" color="#C09830"/>
 <line x1="24" y1="107" x2="52" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <text x="38" y="128" text-anchor="middle" fill="#4CBB6A" font-size="16">✓</text>
 <text x="38" y="140" text-anchor="middle" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
 <!-- CASE 2: CRACK (cx=103, base y=115) -->
-<use href="#g-case" transform="translate(103,115) scale(3.7)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(103,115) scale(2.4)" fill="#C09830" color="#C09830"/>
 <line x1="89" y1="107" x2="117" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <!-- crack on neck -->
 <path d="M108,17 L112,21 L108,25 L112,29" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="103" y="128" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
 <text x="103" y="140" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
 <!-- CASE 3: BRIGHT RING (cx=168, base y=115) -->
-<use href="#g-case" transform="translate(168,115) scale(3.7)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(168,115) scale(2.4)" fill="#C09830" color="#C09830"/>
 <line x1="154" y1="107" x2="182" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <!-- bright ring near base -->
 <line x1="152" y1="104" x2="184" y2="104" stroke="#FFE040" stroke-width="3" opacity="0.95"/>
@@ -525,7 +525,7 @@
 <text x="168" y="138" text-anchor="middle" fill="#FFE040" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT RING</text>
 <text x="168" y="147" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">incipient separation</text>
 <!-- CASE 4: DENT (cx=233, base y=115) -->
-<use href="#g-case" transform="translate(233,115) scale(3.7)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(233,115) scale(2.4)" fill="#C09830" color="#C09830"/>
 <line x1="219" y1="107" x2="247" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <!-- dent on body — straight V notch instead of Q curve -->
 <path d="M219,65 L213,75 L219,85" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
