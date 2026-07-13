@@ -600,14 +600,14 @@
 <!-- Pin tip (point, at y=123 — inside case body near primer pocket) -->
 <polygon points="148.5,123 151.5,123 150,128" fill="#E8E8F0" stroke="#D8DCF0" stroke-width="0.8"/>
 
-<!-- ══ CASE — solid brass, upright, scale=3.5, base at y=170 ══ -->
-<use href="#g-case" transform="translate(150,170) scale(3.5)" fill="#C09830" color="#C09830"/>
-<use href="#g-case" transform="translate(150,170) scale(3.5)" fill="none" stroke="#D8A820" stroke-width="0.35"/>
+<!-- ══ CASE — fully rammed, base at y=133 so pin tip (y=128) aligns with primer pocket ══ -->
+<use href="#g-case" transform="translate(150,133) scale(3.5)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(150,133) scale(3.5)" fill="none" stroke="#D8A820" stroke-width="0.35"/>
 
-<!-- ══ PRIMER — red disc at base ══ -->
-<rect x="143" y="166" width="14" height="5" rx="0.5" fill="#E05050" stroke="#FF8080" stroke-width="1"/>
-<!-- Primer eject arrow downward -->
-<line x1="150" y1="173" x2="150" y2="190" stroke="#E05050" stroke-width="2" marker-end="url(#g-arr-red)"/>
+<!-- ══ PRIMER — ejected, falling below base ══ -->
+<rect x="143" y="135" width="14" height="5" rx="0.5" fill="#E05050" stroke="#FF8080" stroke-width="1" opacity="0.7"/>
+<!-- Primer eject arrow downward — longer to show primer flying out -->
+<line x1="150" y1="142" x2="150" y2="210" stroke="#E05050" stroke-width="2" marker-end="url(#g-arr-red)"/>
 
 <!-- ══ LABELS right ══ -->
 <circle cx="189" cy="46" r="1.8" fill="#C8D0E8"/>
@@ -622,30 +622,30 @@
 <line x1="151.5" y1="75" x2="200" y2="68" stroke="#C8D0E8" stroke-width="0.7"/>
 <text x="202" y="71" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Decapping pin</text>
 
+<circle cx="163.5" cy="53" r="1.8" fill="#D8A820"/>
+<line x1="163.5" y1="53" x2="200" y2="48" stroke="#D8A820" stroke-width="0.7"/>
+<text x="202" y="51" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case neck</text>
+
 <circle cx="163.5" cy="90" r="1.8" fill="#D8A820"/>
-<line x1="163.5" y1="90" x2="200" y2="85" stroke="#D8A820" stroke-width="0.7"/>
-<text x="202" y="88" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case neck</text>
+<line x1="163.5" y1="90" x2="200" y2="90" stroke="#D8A820" stroke-width="0.7"/>
+<text x="202" y="93" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case body</text>
 
-<circle cx="163.5" cy="125" r="1.8" fill="#D8A820"/>
-<line x1="163.5" y1="125" x2="200" y2="125" stroke="#D8A820" stroke-width="0.7"/>
-<text x="202" y="128" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case body</text>
-
-<circle cx="163.5" cy="168" r="1.8" fill="#E05050"/>
-<line x1="163.5" y1="168" x2="200" y2="163" stroke="#E05050" stroke-width="0.7"/>
-<text x="202" y="166" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Spent primer ↓</text>
+<circle cx="163.5" cy="131" r="1.8" fill="#E05050"/>
+<line x1="163.5" y1="131" x2="200" y2="126" stroke="#E05050" stroke-width="0.7"/>
+<text x="202" y="129" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Spent primer ↓</text>
 
 <!-- ══ LABELS left ══ -->
 <circle cx="111" cy="18" r="1.8" fill="#C8D0E8"/>
 <line x1="111" y1="18" x2="103" y2="18" stroke="#C8D0E8" stroke-width="0.7"/>
 <text x="2" y="21" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock ring</text>
 
-<circle cx="136" cy="83" r="1.8" fill="#D8A820"/>
-<line x1="136" y1="83" x2="103" y2="83" stroke="#D8A820" stroke-width="0.7"/>
-<text x="2" y="86" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shoulder</text>
+<circle cx="136" cy="48" r="1.8" fill="#D8A820"/>
+<line x1="136" y1="48" x2="103" y2="48" stroke="#D8A820" stroke-width="0.7"/>
+<text x="2" y="51" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shoulder</text>
 
-<circle cx="135" cy="170" r="1.8" fill="#D8A820"/>
-<line x1="135" y1="170" x2="103" y2="170" stroke="#D8A820" stroke-width="0.7"/>
-<text x="2" y="173" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base / rim</text>
+<circle cx="135" cy="133" r="1.8" fill="#D8A820"/>
+<line x1="135" y1="133" x2="103" y2="133" stroke="#D8A820" stroke-width="0.7"/>
+<text x="2" y="136" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base / rim</text>
 
 <text x="150" y="225" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SIDE VIEW  ·  Case enters die neck-first  ·  Pin ejects primer downward</text>
         </svg>
@@ -991,7 +991,8 @@
 <line x1="34" y1="84" x2="156" y2="84" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
 <!-- Horizontal case: #g-case rotated -90° (neck right), scale=4 -->
 <!-- Rim left edge at x=44, CY=53. translateX=44+(6.5*4)=70 -->
-<use href="#g-case" transform="translate(70,53) rotate(-90) scale(4)" fill="#C09830" color="#C09830"/>
+<!-- rotate(90)=neck RIGHT toward shoulder zone, base LEFT. translateX=44: base at x=44, neck tip at x=44+108=152. Shoulder at x=44+80..92=124-136. Red X at 122-134 aligns ✓ -->
+<use href="#g-case" transform="translate(44,53) rotate(90) scale(4)" fill="#C09830" color="#C09830"/>
 <!-- Red X over shoulder area -->
 <line x1="122" y1="40" x2="134" y2="64" stroke="#E05050" stroke-width="2"/>
 <line x1="134" y1="40" x2="122" y2="64" stroke="#E05050" stroke-width="2"/>
@@ -1287,10 +1288,9 @@
 <line x1="100" y1="60" x2="110" y2="48" stroke="#D8DCF0" stroke-width="1.5"/>
 <circle cx="112" cy="46" r="4" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 
-<!-- ══ CASE — horizontal, neck-first into cutter (neck LEFT toward cutter) ══ -->
-<!-- rotate(-90)=neck left, base right. scale=4.0. Neck tip at x=174, base at x=174+27*4=282 -->
-<use href="#g-case" transform="translate(174,80) rotate(-90) scale(4.0)" fill="#C09830" color="#C09830"/>
-<use href="#g-case" transform="translate(174,80) rotate(-90) scale(4.0)" fill="none" stroke="#D8A820" stroke-width="0.25"/>
+<!-- rotate(90)=neck RIGHT. translateX=66: base at x=66, neck tip at x=66+108=174. Neck region x=158-174 at cutter blade x=164 ✓. Pilot x=164-174 inside neck ✓ -->
+<use href="#g-case" transform="translate(66,80) rotate(90) scale(4.0)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(66,80) rotate(90) scale(4.0)" fill="none" stroke="#D8A820" stroke-width="0.25"/>
 
 <!-- Brass chips / cutting indication -->
 <line x1="164" y1="68" x2="158" y2="62" stroke="#C8973A" stroke-width="1" opacity="0.8"/>
@@ -1313,9 +1313,9 @@
 <line x1="164" y1="80" x2="164" y2="110" stroke="#FFD060" stroke-width="0.7"/>
 <text x="140" y="116" fill="#FFD060" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cutter blade</text>
 
-<circle cx="252" cy="74" r="1.5" fill="#D8A820"/>
-<line x1="252" y1="74" x2="270" y2="55" stroke="#D8A820" stroke-width="0.7"/>
-<text x="240" y="51" fill="#D8A820" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case base</text>
+<circle cx="70" cy="74" r="1.5" fill="#D8A820"/>
+<line x1="70" y1="74" x2="50" y2="55" stroke="#D8A820" stroke-width="0.7"/>
+<text x="20" y="51" fill="#D8A820" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case base</text>
         </svg>
         <p>Set the trimmer to <strong>2.005"</strong>. Insert case neck-first into the pilot, turn the crank until it stops cutting — the stop sets the length. Measure with calipers after trimming to confirm.</p>
         <div class="tip">✅ After trimming, deburr and chamfer the case mouth — the next step.</div>
