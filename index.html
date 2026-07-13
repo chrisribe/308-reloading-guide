@@ -1661,9 +1661,10 @@
 <text x="60" y="95" text-anchor="middle" fill="#D8DCF0" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE</text>
 <text x="60" y="104" text-anchor="middle" fill="#D8DCF0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">GAUGE</text>
 <!-- GOOD round: bullet-first (nose DOWN). scale(1,-1) flips case: base at y=42 (top/flush), neck goes to y=69 (down) -->
-<use href="#g-case" transform="translate(60,42) scale(1,-1)" fill="#C09830" color="#C09830"/>
-<!-- Bullet: base at neck bottom y=69, tip at y=81 (pointing DOWN into gauge) -->
-<use href="#g-bullet" transform="translate(60,69) scale(1,-1)"/>
+<!-- scale(1.8,-1.8): case 49px tall. Base at y=42 (flush), neck at y=91 -->
+<use href="#g-case" transform="translate(60,42) scale(1.8,-1.8)" fill="#C09830" color="#C09830"/>
+<!-- Bullet: base at neck y=91, tip at y=113 (pointing DOWN) -->
+<use href="#g-bullet" transform="translate(60,91) scale(1.8,-1.8)"/>
 <!-- Motion arrows (dropping down from above gauge) -->
 <line x1="56" y1="32" x2="56" y2="36" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
 <line x1="64" y1="32" x2="64" y2="36" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
@@ -1687,16 +1688,17 @@
 <ellipse cx="150" cy="40" rx="30" ry="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <ellipse cx="150" cy="40" rx="14" ry="3.5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
 <!-- BAD round: same orientation. Base at y=37 = 5px proud above gauge flush line y=42 -->
-<use href="#g-case" transform="translate(150,37) scale(1,-1)" fill="#C09830" color="#C09830"/>
-<!-- Bullet: neck bottom at y=37+27=64, tip at y=76 (pointing down) -->
-<use href="#g-bullet" transform="translate(150,64) scale(1,-1)"/>
+<!-- scale(1.8,-1.8): base at y=37 (5px proud above flush y=42), neck at y=86 -->
+<use href="#g-case" transform="translate(150,37) scale(1.8,-1.8)" fill="#C09830" color="#C09830"/>
+<!-- Bullet: base at neck y=86, tip at y=108 (pointing down) -->
+<use href="#g-bullet" transform="translate(150,86) scale(1.8,-1.8)"/>
 <!-- Round base is above flush line (proud) -->
 <line x1="115" y1="42" x2="185" y2="42" stroke="#E05050" stroke-width="1.2" stroke-dasharray="4,2"/>
 <text x="108" y="39" fill="#E05050" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕</text>
 <!-- Proud gap indicator -->
-<line x1="183" y1="37" x2="183" y2="42" stroke="#E05050" stroke-width="1.5"/>
-<line x1="179" y1="37" x2="187" y2="37" stroke="#E05050" stroke-width="1"/>
-<line x1="179" y1="42" x2="187" y2="42" stroke="#E05050" stroke-width="1"/>
+<line x1="183" y1="37" x2="183" y2="42" stroke="#E05050" stroke-width="2"/>
+<line x1="178" y1="37" x2="188" y2="37" stroke="#E05050" stroke-width="1.2"/>
+<line x1="178" y1="42" x2="188" y2="42" stroke="#E05050" stroke-width="1.2"/>
 <text x="191" y="40" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">proud</text>
 <text x="150" y="130" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ Proud = RESIZE or RE-TRIM</text>
 <!-- ===== Checklist panel ===== -->
