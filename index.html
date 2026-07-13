@@ -292,12 +292,20 @@
        To place: <use href="#g-case" transform="translate(CX, BASE_Y)"/>
   -->
   <symbol id="g-case" overflow="visible">
+    <!--
+      .308 case — correct proportions. Origin = center-bottom of rim. Total height = 27px.
+      Rim:      ±6.5px wide, 3px tall  (y=0 to y=-3)
+      Body:     ±4px wide,  17px tall  (y=-3 to y=-20)
+      Shoulder: tapers ±4px→±2.5px,  3px tall  (y=-20 to y=-23)
+      Neck:     ±2.5px wide, 4px tall  (y=-23 to y=-27)
+      Body:neck width ratio = 3.2:1
+    -->
     <!-- Rim -->
     <rect x="-6.5" y="-3"  width="13"  height="3"   fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
     <!-- Body -->
-    <rect x="-5.5" y="-20" width="11"  height="17"  fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
-    <!-- Shoulder (polygon: body-width at bottom, neck-width at top) -->
-    <polygon points="-5.5,-20 -2.5,-23 2.5,-23 5.5,-20" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+    <rect x="-4"   y="-20" width="8"   height="17"  fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+    <!-- Shoulder -->
+    <polygon points="-4,-20 -2.5,-23 2.5,-23 4,-20" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
     <!-- Neck -->
     <rect x="-2.5" y="-27" width="5"   height="4"   fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
   </symbol>
