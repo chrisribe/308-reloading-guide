@@ -177,11 +177,13 @@
     }
     .step-detail-inner { padding: 10pt 12pt !important; }
     .step-detail p { color: #222 !important; font-size: 11pt; }
+    .step-detail ul { color: #222 !important; font-size: 10pt; }
 
     .step-item {
       background: #fafafa !important;
       border: 1.5px solid #ccc !important;
       page-break-inside: avoid;
+      break-inside: avoid;
       margin-bottom: 8pt;
     }
     .step-item.critical { border-color: #c03030 !important; }
@@ -205,9 +207,18 @@
     .step-detail .tip  { background: #e8f5e0 !important; border-color: #3a7a20 !important; color: #1a4a10 !important; }
     .step-detail .warn { background: #fff4e0 !important; border-color: #c07000 !important; color: #7a4000 !important; }
 
+    /* SVG diagrams — keep dark backgrounds, don't break across pages */
+    svg {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      max-width: 100% !important;
+    }
+
     .tip-box { display: none !important; }
     .nav-bar { display: none !important; }
 
+    /* Print button hidden */
+    .print-btn { display: none !important; }
     /* SVG diagrams — keep them visible, light bg */
     .step-detail-inner svg { background: #f8f8f8 !important; }
 
@@ -249,10 +260,11 @@
     <path d="M25 14 L31 17 L25 20 Z" fill="#bbb"/>
     <rect x="1" y="15.5" width="4" height="5" rx="1" fill="#7a4020"/>
   </svg>
-  <div>
+  <div style="flex:1">
     <div class="deck-title">.308 Reloading Guide</div>
     <div class="deck-sub">Dad's step-by-step reference</div>
   </div>
+  <button class="print-btn" onclick="window.print()" style="background:#C8973A;color:#111;border:none;border-radius:6px;padding:7px 16px;font-size:0.9rem;font-weight:700;cursor:pointer;letter-spacing:0.03em">🖨 Print</button>
 </header>
 
 <main class="slide-wrap">
@@ -1106,7 +1118,51 @@
 <text x="150" y="215" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SECTION A-A  ·  Left = cut (hatched)  ·  Right = exterior</text>
         </svg>
         <p>Set shoulder back 0.001"–0.002" for reliable chambering — body die only, neck untouched. The body die contacts only the case body and shoulder — the neck passes through the open cavity untouched.</p>
-        <div class="tip">✅ Use a headspace comparator gauge. Bump only what's needed — over-working brass shortens case life.</div>
+
+        <p style="margin-top:10px"><strong style="color:#C8973A">Measuring shoulder position — case comparator:</strong></p>
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" style="margin-top:6px;display:block;width:100%">
+<rect width="300" height="160" fill="#1C1C24"/>
+<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">MEASURE SHOULDER — CASE COMPARATOR + CALIPERS</text>
+<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Measure before bump · bump die · measure again · target: 0.001"–0.002" less</text>
+<line x1="150" y1="22" x2="150" y2="145" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<rect x="15" y="60" width="220" height="8" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
+<rect x="15" y="68" width="9" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
+<rect x="165" y="54" width="38" height="22" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
+<rect x="169" y="57" width="30" height="13" fill="#0d1a0d" stroke="#2a6a2a" stroke-width="0.8"/>
+<text x="184" y="67" text-anchor="middle" fill="#40E040" font-size="8" font-weight="bold" font-family="monospace">1.562"</text>
+<rect x="203" y="68" width="9" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
+<use href="#g-case" transform="translate(24,80) rotate(90) scale(4.8)" fill="#C09830" color="#C09830"/>
+<use href="#g-case" transform="translate(24,80) rotate(90) scale(4.8)" fill="none" stroke="#D8A820" stroke-width="0.25"/>
+<rect x="105" y="68" width="22" height="25" fill="none" stroke="#FFD060" stroke-width="1.8" stroke-dasharray="4,2"/>
+<text x="116" y="63" text-anchor="middle" fill="#FFD060" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">COMPARATOR</text>
+<line x1="116" y1="65" x2="116" y2="68" stroke="#FFD060" stroke-width="0.8"/>
+<line x1="24" y1="103" x2="116" y2="103" stroke="#C8973A" stroke-width="1.2"/>
+<line x1="24" y1="99" x2="24" y2="107" stroke="#C8973A" stroke-width="1.2"/>
+<line x1="116" y1="99" x2="116" y2="107" stroke="#C8973A" stroke-width="1.2"/>
+<text x="70" y="115" text-anchor="middle" fill="#C8973A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base to datum (headspace)</text>
+<rect x="160" y="80" width="130" height="58" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
+<text x="225" y="92" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BEFORE / AFTER</text>
+<line x1="160" y1="95" x2="290" y2="95" stroke="#444" stroke-width="0.8"/>
+<text x="168" y="105" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Before bump:</text>
+<text x="265" y="105" text-anchor="end" fill="#E05050" font-size="7" font-weight="bold" font-family="monospace">1.564"</text>
+<text x="168" y="117" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">After bump:</text>
+<text x="265" y="117" text-anchor="end" fill="#4CBB6A" font-size="7" font-weight="bold" font-family="monospace">1.562"</text>
+<text x="168" y="129" fill="#C8973A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Difference:</text>
+<text x="265" y="129" text-anchor="end" fill="#C8973A" font-size="7" font-weight="bold" font-family="monospace">0.002" ✓</text>
+<line x1="24" y1="72" x2="10" y2="55" stroke="#D8DCF0" stroke-width="0.7"/>
+<text x="2" y="52" fill="#C8D0E8" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base</text>
+<line x1="154" y1="80" x2="154" y2="55" stroke="#D8DCF0" stroke-width="0.7"/>
+<text x="130" y="52" fill="#D8A820" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Neck (free)</text>
+<text x="150" y="150" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Comparator seats at shoulder datum — same spot every time = consistent headspace</text>
+        </svg>
+        <ul style="padding-left:18px; color:#ddd; font-size:0.9rem; line-height:1.9; margin-top:6px">
+          <li>Slip comparator insert onto caliper jaw — .308 uses <strong>0.330" datum hole</strong></li>
+          <li>Measure case: base on fixed jaw, comparator seated on shoulder → write down reading</li>
+          <li>Run case through body die — adjust die in small increments</li>
+          <li>Measure again — target is <strong>0.001"–0.002" less</strong> than your before reading</li>
+          <li>Never bump more than 0.002" — over-working brass cracks necks</li>
+        </ul>
+        <div class="tip">✅ Bump only what's needed. Less is more — 0.001" setback is plenty for most loads.</div>
         <div class="warn">⚠️ Body die does NOT size the neck. Neck tension is set separately in the next step.</div>
       </div></div>
     </div>
