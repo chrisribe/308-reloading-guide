@@ -404,22 +404,28 @@
       <!-- Title -->
       <text x="170" y="16" text-anchor="middle" fill="#c8973a" font-size="11" font-weight="bold" font-family="sans-serif">.308 Winchester — Parts of a Round</text>
 
-      <!-- RIM — wider lip at case base -->
-      <rect x="45" y="50" width="13" height="63" rx="2" fill="#c8973a" stroke="#e0a820" stroke-width="1.5"/>
-      <!-- Extractor groove (indent just inside rim) -->
-      <rect x="58" y="53" width="5" height="57" rx="0" fill="#8b5e10"/>
+      <!--
+        Case: #g-case symbol, scale=3.8, rotated -90° so neck points RIGHT.
+        At scale=3.8: total = 27*3.8 = 102.6px horizontal.
+        Rim half-width (half of 13px * 3.8) = 24.7px.
+        Translate X = 45 + 24.7 ≈ 70 (rim left edge at x=45).
+        CY = 81.
+      -->
+      <use href="#g-case" transform="translate(70,81) rotate(-90) scale(3.8)" fill="#c8973a" color="#c8973a"/>
 
-      <!-- CASE BODY -->
-      <rect x="63" y="55" width="142" height="52" rx="3" fill="#b8860b" stroke="#e0a820" stroke-width="1.5"/>
-
-      <!-- Primer pocket — rectangle in side view, flush with case head -->
-      <rect x="63" y="66" width="9" height="30" rx="1" fill="#7a3a18" stroke="#c05020" stroke-width="1.5"/>
-      <!-- Primer disc face -->
-      <rect x="65" y="68" width="5" height="26" rx="1" fill="#d05525"/>
+      <!-- PRIMER POCKET — cut view
+           Rim outer face = x=45. Pocket recessed 10px → floor x=55.
+           Pocket centered on CY=81: y=70 to y=92. -->
+      <!-- Pocket void -->
+      <rect x="45" y="70" width="10" height="22" fill="#2a0e04"/>
+      <!-- Primer face flush with rim at x=45 -->
+      <rect x="45" y="71" width="9" height="20" fill="#d05525" stroke="#e06030" stroke-width="0.8"/>
       <!-- Anvil dimple -->
-      <circle cx="67" cy="81" r="2" fill="#a03010"/>
+      <circle cx="46" cy="81" r="2" fill="#a03010"/>
+      <!-- Flash hole: channel from primer pocket through case body -->
+      <rect x="55" y="79.5" width="35" height="3" fill="#1a0a02"/>
 
-      <!-- Powder charges inside case -->
+      <!-- Powder charges inside case body (x=95..200, centered vertically around y=81) -->
       <circle cx="110" cy="76" r="3" fill="#e0c050" opacity="0.85"/>
       <circle cx="125" cy="83" r="2.5" fill="#e0c050" opacity="0.85"/>
       <circle cx="140" cy="71" r="3" fill="#e0c050" opacity="0.85"/>
@@ -427,46 +433,39 @@
       <circle cx="170" cy="74" r="3" fill="#e0c050" opacity="0.85"/>
       <circle cx="183" cy="82" r="2.5" fill="#e0c050" opacity="0.85"/>
 
-      <!-- Shoulder / neck taper -->
-      <path d="M205 55 L224 63 L224 99 L205 107 Z" fill="#c8973a" stroke="#e0a820" stroke-width="1"/>
-
-      <!-- Neck -->
-      <rect x="224" y="63" width="32" height="36" rx="2" fill="#c8973a" stroke="#e0a820" stroke-width="1"/>
-
-      <!-- BULLET — horizontal, seated in neck, pointing right -->
-      <!-- Body seated inside neck (base ~x=230), tip extends right -->
-      <path d="M230,69 L264,69 Q300,69 300,81 Q300,93 264,93 L230,93 Z"
-            fill="#999" stroke="#666" stroke-width="1"/>
-      <!-- Cannelure groove (sits at neck mouth ~x=245) -->
-      <rect x="244" y="80" width="3" height="2" fill="#555"/>
-      <!-- Highlight along top edge -->
-      <path d="M232,70 L264,70 Q294,70 298,81" fill="none" stroke="#ccc" stroke-width="1" opacity="0.35"/>
+      <!--
+        Bullet: #g-bullet, rotate -90° so tip points RIGHT.
+        Scale=2.5 → 30px tall. Base at x≈257 (neck mouth), tip at x≈287.
+        CY=81.
+      -->
+      <use href="#g-bullet" transform="translate(257,81) rotate(-90) scale(2.5)"/>
+      <!-- Cannelure groove near base of bullet -->
+      <rect x="257" y="78" width="3" height="6" fill="#555" opacity="0.7"/>
 
       <!-- LABEL ARROWS & TEXT -->
-      <!-- Rim -->
-      <line x1="51" y1="113" x2="51" y2="115" stroke="#e0a820" stroke-width="1.2"/>
-      <line x1="51" y1="113" x2="51" y2="116" stroke="#e0a820" stroke-width="1.2" marker-end="url(#a3)"/>
-      <text x="51" y="127" text-anchor="middle" fill="#e0a820" font-size="9.5" font-family="sans-serif" font-weight="600">Rim</text>
+      <!-- Rim — center of rim at x=57 (45+12), CY=81 -->
+      <line x1="57" y1="113" x2="57" y2="95" stroke="#e0a820" stroke-width="1.2" marker-end="url(#a3)"/>
+      <text x="57" y="126" text-anchor="middle" fill="#e0a820" font-size="9.5" font-family="sans-serif" font-weight="600">Rim</text>
 
-      <!-- Primer -->
-      <line x1="67" y1="113" x2="67" y2="99" stroke="#e07050" stroke-width="1.2" marker-end="url(#a1)"/>
-      <text x="67" y="124" text-anchor="middle" fill="#e07050" font-size="9.5" font-family="sans-serif" font-weight="600">Primer</text>
+      <!-- Primer label — points to primer face at x=47 -->
+      <line x1="47" y1="113" x2="47" y2="93" stroke="#e07050" stroke-width="1.2" marker-end="url(#a1)"/>
+      <text x="47" y="126" text-anchor="middle" fill="#e07050" font-size="9.5" font-family="sans-serif" font-weight="600">Primer</text>
 
-      <!-- Powder -->
-      <line x1="148" y1="113" x2="148" y2="90" stroke="#e0c050" stroke-width="1.2" marker-end="url(#a2)"/>
-      <text x="148" y="124" text-anchor="middle" fill="#e0c050" font-size="9.5" font-family="sans-serif" font-weight="600">Powder</text>
+      <!-- Powder — center of body area x=110 -->
+      <line x1="130" y1="113" x2="130" y2="90" stroke="#e0c050" stroke-width="1.2" marker-end="url(#a2)"/>
+      <text x="130" y="126" text-anchor="middle" fill="#e0c050" font-size="9.5" font-family="sans-serif" font-weight="600">Powder</text>
 
-      <!-- Brass case label above -->
-      <text x="148" y="44" text-anchor="middle" fill="#e0b860" font-size="9.5" font-family="sans-serif">Brass Case (you reload this)</text>
-      <line x1="148" y1="47" x2="148" y2="54" stroke="#e0b860" stroke-width="1" marker-end="url(#a3)"/>
+      <!-- Brass case label above — body center ~x=110 -->
+      <text x="110" y="42" text-anchor="middle" fill="#e0b860" font-size="9.5" font-family="sans-serif">Brass Case (you reload this)</text>
+      <line x1="110" y1="45" x2="110" y2="54" stroke="#e0b860" stroke-width="1" marker-end="url(#a3)"/>
 
-      <!-- Neck -->
-      <line x1="240" y1="113" x2="240" y2="101" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
-      <text x="240" y="124" text-anchor="middle" fill="#c8973a" font-size="9.5" font-family="sans-serif" font-weight="600">Neck</text>
+      <!-- Neck — shoulder/neck region x≈155 -->
+      <line x1="160" y1="113" x2="160" y2="68" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
+      <text x="160" y="126" text-anchor="middle" fill="#c8973a" font-size="9.5" font-family="sans-serif" font-weight="600">Neck</text>
 
-      <!-- Bullet -->
-      <line x1="290" y1="113" x2="282" y2="95" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
-      <text x="296" y="124" text-anchor="middle" fill="#aaa" font-size="9.5" font-family="sans-serif" font-weight="600">Bullet</text>
+      <!-- Bullet — center of bullet x=272 -->
+      <line x1="272" y1="113" x2="272" y2="95" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
+      <text x="272" y="126" text-anchor="middle" fill="#aaa" font-size="9.5" font-family="sans-serif" font-weight="600">Bullet</text>
     </svg>
   </div>
 
@@ -502,35 +501,31 @@
   Neck:    x=CX±7   y=32..15     (14px wide, 17px tall — SHORT)
   cx offsets: 38, 103, 168, 233
 -->
-<!-- CASE 1: GOOD (cx=38) -->
-<path d="M22,115 L54,115 L54,110 L52,110 L52,36 L45,32 L45,15 L31,15 L31,32 L24,36 L24,110 L22,110 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- CASE 1: GOOD (cx=38, base y=115) -->
+<use href="#g-case" transform="translate(38,115) scale(3.7)" fill="#C09830" color="#C09830"/>
 <line x1="24" y1="107" x2="52" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <text x="38" y="128" text-anchor="middle" fill="#4CBB6A" font-size="16">✓</text>
 <text x="38" y="140" text-anchor="middle" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
-<!-- CASE 2: CRACK (cx=103) -->
-<path d="M87,115 L119,115 L119,110 L117,110 L117,36 L110,32 L110,15 L96,15 L96,32 L89,36 L89,110 L87,110 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- CASE 2: CRACK (cx=103, base y=115) -->
+<use href="#g-case" transform="translate(103,115) scale(3.7)" fill="#C09830" color="#C09830"/>
 <line x1="89" y1="107" x2="117" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <!-- crack on neck -->
 <path d="M108,17 L112,21 L108,25 L112,29" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="103" y="128" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
 <text x="103" y="140" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
-<!-- CASE 3: BRIGHT RING (cx=168) -->
-<path d="M152,115 L184,115 L184,110 L182,110 L182,36 L175,32 L175,15 L161,15 L161,32 L154,36 L154,110 L152,110 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- CASE 3: BRIGHT RING (cx=168, base y=115) -->
+<use href="#g-case" transform="translate(168,115) scale(3.7)" fill="#C09830" color="#C09830"/>
 <line x1="154" y1="107" x2="182" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
 <!-- bright ring near base -->
 <line x1="152" y1="104" x2="184" y2="104" stroke="#FFE040" stroke-width="3" opacity="0.95"/>
 <text x="168" y="128" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
 <text x="168" y="138" text-anchor="middle" fill="#FFE040" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT RING</text>
 <text x="168" y="147" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">incipient separation</text>
-<!-- CASE 4: DENT (cx=233) -->
-<path d="M217,115 L249,115 L249,110 L247,110 L247,36 L240,32 L240,15 L226,15 L226,32 L219,36 L219,110 L217,110 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- CASE 4: DENT (cx=233, base y=115) -->
+<use href="#g-case" transform="translate(233,115) scale(3.7)" fill="#C09830" color="#C09830"/>
 <line x1="219" y1="107" x2="247" y2="107" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
-<!-- dent on body -->
-<path d="M219,65 Q213,75 219,85" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round"/>
+<!-- dent on body — straight V notch instead of Q curve -->
+<path d="M219,65 L213,75 L219,85" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="233" y="128" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
 <text x="233" y="140" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DENT</text>
         </svg>
@@ -568,22 +563,18 @@
 <rect x="108" y="68" width="22" height="28" fill="url(#g-thread)" opacity="0.7"/>
 <!-- Right thread zone -->
 <rect x="170" y="68" width="22" height="28" fill="url(#g-thread)" opacity="0.7"/>
-<!-- CASE LEFT (section, hatched brass) -->
-<rect x="141" y="90" width="9" height="29" fill="url(#g-hatch-brass)"/>
-<rect x="141" y="90" width="9" height="29" fill="none" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
-<polygon points="130,124 141,119 150,119 150,124" fill="url(#g-hatch-brass)"/>
-<polygon points="130,124 141,119 150,119 150,124" fill="none" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
-<rect x="130" y="124" width="20" height="51" fill="url(#g-hatch-brass)"/>
-<rect x="130" y="124" width="20" height="51" fill="none" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- CASE — half-section view using #g-case symbol, scale=3.37, cx=150, base y=181 -->
+<!-- Left half (cut, hatched) -->
+<clipPath id="cl2-left"><rect x="108" y="90" width="42" height="91"/></clipPath>
+<use href="#g-case" transform="translate(150,181) scale(3.37)" fill="url(#g-hatch-brass)" color="url(#g-hatch-brass)" clip-path="url(#cl2-left)"/>
+<use href="#g-case" transform="translate(150,181) scale(3.37)" fill="none" stroke="#D8A820" stroke-width="0.4" clip-path="url(#cl2-left)"/>
+<!-- Right half (exterior, flat brass) -->
+<clipPath id="cl2-right"><rect x="150" y="90" width="42" height="91"/></clipPath>
+<use href="#g-case" transform="translate(150,181) scale(3.37)" fill="#C09830" color="#C09830" clip-path="url(#cl2-right)"/>
+<use href="#g-case" transform="translate(150,181) scale(3.37)" fill="none" stroke="#D8A820" stroke-width="0.4" clip-path="url(#cl2-right)"/>
+<!-- Interior voids (hollow inside case body & neck) -->
 <rect x="137" y="124" width="13" height="51" fill="#1e1e1e"/>
 <rect x="145" y="90" width="5" height="29" fill="#1e1e1e"/>
-<rect x="122" y="175" width="28" height="6" fill="url(#g-hatch-brass)"/>
-<rect x="122" y="175" width="28" height="6" fill="none" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
-<!-- CASE RIGHT (exterior, flat brass) -->
-<rect x="150" y="90" width="9" height="29" fill="#9A7010" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
-<polygon points="150,119 159,119 170,124 150,124" fill="#9A7010" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
-<rect x="150" y="124" width="20" height="51" fill="#9A7010" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
-<rect x="150" y="175" width="28" height="6" fill="#9A7010" stroke="#D8A820" stroke-width="1.4" stroke-linejoin="miter"/>
 <!-- Shoulder shelf lines -->
 <line x1="130" y1="124" x2="170" y2="124" stroke="#D8A820" stroke-width="1.4"/>
 <line x1="141" y1="119" x2="159" y2="119" stroke="#D8A820" stroke-width="1.4"/>
@@ -964,11 +955,9 @@
 <line x1="34" y1="70" x2="156" y2="70" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
 <line x1="34" y1="77" x2="156" y2="77" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
 <line x1="34" y1="84" x2="156" y2="84" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
-<!-- Horizontal case: proper bottleneck path rotated 90° (pointing right) -->
-<!-- Rim on LEFT (base), body middle, shoulder step, short neck at RIGHT -->
-<!-- Rim: y=42–64 (22px wide), Body: x=50–128 (78px = ~body), Shoulder: 4px drop, Neck: x=132–150 (18px = ~neck) -->
-<path d="M44,42 L44,64 L46,64 L46,62 L124,62 L128,60 L128,48 L132,46 L132,40 L128,38 L128,44 L124,44 L46,44 L46,42 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- Horizontal case: #g-case rotated -90° (neck right), scale=4 -->
+<!-- Rim left edge at x=44, CY=53. translateX=44+(6.5*4)=70 -->
+<use href="#g-case" transform="translate(70,53) rotate(-90) scale(4)" fill="#C09830" color="#C09830"/>
 <!-- Red X over shoulder area -->
 <line x1="122" y1="40" x2="134" y2="64" stroke="#E05050" stroke-width="2"/>
 <line x1="134" y1="40" x2="122" y2="64" stroke="#E05050" stroke-width="2"/>
@@ -1043,15 +1032,12 @@
 <!-- NECK CAVITY — open / untouched (highlighted) -->
 <rect x="100" y="98" width="16" height="10" fill="#1C1C24" stroke="#FFAA00" stroke-width="1.2" stroke-dasharray="3,2"/>
 <text x="108" y="106" text-anchor="middle" fill="#FFAA00" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">OPEN</text>
-<!-- Case below die — full bottleneck path pointing UP (neck at top) -->
-<!-- cx=108, base y=210, scaled to fit: rim ±8, body ±7, shoulder 3px, neck ±3.5, body 64px, neck 20px -->
-<path d="M100,210 L116,210 L116,207 L115,207 L115,143 L111.5,140 L111.5,124 L104.5,124 L104.5,140 L101,143 L101,207 L100,207 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
-<!-- Left half of case hatched (half-section) -->
+<!-- Case: #g-case symbol, cx=108, base y=210, scale=3.18 (86px tall) -->
+<use href="#g-case" transform="translate(108,210) scale(3.18)" fill="#C09830" color="#C09830"/>
+<!-- Left half of case hatched (half-section clip) -->
 <rect id="case-clip-7" x="91" y="124" width="17" height="86"/>
 <clipPath id="cl7"><use href="#case-clip-7"/></clipPath>
-<path d="M100,210 L116,210 L116,207 L115,207 L115,143 L111.5,140 L111.5,124 L104.5,124 L104.5,140 L101,143 L101,207 L100,207 Z"
-      fill="url(#g-hatch-brass)" opacity="0.85" clip-path="url(#cl7)"/>
+<use href="#g-case" transform="translate(108,210) scale(3.18)" fill="url(#g-hatch-brass)" color="url(#g-hatch-brass)" opacity="0.85" clip-path="url(#cl7)"/>
 <!-- Shoulder setback dimension arrows -->
 <!-- Show shoulder position BEFORE and AFTER with 0.001"-0.002" gap -->
 <line x1="55" y1="140" x2="101" y2="140" stroke="#C8973A" stroke-width="0.9" stroke-dasharray="4,2"/>
@@ -1141,15 +1127,12 @@
 <rect x="98" y="87" width="20" height="12" fill="#383848" stroke="#7AB3E0" stroke-width="1.2"/>
 <rect x="101" y="89" width="14" height="8" fill="#1C1C24" stroke="#7AB3E0" stroke-width="0.8"/>
 <text x="108" y="96" text-anchor="middle" fill="#7AB3E0" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BUSH</text>
-<!-- Case below die — bottleneck path pointing UP -->
-<!-- cx=108, base y=200, rim ±8, body ±7, shoulder 3px, neck ±3.5, body 64px, neck 20px -->
-<path d="M100,200 L116,200 L116,197 L115,197 L115,133 L111.5,130 L111.5,114 L104.5,114 L104.5,130 L101,133 L101,197 L100,197 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- Case: #g-case symbol, cx=108, base y=200, scale=3.18 -->
+<use href="#g-case" transform="translate(108,200) scale(3.18)" fill="#C09830" color="#C09830"/>
 <!-- Left half hatched (half-section) -->
 <rect id="case-clip-8-r" x="92" y="114" width="16" height="86"/>
 <clipPath id="cl8"><use href="#case-clip-8-r"/></clipPath>
-<path d="M100,200 L116,200 L116,197 L115,197 L115,133 L111.5,130 L111.5,114 L104.5,114 L104.5,130 L101,133 L101,197 L100,197 Z"
-      fill="url(#g-hatch-brass)" opacity="0.85" clip-path="url(#cl8)"/>
+<use href="#g-case" transform="translate(108,200) scale(3.18)" fill="url(#g-hatch-brass)" color="url(#g-hatch-brass)" opacity="0.85" clip-path="url(#cl8)"/>
 <!-- Neck tension annotation — squeeze arrows on neck -->
 <line x1="90" y1="120" x2="104" y2="120" stroke="#7AB3E0" stroke-width="1.2"/>
 <line x1="93" y1="117" x2="104" y2="120" stroke="#7AB3E0" stroke-width="0.8"/>
@@ -1226,11 +1209,9 @@
 <!-- Thumb wheel (small knurled circle on bottom of carriage) -->
 <circle cx="185" cy="72" r="5" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
 <circle cx="185" cy="72" r="5" fill="url(#knurl-7)" opacity="0.6"/>
-<!-- Case held between jaws — proper horizontal bottleneck path -->
-<!-- Rim on LEFT (base), body, shoulder, short neck at RIGHT into sliding jaw -->
-<!-- rim y=62–89(27px), body x=25–155(130px long), shoulder 4px, neck x=159–200(41px) -->
-<path d="M24,62 L24,89 L26,89 L26,87 L155,87 L159,85 L159,76 L163,74 L163,77 L163,74 L159,72 L155,70 L26,70 L26,62 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
+<!-- Case horizontal: #g-case rotated -90°, scale=5.15 -->
+<!-- Rim left edge at x=24, CY=75. translateX = 24 + 6.5*5.15 = 57.5 -->
+<use href="#g-case" transform="translate(57,75) rotate(-90) scale(5.15)" fill="#C09830" color="#C09830"/>
 <!-- Measurement span arrow -->
 <line x1="26" y1="100" x2="200" y2="100" stroke="#C8973A" stroke-width="1.2"/>
 <line x1="26" y1="96" x2="26" y2="104" stroke="#C8973A" stroke-width="1.2"/>
@@ -1281,9 +1262,9 @@
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DEBURR &amp; CHAMFER CASE MOUTH</text>
-<!-- LEFT: BEFORE -->
-<!-- Case body (vertical cross-section) -->
-<rect x="22" y="30" width="16" height="60" rx="1.5" fill="#C09830" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- LEFT: BEFORE — case mouth cross-section, using #g-case symbol -->
+<!-- scale=2.2 (≈60px tall), cx=30, base y=90 -->
+<use href="#g-case" transform="translate(30,90) scale(2.2)" fill="#C09830" color="#C09830"/>
 <!-- Sharp right-angle burr at top (case mouth) -->
 <line x1="22" y1="30" x2="38" y2="30" stroke="#E05050" stroke-width="3"/>
 <path d="M21 32 L22 29 L25 32" fill="none" stroke="#E05050" stroke-width="1.5"/>
@@ -1307,8 +1288,8 @@
 <!-- Arrow: tool → after -->
 <path d="M83 70 L100 70" stroke="#C8D0E8" stroke-width="1.2"/>
 <path d="M97 67 L101 70 L97 73" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- RIGHT: AFTER -->
-<rect x="104" y="30" width="16" height="60" rx="1.5" fill="#C09830" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- RIGHT: AFTER — case with chamfer applied -->
+<use href="#g-case" transform="translate(112,90) scale(2.2)" fill="#C09830" color="#C09830"/>
 <!-- Smooth 45° chamfer inside + bevel outside -->
 <path d="M104 30 L107 30 L107 33 L104 36" fill="none" stroke="#4CBB6A" stroke-width="2"/>
 <path d="M120 30 L117 30 L117 33 L120 36" fill="none" stroke="#4CBB6A" stroke-width="2"/>
@@ -1318,15 +1299,15 @@
 <!-- Cross-section enlargement panel on right side -->
 <rect x="145" y="18" width="140" height="100" rx="5" fill="#1a1a2a" stroke="#333" stroke-width="1"/>
 <text x="215" y="30" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case Mouth Cross-Section</text>
-<!-- Before close-up -->
-<rect x="160" y="40" width="8" height="55" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
+<!-- Before close-up — #g-case scale=2.2, cx=164, base y=95 -->
+<use href="#g-case" transform="translate(164,95) scale(2.2)" fill="#C09830" color="#C09830"/>
 <path d="M160 40 L168 40" stroke="#E05050" stroke-width="2.5"/>
 <text x="164" y="36" text-anchor="middle" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">burr</text>
 <text x="164" y="108" text-anchor="middle" fill="#7080A8" font-size="6" font-family="Arial Narrow,Arial,sans-serif">before</text>
 <!-- Arrow -->
 <text x="182" y="72" text-anchor="middle" fill="#555" font-size="14">→</text>
-<!-- After close-up -->
-<rect x="196" y="40" width="8" height="55" fill="#C09830" stroke="#D8DCF0" stroke-width="1"/>
+<!-- After close-up — #g-case scale=2.2, cx=200, base y=95 -->
+<use href="#g-case" transform="translate(200,95) scale(2.2)" fill="#C09830" color="#C09830"/>
 <path d="M196 40 L199 40 L199 43 L196 46" fill="none" stroke="#4CBB6A" stroke-width="2"/>
 <path d="M204 40 L201 40 L201 43 L204 46" fill="none" stroke="#4CBB6A" stroke-width="2"/>
 <text x="200" y="36" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">chamfer</text>
@@ -1367,11 +1348,8 @@
 <text x="127" y="67" text-anchor="middle" fill="#888" font-size="6" font-family="Arial Narrow,Arial,sans-serif">primer tray</text>
 <!-- Shell holder / mechanical body — flat steel -->
 <rect x="108" y="72" width="38" height="20" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Case — single proper bottleneck path, vertical pointing up -->
-<!-- cx=127, base y=73, scaled small: body=22px, neck=5px, shoulder=1px -->
-<!-- rim ±5, body ±4.5, neck ±2.5 -->
-<path d="M122,73 L132,73 L132,71.5 L131.5,71.5 L131.5,50 L129.5,49 L129.5,44 L124.5,44 L124.5,49 L122.5,50 L122.5,71.5 L122,71.5 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="miter"/>
+<!-- Case — #g-case symbol, cx=127, base y=73, scale=1.08 -->
+<use href="#g-case" transform="translate(127,73) scale(1.08)" fill="#C09830" color="#C09830"/>
 <!-- Primer in case head — red -->
 <rect x="124" y="71" width="6" height="3" fill="#E05050" stroke="#FF7070" stroke-width="0.8"/>
 <!-- Flush indicator line -->
@@ -1528,13 +1506,12 @@
 <line x1="123" y1="81" x2="123" y2="102" stroke="#D8DCF0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.35"/>
 <!-- Press top collar -->
 <rect x="78" y="102" width="60" height="12" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Case with bullet seated — single bottleneck path, neck at top -->
-<!-- cx=108, base y=158, scaled: rim ±8, body ±7, neck ±3.5, body 34px, shoulder 2px, neck 8px -->
-<path d="M100,158 L116,158 L116,155 L115,155 L115,124 L111.5,122 L111.5,114 L104.5,114 L104.5,122 L101,124 L101,155 L100,155 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.4" stroke-linejoin="miter"/>
-<!-- Bullet seated in neck — simple tapered polygon (ogive = angled straight lines) -->
-<!-- Tip at 108,103, base at 104.5–111.5 at y=114 -->
-<polygon points="104.5,114 111.5,114 112,118 108,125 104,118" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="1.2"/>
+<!-- Case with bullet seated — #g-case symbol, cx=108, base y=158, scale=1.6 -->
+<!-- At scale=1.6: total height=43px, neck top at y=158-27*1.6=158-43.2=114.8 -->
+<use href="#g-case" transform="translate(108,158) scale(1.6)" fill="#C09830" color="#C09830"/>
+<!-- Bullet seated in neck — use #g-bullet, pointing UP, at neck top -->
+<!-- Neck top at y ≈ 115, cx=108 -->
+<use href="#g-bullet" transform="translate(108,115) scale(1.6)"/>
 <!-- OAL dimension arrow (left side) -->
 <line x1="88" y1="112" x2="88" y2="158" stroke="#C8973A" stroke-width="1"/>
 <line x1="84" y1="112" x2="92" y2="112" stroke="#C8973A" stroke-width="1"/>
@@ -1588,12 +1565,10 @@
 <!-- Side label -->
 <text x="60" y="95" text-anchor="middle" fill="#D8DCF0" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE</text>
 <text x="60" y="104" text-anchor="middle" fill="#D8DCF0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">GAUGE</text>
-<!-- GOOD round dropping in — proper bottleneck path + bullet polygon -->
-<!-- Round: cx=60, base y=42, scaled tiny: rim ±7, body ±6, neck ±3, body 20px, shoulder 2px, neck 5px -->
-<path d="M53,42 L67,42 L67,39.5 L66,39.5 L66,22 L63,20.5 L63,15 L57,15 L57,20.5 L54,22 L54,39.5 L53,39.5 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="miter"/>
-<!-- Bullet tip polygon -->
-<polygon points="57,15 63,15 63.5,17 60,22 56.5,17" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- GOOD round: #g-case cx=60, base y=42, scale=1.0 -->
+<use href="#g-case" transform="translate(60,42) scale(1.0)" fill="#C09830" color="#C09830"/>
+<!-- Bullet tip — #g-bullet at neck top (y=42-27=15) -->
+<use href="#g-bullet" transform="translate(60,15) scale(1.0)"/>
 <!-- Motion arrows (dropping down) -->
 <line x1="56" y1="6" x2="56" y2="3" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
 <line x1="64" y1="6" x2="64" y2="3" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
@@ -1616,10 +1591,10 @@
 <rect x="120" y="40" width="60" height="80" fill="#484858" stroke="#D8DCF0" stroke-width="1.5"/>
 <ellipse cx="150" cy="40" rx="30" ry="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <ellipse cx="150" cy="40" rx="14" ry="3.5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
-<!-- Round sitting proud — proper bottleneck path + bullet, not dropping in -->
-<path d="M143,37 L157,37 L157,34.5 L156,34.5 L156,17 L153,15.5 L153,10 L147,10 L147,15.5 L144,17 L144,34.5 L143,34.5 Z"
-      fill="#C09830" stroke="#D8DCF0" stroke-width="1.2" stroke-linejoin="miter"/>
-<polygon points="147,10 153,10 153.5,12 150,17 146.5,12" fill="#A0A8B0" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Round sitting proud: #g-case cx=150, base y=37, scale=1.0 -->
+<use href="#g-case" transform="translate(150,37) scale(1.0)" fill="#C09830" color="#C09830"/>
+<!-- Bullet: #g-bullet at neck top y=37-27=10 -->
+<use href="#g-bullet" transform="translate(150,10) scale(1.0)"/>
 <!-- Round base is above flush line (proud) -->
 <line x1="115" y1="42" x2="185" y2="42" stroke="#E05050" stroke-width="1.2" stroke-dasharray="4,2"/>
 <text x="108" y="39" fill="#E05050" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕</text>
