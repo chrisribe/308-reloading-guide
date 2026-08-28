@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reloading .308 — Step by Step</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,14 +60,13 @@
   .diagram-card svg { width: 100%; height: auto; display: block; }
 
   /* STEP LIST */
-  .step-list { display: flex; flex-direction: column; gap: 8px; }
+  .step-list { display: flex; flex-direction: column; gap: 8px; list-style: none; }
 
   .step-item {
     background: var(--card);
     border: 1.5px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
-    cursor: pointer;
     transition: border-color 0.2s;
   }
   .step-item:hover { border-color: #555; }
@@ -77,7 +76,38 @@
     display: flex; align-items: center; gap: 12px;
     padding: 12px 14px;
     user-select: none;
+    width: 100%;
+    background: none;
+    border: 0;
+    border-radius: 11px;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
   }
+  .step-header:focus-visible {
+    outline: 3px solid #7ab3e0;
+    outline-offset: -3px;
+  }
+
+  /* STEP TOOLBAR */
+  .step-toolbar {
+    display: flex; gap: 8px; align-items: center;
+    margin-bottom: 10px;
+  }
+  .step-toolbar button {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  .step-toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+  .step-toolbar button:focus-visible { outline: 3px solid #7ab3e0; outline-offset: 2px; }
+  .step-toolbar .toolbar-status { font-size: 0.78rem; color: var(--muted); margin-left: auto; }
   .step-num {
     min-width: 30px; height: 30px; border-radius: 50%;
     background: var(--border); color: var(--muted);
@@ -87,6 +117,7 @@
   .step-item.critical .step-num { background: #3a1515; color: var(--danger); border: 1.5px solid var(--danger); }
   .step-item.load     .step-num { background: #1a2e15; color: var(--accent2); border: 1.5px solid var(--accent2); }
   .step-item.prep     .step-num { background: #152030; color: #7ab3e0; border: 1.5px solid #335878; }
+  .step-item.resize   .step-num { background: #2a2036; color: #b08fd8; border: 1.5px solid #543a78; }
 
   .step-label { flex: 1; font-size: 1rem; line-height: 1.4; }
   .step-label strong { color: var(--text); }
@@ -97,25 +128,33 @@
     font-weight: 700; flex-shrink: 0;
   }
   .tag-prep     { background:#152030; color:#7ab3e0; border:1px solid #335878; }
+  .tag-resize   { background:#221a2e; color:#b08fd8; border:1px solid #543a78; }
   .tag-critical { background:#2e0d0d; color:#e07070; border:1px solid #7a2020; }
   .tag-load     { background:#0d2010; color:#8fbc5a; border:1px solid #2a5020; }
 
   .chevron { color: var(--muted); font-size: 0.8rem; transition: transform 0.25s; flex-shrink:0; }
   .step-item.open .chevron { transform: rotate(180deg); color: var(--accent); }
 
-  /* DETAIL PANEL */
+  /* DETAIL PANEL — grid rows animate to natural height without clipping tall content */
   .step-detail {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.35s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
     border-top: 0px solid var(--border);
   }
   .step-item.open .step-detail {
-    max-height: 2200px;
+    grid-template-rows: 1fr;
     border-top: 1px solid var(--border);
   }
   .step-detail-inner {
-    padding: 14px 14px 16px;
+    overflow: hidden;
+    min-height: 0;
+    padding: 0 14px;
     display: flex; flex-direction: column; gap: 12px;
+  }
+  .step-item.open .step-detail-inner { padding: 14px 14px 16px; }
+  @media (prefers-reduced-motion: reduce) {
+    .step-detail { transition: none; }
   }
   .step-detail-inner svg { width: 100%; height: auto; display: block; border-radius: 8px; background: #1e1e1e; }
   .step-detail p { font-size: 0.95rem; line-height: 1.6; color: #ddd; }
@@ -136,6 +175,94 @@
   }
   .tip-box.info { background:#10253a; border:1px solid #204878; color:#80c0f0; }
   .tip-icon { font-size: 1.2rem; flex-shrink:0; }
+
+  .safety-card {
+    background: #2e1515;
+    border: 2px solid var(--danger);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 18px;
+  }
+  .safety-card h2 { color: #ff9090; font-size: 1.15rem; margin-bottom: 8px; }
+  .safety-card p, .safety-card li { font-size: 0.92rem; line-height: 1.55; }
+  .safety-card ul { padding-left: 20px; margin-top: 8px; }
+  .load-record {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 18px;
+  }
+  .load-record h2 { color: var(--accent); font-size: 1.05rem; margin-bottom: 4px; }
+  .load-record > p { color: var(--muted); font-size: 0.85rem; line-height: 1.45; margin-bottom: 10px; }
+  .record-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 12px;
+  }
+  .record-field {
+    border-bottom: 1px solid #666;
+    min-height: 28px;
+    padding: 4px 0;
+    font-size: 0.78rem;
+    color: #bbb;
+  }
+  .record-field strong { display: block; color: var(--text); font-size: 0.8rem; }
+
+  /* ── FIGURES & CALLOUTS ──────────────────────────
+     Diagram text lives in HTML, not inside the SVG, so it scales with the
+     reader's font size and stays selectable, searchable and screen-readable.
+     The SVG carries geometry plus numbered markers only. */
+  .figure { margin: 0; }
+  .fig-title {
+    font-size: 0.92rem; font-weight: 700; color: var(--text);
+    line-height: 1.35; margin-bottom: 3px;
+  }
+  .fig-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.45; margin-bottom: 9px; }
+  .callouts { list-style: none; margin: 11px 0 0; padding: 0; display: grid; gap: 7px; }
+  .callouts li {
+    display: flex; gap: 9px; align-items: flex-start;
+    font-size: 0.88rem; line-height: 1.5; color: #ddd;
+  }
+  .cx {
+    flex: 0 0 auto; width: 19px; height: 19px; border-radius: 50%;
+    background: var(--accent); color: #111;
+    font-size: 0.73rem; font-weight: 800; font-variant-numeric: tabular-nums;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .fig-note {
+    font-size: 0.83rem; color: var(--muted); line-height: 1.5;
+    margin-top: 9px; padding-left: 10px; border-left: 2px solid var(--border);
+  }
+  .fig-table { width: 100%; border-collapse: collapse; margin-top: 11px; font-size: 0.85rem; }
+  .fig-table caption {
+    text-align: left; font-weight: 700; font-size: 0.82rem;
+    color: var(--muted); padding-bottom: 5px;
+  }
+  .fig-table th, .fig-table td {
+    border: 1px solid var(--border); padding: 5px 8px; text-align: left; color: #ddd;
+  }
+  .fig-table th { font-weight: 600; color: var(--muted); }
+  .fig-table td.num { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; text-align: right; }
+
+  /* ── SMALL SCREENS ───────────────────────────── */
+  @media (max-width: 560px) {
+    .deck-header { flex-wrap: wrap; padding: 12px 14px 10px; }
+    .slide-wrap { padding: 14px 11px 28px; }
+    .slide-title { font-size: 1.45rem; }
+    .record-grid { grid-template-columns: minmax(0, 1fr); }
+    .step-toolbar { flex-wrap: wrap; }
+    /* Let the tag drop to its own line instead of crushing the label. */
+    .step-header { flex-wrap: wrap; padding: 11px 12px; row-gap: 6px; }
+    .step-label { flex: 1 1 auto; min-width: 0; }
+    .step-tag { order: 3; margin-left: 42px; }
+    .chevron { order: 2; margin-left: auto; }
+    .step-detail-inner { padding-left: 12px; padding-right: 12px; }
+    .step-detail-inner ul { padding-left: 16px !important; }
+    .fig-table { font-size: 0.8rem; }
+    .fig-table th, .fig-table td { padding: 4px 6px; }
+  }
 
   /* ── PRINT STYLES ────────────────────────────── */
   @page {
@@ -186,28 +313,40 @@
 
     /* Expand ALL step details for print */
     .step-detail {
-      max-height: none !important;
+      display: block !important;
+      grid-template-rows: none !important;
       border-top: 1px solid #ddd !important;
     }
-    .step-detail-inner { padding: 10pt 12pt !important; }
+    .step-detail-inner,
+    .step-item.open .step-detail-inner {
+      overflow: visible !important;
+      padding: 10pt 12pt !important;
+    }
     .step-detail p { color: #222 !important; font-size: 11pt; }
     .step-detail ul { color: #222 !important; font-size: 10pt; }
+    .step-header { display: flex !important; width: 100% !important; }
+    .step-toolbar { display: none !important; }
 
     .step-item {
       background: #fafafa !important;
       border: 1.5px solid #ccc !important;
       page-break-inside: avoid;
       break-inside: avoid;
+      break-before: page;
+      page-break-before: always;
+      padding-top: 6mm;
       margin-bottom: 8pt;
     }
     .step-item.critical { border-color: #c03030 !important; }
     .step-item.load     { border-color: #3a7a20 !important; }
     .step-item.prep     { border-color: #2060a0 !important; }
+    .step-item.resize   { border-color: #6a3f9a !important; }
 
     .step-num { background: #ddd !important; color: #111 !important; border: 1.5px solid #999 !important; }
     .step-item.critical .step-num { background: #fde8e8 !important; color: #c03030 !important; border-color: #c03030 !important; }
     .step-item.load     .step-num { background: #e8f5e0 !important; color: #3a7a20 !important; border-color: #3a7a20 !important; }
     .step-item.prep     .step-num { background: #e0ecf8 !important; color: #2060a0 !important; border-color: #2060a0 !important; }
+    .step-item.resize   .step-num { background: #efe6fa !important; color: #6a3f9a !important; border-color: #6a3f9a !important; }
 
     .step-label strong { color: #111 !important; }
     .step-label span   { color: #555 !important; }
@@ -215,19 +354,14 @@
 
     .step-tag { border: 1.5px solid currentColor !important; }
     .tag-prep     { background: #e0ecf8 !important; color: #2060a0 !important; }
+    .tag-resize   { background: #efe6fa !important; color: #6a3f9a !important; }
     .tag-critical { background: #fde8e8 !important; color: #c03030 !important; }
     .tag-load     { background: #e8f5e0 !important; color: #3a7a20 !important; }
 
     .step-detail .tip  { background: #e8f5e0 !important; border-color: #3a7a20 !important; color: #1a4a10 !important; }
     .step-detail .warn { background: #fff4e0 !important; border-color: #c07000 !important; color: #7a4000 !important; }
 
-    /* Force consistent top breathing room per printed step page. */
-    .print-step-gap {
-      display: block;
-      height: 14mm;
-      break-before: page;
-      page-break-before: always;
-    }
+    /* Steps each begin on their own printed page via .step-item break-before. */
 
     /* SVG diagrams — keep dark backgrounds, don't break across pages */
     svg {
@@ -237,11 +371,37 @@
     }
 
     .tip-box { display: none !important; }
+    .safety-card {
+      background: #fff0f0 !important;
+      border-color: #b02020 !important;
+      color: #111 !important;
+      page-break-inside: avoid;
+    }
+    .safety-card h2 { color: #8a1010 !important; }
+    .load-record {
+      background: #fafafa !important;
+      color: #111 !important;
+      page-break-inside: avoid;
+    }
+    .load-record h2, .record-field strong { color: #111 !important; }
+    .load-record > p, .record-field { color: #444 !important; }
 
     /* Print button hidden */
     .print-btn { display: none !important; }
     /* SVG diagrams — keep them visible, light bg */
     .step-detail-inner svg { background: #f8f8f8 !important; }
+
+    /* Figures & callouts */
+    .figure { page-break-inside: avoid; break-inside: avoid; }
+    .fig-title { color: #111 !important; font-size: 11pt; }
+    .fig-sub, .fig-note { color: #444 !important; font-size: 9.5pt; }
+    .fig-note { border-left-color: #ccc !important; }
+    .callouts li { color: #222 !important; font-size: 9.5pt; }
+    .cx { background: #8b5e1a !important; color: #fff !important; }
+    .fig-table { page-break-inside: avoid; break-inside: avoid; font-size: 9.5pt; }
+    .fig-table caption { color: #444 !important; }
+    .fig-table th, .fig-table td { border-color: #bbb !important; color: #222 !important; }
+    .fig-table th { color: #444 !important; }
   }
 </style>
 </head>
@@ -305,7 +465,7 @@
       Body:     ±4px wide,  17px tall  (y=-3 to y=-20)
       Shoulder: tapers ±4px→±2.5px,  3px tall  (y=-20 to y=-23)
       Neck:     ±2.5px wide, 4px tall  (y=-23 to y=-27)
-      Body:neck width ratio = 3.2:1
+      Body:neck width ratio = 1.6:1
     -->
     <!-- Rim (rimless — only 0.5px protrusion past body each side) -->
     <rect x="-4.5" y="-3"  width="9"   height="3"   fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
@@ -404,7 +564,34 @@
 
   <div class="step-badge">📋 Overview</div>
   <h1 class="slide-title">The Full Process</h1>
-  <p class="slide-desc">Every reload follows the same order. Tap any step to see details.</p>
+  <p class="slide-desc">An example workflow for this specific equipment setup. Your component manuals and equipment instructions control whenever they differ.</p>
+
+  <aside class="safety-card" aria-labelledby="safety-title">
+    <h2 id="safety-title">Read before handling components</h2>
+    <p><strong>This page is a checklist, not load data or a substitute for instruction.</strong> Use current published data for the exact bullet, powder, primer, and cartridge combination. If any value or procedure conflicts with a component or equipment manufacturer, stop and follow the manufacturer.</p>
+    <ul>
+      <li>Wear eye protection. Work sober, rested, and free from interruptions, flame, sparks, and smoking.</li>
+      <li>Keep only one powder and one primer type on the bench. Verify every label before use; never substitute components casually.</li>
+      <li>Confirm whether every scale displays <strong>grains (gr)</strong> or <strong>grams (g)</strong>. They are not interchangeable.</li>
+      <li>Begin at the published starting charge and follow the manual's work-up method. Stop for abnormal report, recoil, extraction, or any suspected obstruction.</li>
+      <li>Use an experienced mentor or qualified instructor for the first setup and loading session.</li>
+    </ul>
+  </aside>
+
+  <section class="load-record" aria-labelledby="record-title">
+    <h2 id="record-title">Batch record — complete before loading</h2>
+    <p>Do not begin until each item is identified from a current published source. Record lot numbers where available.</p>
+    <div class="record-grid">
+      <div class="record-field"><strong>Firearm / action</strong></div>
+      <div class="record-field"><strong>Manual, edition, page</strong></div>
+      <div class="record-field"><strong>Case maker / lot / firings</strong></div>
+      <div class="record-field"><strong>Primer maker / exact type</strong></div>
+      <div class="record-field"><strong>Powder maker / exact name / lot</strong></div>
+      <div class="record-field"><strong>Charge and unit</strong></div>
+      <div class="record-field"><strong>Bullet maker / SKU / weight</strong></div>
+      <div class="record-field"><strong>Published COAL and trim limits</strong></div>
+    </div>
+  </section>
 
   <!-- Cartridge anatomy diagram — FIXED -->
   <div class="diagram-card">
@@ -488,15 +675,20 @@
   </div>
 
   <!-- Steps list — all tappable -->
-  <div class="step-list">
+  <div class="step-toolbar">
+    <button type="button" id="expand-all">Expand all</button>
+    <button type="button" id="collapse-all">Collapse all</button>
+    <span class="toolbar-status" id="toolbar-status" role="status" aria-live="polite"></span>
+  </div>
+  <ol class="step-list">
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">1</div>
         <div class="step-label"><strong>Sort &amp; Inspect</strong><br><span>Check brass for cracks or damage</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 165" xmlns="http://www.w3.org/2000/svg">
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">INSPECT BRASS — 4 CONDITIONS</text>
@@ -549,15 +741,15 @@
         <p>Look at every case. Throw out any with cracks in the neck, splits on the body, or a bright ring near the base (that means the brass is about to split). Better to lose one case than ruin your rifle.</p>
         <div class="tip">✅ Good brass: smooth, no cracks, no bright rings near the base.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">2</div>
         <div class="step-label"><strong>Deprime</strong><br><span>Punch out old primer first</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
 <!--
@@ -647,15 +839,15 @@
         <p>Do this <strong>before</strong> cleaning. Mount the decapping die in your press and run each case through to punch out the spent primer. With the pocket empty, the ultrasonic cleaner can reach inside and clean it — saving you the brush step.</p>
         <div class="tip">✅ Deprime first = ultrasonic does all the cleaning, inside pocket and out.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">3</div>
         <div class="step-label"><strong>Clean</strong><br><span>Ultrasound bath — pocket cleaned too</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg id="svg-step3" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
 <!-- COORDINATE SYSTEM
@@ -725,15 +917,15 @@
         <p>Run deprimed cases in your ultrasonic cleaner with diluted brass solution for 30–45 minutes. Because the primer pocket is already open, ultrasonic cleaning reaches inside and often reduces pocket brushing. <strong>Dry completely before moving on.</strong> Moisture near primers is dangerous.</p>
         <div class="tip">✅ Cases bright inside and out. If any pockets still have black carbon, a quick 5-second brush fixes it.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">4</div>
-        <div class="step-label"><strong>Brush Pocket &amp; Deburr Flash Hole</strong><br><span>Carbon out of pocket — remove machining burr from flash hole</span></div>
+        <div class="step-label"><strong>Brush Pocket &amp; Inspect</strong><br><span>Clear carbon — deburr flash hole only if your process calls for it</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
 <!-- COORDINATE SYSTEM
@@ -810,20 +1002,20 @@
 <text x="150" y="178" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Brush pocket — deburr flash hole on new brass</text>
         </svg>
 
-        <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — use the large rifle brush. Insert and rotate several times until all black carbon is gone. The ultrasonic bath will have done most of this already — you're just finishing any stubborn spots.</p>
-        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Flash Hole Deburr</strong> — on new, unfired brass only. A small conical cutter on a long shaft is inserted from the case mouth all the way down to the flash hole. It removes the machining burr left on the inside face of the case head where the flash hole was pierced during manufacture. A sharp burr can deflect the primer's flash unevenly, causing ignition inconsistency. One or two turns is all it takes — once done, never again on that piece of brass.</p>
-        <div class="tip">✅ Flash hole deburr is a one-time operation on new brass. Brush the pocket every firing. Takes about 10 seconds per case.</div>
+        <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — inspect the pocket after cleaning and brush only as needed. Do not enlarge the pocket or remove brass.</p>
+        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Flash Hole Deburr (optional)</strong> — do this only when your brass maker or documented process calls for it. Use a caliber-appropriate, depth-stopped tool exactly as its maker directs; uncontrolled cutting can alter the flash hole or case web. It is normally a one-time operation on suitable new brass.</p>
+        <div class="tip">✅ Clean and inspect first. Remove material only with the correct controlled tool and a documented reason.</div>
         <div class="warn">⚠️ Military brass often has a <strong>crimped primer pocket</strong> — the crimp must be swaged or reamed out before you can seat a new primer. You'll feel it when the primer won't go in.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">5</div>
         <div class="step-label"><strong>Anneal Case Necks</strong><br><span>Restore brass softness — prevents neck cracking</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
 <!-- COORDINATE SYSTEM
@@ -961,22 +1153,22 @@
 <!-- CAPTION -->
 <text x="150" y="196" text-anchor="middle" fill="#7A7A9A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Rotary flame annealer — cases index through flame one at a time</text>
         </svg>
-        <p>Restore brass softness — prevents neck cracking and ensures consistent neck tension. Cases spin on their axis in the flame for even heat. Only the neck and shoulder get hot — base stays cool (critical for primer pocket integrity).</p>
-        <div class="tip">✅ Correct anneal: neck turns straw/light gold colour. Over-annealed: blue/purple (too hot). Under: no colour change.</div>
-        <div class="warn">⚠️ Overheating can weaken brass. Keep heat at the neck/shoulder only, avoid heating the case head, and verify your annealer setup with manufacturer guidance.</div>
+        <p>Annealing is an optional, advanced operation used to control neck and shoulder hardness. Follow the annealer and brass manufacturer's validated setup for the exact machine, cartridge, and case lot. Only the neck and shoulder may be annealed; the case head must remain hard.</p>
+        <div class="tip">✅ Control the process by the equipment maker's prescribed time, power, temperature indicator, or calibration method — not appearance alone.</div>
+        <div class="warn">⚠️ Brass colour is not a reliable temperature gauge. Overheating, especially toward the case head, can permanently weaken the case. When the setup is uncertain, skip annealing and seek qualified instruction.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">6</div>
         <div class="step-label"><strong>Lube Cases</strong><br><span>Prevents case from sticking in die</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LUBE CASES — BODY ONLY, NOT SHOULDER</text>
+<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LUBE CASES — THIN, EVEN FILM</text>
 <!-- Lube pad / tray — flat fills -->
 <rect x="30" y="60" width="130" height="40" fill="#2a3a1a" stroke="#5a7030" stroke-width="1.5"/>
 <rect x="34" y="63" width="122" height="34" fill="#3a5020" stroke="#6a8840" stroke-width="0.8"/>
@@ -1005,71 +1197,58 @@
 <circle cx="20" cy="28" r="1" fill="#D8DCF0"/>
 <text x="20" y="25" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ Body.</text>
 <text x="20" y="34" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">apply lube here</text>
-<!-- Callout: shoulder NO LUBE -->
+<!-- Callout: avoid excess lube on shoulder -->
 <line x1="130" y1="50" x2="190" y2="30" stroke="#E05050" stroke-width="0.75"/>
 <line x1="190" y1="30" x2="250" y2="30" stroke="#E05050" stroke-width="0.75"/>
 <circle cx="250" cy="30" r="1" fill="#E05050"/>
-<text x="194" y="27" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ Shoulder.</text>
-<text x="194" y="36" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">NO LUBE here</text>
+<text x="194" y="27" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shoulder.</text>
+<text x="194" y="36" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">avoid excess</text>
 <!-- Warning label -->
 <rect x="170" y="60" width="120" height="40" fill="#2e1a0a" stroke="#7a4010" stroke-width="1"/>
-<text x="230" y="76" text-anchor="middle" fill="#F0A050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">⚠ Lube on shoulder</text>
+<text x="230" y="76" text-anchor="middle" fill="#F0A050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">⚠ Excess lube</text>
 <text x="230" y="87" text-anchor="middle" fill="#F0A050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">= shoulder DENTS</text>
 <text x="230" y="97" text-anchor="middle" fill="#F0A050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">in the die!</text>
         </svg>
-        <p>Roll each case lightly on the lube pad. Cover the body of the case — <strong>do not get lube on the shoulder</strong> or you'll get dents. A little goes a long way. Without lube, the case will stick inside the die.</p>
-        <div class="warn">⚠️ Too much lube = shoulder dents. Too little = stuck case. A light even coat is all you need.</div>
+        <p>Apply the sizing-lubricant maker's recommended thin, even film. Cover the case body and avoid excess on the shoulder; follow the die maker's direction for any neck lubrication. Never contaminate the case interior, primer pocket, primer, or powder.</p>
+        <div class="warn">⚠️ Excess lube can dent a shoulder; too little can stick a case. Remove all sizing lubricant after sizing and before priming or charging.</div>
       </div></div>
-    </div>
+    </li>
 
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item resize">
+      <button class="step-header" type="button">
         <div class="step-num">7</div>
-        <div class="step-label"><strong>Shoulder Bump</strong><br><span>Body die only — set shoulder back 0.001"–0.002"</span></div>
-        <span class="step-tag tag-prep">RESIZE</span>
+        <div class="step-label"><strong>Size Body &amp; Set Shoulder</strong><br><span>Adjust for this rifle and action type</span></div>
+        <span class="step-tag tag-resize">RESIZE</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="220" fill="#1C1C24"/>
-<text x="150" y="12" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">REDDING BODY DIE — SHOULDER BUMP ONLY</text>
-<!-- Centerline -->
+        <figure class="figure">
+          <figcaption class="fig-title">Body die — sizes the body and sets the shoulder</figcaption>
+          <p class="fig-sub">Half-section through a body die with a case entering it. Left half is cut away (hatched); right half is the exterior.</p>
+          <svg viewBox="20 4 240 216" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutaway of a body die mounted in a press, with a case entering from below. The die contacts the case body and shoulder while the neck area stays open.">
+<rect x="20" y="4" width="240" height="216" fill="#1C1C24"/>
 <line x1="108" y1="14" x2="108" y2="210" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<!-- Lock ring at top — flat #383848 -->
 <rect x="85" y="18" width="46" height="9" fill="#383848" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Chamfer corners of lock ring -->
 <line x1="85" y1="18" x2="89" y2="22" stroke="#D8DCF0" stroke-width="0.7"/>
 <line x1="131" y1="18" x2="127" y2="22" stroke="#D8DCF0" stroke-width="0.7"/>
-<!-- Die body upper section — right half solid, left half hatched -->
 <rect x="91" y="27" width="34" height="30" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <rect x="91" y="27" width="17" height="30" fill="url(#g-hatch-steel)" opacity="0.8"/>
-<text x="116" y="39" text-anchor="middle" fill="#9090A8" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">REDDING</text>
-<text x="116" y="47" text-anchor="middle" fill="#9090A8" font-size="5" font-family="Arial Narrow,Arial,sans-serif">BODY DIE</text>
-<!-- Thread section -->
 <rect x="91" y="57" width="34" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <rect x="91" y="57" width="17" height="28" fill="url(#g-hatch-steel)" opacity="0.8"/>
 <line x1="91" y1="62" x2="125" y2="62" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
 <line x1="91" y1="67" x2="125" y2="67" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
 <line x1="91" y1="72" x2="125" y2="72" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
 <line x1="91" y1="77" x2="125" y2="77" stroke="#D8DCF0" stroke-width="0.4" opacity="0.5"/>
-<!-- Press bushing (bottom of die enters press) -->
 <rect x="78" y="85" width="60" height="13" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
-<!-- Die mouth — body sizing cavity (NO neck sizing) -->
 <rect x="91" y="98" width="34" height="26" fill="#2A2A3A" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Body cavity walls hatched (left half) -->
 <rect x="91" y="98" width="17" height="26" fill="url(#g-hatch-steel)" opacity="0.8"/>
-<!-- NECK CAVITY — open / untouched (highlighted) -->
 <rect x="100" y="98" width="16" height="10" fill="#1C1C24" stroke="#FFAA00" stroke-width="1.2" stroke-dasharray="3,2"/>
-<text x="108" y="106" text-anchor="middle" fill="#FFAA00" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">OPEN</text>
-<!-- Case: #g-case symbol, cx=108, base y=210, scale=3.18 (86px tall) -->
 <use href="#g-case" transform="translate(108,210) scale(3.18)" fill="#C09830" color="#C09830"/>
-<!-- Left half of case hatched (half-section clip) -->
 <rect id="case-clip-7" x="91" y="124" width="17" height="86"/>
 <clipPath id="cl7"><use href="#case-clip-7"/></clipPath>
 <use href="#g-case" transform="translate(108,210) scale(3.18)" fill="url(#g-hatch-brass)" color="url(#g-hatch-brass)" opacity="0.85" clip-path="url(#cl7)"/>
-<!-- Shoulder setback dimension arrows -->
-<!-- Show shoulder position BEFORE and AFTER with 0.001"-0.002" gap -->
+<!-- shoulder setback dimension -->
 <line x1="55" y1="140" x2="101" y2="140" stroke="#C8973A" stroke-width="0.9" stroke-dasharray="4,2"/>
 <line x1="55" y1="143" x2="101" y2="143" stroke="#4CBB6A" stroke-width="0.9"/>
 <line x1="56" y1="137" x2="56" y2="146" stroke="#C8973A" stroke-width="1.2"/>
@@ -1078,113 +1257,125 @@
 <line x1="60" y1="140" x2="60" y2="143" stroke="#E05050" stroke-width="1.5"/>
 <line x1="57" y1="141" x2="61" y2="140" stroke="#E05050" stroke-width="0.8"/>
 <line x1="57" y1="142" x2="61" y2="143" stroke="#E05050" stroke-width="0.8"/>
-<text x="55" y="153" fill="#E05050" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">0.001"–0.002"</text>
-<text x="55" y="162" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">setback</text>
-<!-- "Neck untouched" annotation -->
+<line x1="49" y1="150" x2="56" y2="145" stroke="#E05050" stroke-width="0.75"/>
+<!-- neck-not-sized leader -->
 <line x1="108" y1="130" x2="72" y2="115" stroke="#FFAA00" stroke-width="0.75"/>
-<line x1="72" y1="115" x2="40" y2="115" stroke="#FFAA00" stroke-width="0.75"/>
-<circle cx="40" cy="115" r="1.5" fill="#FFAA00"/>
-<text x="2" y="112" fill="#FFAA00" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Neck</text>
-<text x="2" y="121" fill="#FFAA00" font-size="7" font-family="Arial Narrow,Arial,sans-serif">untouched.</text>
-<!-- Up arrow -->
+<line x1="72" y1="115" x2="49" y2="115" stroke="#FFAA00" stroke-width="0.75"/>
+<!-- press stroke direction -->
 <line x1="108" y1="215" x2="108" y2="210" stroke="#4090FF" stroke-width="1.5"/>
 <path d="M105 213 L108 208 L111 213" fill="#4090FF"/>
-<!-- LABELS right side -->
+<!-- right-side leaders -->
 <circle cx="131" cy="22" r="1.5" fill="#C8D0E8"/>
-<line x1="131" y1="22" x2="175" y2="18" stroke="#C8D0E8" stroke-width="0.75"/>
-<line x1="175" y1="18" x2="240" y2="18" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="240" cy="18" r="1.5" fill="#C8D0E8"/>
-<text x="178" y="15" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock Ring.</text>
+<line x1="131" y1="22" x2="175" y2="16" stroke="#C8D0E8" stroke-width="0.75"/>
+<line x1="175" y1="16" x2="228" y2="16" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="125" cy="40" r="1.5" fill="#C8D0E8"/>
-<line x1="125" y1="40" x2="175" y2="36" stroke="#C8D0E8" stroke-width="0.75"/>
-<line x1="175" y1="36" x2="240" y2="36" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="240" cy="36" r="1.5" fill="#C8D0E8"/>
-<text x="178" y="33" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Body Die.</text>
+<line x1="125" y1="40" x2="175" y2="40" stroke="#C8D0E8" stroke-width="0.75"/>
+<line x1="175" y1="40" x2="228" y2="40" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="138" cy="90" r="1.5" fill="#C8D0E8"/>
-<line x1="138" y1="90" x2="175" y2="90" stroke="#C8D0E8" stroke-width="0.75"/>
-<line x1="175" y1="90" x2="240" y2="90" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="240" cy="90" r="1.5" fill="#C8D0E8"/>
-<text x="178" y="87" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Press Collar.</text>
+<line x1="138" y1="90" x2="228" y2="90" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="116" cy="175" r="1.5" fill="#C09830"/>
-<line x1="116" y1="175" x2="175" y2="175" stroke="#C09830" stroke-width="0.75"/>
-<line x1="175" y1="175" x2="240" y2="175" stroke="#C09830" stroke-width="0.75"/>
-<circle cx="240" cy="175" r="1.5" fill="#C09830"/>
-<text x="178" y="172" fill="#C09830" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case body.</text>
-<text x="178" y="181" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">sized / bumped</text>
-<text x="150" y="215" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SECTION A-A  ·  Left = cut (hatched)  ·  Right = exterior</text>
-        </svg>
-        <p>Set shoulder back 0.001"–0.002" for reliable chambering — body die only, neck untouched. The body die contacts only the case body and shoulder — the neck passes through the open cavity untouched.</p>
-        <div class="warn">⚠️ Body die does NOT size the neck. Neck tension is set separately in the next step.</div>
+<line x1="116" y1="175" x2="228" y2="175" stroke="#C09830" stroke-width="0.75"/>
+<!-- numbered markers -->
+<g><circle cx="238" cy="16" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="19.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="238" cy="40" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="43.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="238" cy="90" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="93.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="40" cy="115" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="40" y="118.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+<g><circle cx="40" cy="152" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="40" y="155.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
+<g><circle cx="238" cy="175" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="178.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">6</text></g>
+          </svg>
+          <ol class="callouts">
+            <li><b class="cx">1</b> Lock ring — fixes the die's height in the press once you have set it.</li>
+            <li><b class="cx">2</b> Die body — the sizing cavity that squeezes the case body back down.</li>
+            <li><b class="cx">3</b> Press collar where the die threads into the press.</li>
+            <li><b class="cx">4</b> The neck area stays open — a body die deliberately does not size the neck.</li>
+            <li><b class="cx">5</b> Shoulder setback — the small amount the shoulder moves back as the case is sized.</li>
+            <li><b class="cx">6</b> Case body — sized, with the shoulder repositioned.</li>
+          </ol>
+          <p class="fig-note">How far the shoulder should move depends on your rifle, your action type and your die maker's instructions. Establish it from your own fired brass rather than copying a figure.</p>
+        </figure>
+        <p>This illustrated setup uses a body die, which sizes the case body and moves the shoulder while leaving the neck for a separate die. Establish a baseline from brass fired in the same rifle, then adjust and verify according to the die maker, firearm type, and published guidance.</p>
+        <div class="warn">⚠️ A body-die-plus-neck-die workflow is not universal. Semiautomatic, lever, pump, and hunting ammunition commonly needs full-length sizing and more chambering clearance than a precision bolt-action load. Confirm reliable chambering with inert components before loading a batch.</div>
       </div></div>
-    </div>
+    </li>
 
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">8</div>
-        <div class="step-label"><strong>Measure Shoulder</strong><br><span>Case comparator — verify 0.001"–0.002" setback</span></div>
+        <div class="step-label"><strong>Measure Shoulder</strong><br><span>Case comparator — measure before and after sizing</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="160" fill="#1C1C24"/>
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">MEASURE SHOULDER — CASE COMPARATOR + CALIPERS</text>
-<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Measure before bump · bump die · measure again · target: 0.001"–0.002" less</text>
-<line x1="150" y1="22" x2="150" y2="145" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+        <figure class="figure">
+          <figcaption class="fig-title">Measure shoulder — case comparator + calipers</figcaption>
+          <p class="fig-sub">Measure before sizing, adjust the die, then measure again and compare the change.</p>
+          <svg viewBox="0 40 241 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Calipers fitted with a case comparator measuring a .308 case from its base to the shoulder datum.">
+<rect x="0" y="40" width="241" height="84" fill="#1C1C24"/>
 <rect x="15" y="60" width="220" height="8" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
 <rect x="15" y="68" width="9" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
 <rect x="165" y="54" width="38" height="22" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
-<rect x="169" y="57" width="30" height="13" fill="#0d1a0d" stroke="#2a6a2a" stroke-width="0.8"/>
-<text x="184" y="67" text-anchor="middle" fill="#40E040" font-size="8" font-weight="bold" font-family="monospace">1.562"</text>
+<rect x="167" y="57" width="34" height="13" fill="#0d1a0d" stroke="#2a6a2a" stroke-width="0.8"/>
+<text x="184" y="67" text-anchor="middle" fill="#40E040" font-size="9" font-weight="bold" font-family="monospace">1.562"</text>
 <rect x="203" y="68" width="9" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
 <use href="#g-case" transform="translate(24,80) rotate(90) scale(4.8)" fill="#C09830" color="#C09830"/>
 <use href="#g-case" transform="translate(24,80) rotate(90) scale(4.8)" fill="none" stroke="#D8A820" stroke-width="0.25"/>
 <rect x="105" y="68" width="22" height="25" fill="none" stroke="#FFD060" stroke-width="1.8" stroke-dasharray="4,2"/>
-<text x="116" y="63" text-anchor="middle" fill="#FFD060" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">COMPARATOR</text>
-<line x1="116" y1="65" x2="116" y2="68" stroke="#FFD060" stroke-width="0.8"/>
+<line x1="136" y1="84" x2="128" y2="84" stroke="#FFD060" stroke-width="0.8"/>
 <line x1="24" y1="103" x2="116" y2="103" stroke="#C8973A" stroke-width="1.2"/>
 <line x1="24" y1="99" x2="24" y2="107" stroke="#C8973A" stroke-width="1.2"/>
 <line x1="116" y1="99" x2="116" y2="107" stroke="#C8973A" stroke-width="1.2"/>
-<text x="70" y="115" text-anchor="middle" fill="#C8973A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base to datum (headspace)</text>
-<rect x="160" y="80" width="130" height="58" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
-<text x="225" y="92" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BEFORE / AFTER</text>
-<line x1="160" y1="95" x2="290" y2="95" stroke="#444" stroke-width="0.8"/>
-<text x="168" y="105" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Before bump:</text>
-<text x="265" y="105" text-anchor="end" fill="#E05050" font-size="7" font-weight="bold" font-family="monospace">1.564"</text>
-<text x="168" y="117" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">After bump:</text>
-<text x="265" y="117" text-anchor="end" fill="#4CBB6A" font-size="7" font-weight="bold" font-family="monospace">1.562"</text>
-<text x="168" y="129" fill="#C8973A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Difference:</text>
-<text x="265" y="129" text-anchor="end" fill="#C8973A" font-size="7" font-weight="bold" font-family="monospace">0.002" ✓</text>
-<line x1="24" y1="72" x2="10" y2="55" stroke="#D8DCF0" stroke-width="0.7"/>
-<text x="2" y="52" fill="#C8D0E8" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base</text>
-<line x1="154" y1="80" x2="154" y2="55" stroke="#D8DCF0" stroke-width="0.7"/>
-<text x="130" y="52" fill="#D8A820" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Neck (free)</text>
-<text x="150" y="150" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Comparator seats at shoulder datum — same spot every time = consistent headspace</text>
-        </svg>
+<line x1="24" y1="72" x2="14" y2="59" stroke="#D8DCF0" stroke-width="0.7"/>
+<line x1="154" y1="80" x2="154" y2="59" stroke="#D8DCF0" stroke-width="0.7"/>
+<g><circle cx="145" cy="84" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="145" y="87.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="70" cy="113" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="70" y="116.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="11" cy="50" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="11" y="53.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="154" cy="50" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="154" y="53.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+          </svg>
+          <ol class="callouts">
+            <li><b class="cx">1</b> Comparator insert on the caliper jaw — it seats against the shoulder at a fixed datum diameter, so you measure the same spot every time.</li>
+            <li><b class="cx">2</b> Base to datum — this is the dimension that controls how the case headspaces in your chamber.</li>
+            <li><b class="cx">3</b> Case base rests against the fixed jaw.</li>
+            <li><b class="cx">4</b> Case neck hangs free and is not part of this measurement.</li>
+          </ol>
+          <table class="fig-table">
+            <caption>Worked example only — your rifle's numbers will differ</caption>
+            <thead>
+              <tr><th scope="col">Reading</th><th scope="col">Base to datum</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Before sizing</th><td class="num">1.564"</td></tr>
+              <tr><th scope="row">After sizing</th><td class="num">1.562"</td></tr>
+              <tr><th scope="row">Change</th><td class="num">0.002"</td></tr>
+            </tbody>
+          </table>
+          <p class="fig-note">Comparator dimensions vary between brands, so a raw reading is only meaningful when compared with another reading taken on the same tool.</p>
+        </figure>
         <ul style="padding-left:18px; color:#ddd; font-size:0.9rem; line-height:1.9; margin-top:6px">
           <li>Slip comparator insert onto caliper jaw — .308 uses <strong>0.330" datum hole</strong></li>
           <li>Measure case: base on fixed jaw, comparator seated on shoulder → write down reading</li>
           <li>Run case through body die — adjust die in small increments</li>
-          <li>Measure again — target is <strong>0.001"–0.002" less</strong> than your before reading</li>
-          <li>Never bump more than 0.002" — over-working brass cracks necks</li>
+          <li>Measure again and compare the change — use the die maker's starting adjustment and the clearance appropriate to your rifle and action</li>
+          <li>Record the result; do not copy another rifle's raw comparator reading because comparator dimensions and chambers vary</li>
         </ul>
-        <div class="tip">✅ Bump only what's needed. Less is more — 0.001" setback is plenty for most loads.</div>
+        <div class="tip">✅ Use the smallest verified adjustment that still produces reliable chambering and extraction for the ammunition's intended rifle and use.</div>
       </div></div>
-    </div>
+    </li>
 
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item resize">
+      <button class="step-header" type="button">
         <div class="step-num">9</div>
         <div class="step-label"><strong>Neck Size</strong><br><span>Neck die only — sets bullet tension</span></div>
-        <span class="step-tag tag-prep">RESIZE</span>
+        <span class="step-tag tag-resize">RESIZE</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 210" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="210" fill="#1C1C24"/>
-<text x="150" y="12" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">REDDING TYPE-S NECK SIZING DIE</text>
+        <figure class="figure">
+          <figcaption class="fig-title">Bushing neck die — sizes the neck only</figcaption>
+          <p class="fig-sub">Half-section through a bushing-style neck die. Left half is cut away (hatched); right half is the exterior.</p>
+          <svg viewBox="32 6 224 202" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutaway of a bushing neck sizing die with a case entering from below. An interchangeable bushing squeezes the case neck while the body and shoulder pass through untouched.">
+<rect x="32" y="6" width="224" height="202" fill="#1C1C24"/>
 <!-- Centerline -->
 <line x1="108" y1="14" x2="108" y2="205" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
 <!-- Lock ring -->
@@ -1194,8 +1385,6 @@
 <!-- Die body (shorter than body die) — right solid, left hatched -->
 <rect x="92" y="26" width="32" height="25" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <rect x="92" y="26" width="16" height="25" fill="url(#g-hatch-steel)" opacity="0.8"/>
-<text x="116" y="36" text-anchor="middle" fill="#9090A8" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">REDDING</text>
-<text x="116" y="44" text-anchor="middle" fill="#9090A8" font-size="5" font-family="Arial Narrow,Arial,sans-serif">TYPE-S</text>
 <!-- Thread section -->
 <rect x="92" y="51" width="32" height="22" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
 <rect x="92" y="51" width="16" height="22" fill="url(#g-hatch-steel)" opacity="0.8"/>
@@ -1210,61 +1399,64 @@
 <!-- Bushing ring inside die mouth — small ring shape -->
 <rect x="98" y="87" width="20" height="12" fill="#383848" stroke="#7AB3E0" stroke-width="1.2"/>
 <rect x="101" y="89" width="14" height="8" fill="#1C1C24" stroke="#7AB3E0" stroke-width="0.8"/>
-<text x="108" y="96" text-anchor="middle" fill="#7AB3E0" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BUSH</text>
 <!-- Case: #g-case symbol, cx=108, base y=200, scale=3.18 -->
 <use href="#g-case" transform="translate(108,200) scale(3.18)" fill="#C09830" color="#C09830"/>
 <!-- Left half hatched (half-section) -->
 <rect id="case-clip-8-r" x="92" y="114" width="16" height="86"/>
 <clipPath id="cl8"><use href="#case-clip-8-r"/></clipPath>
 <use href="#g-case" transform="translate(108,200) scale(3.18)" fill="url(#g-hatch-brass)" color="url(#g-hatch-brass)" opacity="0.85" clip-path="url(#cl8)"/>
-<!-- Neck tension annotation — squeeze arrows on neck -->
+<!-- Neck squeeze arrows -->
 <line x1="90" y1="120" x2="104" y2="120" stroke="#7AB3E0" stroke-width="1.2"/>
 <line x1="93" y1="117" x2="104" y2="120" stroke="#7AB3E0" stroke-width="0.8"/>
 <line x1="93" y1="123" x2="104" y2="120" stroke="#7AB3E0" stroke-width="0.8"/>
 <line x1="126" y1="120" x2="112" y2="120" stroke="#7AB3E0" stroke-width="1.2"/>
 <line x1="123" y1="117" x2="112" y2="120" stroke="#7AB3E0" stroke-width="0.8"/>
 <line x1="123" y1="123" x2="112" y2="120" stroke="#7AB3E0" stroke-width="0.8"/>
-<text x="108" y="128" text-anchor="middle" fill="#7AB3E0" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">neck tension</text>
-<!-- Body untouched annotation -->
+<line x1="83" y1="120" x2="89" y2="120" stroke="#7AB3E0" stroke-width="0.75"/>
+<!-- Body untouched leader -->
 <line x1="116" y1="165" x2="155" y2="165" stroke="#4CBB6A" stroke-width="0.75"/>
-<line x1="155" y1="165" x2="240" y2="165" stroke="#4CBB6A" stroke-width="0.75"/>
-<circle cx="240" cy="165" r="1.5" fill="#4CBB6A"/>
-<text x="178" y="162" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Body.</text>
-<text x="178" y="171" fill="#4CBB6A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">untouched ✓</text>
+<line x1="155" y1="165" x2="228" y2="165" stroke="#4CBB6A" stroke-width="0.75"/>
 <!-- Up arrow -->
 <line x1="108" y1="205" x2="108" y2="200" stroke="#4090FF" stroke-width="1.5"/>
 <path d="M105 203 L108 198 L111 203" fill="#4090FF"/>
-<!-- LABELS right side -->
+<!-- Right-side leaders -->
 <circle cx="129" cy="22" r="1.5" fill="#C8D0E8"/>
-<line x1="129" y1="22" x2="175" y2="18" stroke="#C8D0E8" stroke-width="0.75"/>
-<line x1="175" y1="18" x2="240" y2="18" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="240" cy="18" r="1.5" fill="#C8D0E8"/>
-<text x="178" y="15" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock Ring.</text>
+<line x1="129" y1="22" x2="175" y2="16" stroke="#C8D0E8" stroke-width="0.75"/>
+<line x1="175" y1="16" x2="228" y2="16" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="124" cy="36" r="1.5" fill="#C8D0E8"/>
-<line x1="124" y1="36" x2="175" y2="36" stroke="#C8D0E8" stroke-width="0.75"/>
-<line x1="175" y1="36" x2="240" y2="36" stroke="#C8D0E8" stroke-width="0.75"/>
-<circle cx="240" cy="36" r="1.5" fill="#C8D0E8"/>
-<text x="178" y="33" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Neck Die.</text>
+<line x1="124" y1="36" x2="175" y2="40" stroke="#C8D0E8" stroke-width="0.75"/>
+<line x1="175" y1="40" x2="228" y2="40" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="108" cy="91" r="1.5" fill="#7AB3E0"/>
 <line x1="108" y1="91" x2="60" y2="91" stroke="#7AB3E0" stroke-width="0.75"/>
-<circle cx="60" cy="91" r="1.5" fill="#7AB3E0"/>
-<text x="2" y="88" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Bushing.</text>
-<text x="2" y="97" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">sets tension</text>
-<text x="150" y="208" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SECTION A-A  ·  Left = cut (hatched)  ·  Right = exterior</text>
-        </svg>
-        <p>Size the neck only — sets neck tension that holds the bullet firmly. The bushing controls how much the neck is squeezed. Keeping neck sizing separate from body sizing preserves case body dimensions and extends brass life significantly.</p>
-        <div class="tip">✅ Bushing neck dies let you dial exact neck tension by choosing bushing size. Most precision shooters use 0.001"–0.002" neck tension.</div>
-        <div class="warn">⚠️ Keeping neck sizing separate preserves case body dimensions and extends brass life significantly.</div>
+<!-- Numbered markers -->
+<g><circle cx="238" cy="16" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="19.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="238" cy="40" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="43.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="48" cy="91" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="48" y="94.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="72" cy="120" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="72" y="123.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+<g><circle cx="238" cy="165" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="168.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
+          </svg>
+          <ol class="callouts">
+            <li><b class="cx">1</b> Lock ring — fixes the die's height in the press.</li>
+            <li><b class="cx">2</b> Neck die body — shorter than a body die, because it only works on the neck.</li>
+            <li><b class="cx">3</b> Bushing — an interchangeable ring that sets how much the neck is squeezed. Swapping it changes neck grip.</li>
+            <li><b class="cx">4</b> The neck is squeezed inward here; the case is then pulled back out through the bushing.</li>
+            <li><b class="cx">5</b> Body and shoulder pass through untouched — this die does not size them.</li>
+          </ol>
+          <p class="fig-note">Bushing size depends on your brass thickness, your bullet, and whether an expander is used. Measure a loaded round from your own components and follow the die maker's method rather than copying a number.</p>
+        </figure>
+        <p>In this two-die workflow, the bushing sizes the neck after the body die has already sized the body and shoulder. Select and install the bushing using the die maker's measurement method, accounting for actual loaded-neck diameter, brass thickness, and whether an expander is used.</p>
+        <div class="tip">✅ Verify grip with the exact case and bullet combination. Record the bushing, brass lot, loaded-neck diameter, and resulting performance.</div>
+        <div class="warn">⚠️ A bushing value or nominal “neck tension” copied from another load may be wrong for your brass. Too little grip can allow bullet movement; excessive sizing overworks brass.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">10</div>
         <div class="step-label"><strong>Trim to Length</strong><br><span>Trim to 2.005" — trim if at or over 2.015"</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
       <rect width="300" height="190" fill="#1C1C24"/>
@@ -1316,15 +1508,15 @@
         <div class="tip">✅ After trimming, deburr and chamfer the case mouth — the next step.</div>
         <div class="warn">⚠️ Do not trim below your manual's minimum case length. Over-trimming reduces neck grip and can affect consistency.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item prep">
+      <button class="step-header" type="button">
         <div class="step-num">11</div>
-        <div class="step-label"><strong>Deburr &amp; Chamfer</strong><br><span>Smooth the case mouth</span></div>
+        <div class="step-label"><strong>Deburr, Chamfer &amp; Degrease</strong><br><span>Smooth the mouth and remove all sizing lube</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 155" xmlns="http://www.w3.org/2000/svg">
       <text x="150" y="13" text-anchor="middle" fill="#C8D0E8" font-size="9" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DEBURR &amp; CHAMFER CASE MOUTH</text>
@@ -1372,105 +1564,92 @@
 
       <text x="222" y="128" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Bullet starts straight, no shaving</text>
         </svg>
-        <p>After trimming, the case mouth has a sharp edge inside and out. Use the deburring tool — a few turns outside to chamfer, a few turns inside to deburr. Just until smooth — don't over-do it.</p>
-        <div class="tip">✅ A properly chamfered case mouth lets the bullet start straight without shaving lead or copper.</div>
+        <p>After trimming, remove the outside burr and add only a light inside chamfer, following the tool maker's directions. Then remove all sizing lubricant and metal chips using a method compatible with the lubricant. Cases must be clean and completely dry before primers or powder are introduced.</p>
+        <div class="tip">✅ Before priming: mouth smooth, chips removed, primer pocket unobstructed, and no lubricant or moisture on or inside the case.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item critical" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item critical">
+      <button class="step-header" type="button">
         <div class="step-num">12</div>
         <div class="step-label"><strong>Prime</strong><br><span>Seat new primer slightly below flush</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="200" fill="#1C1C24"/>
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">PRIME — SEAT NEW PRIMER BELOW FLUSH</text>
+        <figure class="figure">
+          <figcaption class="fig-title">Prime — seat the new primer below flush</figcaption>
+          <p class="fig-sub">Left: a primer being pressed into the pocket. Right: a correctly seated primer compared with one left standing high.</p>
+          <svg viewBox="0 34 300 153" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A case in a shell holder with a primer being pressed into its pocket, beside a cross-section comparing a primer seated below the base face with one protruding above it.">
+<rect x="0" y="34" width="300" height="153" fill="#1C1C24"/>
 
 <!-- ══ LEFT: CASE + PRIMER BEING SEATED ══ -->
-<!-- Case upright, scale=3.5, base at y=160, cx=80 -->
 <use href="#g-case" transform="translate(80,160) scale(3.5)" fill="#C09830" color="#C09830"/>
 <use href="#g-case" transform="translate(80,160) scale(3.5)" fill="none" stroke="#D8A820" stroke-width="0.35"/>
 
-<!-- Shell holder (steel block under case base) -->
 <rect x="58" y="158" width="44" height="16" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Shell holder recess (case sits in it) -->
 <rect x="66" y="158" width="28" height="6" fill="#383848"/>
 
-<!-- Primer (red disc) rising up from below into pocket -->
-<!-- Pocket opening at base y=160, pocket depth ~5px -->
 <rect x="73" y="153" width="14" height="5" rx="0.5" fill="#E05050" stroke="#FF7070" stroke-width="1"/>
-<!-- Arrow showing primer being pushed up -->
 <line x1="80" y1="172" x2="80" y2="162" stroke="#E05050" stroke-width="1.5" marker-end="url(#g-arr-red)"/>
 
-<!-- Flush line at base face -->
 <line x1="55" y1="160" x2="105" y2="160" stroke="#4CBB6A" stroke-width="1.2" stroke-dasharray="4,2"/>
-<text x="80" y="148" text-anchor="middle" fill="#4CBB6A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ below flush</text>
 
-<!-- Labels -->
 <circle cx="66" cy="161" r="1.5" fill="#C8D0E8"/>
-<line x1="66" y1="161" x2="30" y2="150" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="2" y="148" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shell</text>
-<text x="2" y="157" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">holder</text>
-
+<line x1="66" y1="161" x2="31" y2="150" stroke="#C8D0E8" stroke-width="0.7"/>
 <circle cx="73" cy="155" r="1.5" fill="#E05050"/>
-<line x1="73" y1="155" x2="30" y2="170" stroke="#E05050" stroke-width="0.7"/>
-<text x="2" y="168" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">New</text>
-<text x="2" y="177" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">primer</text>
+<line x1="73" y1="155" x2="31" y2="171" stroke="#E05050" stroke-width="0.7"/>
+<line x1="109" y1="160" x2="106" y2="160" stroke="#4CBB6A" stroke-width="0.7"/>
 
 <!-- ══ RIGHT: CORRECT vs HIGH primer depth inset ══ -->
-<rect x="155" y="22" width="135" height="155" fill="#141420" stroke="#333" stroke-width="1"/>
-<text x="222" y="35" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">PRIMER DEPTH</text>
-<line x1="155" y1="40" x2="290" y2="40" stroke="#333" stroke-width="0.8"/>
+<rect x="155" y="40" width="135" height="100" fill="#141420" stroke="#333" stroke-width="1"/>
 
-<!-- CORRECT: primer below flush -->
-<text x="187" y="52" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ CORRECT</text>
-<!-- Case base cross-section (brass) -->
+<!-- CORRECT: primer below the base face -->
 <rect x="163" y="56" width="48" height="20" fill="#C09830" stroke="#D8A820" stroke-width="1"/>
-<!-- Primer pocket -->
 <rect x="177" y="56" width="20" height="12" fill="#1C1C24"/>
-<!-- Primer seated BELOW flush (top of primer at y=60, base face at y=56) -->
 <rect x="179" y="60" width="16" height="8" rx="0.5" fill="#E05050" stroke="#FF7070" stroke-width="0.8"/>
-<!-- Flush line -->
 <line x1="158" y1="56" x2="216" y2="56" stroke="#4CBB6A" stroke-width="1.2" stroke-dasharray="3,2"/>
-<text x="187" y="86" text-anchor="middle" fill="#4CBB6A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">0.002"–0.005" deep</text>
-<!-- Depth indicator arrow -->
 <line x1="221" y1="56" x2="221" y2="60" stroke="#4CBB6A" stroke-width="1"/>
 <line x1="218" y1="57" x2="221" y2="56" stroke="#4CBB6A" stroke-width="0.8"/>
 <line x1="218" y1="59" x2="221" y2="60" stroke="#4CBB6A" stroke-width="0.8"/>
+<line x1="229" y1="66" x2="213" y2="66" stroke="#4CBB6A" stroke-width="0.7"/>
 
-<!-- WRONG: primer high / above flush -->
-<text x="187" y="104" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ HIGH — DANGER</text>
+<!-- WRONG: primer standing high -->
 <rect x="163" y="108" width="48" height="20" fill="#C09830" stroke="#D8A820" stroke-width="1"/>
 <rect x="177" y="108" width="20" height="12" fill="#1C1C24"/>
-<!-- Primer sticking UP above flush -->
 <rect x="179" y="102" width="16" height="12" rx="0.5" fill="#E05050" stroke="#FF4040" stroke-width="1.2"/>
-<!-- Flush line -->
 <line x1="158" y1="108" x2="216" y2="108" stroke="#E05050" stroke-width="1.2" stroke-dasharray="3,2"/>
-<text x="187" y="136" text-anchor="middle" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Fires on bolt close!</text>
+<line x1="229" y1="118" x2="213" y2="118" stroke="#E05050" stroke-width="0.7"/>
 
-<!-- Warning box -->
-<rect x="160" y="142" width="125" height="28" fill="#2e0a0a" stroke="#8a2020" stroke-width="1"/>
-<text x="222" y="153" text-anchor="middle" fill="#FF8080" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">⚠ High primer = slam fire</text>
-<text x="222" y="163" text-anchor="middle" fill="#FF8080" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Check EVERY case by feel + eye</text>
-
-<text x="150" y="193" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Feel a firm crush-fit as primer seats · primer face must be below the brass base face</text>
-        </svg>
-        <p>Use a hand priming tool (Lee, RCBS, or Frankford Arsenal). Feel for resistance as it seats — a slight "crush fit" is correct. The primer face must be <strong>0.002"–0.005" below flush</strong> with the case base. Never above.</p>
-        <div class="warn">⚠️ A HIGH primer (sticking up) can fire the moment the bolt closes — before you even pull the trigger. Always check by feel and visually inspect every primer.</div>
+<!-- numbered markers -->
+<g><circle cx="22" cy="148" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="22" y="151.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="22" cy="173" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="22" y="176.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="118" cy="160" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="118" y="163.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="238" cy="66" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="69.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+<g><circle cx="238" cy="118" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="121.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
+          </svg>
+          <ol class="callouts">
+            <li><b class="cx">1</b> Shell holder supporting the case head while the primer is pressed home.</li>
+            <li><b class="cx">2</b> New primer entering the pocket, anvil first.</li>
+            <li><b class="cx">3</b> The base face — the reference the primer must finish below.</li>
+            <li><b class="cx">4</b> Correct: the primer cup sits below the base face, fully down on the bottom of the pocket.</li>
+            <li><b class="cx">5</b> Wrong: the primer stands proud of the base face. Do not chamber this round.</li>
+          </ol>
+          <p class="fig-note">Seat by feel — a firm, even crush as the primer bottoms out. Follow your priming tool's instructions for how far below flush it should finish.</p>
+        </figure>
+        <p>Verify the exact primer type in the published load data, then use the priming tool as its maker directs. Seat each primer fully against the bottom of a clean pocket; it should finish below flush without crushing or flattening the cup. Measure only if your process and tool instructions specify a numeric depth.</p>
+        <div class="warn">⚠️ A high primer can cause ignition or function problems, especially in firearms with free-floating firing pins. Keep primers oriented correctly, never force one, and inspect every seated primer by sight and touch.</div>
         <div class="tip">✅ Correct feel: smooth firm resistance, primer slightly recessed. Wrong feel: drops in with no resistance = discard that case.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item critical" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item critical">
+      <button class="step-header" type="button">
         <div class="step-num">13</div>
         <div class="step-label"><strong>Charge Powder</strong><br><span>Weigh every charge on a scale</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
         <svg viewBox="0 0 300 175" xmlns="http://www.w3.org/2000/svg">
 <rect width="300" height="175" fill="#1C1C24"/>
@@ -1515,12 +1694,12 @@
 <text x="245" y="111" text-anchor="middle" fill="#C8D0E8" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">50g ×2</text>
 <rect x="232" y="114" width="26" height="6" rx="1" fill="#383848" stroke="#D8DCF0" stroke-width="0.8"/>
 
-<!-- VARGET container (right) -->
+<!-- Powder container (right) — generic, not a product recommendation -->
 <rect x="228" y="40" width="40" height="56" fill="#3a2010" stroke="#7a5020" stroke-width="1.5"/>
 <rect x="230" y="46" width="36" height="12" fill="#cc2200" opacity="0.8"/>
-<text x="248" y="55" text-anchor="middle" fill="#fff" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">VARGET</text>
-<text x="248" y="70" text-anchor="middle" fill="#C8973A" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">VARGET</text>
-<text x="248" y="82" text-anchor="middle" fill="#7080A8" font-size="5.5" font-family="Arial Narrow,Arial,sans-serif">Rifle Powder</text>
+<text x="248" y="55" text-anchor="middle" fill="#fff" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">POWDER</text>
+<text x="248" y="70" text-anchor="middle" fill="#C8973A" font-size="6" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">AS PUBLISHED</text>
+<text x="248" y="82" text-anchor="middle" fill="#7080A8" font-size="5.5" font-family="Arial Narrow,Arial,sans-serif">check the label</text>
 
 <!-- Leader callouts -->
 <circle cx="120" cy="8" r="1.2" fill="#D8DCF0"/>
@@ -1543,44 +1722,45 @@
 <line x1="245" y1="100" x2="265" y2="88" stroke="#D8DCF0" stroke-width="0.75"/>
 <text x="212" y="86" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cal. weights.</text>
         </svg>
-        <p>Enter the target charge weight on the touchscreen. Place the pan, press <strong>GO</strong> — the dispenser trickles powder until the exact weight is reached, then the trap door closes. Check the display reads your target before tipping into the case. Keep only ONE powder on the bench at a time — label it clearly.</p>
+        <p>Confirm the published recipe and that the display is set to the intended unit, normally <strong>grains (gr), not grams (g)</strong>. Enter the documented starting charge and operate the dispenser exactly as its manual directs. Independently verify its calibration and periodically compare charges with suitable check weights or a second trusted scale. Keep only one clearly identified powder on the bench.</p>
         <div class="warn">⚠️ Before starting: run the calibration routine with both 50g weights as per the manual. Re-calibrate if you move the unit or bump the bench.</div>
         <div class="warn">⚠️ After charging cases, look across all of them in the loading block. All powder levels should look the same height. An empty case or overfull case means a missed or double charge — stop and investigate every case.</div>
         <div class="warn">⚠️ A case with NO powder looks like a normal empty case. Firing with no powder can lodge the bullet inside the barrel. If you then fire a second round — the barrel can rupture. If a round fires with a soft "pop" and no recoil, STOP. Do not fire again. Check the barrel is clear before continuing.</div>
-        <div class="tip">✅ Always start at the MINIMUM load listed in your manual. Never use maximum to start.</div>
+        <div class="tip">✅ Use the published starting load for the exact component combination and follow the source's work-up instructions. The container shown here is generic and is not a recommendation.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item load" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item load">
+      <button class="step-header" type="button">
         <div class="step-num">14</div>
         <div class="step-label"><strong>Seat Bullet</strong><br><span>Press bullet to correct depth</span></div>
         <span class="step-tag tag-load">LOAD</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 175" xmlns="http://www.w3.org/2000/svg">
+        <figure class="figure">
+          <figcaption class="fig-title">Seating die — sets how deep the bullet sits</figcaption>
+          <p class="fig-sub">A seating die in a press, with a charged case and bullet entering from below.</p>
+          <svg viewBox="72 4 182 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A bullet seating die mounted in a press. An adjustable cap on top sets seating depth, lock rings hold the settings, and a charged case with a bullet rises into the die from below.">
 <defs>
   <pattern id="knurl-11" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
     <line x1="0" y1="6" x2="6" y2="0" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
     <line x1="0" y1="0" x2="6" y2="6" stroke="#D8DCF0" stroke-width="0.55" opacity="0.5"/>
   </pattern>
 </defs>
-<text x="110" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">SEATING DIE — SET OAL PER MANUAL</text>
 <!-- Centerline -->
 <line x1="108" y1="14" x2="108" y2="160" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="10,2,2,2" opacity="0.55"/>
-<!-- Large knurled adj cap (top, wider than body) — flat steel -->
+<!-- Adjustment cap -->
 <rect x="86" y="16" width="44" height="18" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
 <rect x="86" y="16" width="44" height="18" fill="url(#knurl-11)" opacity="0.7"/>
 <!-- Die body upper smooth -->
 <rect x="91" y="34" width="34" height="24" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
-<text x="108" y="44" text-anchor="middle" fill="#C8D0E8" font-size="5.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">HORNADY</text>
 <!-- Knurl grip zone -->
 <rect x="91" y="58" width="34" height="16" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
 <rect x="91" y="58" width="34" height="16" fill="url(#knurl-11)" opacity="0.7"/>
-<!-- Sure-Loc hex ring — flat #383848 -->
+<!-- Upper lock ring -->
 <rect x="85" y="74" width="46" height="7" fill="#383848" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Second lock ring (crimp adj) near bottom — flat #383848 -->
+<!-- Lower lock ring -->
 <rect x="87" y="96" width="42" height="6" fill="#383848" stroke="#D8DCF0" stroke-width="1.1"/>
 <!-- Thread section -->
 <rect x="91" y="81" width="34" height="20" fill="#484858" stroke="#D8DCF0" stroke-width="1.3"/>
@@ -1591,119 +1771,114 @@
 <line x1="123" y1="81" x2="123" y2="102" stroke="#D8DCF0" stroke-width="0.5" stroke-dasharray="5,3" opacity="0.35"/>
 <!-- Press top collar -->
 <rect x="78" y="102" width="60" height="12" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Case with bullet seated — #g-case symbol, cx=108, base y=158, scale=1.6 -->
-<!-- At scale=1.6: total height=43px, neck top at y=158-27*1.6=158-43.2=114.8 -->
+<!-- Case with bullet seated -->
 <use href="#g-case" transform="translate(108,158) scale(1.6)" fill="#C09830" color="#C09830"/>
-<!-- Bullet seated in neck — use #g-bullet, pointing UP, at neck top -->
-<!-- Neck top at y ≈ 115, cx=108 -->
 <use href="#g-bullet" transform="translate(108,115) scale(1.6)"/>
-<!-- OAL dimension arrow (left side) -->
+<!-- Overall-length dimension arrow -->
 <line x1="88" y1="112" x2="88" y2="158" stroke="#C8973A" stroke-width="1"/>
 <line x1="84" y1="112" x2="92" y2="112" stroke="#C8973A" stroke-width="1"/>
 <line x1="84" y1="158" x2="92" y2="158" stroke="#C8973A" stroke-width="1"/>
-<text x="83" y="138" text-anchor="middle" fill="#C8973A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif" transform="rotate(-90 83 138)">OAL = PER MANUAL</text>
 <!-- Up arrow -->
 <line x1="108" y1="168" x2="108" y2="161" stroke="#4090FF" stroke-width="1.5"/>
 <path d="M105 164 L108 159 L111 164" fill="#4090FF"/>
-<!-- Leader callouts -->
+<!-- Leaders -->
 <line x1="130" y1="22" x2="190" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="190" y1="15" x2="240" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="240" cy="15" r="1" fill="#D8DCF0"/>
-<text x="193" y="12" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Adj. Cap.</text>
-<text x="193" y="21" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">sets seating depth</text>
+<line x1="190" y1="15" x2="228" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="131" y1="77" x2="190" y2="72" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="190" y1="72" x2="240" y2="72" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="240" cy="72" r="1" fill="#D8DCF0"/>
-<text x="193" y="69" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Sure-Loc Ring.</text>
+<line x1="190" y1="72" x2="228" y2="72" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="129" y1="99" x2="190" y2="105" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="190" y1="105" x2="240" y2="105" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="240" cy="105" r="1" fill="#D8DCF0"/>
-<text x="193" y="102" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Crimp Ring.</text>
+<line x1="190" y1="105" x2="228" y2="105" stroke="#D8DCF0" stroke-width="0.75"/>
 <line x1="116" y1="138" x2="190" y2="138" stroke="#C8973A" stroke-width="0.75"/>
-<line x1="190" y1="138" x2="240" y2="138" stroke="#C8973A" stroke-width="0.75"/>
-<circle cx="240" cy="138" r="1" fill="#C8973A"/>
-<text x="193" y="135" fill="#C8973A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">OAL per manual.</text>
-<text x="193" y="144" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">measure every round</text>
-        </svg>
-        <p>Set your seating die to the correct depth using your reloading manual. Use the manual's specified overall length (OAL) for your exact bullet and load combination. Measure every few rounds with calipers to stay consistent.</p>
-        <div class="tip">✅ Seat 3 rounds, measure each, then fine-tune the die before doing the rest of the batch.</div>
+<line x1="190" y1="138" x2="228" y2="138" stroke="#C8973A" stroke-width="0.75"/>
+<!-- Numbered markers -->
+<g><circle cx="238" cy="15" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="18.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="238" cy="72" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="75.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="238" cy="105" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="108.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="238" cy="138" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="238" y="141.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+          </svg>
+          <ol class="callouts">
+            <li><b class="cx">1</b> Adjustment cap — turning it changes how deep the bullet is pushed into the case.</li>
+            <li><b class="cx">2</b> Upper lock ring — holds the die's height in the press once set.</li>
+            <li><b class="cx">3</b> Lower ring — on dies that can crimp, this sets the crimp. Leave crimp off unless your published recipe calls for it.</li>
+            <li><b class="cx">4</b> Cartridge overall length — measure it on the first round and spot-check through the batch.</li>
+          </ol>
+          <p class="fig-note">Use the overall length published for the exact bullet you are loading. Bullet shapes differ, so a length taken from a different bullet of the same weight does not transfer.</p>
+        </figure>
+        <p>Set the seating die using its instructions and the published cartridge overall length for the exact bullet SKU. Bullet profiles differ, so a length from another bullet of the same weight is not automatically valid. Verify the first cartridge, then check periodically and at the end of the batch.</p>
+        <div class="tip">✅ Record bullet SKU, seating setting, measured length, and whether the published recipe requires a crimp. Do not add a crimp by default.</div>
       </div></div>
-    </div>
+    </li>
 
-    <div class="step-item critical" onclick="toggleStep(this)">
-      <div class="step-header">
+    <li class="step-item critical">
+      <button class="step-header" type="button">
         <div class="step-num">15</div>
         <div class="step-label"><strong>Final Inspect</strong><br><span>Plunk test + visual check every round</span></div>
         <span class="step-tag tag-critical">⚠ CRITICAL</span>
         <span class="chevron">▼</span>
-      </div>
+      </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE GAUGE — PLUNK TEST</text>
-<!-- ===== LEFT: Case Gauge ===== -->
-<!-- Solid steel cylinder (outer) — flat fill -->
+        <figure class="figure">
+          <figcaption class="fig-title">Case gauge — plunk test</figcaption>
+          <p class="fig-sub">A loaded round is dropped into a cartridge gauge to check its overall dimensions. Left: base sits flush. Right: base stands proud of the gauge face.</p>
+          <svg viewBox="0 8 220 122" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two cartridge gauges side by side. In the left gauge the round's base sits flush with the gauge face; in the right gauge the base stands proud above it.">
+<!-- ===== LEFT: passes ===== -->
 <rect x="30" y="40" width="60" height="80" fill="#484858" stroke="#D8DCF0" stroke-width="1.5"/>
-<!-- Top face ellipse -->
 <ellipse cx="60" cy="40" rx="30" ry="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
-<!-- Chamber recess (circle opening on top) -->
 <ellipse cx="60" cy="40" rx="14" ry="3.5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
-<!-- Side label -->
-<text x="60" y="95" text-anchor="middle" fill="#D8DCF0" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CASE</text>
-<text x="60" y="104" text-anchor="middle" fill="#D8DCF0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">GAUGE</text>
-<!-- GOOD round: bullet-first (nose DOWN). scale(1,-1) flips case: base at y=42 (top/flush), neck goes to y=69 (down) -->
-<!-- scale(1.8,-1.8): case 49px tall. Base at y=42 (flush), neck at y=91 -->
 <use href="#g-case" transform="translate(60,42) scale(1.8,-1.8)" fill="#C09830" color="#C09830"/>
-<!-- Bullet: base at neck y=91, tip at y=113 (pointing DOWN) -->
 <use href="#g-bullet" transform="translate(60,91) scale(1.8,-1.8)"/>
-<!-- Motion arrows (dropping down from above gauge) -->
 <line x1="56" y1="32" x2="56" y2="36" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
 <line x1="64" y1="32" x2="64" y2="36" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
 <line x1="60" y1="30" x2="60" y2="35" stroke="#C8D0E8" stroke-width="0.8" stroke-dasharray="2,1"/>
-<!-- Good result: flush indicator -->
 <line x1="25" y1="42" x2="95" y2="42" stroke="#4CBB6A" stroke-width="1.2" stroke-dasharray="4,2"/>
-<text x="18" y="39" fill="#4CBB6A" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓</text>
-<!-- Flush label -->
-<text x="60" y="130" text-anchor="middle" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ Flush = GOOD</text>
-<!-- Leader callout: Case Gauge -->
-<line x1="30" y1="80" x2="15" y2="70" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="15" y1="70" x2="0" y2="70" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="0" cy="70" r="1" fill="#D8DCF0"/>
-<text x="0" y="67" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Gauge.</text>
-<line x1="60" y1="43" x2="50" y2="50" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="0" y="55" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Chamber</text>
-<text x="0" y="64" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Recess.</text>
-<!-- ===== RIGHT: BAD result ===== -->
-<!-- Second gauge (right) — flat fill -->
+<text x="16" y="46" fill="#4CBB6A" font-size="13" font-weight="bold" font-family="Arial,sans-serif">✓</text>
+<!-- leader: case gauge body -->
+<line x1="30" y1="80" x2="19" y2="73" stroke="#D8DCF0" stroke-width="0.75"/>
+<!-- leader: chamber recess -->
+<line x1="36" y1="29" x2="50" y2="37" stroke="#D8DCF0" stroke-width="0.75"/>
+<!-- ===== RIGHT: fails ===== -->
 <rect x="120" y="40" width="60" height="80" fill="#484858" stroke="#D8DCF0" stroke-width="1.5"/>
 <ellipse cx="150" cy="40" rx="30" ry="6" fill="#484858" stroke="#D8DCF0" stroke-width="1.2"/>
 <ellipse cx="150" cy="40" rx="14" ry="3.5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
-<!-- BAD round: same orientation. Base at y=37 = 5px proud above gauge flush line y=42 -->
-<!-- scale(1.8,-1.8): base at y=37 (5px proud above flush y=42), neck at y=86 -->
 <use href="#g-case" transform="translate(150,37) scale(1.8,-1.8)" fill="#C09830" color="#C09830"/>
-<!-- Bullet: base at neck y=86, tip at y=108 (pointing down) -->
 <use href="#g-bullet" transform="translate(150,86) scale(1.8,-1.8)"/>
-<!-- Round base is above flush line (proud) -->
 <line x1="115" y1="42" x2="185" y2="42" stroke="#E05050" stroke-width="1.2" stroke-dasharray="4,2"/>
-<text x="108" y="39" fill="#E05050" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕</text>
-<!-- Proud gap indicator -->
+<text x="106" y="46" fill="#E05050" font-size="13" font-weight="bold" font-family="Arial,sans-serif">✕</text>
 <line x1="183" y1="37" x2="183" y2="42" stroke="#E05050" stroke-width="2"/>
 <line x1="178" y1="37" x2="188" y2="37" stroke="#E05050" stroke-width="1.2"/>
 <line x1="178" y1="42" x2="188" y2="42" stroke="#E05050" stroke-width="1.2"/>
-<text x="191" y="40" fill="#E05050" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">proud</text>
-<text x="150" y="130" text-anchor="middle" fill="#E05050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ Proud = RESIZE or RE-TRIM</text>
-<!-- ===== Checklist panel ===== -->
-<rect x="15" y="138" width="270" height="25" fill="#1e1e2a" stroke="#333" stroke-width="1"/>
-<text x="25" y="146" fill="#4CBB6A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">✓ Drops freely + base flush = GOOD</text>
-<text x="25" y="156" fill="#E05050" font-size="7" font-family="Arial Narrow,Arial,sans-serif">✕ Sits proud = shoulder not bumped / too long</text>
-<text x="25" y="165" fill="#E05050" font-size="7" font-family="Arial Narrow,Arial,sans-serif">✕ Won't drop = resize needed</text>
-        </svg>
-        <p>Drop each finished round into a case gauge (or the rifle chamber with bolt removed). It should fall in freely with the base flush or below the gauge face. If it sits proud at the shoulder — return to Step 7 (shoulder bump). If it's too long overall — return to Step 10 (trim). If it binds but length is fine — return to Step 9 (neck size). Find out why before shooting that round.</p>
-        <div class="warn">⚠️ Also visually check all primers are seated below flush. Look for any rounds that look off — bent bullet, high primer, case dent.</div>
+<line x1="191" y1="40" x2="189" y2="40" stroke="#E05050" stroke-width="0.75"/>
+<!-- numbered markers -->
+<g><circle cx="10" cy="70" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="10" y="73.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="30" cy="22" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="30" y="25.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="200" cy="40" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="200" y="43.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+          </svg>
+          <ol class="callouts">
+            <li><b class="cx">1</b> Cartridge gauge — a machined block that approximates minimum chamber dimensions.</li>
+            <li><b class="cx">2</b> Chamber recess — the round drops in here under its own weight.</li>
+            <li><b class="cx">3</b> Proud gap — the base standing above the gauge face, meaning the round is out of specification.</li>
+          </ol>
+          <table class="fig-table">
+            <caption>Reading the result</caption>
+            <thead>
+              <tr><th scope="col">What you see</th><th scope="col">What it means</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Drops in freely, base flush</th><td>Passes this dimensional check.</td></tr>
+              <tr><th scope="row">Base sits proud</th><td>Too long, or the shoulder was not set back far enough.</td></tr>
+              <tr><th scope="row">Will not drop in</th><td>A dimensional problem somewhere on the case or seated bullet.</td></tr>
+            </tbody>
+          </table>
+          <p class="fig-note">A gauge checks dimensions only. Quarantine any round that fails and find the cause — never correct a loaded cartridge in a sizing die or trimmer.</p>
+        </figure>
+        <p>Use a cartridge gauge that is designed for loaded .308 Winchester ammunition and interpret it according to its instructions. A gauge result does not prove safe pressure or compatibility with every chamber. If a loaded round fails any dimensional or visual check, quarantine it and determine the cause.</p>
+        <div class="warn">⚠️ Do not run a primed or charged cartridge back through a sizing die or case trimmer. Disassemble rejected ammunition with an appropriate bullet puller before correcting brass preparation or seating. If checking fit in a firearm, follow the firearm maker's safe procedure with the firearm unloaded, ammunition source controlled, and muzzle in a safe direction.</div>
+        <div class="warn">⚠️ Inspect every primer, case, and bullet. Reject damage, contamination, a high or inverted primer, abnormal seating, or any cartridge that differs from the batch record.</div>
         <div class="tip">✅ When done: label your box with caliber, bullet, powder, charge weight, primer, and date. Store in a cool dry place.</div>
       </div></div>
-    </div>
+    </li>
 
-  </div><!-- /step-list -->
+  </ol><!-- /step-list -->
 
   <div class="tip-box info" style="margin-top:18px">
     <span class="tip-icon">💡</span>
@@ -1716,29 +1891,46 @@
 </main>
 
 <script>
-function toggleStep(el) {
-  const isOpen = el.classList.contains('open');
-  // close all
-  document.querySelectorAll('.step-item.open').forEach(s => s.classList.remove('open'));
-  // open clicked if it was closed
-  if (!isOpen) el.classList.add('open');
-}
+(function () {
+  const steps = Array.from(document.querySelectorAll('.step-item'));
+  const status = document.getElementById('toolbar-status');
 
-function addPrintStepGaps() {
-  removePrintStepGaps();
-  document.querySelectorAll('.step-item').forEach(step => {
-    const gap = document.createElement('div');
-    gap.className = 'print-step-gap';
-    step.parentNode.insertBefore(gap, step);
+  function setOpen(step, open) {
+    step.classList.toggle('open', open);
+    step.querySelector('.step-header').setAttribute('aria-expanded', String(open));
+  }
+
+  function updateStatus() {
+    const open = steps.filter(s => s.classList.contains('open')).length;
+    status.textContent = open === 0
+      ? `${steps.length} steps — all collapsed`
+      : `${open} of ${steps.length} steps open`;
+  }
+
+  steps.forEach((step, index) => {
+    const header = step.querySelector('.step-header');
+    const detail = step.querySelector('.step-detail');
+    detail.id = `step-detail-${index + 1}`;
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', detail.id);
+    header.addEventListener('click', () => {
+      setOpen(step, !step.classList.contains('open'));
+      updateStatus();
+    });
   });
-}
 
-function removePrintStepGaps() {
-  document.querySelectorAll('.print-step-gap').forEach(gap => gap.remove());
-}
+  document.getElementById('expand-all').addEventListener('click', () => {
+    steps.forEach(step => setOpen(step, true));
+    updateStatus();
+  });
 
-window.addEventListener('beforeprint', addPrintStepGaps);
-window.addEventListener('afterprint', removePrintStepGaps);
+  document.getElementById('collapse-all').addEventListener('click', () => {
+    steps.forEach(step => setOpen(step, false));
+    updateStatus();
+  });
+
+  updateStatus();
+})();
 </script>
 </body>
 </html>
