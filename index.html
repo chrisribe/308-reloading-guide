@@ -453,35 +453,40 @@
     <polygon points="0,0 7,3.5 0,7" fill="#D8DCF0"/>
   </marker>
   <!-- CANONICAL .308 CASE SYMBOL
-       Origin = center-bottom of rim.
-       Total height: 27px. Rim 3px, body 17px, shoulder 3px, neck 4px.
-       Body half-width: 5.5px. Neck half-width: 2.5px.
+       Origin = center-bottom of the case head.
+       Proportions derive from SAAMI .308 Winchester dimensions, scaled so
+       total height = 27px (13.40 px per inch). Keep this height: every
+       <use> of this symbol is scaled and positioned against it.
+
+         case length  2.015"  -> 27.00        base dia  0.4709" -> 6.31
+         neck length  0.3038" ->  4.07        shoulder dia 0.4539" -> 6.08
+         shoulder len 0.1517" ->  2.03        neck dia  0.3435" -> 4.60
+         body length  1.5595" -> 20.90        groove dia 0.3730" -> 5.00
+
+       .308 is rimless: the rim is only 0.4% wider than the base, so it is
+       drawn flush and the visible feature at the head is the extractor
+       groove cut into it.
        To place: <use href="#g-case" transform="translate(CX, BASE_Y)"/>
   -->
   <symbol id="g-case" overflow="visible">
-    <!--
-      .308 case — correct proportions. Origin = center-bottom of rim. Total height = 27px.
-      Rim:      ±4.5px wide, 3px tall  (y=0 to y=-3)  — rimless: barely wider than body
-      Body:     ±4px wide,  17px tall  (y=-3 to y=-20)
-      Shoulder: tapers ±4px→±2.5px,  3px tall  (y=-20 to y=-23)
-      Neck:     ±2.5px wide, 4px tall  (y=-23 to y=-27)
-      Body:neck width ratio = 1.6:1
-    -->
-    <!-- Rim (rimless — only 0.5px protrusion past body each side) -->
-    <rect x="-4.5" y="-3"  width="9"   height="3"   fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
-    <!-- Body -->
-    <rect x="-4"   y="-20" width="8"   height="17"  fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+    <!-- Body — tapers slightly from base to shoulder, as the real case does -->
+    <polygon points="-3.15,0 3.15,0 3.04,-20.9 -3.04,-20.9" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+    <!-- Extractor groove -->
+    <rect x="-2.5" y="-2.3" width="5" height="1.4" fill="#000000" opacity="0.22"/>
     <!-- Shoulder -->
-    <polygon points="-4,-20 -2.5,-23 2.5,-23 4,-20" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+    <polygon points="-3.04,-20.9 -2.3,-22.93 2.3,-22.93 3.04,-20.9" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
     <!-- Neck -->
-    <rect x="-2.5" y="-27" width="5"   height="4"   fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
+    <rect x="-2.3" y="-27" width="4.6" height="4.07" fill="currentColor" stroke="#D8A820" stroke-width="0.9" stroke-linejoin="miter"/>
   </symbol>
-  <!-- BULLET SYMBOL (ogive profile)
-       Origin = base of bullet (where it sits in case neck).
-       Total height ~12px, base width 5px.
+  <!-- BULLET SYMBOL (spitzer ogive)
+       Origin = base of the bullet, where it sits inside the case neck.
+       Same 13.40px-per-inch scale as #g-case:
+         bullet dia 0.308" -> 4.13 (narrower than the 4.60 neck outside,
+         since the neck wall wraps around it)
+         length ~1.12" -> 15.0, typical of a 165-168gr .30 calibre bullet
   -->
   <symbol id="g-bullet" overflow="visible">
-    <polygon points="-2.5,0 2.5,0 2,-4 0,-12 -2,-4" fill="#A0A8B0" stroke="#C8D0E8" stroke-width="0.8" stroke-linejoin="miter"/>
+    <path d="M-2.06,0 L2.06,0 L2.06,-5 C2.06,-9 1.2,-12.6 0,-15 C-1.2,-12.6 -2.06,-9 -2.06,-5 Z" fill="#A0A8B0" stroke="#C8D0E8" stroke-width="0.8" stroke-linejoin="miter"/>
   </symbol>
 </defs>
 </svg>
@@ -598,7 +603,7 @@
     <figure class="figure">
     <figcaption class="fig-title">.308 Winchester — parts of a round</figcaption>
     <p class="fig-sub">Cutaway side view of a loaded cartridge, base on the left and bullet on the right.</p>
-    <svg viewBox="24 28 278 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutaway of a loaded .308 Winchester cartridge showing, from the base forward: the rim, the primer in its pocket, powder inside the brass case body, the shoulder, the neck, and the bullet held in the neck.">
+    <svg viewBox="24 28 288 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutaway of a loaded .308 Winchester cartridge showing, from the base forward: the extractor groove, the primer in its pocket, powder inside the brass case body, the shoulder, the neck, and the bullet seated into the neck.">
       <defs>
         <marker id="a1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e07050"/></marker>
         <marker id="a2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e0c050"/></marker>
@@ -607,63 +612,65 @@
       </defs>
 
       <!--
-        .308 anatomy — drawn directly for accurate bottleneck proportions.
-        CY=81. Case runs x=45 (rim face) to x=248 (neck mouth).
-        Rim:      x=45..58,  y=62..100  (13px wide, 38px tall)
-        Body:     x=58..200, y=65..97   (142px long, 32px tall)
-        Shoulder: x=200..220, tapers 32px→16px tall (y=65→73 top, y=97→89 bottom)
-        Neck:     x=220..248, y=73..89  (28px long, 16px tall)
+        .308 anatomy — one scale throughout: 93px per inch, centreline y=81,
+        head face at x=42. Same SAAMI proportions as #g-case.
+          case length 2.015" -> 187.4   base dia 0.4709" -> 43.8
+          neck length 0.3038" -> 28.3   shoulder dia 0.4539" -> 42.2
+          shoulder    0.1517" -> 14.1   neck dia 0.3435" -> 31.9
+          bullet dia  0.308"  -> 28.6   COAL ~2.80" -> 260
+        Previously the case was drawn at ~101px/inch but the bullet placed at
+        ~34px/inch, so the bullet came out a third of its true size.
       -->
-      <!-- Rim -->
-      <rect x="45" y="62" width="13" height="38" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
-      <!-- Body -->
-      <rect x="58" y="65" width="142" height="32" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
-      <!-- Shoulder (trapezoid) -->
-      <polygon points="200,65 220,73 220,89 200,97" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
+      <!-- Body — tapers slightly from head to shoulder -->
+      <polygon points="42,59.1 187,59.9 187,102.1 42,102.9" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
+      <!-- Shoulder -->
+      <polygon points="187,59.9 201.1,65.0 201.1,97.0 187,102.1" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
       <!-- Neck -->
-      <rect x="220" y="73" width="28" height="16" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
+      <rect x="201.1" y="65" width="28.3" height="32" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
+      <!-- Extractor groove — .308 is rimless, so the groove is cut into the head -->
+      <rect x="44" y="63.7" width="5" height="34.7" fill="#000000" opacity="0.22"/>
 
-      <!-- PRIMER POCKET — cut view, flush with rim face at x=45 -->
-      <rect x="45" y="70" width="10" height="22" fill="#2a0e04"/>
-      <rect x="45" y="71" width="9" height="20" fill="#d05525" stroke="#e06030" stroke-width="0.8"/>
-      <circle cx="46" cy="81" r="2" fill="#a03010"/>
-      <!-- Flash hole -->
-      <rect x="55" y="79.5" width="18" height="3" fill="#1a0a02"/>
+      <!-- INTERIOR CAVITY — web solid to x=60.6, wall thins towards the neck -->
+      <path d="M60.6,63.3 L187,64.1 L201.1,66.3 L229.4,66.3 L229.4,95.7 L201.1,95.7 L187,97.9 L60.6,98.7 Z" fill="#3a2408"/>
 
-      <!-- Powder charges inside case body (x=95..200, centered vertically around y=81) -->
-      <circle cx="110" cy="76" r="3" fill="#e0c050" opacity="0.85"/>
-      <circle cx="125" cy="83" r="2.5" fill="#e0c050" opacity="0.85"/>
-      <circle cx="140" cy="71" r="3" fill="#e0c050" opacity="0.85"/>
-      <circle cx="155" cy="80" r="2.5" fill="#e0c050" opacity="0.85"/>
-      <circle cx="170" cy="74" r="3" fill="#e0c050" opacity="0.85"/>
-      <circle cx="183" cy="82" r="2.5" fill="#e0c050" opacity="0.85"/>
+      <!-- PRIMER POCKET — cut view, flush with the head face at x=42 -->
+      <rect x="42" y="71.2" width="11.6" height="19.6" fill="#2a0e04"/>
+      <rect x="42" y="72.2" width="10.6" height="17.6" fill="#d05525" stroke="#e06030" stroke-width="0.8"/>
+      <circle cx="43.5" cy="81" r="2" fill="#a03010"/>
+      <!-- Flash hole through the web -->
+      <rect x="53.6" y="77.3" width="7" height="7.4" fill="#1a0a02"/>
 
-      <!--
-        Bullet: #g-bullet, rotate -90° so tip points RIGHT.
-        Scale=2.5 → 30px tall. Base at x≈257 (neck mouth), tip at x≈287.
-        CY=81.
-      -->
-      <!-- Cannelure groove near base of bullet (at neck mouth x=248) -->
-      <rect x="248" y="78" width="3" height="6" fill="#555" opacity="0.7"/>
+      <!-- Powder charge, filling the cavity from the web to the bullet base -->
+      <circle cx="76"  cy="72" r="3"   fill="#e0c050" opacity="0.85"/>
+      <circle cx="90"  cy="88" r="2.5" fill="#e0c050" opacity="0.85"/>
+      <circle cx="104" cy="68" r="3"   fill="#e0c050" opacity="0.85"/>
+      <circle cx="118" cy="94" r="2.5" fill="#e0c050" opacity="0.85"/>
+      <circle cx="130" cy="78" r="3"   fill="#e0c050" opacity="0.85"/>
+      <circle cx="144" cy="90" r="2.5" fill="#e0c050" opacity="0.85"/>
+      <circle cx="157" cy="70" r="3"   fill="#e0c050" opacity="0.85"/>
+      <circle cx="170" cy="85" r="2.5" fill="#e0c050" opacity="0.85"/>
+      <circle cx="182" cy="75" r="3"   fill="#e0c050" opacity="0.85"/>
+      <circle cx="193" cy="88" r="2.5" fill="#e0c050" opacity="0.85"/>
 
       <!-- LABEL ARROWS & MARKERS -->
-      <line x1="62" y1="115" x2="57" y2="95" stroke="#e0a820" stroke-width="1.2" marker-end="url(#a3)"/>
-      <line x1="36" y1="115" x2="47" y2="93" stroke="#e07050" stroke-width="1.2" marker-end="url(#a1)"/>
-      <line x1="130" y1="113" x2="130" y2="90" stroke="#e0c050" stroke-width="1.2" marker-end="url(#a2)"/>
-      <line x1="110" y1="49" x2="110" y2="54" stroke="#e0b860" stroke-width="1" marker-end="url(#a3)"/>
-      <line x1="234" y1="113" x2="234" y2="90" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
-      <use href="#g-bullet" transform="translate(248,81) rotate(90) scale(2.5)"/>
-      <line x1="275" y1="113" x2="275" y2="88" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
+      <line x1="110" y1="49" x2="110" y2="57" stroke="#e0b860" stroke-width="1" marker-end="url(#a3)"/>
+      <line x1="62" y1="115" x2="50" y2="101" stroke="#e0a820" stroke-width="1.2" marker-end="url(#a3)"/>
+      <line x1="36" y1="115" x2="46" y2="92" stroke="#e07050" stroke-width="1.2" marker-end="url(#a1)"/>
+      <line x1="130" y1="113" x2="130" y2="96" stroke="#e0c050" stroke-width="1.2" marker-end="url(#a2)"/>
+      <line x1="215" y1="113" x2="215" y2="99" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
+      <!-- Bullet: seated 0.335" into the neck, tip to the right -->
+      <use href="#g-bullet" transform="translate(198.2,81) rotate(90) scale(6.95)"/>
+      <line x1="265" y1="113" x2="265" y2="94" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
       <g><circle cx="110" cy="40" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="110" y="43.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
       <g><circle cx="62" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="62" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
       <g><circle cx="36" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="36" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
       <g><circle cx="130" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="130" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
-      <g><circle cx="234" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="234" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
-      <g><circle cx="275" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="275" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">6</text></g>
+      <g><circle cx="215" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="215" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
+      <g><circle cx="265" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="265" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">6</text></g>
     </svg>
     <ol class="callouts">
       <li><b class="cx">1</b> Brass case — the only part you reuse. Everything else is replaced each time you load.</li>
-      <li><b class="cx">2</b> Rim — the lip at the base that the extractor grips.</li>
+      <li><b class="cx">2</b> Extractor groove — .308 is rimless, so instead of a protruding rim the extractor grips a groove cut into the head.</li>
       <li><b class="cx">3</b> Primer — seated in a pocket in the case head; the firing pin strikes it to ignite the powder.</li>
       <li><b class="cx">4</b> Powder charge, held inside the case body.</li>
       <li><b class="cx">5</b> Neck — the narrow section that grips the bullet.</li>
@@ -737,26 +744,30 @@
         <figure class="figure">
         <figcaption class="fig-title">Feeling inside for a separation groove</figcaption>
         <p class="fig-sub">Cutaway of a case with a bent wire probe run down the inside wall. The brass thins from the inside first, so the groove can be there before any ring shows outside.</p>
-        <svg viewBox="36 24 260 116" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutaway side view of a case. A bent wire probe is inserted through the case mouth and drawn along the inside wall, where its hooked tip catches in a thinned groove just forward of the solid base.">
+        <svg viewBox="36 20 250 116" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutaway side view of a case. A bent wire probe is inserted through the case mouth and drawn along the inside wall, where its hooked tip catches in a thinned groove just forward of the solid base.">
+          <!-- Same SAAMI proportions as #g-case, laid out horizontally at
+               97.8px per inch: head x=40, mouth x=237, centreline y=80. -->
           <!-- case wall -->
-          <path d="M40,54 L48,54 L48,57 L185,57 L205,65 L250,65 L250,95 L205,95 L185,103 L48,103 L48,106 L40,106 Z" fill="#C09830" stroke="#8a6a20" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M40,57 L192.5,57.8 L207.3,63.2 L237,63.2 L237,96.8 L207.3,96.8 L192.5,102.2 L40,103 Z" fill="#C09830" stroke="#8a6a20" stroke-width="1.4" stroke-linejoin="round"/>
+          <!-- extractor groove -->
+          <rect x="41.5" y="61.8" width="5" height="36.4" fill="#000000" opacity="0.22"/>
           <!-- interior cavity, with the thinned groove forward of the web -->
-          <path d="M68,63 L76,63 C80,58 88,58 92,63 L185,63 L205,70 L250,70 L250,90 L205,90 L185,97 L92,97 C88,102 80,102 76,97 L68,97 Z" fill="#241a08" stroke="#7a5a18" stroke-width="0.9" stroke-linejoin="round"/>
+          <path d="M60,61.4 L68,61.4 C72,58.5 80,58.5 84,61.4 L192.5,62.2 L207.3,64.6 L237,64.6 L237,95.4 L207.3,95.4 L192.5,97.8 L84,98.6 C80,101.5 72,101.5 68,98.6 L60,98.6 Z" fill="#241a08" stroke="#7a5a18" stroke-width="0.9" stroke-linejoin="round"/>
           <!-- centreline -->
-          <line x1="44" y1="80" x2="256" y2="80" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.45"/>
+          <line x1="44" y1="80" x2="244" y2="80" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.45"/>
           <!-- probe -->
-          <path d="M292,86 C283,86 284,73 275,73 L120,68 L93,62" fill="none" stroke="#D8DCF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="93" cy="62" r="2.4" fill="#E05050"/>
+          <path d="M282,88 C273,88 274,70 265,70 L120,64.5 L85,60" fill="none" stroke="#D8DCF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="85" cy="60" r="2.4" fill="#E05050"/>
           <!-- leaders -->
-          <line x1="275" y1="96" x2="275" y2="79" stroke="#D8DCF0" stroke-width="0.75"/>
-          <line x1="259" y1="56" x2="252" y2="64" stroke="#D8DCF0" stroke-width="0.75"/>
-          <line x1="84" y1="45" x2="86" y2="58" stroke="#E05050" stroke-width="0.75"/>
-          <line x1="52" y1="119" x2="56" y2="105" stroke="#C8D0E8" stroke-width="0.75"/>
+          <line x1="262" y1="96" x2="264" y2="71" stroke="#D8DCF0" stroke-width="0.75"/>
+          <line x1="248" y1="52" x2="240" y2="61" stroke="#D8DCF0" stroke-width="0.75"/>
+          <line x1="76" y1="41" x2="78" y2="57" stroke="#E05050" stroke-width="0.75"/>
+          <line x1="50" y1="115" x2="52" y2="102" stroke="#C8D0E8" stroke-width="0.75"/>
           <!-- numbered markers -->
-          <g><circle cx="275" cy="105" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="275" y="108.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
-          <g><circle cx="262" cy="48" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="262" y="51.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
-          <g><circle cx="84" cy="36" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="84" y="39.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
-          <g><circle cx="52" cy="128" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="52" y="131.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+          <g><circle cx="262" cy="105" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="262" y="108.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+          <g><circle cx="250" cy="44" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="250" y="47.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+          <g><circle cx="76" cy="32" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="76" y="35.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+          <g><circle cx="50" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="50" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
         </svg>
         <ol class="callouts">
           <li><b class="cx">1</b> <b>Probe</b> — a stiff wire, such as a straightened paper clip, with a short right-angle hook bent into the end.</li>
