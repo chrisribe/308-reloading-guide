@@ -208,6 +208,29 @@
     color: #bbb;
   }
   .record-field strong { display: block; color: var(--text); font-size: 0.8rem; }
+  .kit-details { margin-top: 12px; }
+  .kit-details > summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #1e1e1e;
+    list-style-position: inside;
+  }
+  .kit-details > summary:hover { border-color: var(--accent); }
+  .kit-details[open] > summary { margin-bottom: 4px; }
+  .kit-group th {
+    color: var(--accent) !important;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-top: 13px !important;
+  }
+  .kit-opt { color: var(--muted); font-style: italic; }
+  .kit-details tbody tr > td:first-of-type { white-space: nowrap; text-align: center; }
 
   /* ── FIGURES & CALLOUTS ──────────────────────────
      Diagram text lives in HTML, not inside the SVG, so it scales with the
@@ -385,6 +408,10 @@
     }
     .load-record h2, .record-field strong { color: #111 !important; }
     .load-record > p, .record-field { color: #444 !important; }
+    .kit-details > summary { display: none !important; }
+    .kit-details > table { display: table !important; }
+    .kit-group th { color: #8a6a12 !important; }
+    .kit-opt { color: #555 !important; }
 
     /* Print button hidden */
     .print-btn { display: none !important; }
@@ -687,6 +714,64 @@
     </ol>
     </figure>
   </div>
+
+  <section class="load-record" aria-labelledby="kit-title">
+    <h2 id="kit-title">Tools and consumables — check before Step 1</h2>
+    <p>Work through this list before you start. Most of the delays in this process come from discovering mid-batch that something is missing, with cases already lubed or primed.</p>
+    <div class="warn">⚠️ Commonly caught without: a <strong>shoulder comparator insert</strong> for the .308 datum (Step 8), a <strong>shell holder</strong> matched to your press and die maker (Step 2), the right <strong>neck bushing</strong> if your neck die takes one (Step 9), and a <strong>check weight</strong> to prove the scale (Step 13). None of these can be improvised. Confirm you have them before you begin.</div>
+    <details class="kit-details">
+      <summary>Show the full list — what each stage needs</summary>
+      <table class="fig-table">
+        <caption>Tools, consumables and the step that first needs them</caption>
+        <thead>
+          <tr><th scope="col">Item</th><th scope="col">Step</th><th scope="col">Why</th></tr>
+        </thead>
+        <tbody>
+          <tr class="kit-group"><th scope="rowgroup" colspan="3">Bench and safety</th></tr>
+          <tr><th scope="row">Eye protection</th><td>All</td><td>Worn whenever you handle primers, charge cases, or run the press.</td></tr>
+          <tr><th scope="row">Press bolted to a solid bench</th><td>2</td><td>Sizing takes real leverage. A bench that flexes gives inconsistent shoulder bump.</td></tr>
+          <tr><th scope="row">Task light, and a magnifier or loupe</th><td>1</td><td>Needed to read case necks, primer pockets, and fired heads.</td></tr>
+          <tr><th scope="row">Current published load manual for your exact components</th><td>13</td><td>Controls the whole batch. This page does not replace it.</td></tr>
+          <tr><th scope="row">Loading block or case tray</th><td>13</td><td>Lets you see every charged case at once before any bullet goes on.</td></tr>
+          <tr><th scope="row">Labelled bins and a marker</th><td>3</td><td>Keeps headstamps, firing counts, and batches from mixing.</td></tr>
+
+          <tr class="kit-group"><th scope="rowgroup" colspan="3">Press, dies and holders</th></tr>
+          <tr><th scope="row">Shell holder matched to the .308 case head</th><td>2</td><td>Sized by your die maker's chart — check it against your press before ordering.</td></tr>
+          <tr><th scope="row">Decapping die, or a sizing die with a decapping stem</th><td>2</td><td>Removes the spent primer.</td></tr>
+          <tr><th scope="row">Body or full-length sizing die</th><td>7</td><td>Sizes the body and sets the shoulder back.</td></tr>
+          <tr><th scope="row">Neck sizing die</th><td>9</td><td>Sets the grip the neck has on the bullet.</td></tr>
+          <tr><th scope="row">Neck bushing in the correct size, if your die takes one</th><td>9</td><td>Chosen from your own measured loaded neck diameter, not a catalogue default.</td></tr>
+          <tr><th scope="row">Seating die</th><td>14</td><td>Seats the bullet to your published overall length.</td></tr>
+          <tr><th scope="row">Priming tool — hand tool, or the press priming arm</th><td>12</td><td>Seats primers with enough feel to tell when one bottoms out in the pocket.</td></tr>
+          <tr><th scope="row">Die lock rings and a wrench</th><td>7</td><td>Lets you return to a setting instead of having to find it again.</td></tr>
+
+          <tr class="kit-group"><th scope="rowgroup" colspan="3">Measuring</th></tr>
+          <tr><th scope="row">Caliper, dial or digital</th><td>8</td><td>Case length, overall length, and general checks.</td></tr>
+          <tr><th scope="row">Shoulder comparator body and .308 datum insert</th><td>8</td><td>The only way to measure shoulder bump. A caliper alone cannot do it.</td></tr>
+          <tr><th scope="row">Powder scale reading in grains</th><td>13</td><td>Confirm the displayed unit before every session — grains and grams are not interchangeable.</td></tr>
+          <tr><th scope="row">Scale check weight</th><td>13</td><td>Proves the scale is reading true before you charge anything.</td></tr>
+          <tr><th scope="row">Powder measure, trickler and funnel</th><td>13</td><td>Throwing and topping up the charge.</td></tr>
+          <tr><th scope="row">Cartridge case gauge, or your rifle's own chamber</th><td>15</td><td>Final fit check on the finished round.</td></tr>
+          <tr><th scope="row">Bullet puller, kinetic or collet</th><td>15</td><td>To take down any round you are not certain of, rather than firing it.</td></tr>
+          <tr><th scope="row">Bullet comparator <span class="kit-opt">(optional)</span></th><td>14</td><td>Measures to the ogive instead of the tip, which varies bullet to bullet.</td></tr>
+
+          <tr class="kit-group"><th scope="rowgroup" colspan="3">Case preparation</th></tr>
+          <tr><th scope="row">Case lube, with a pad or spray</th><td>6</td><td>A dry case run into a sizing die will stick in it.</td></tr>
+          <tr><th scope="row">Degreaser or solvent to remove lube</th><td>11</td><td>Lube left in the neck or pocket contaminates powder and primers.</td></tr>
+          <tr><th scope="row">Tumbler with dry media, or a wet tumbler with stainless pins</th><td>3</td><td>Cleaning brass before it goes near a die.</td></tr>
+          <tr><th scope="row">Primer pocket brush</th><td>4</td><td>Clears carbon so the new primer seats to the bottom.</td></tr>
+          <tr><th scope="row">Flash hole deburring tool</th><td>4</td><td>Removes the burr left from manufacture.</td></tr>
+          <tr><th scope="row">Case trimmer with a .308 pilot or collet</th><td>10</td><td>Brings cases back under the manual's trim-to length.</td></tr>
+          <tr><th scope="row">Chamfer and deburr tool</th><td>10</td><td>Breaks the sharp edge a trimmer leaves on the case mouth.</td></tr>
+          <tr><th scope="row">Neck brush</th><td>11</td><td>Cleans carbon out of the inside of the neck.</td></tr>
+          <tr><th scope="row">Annealing setup <span class="kit-opt">(optional)</span></th><td>5</td><td>Only if you anneal. Skipping it is a valid choice; doing it badly is not.</td></tr>
+
+          <tr class="kit-group"><th scope="rowgroup" colspan="3">Components</th></tr>
+          <tr><th scope="row">Cases, primers, powder and bullets</th><td>All</td><td>Identify each one in the batch record above before you start, and keep only one powder and one primer type on the bench.</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </section>
 
   <!-- Steps list — all tappable -->
   <div class="step-toolbar">
@@ -2037,6 +2122,24 @@
   });
 
   updateStatus();
+
+  // Printing: open every step and the tools list, so nothing is lost on paper.
+  let restoreAfterPrint = null;
+  window.addEventListener('beforeprint', () => {
+    const wasOpen = steps.map(s => s.classList.contains('open'));
+    const kit = document.querySelector('.kit-details');
+    const kitWasOpen = kit ? kit.open : null;
+    steps.forEach(step => setOpen(step, true));
+    if (kit) kit.open = true;
+    restoreAfterPrint = () => {
+      steps.forEach((step, i) => setOpen(step, wasOpen[i]));
+      if (kit) kit.open = kitWasOpen;
+      updateStatus();
+    };
+  });
+  window.addEventListener('afterprint', () => {
+    if (restoreAfterPrint) { restoreAfterPrint(); restoreAfterPrint = null; }
+  });
 })();
 </script>
 </body>
