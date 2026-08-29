@@ -483,10 +483,12 @@
        Same 13.40px-per-inch scale as #g-case:
          bullet dia 0.308" -> 4.13 (narrower than the 4.60 neck outside,
          since the neck wall wraps around it)
-         length ~1.12" -> 15.0, typical of a 165-168gr .30 calibre bullet
+         length 1.09" -> 14.6, a flat-base .30 calibre bullet that seats
+         with its base at the neck/shoulder junction and still makes a
+         2.800" cartridge overall length
   -->
   <symbol id="g-bullet" overflow="visible">
-    <path d="M-2.06,0 L2.06,0 L2.06,-5 C2.06,-9 1.2,-12.6 0,-15 C-1.2,-12.6 -2.06,-9 -2.06,-5 Z" fill="#A0A8B0" stroke="#C8D0E8" stroke-width="0.8" stroke-linejoin="miter"/>
+    <path d="M-2.06,0 L2.06,0 L2.06,-5.2 C2.06,-9.2 1.2,-12.3 0,-14.6 C-1.2,-12.3 -2.06,-9.2 -2.06,-5.2 Z" fill="#A0A8B0" stroke="#C8D0E8" stroke-width="0.8" stroke-linejoin="miter"/>
   </symbol>
 </defs>
 </svg>
@@ -620,6 +622,8 @@
           bullet dia  0.308"  -> 28.6   COAL ~2.80" -> 260
         Previously the case was drawn at ~101px/inch but the bullet placed at
         ~34px/inch, so the bullet came out a third of its true size.
+        The bullet base sits at the neck/shoulder junction and the neck walls
+        are redrawn on top of it, so the brass still reads as 72% of the round.
       -->
       <!-- Body — tapers slightly from head to shoulder -->
       <polygon points="42,59.1 187,59.9 187,102.1 42,102.9" fill="#c8973a" stroke="#D8A820" stroke-width="1"/>
@@ -631,7 +635,7 @@
       <rect x="44" y="63.7" width="5" height="34.7" fill="#000000" opacity="0.22"/>
 
       <!-- INTERIOR CAVITY — web solid to x=60.6, wall thins towards the neck -->
-      <path d="M60.6,63.3 L187,64.1 L201.1,66.3 L229.4,66.3 L229.4,95.7 L201.1,95.7 L187,97.9 L60.6,98.7 Z" fill="#3a2408"/>
+      <path d="M60.6,63.3 L187,64.1 L201.1,66.7 L229.4,66.7 L229.4,95.3 L201.1,95.3 L187,97.9 L60.6,98.7 Z" fill="#3a2408"/>
 
       <!-- PRIMER POCKET — cut view, flush with the head face at x=42 -->
       <rect x="42" y="71.2" width="11.6" height="19.6" fill="#2a0e04"/>
@@ -658,8 +662,13 @@
       <line x1="36" y1="115" x2="46" y2="92" stroke="#e07050" stroke-width="1.2" marker-end="url(#a1)"/>
       <line x1="130" y1="113" x2="130" y2="96" stroke="#e0c050" stroke-width="1.2" marker-end="url(#a2)"/>
       <line x1="215" y1="113" x2="215" y2="99" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
-      <!-- Bullet: seated 0.335" into the neck, tip to the right -->
-      <use href="#g-bullet" transform="translate(198.2,81) rotate(90) scale(6.95)"/>
+      <!-- Bullet: base seated at the neck/shoulder junction, tip to the right -->
+      <use href="#g-bullet" transform="translate(201.1,81) rotate(90) scale(6.94)"/>
+      <!-- Neck walls redrawn over the bullet, so the neck still reads as brass
+           wrapping it rather than the bullet appearing to start at the shoulder -->
+      <rect x="201.1" y="65" width="28.3" height="1.7" fill="#c8973a" stroke="#D8A820" stroke-width="0.8"/>
+      <rect x="201.1" y="95.3" width="28.3" height="1.7" fill="#c8973a" stroke="#D8A820" stroke-width="0.8"/>
+      <line x1="229.4" y1="64.6" x2="229.4" y2="97.4" stroke="#D8A820" stroke-width="1.2"/>
       <line x1="265" y1="113" x2="265" y2="94" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
       <g><circle cx="110" cy="40" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="110" y="43.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
       <g><circle cx="62" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="62" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
