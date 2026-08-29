@@ -409,7 +409,7 @@
 
 <!-- HEADER -->
 <header class="deck-header">
-  <svg width="34" height="34" viewBox="0 0 34 34">
+  <svg width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Cartridge icon">
     <!-- cartridge side-view icon -->
     <rect x="3" y="14" width="22" height="8" rx="2" fill="#c8973a"/>
     <path d="M25 14 L31 17 L25 20 Z" fill="#bbb"/>
@@ -595,16 +595,16 @@
 
   <!-- Cartridge anatomy diagram — FIXED -->
   <div class="diagram-card">
-    <svg viewBox="0 0 340 155" xmlns="http://www.w3.org/2000/svg">
+    <figure class="figure">
+    <figcaption class="fig-title">.308 Winchester — parts of a round</figcaption>
+    <p class="fig-sub">Cutaway side view of a loaded cartridge, base on the left and bullet on the right.</p>
+    <svg viewBox="24 28 278 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutaway of a loaded .308 Winchester cartridge showing, from the base forward: the rim, the primer in its pocket, powder inside the brass case body, the shoulder, the neck, and the bullet held in the neck.">
       <defs>
         <marker id="a1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e07050"/></marker>
         <marker id="a2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e0c050"/></marker>
         <marker id="a3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c8973a"/></marker>
         <marker id="a4" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#aaa"/></marker>
       </defs>
-
-      <!-- Title -->
-      <text x="170" y="16" text-anchor="middle" fill="#c8973a" font-size="11" font-weight="bold" font-family="sans-serif">.308 Winchester — Parts of a Round</text>
 
       <!--
         .308 anatomy — drawn directly for accurate bottleneck proportions.
@@ -646,32 +646,30 @@
       <!-- Cannelure groove near base of bullet (at neck mouth x=248) -->
       <rect x="248" y="78" width="3" height="6" fill="#555" opacity="0.7"/>
 
-      <!-- LABEL ARROWS & TEXT -->
-      <!-- Rim — center of rim at x=57 (45+12), CY=81 -->
-      <line x1="57" y1="110" x2="57" y2="95" stroke="#e0a820" stroke-width="1.2" marker-end="url(#a3)"/>
-      <text x="57" y="121" text-anchor="middle" fill="#e0a820" font-size="9.5" font-family="sans-serif" font-weight="600">Rim</text>
-
-      <!-- Primer label — points to primer face at x=47 -->
-      <line x1="47" y1="118" x2="47" y2="93" stroke="#e07050" stroke-width="1.2" marker-end="url(#a1)"/>
-      <text x="47" y="131" text-anchor="middle" fill="#e07050" font-size="9.5" font-family="sans-serif" font-weight="600">Primer</text>
-
-      <!-- Powder — center of body area x=110 -->
+      <!-- LABEL ARROWS & MARKERS -->
+      <line x1="62" y1="115" x2="57" y2="95" stroke="#e0a820" stroke-width="1.2" marker-end="url(#a3)"/>
+      <line x1="36" y1="115" x2="47" y2="93" stroke="#e07050" stroke-width="1.2" marker-end="url(#a1)"/>
       <line x1="130" y1="113" x2="130" y2="90" stroke="#e0c050" stroke-width="1.2" marker-end="url(#a2)"/>
-      <text x="130" y="126" text-anchor="middle" fill="#e0c050" font-size="9.5" font-family="sans-serif" font-weight="600">Powder</text>
-
-      <!-- Brass case label above — body center ~x=110 -->
-      <text x="110" y="42" text-anchor="middle" fill="#e0b860" font-size="9.5" font-family="sans-serif">Brass Case (you reload this)</text>
-      <line x1="110" y1="45" x2="110" y2="54" stroke="#e0b860" stroke-width="1" marker-end="url(#a3)"/>
-
-      <!-- Neck — center of neck x=234 -->
+      <line x1="110" y1="49" x2="110" y2="54" stroke="#e0b860" stroke-width="1" marker-end="url(#a3)"/>
       <line x1="234" y1="113" x2="234" y2="90" stroke="#c8973a" stroke-width="1.2" marker-end="url(#a3)"/>
-      <text x="234" y="126" text-anchor="middle" fill="#c8973a" font-size="9.5" font-family="sans-serif" font-weight="600">Neck</text>
-
-      <!-- Bullet — base at x=248, tip ~x=295 -->
       <use href="#g-bullet" transform="translate(248,81) rotate(90) scale(2.5)"/>
       <line x1="275" y1="113" x2="275" y2="88" stroke="#aaa" stroke-width="1.2" marker-end="url(#a4)"/>
-      <text x="275" y="126" text-anchor="middle" fill="#aaa" font-size="9.5" font-family="sans-serif" font-weight="600">Bullet</text>
+      <g><circle cx="110" cy="40" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="110" y="43.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+      <g><circle cx="62" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="62" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+      <g><circle cx="36" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="36" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+      <g><circle cx="130" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="130" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+      <g><circle cx="234" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="234" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
+      <g><circle cx="275" cy="124" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="275" y="127.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">6</text></g>
     </svg>
+    <ol class="callouts">
+      <li><b class="cx">1</b> Brass case — the only part you reuse. Everything else is replaced each time you load.</li>
+      <li><b class="cx">2</b> Rim — the lip at the base that the extractor grips.</li>
+      <li><b class="cx">3</b> Primer — seated in a pocket in the case head; the firing pin strikes it to ignite the powder.</li>
+      <li><b class="cx">4</b> Powder charge, held inside the case body.</li>
+      <li><b class="cx">5</b> Neck — the narrow section that grips the bullet.</li>
+      <li><b class="cx">6</b> Bullet — the projectile seated into the neck.</li>
+    </ol>
+    </figure>
   </div>
 
   <!-- Steps list — all tappable -->
@@ -690,54 +688,51 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 165" xmlns="http://www.w3.org/2000/svg">
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">INSPECT BRASS — 4 CONDITIONS</text>
-<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Discard any case showing cracks, bright rings, or dents</text>
+        <figure class="figure">
+        <figcaption class="fig-title">Inspect brass — four conditions</figcaption>
+        <p class="fig-sub">Four fired cases side by side: one sound, three showing defects that mean the case is scrap.</p>
+        <svg viewBox="18 20 238 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four .308 cases compared side by side. The first is sound and marked with a tick. The second has a crack in the neck, the third a bright ring around the body near the base, and the fourth a dent in the body — each marked with a cross.">
 <!-- Dividers -->
 <line x1="70"  y1="24" x2="70"  y2="150" stroke="#3A3A50" stroke-width="0.6"/>
 <line x1="135" y1="24" x2="135" y2="150" stroke="#3A3A50" stroke-width="0.6"/>
 <line x1="200" y1="24" x2="200" y2="150" stroke="#3A3A50" stroke-width="0.6"/>
 <!-- Centerlines -->
-<line x1="38"  y1="13" x2="38"  y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<line x1="103" y1="13" x2="103" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<line x1="168" y1="13" x2="168" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<line x1="233" y1="13" x2="233" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
-<!--
-  .308 case — CORRECT proportions:
-  Total ~100px. Base y=125. Top of neck y=25.
-  Rim:     x=CX±16  y=125..120   (32px wide, 5px tall)
-  Body:    x=CX±14  y=120..46    (28px wide, 74px tall — the LONG part)
-  Shoulder:y=46..42  steps from 28px to 14px wide (near-horizontal, 4px drop)
-  Neck:    x=CX±7   y=42..25     (14px wide, 17px tall — SHORT)
-  cx offsets: 38, 103, 168, 233
--->
-<!-- CASE 1: GOOD (cx=38, base y=125) -->
+<line x1="38"  y1="24" x2="38"  y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<line x1="103" y1="24" x2="103" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<line x1="168" y1="24" x2="168" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<line x1="233" y1="24" x2="233" y2="116" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
+<!-- CASE 1: sound -->
 <use href="#g-case" transform="translate(38,125) scale(3.7)" fill="#C09830" color="#C09830"/>
 <line x1="24" y1="117" x2="52" y2="117" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
-<text x="38" y="138" text-anchor="middle" fill="#4CBB6A" font-size="16">✓</text>
-<text x="38" y="150" text-anchor="middle" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GOOD</text>
-<!-- CASE 2: CRACK (cx=103, base y=125) -->
+<text x="38" y="140" text-anchor="middle" fill="#4CBB6A" font-size="16" aria-hidden="true">✓</text>
+<!-- CASE 2: crack -->
 <use href="#g-case" transform="translate(103,125) scale(3.7)" fill="#C09830" color="#C09830"/>
 <line x1="89" y1="117" x2="117" y2="117" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
-<!-- crack on neck -->
 <path d="M108,27 L112,31 L108,35 L112,39" fill="none" stroke="#E05050" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="103" y="138" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
-<text x="103" y="150" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">CRACK</text>
-<!-- CASE 3: BRIGHT RING (cx=168, base y=125) -->
+<text x="103" y="140" text-anchor="middle" fill="#E05050" font-size="16" aria-hidden="true">✕</text>
+<!-- CASE 3: bright ring -->
 <use href="#g-case" transform="translate(168,125) scale(3.7)" fill="#C09830" color="#C09830"/>
-<!-- bright ring ~1/3 up body from base — incipient separation zone -->
 <line x1="153" y1="92" x2="183" y2="92" stroke="#FFE040" stroke-width="3" opacity="0.95"/>
-<text x="168" y="138" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
-<text x="168" y="148" text-anchor="middle" fill="#FFE040" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BRIGHT RING</text>
-<text x="168" y="157" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">incipient separation</text>
-<!-- CASE 4: DENT (cx=233, base y=125) -->
+<text x="168" y="140" text-anchor="middle" fill="#E05050" font-size="16" aria-hidden="true">✕</text>
+<!-- CASE 4: dent -->
 <use href="#g-case" transform="translate(233,125) scale(3.7)" fill="#C09830" color="#C09830"/>
 <line x1="219" y1="117" x2="247" y2="117" stroke="#7A5000" stroke-width="0.8" opacity="0.7"/>
-<!-- dent on body — straight V notch instead of Q curve -->
 <path d="M219,75 L213,85 L219,95" fill="none" stroke="#E05050" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="233" y="138" text-anchor="middle" fill="#E05050" font-size="16">✕</text>
-<text x="233" y="150" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DENT</text>
+<text x="233" y="140" text-anchor="middle" fill="#E05050" font-size="16" aria-hidden="true">✕</text>
+<!-- Numbered markers -->
+<g><circle cx="38" cy="157" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="38" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="103" cy="157" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="103" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="168" cy="157" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="168" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="233" cy="157" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="233" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> <b>Sound</b> — smooth body, no cracks, no bright ring. Keep.</li>
+          <li><b class="cx">2</b> <b>Cracked neck</b> — a split running down from the case mouth. Scrap.</li>
+          <li><b class="cx">3</b> <b>Bright ring</b> — a shiny band round the body near the base. The brass is thinning inside and the case is close to separating. Scrap.</li>
+          <li><b class="cx">4</b> <b>Dent</b> — a crushed section in the body wall. Scrap.</li>
+        </ol>
+        <p class="fig-note">Inspect every case, every time. A case is cheap; the rifle and your hands are not.</p>
+        </figure>
         <p>Look at every case. Throw out any with cracks in the neck, splits on the body, or a bright ring near the base (that means the brass is about to split). Better to lose one case than ruin your rifle.</p>
         <div class="tip">✅ Good brass: smooth, no cracks, no bright rings near the base.</div>
       </div></div>
@@ -751,91 +746,65 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-<!--
-  DEPRIME — SIDE VIEW
-  Case upright: base at BOTTOM, neck at TOP entering die.
-  scale=3.5: total case height=94.5px
-  translate(150,195): base/rim at y=195, neck tip at y=195-94.5=100.5
-  Die above: y=30..100, bore ±11px wide
-  Decapping pin runs down through die bore and into case neck, tip near primer pocket.
-  Solid case — no cut section, no ghost.
--->
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DEPRIME — SIDE VIEW</text>
-<text x="100" y="20" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Neck-first into die · pin ejects primer</text>
+        <figure class="figure">
+        <figcaption class="fig-title">Deprime — side view</figcaption>
+        <p class="fig-sub">A case is pushed neck-first up into the die. A pin down the middle of the die reaches through the case and pushes the spent primer out of the bottom.</p>
+        <svg viewBox="44 6 212 208" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Side view of a decapping die with a case pushed up into it neck first. A thin pin runs down the centre of the die, through the case, and pushes the spent primer down and out of the case head.">
 <!-- Centerline -->
 <line x1="150" y1="22" x2="150" y2="218" stroke="#4090FF" stroke-width="0.6" stroke-dasharray="12,3,3,3" opacity="0.8"/>
-
-<!-- ══ DIE (above case) — solid steel ══
-     Die body: x=111..189, y=28..100. Bore ±11px = x=139..161.
-     Lock ring: y=22..30
--->
-<!-- Lock ring — raised, clearly above die body -->
+<!-- Lock ring -->
 <rect x="109" y="14" width="82" height="9" fill="#484858" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
-<!-- Die body left -->
+<!-- Die body -->
 <rect x="111" y="23" width="28" height="77" fill="#484858" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
-<!-- Die body right -->
 <rect x="161" y="23" width="28" height="77" fill="#484858" stroke="#D8DCF0" stroke-width="1.6" stroke-linejoin="miter"/>
-<!-- Thread zones -->
 <rect x="111" y="43" width="28" height="28" fill="url(#g-thread)" opacity="0.6"/>
 <rect x="161" y="43" width="28" height="28" fill="url(#g-thread)" opacity="0.6"/>
-<!-- Die bore (open, dark) -->
+<!-- Die bore -->
 <rect x="139" y="14" width="22" height="86" fill="#1e1e1e"/>
-
-<!-- ══ DECAPPING PIN — runs down through bore into case neck ══ -->
+<!-- Decapping pin -->
 <rect x="148.5" y="28" width="3" height="95" fill="#E8E8F0" stroke="#D8DCF0" stroke-width="0.8"/>
-<!-- Pin tip (point, at y=123 — inside case body near primer pocket) -->
 <polygon points="148.5,123 151.5,123 150,128" fill="#E8E8F0" stroke="#D8DCF0" stroke-width="0.8"/>
-
-<!-- ══ CASE — fully rammed, base at y=133 so pin tip (y=128) aligns with primer pocket ══ -->
+<!-- Case -->
 <use href="#g-case" transform="translate(150,133) scale(3.5)" fill="#C09830" color="#C09830"/>
 <use href="#g-case" transform="translate(150,133) scale(3.5)" fill="none" stroke="#D8A820" stroke-width="0.35"/>
-
-<!-- ══ PRIMER — ejected, falling below base ══ -->
+<!-- Ejected primer -->
 <rect x="143" y="135" width="14" height="5" rx="0.5" fill="#E05050" stroke="#FF8080" stroke-width="1" opacity="0.7"/>
-<!-- Primer eject arrow downward — longer to show primer flying out -->
-<line x1="150" y1="142" x2="150" y2="210" stroke="#E05050" stroke-width="2" marker-end="url(#g-arr-red)"/>
-
-<!-- ══ LABELS right ══ -->
+<line x1="150" y1="142" x2="150" y2="205" stroke="#E05050" stroke-width="2" marker-end="url(#g-arr-red)"/>
+<!-- Right leaders -->
+<circle cx="191" cy="18" r="1.8" fill="#C8D0E8"/>
+<line x1="191" y1="18" x2="235" y2="18" stroke="#C8D0E8" stroke-width="0.7"/>
 <circle cx="189" cy="46" r="1.8" fill="#C8D0E8"/>
-<line x1="189" y1="46" x2="200" y2="46" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="202" y="49" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Die body</text>
-
-<circle cx="189" cy="18" r="1.8" fill="#C8D0E8"/>
-<line x1="189" y1="18" x2="200" y2="18" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="202" y="21" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock ring</text>
-
+<line x1="189" y1="46" x2="235" y2="46" stroke="#C8D0E8" stroke-width="0.7"/>
 <circle cx="151.5" cy="75" r="1.8" fill="#C8D0E8"/>
-<line x1="151.5" y1="75" x2="200" y2="68" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="202" y="71" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Decapping pin</text>
-
-<circle cx="163.5" cy="53" r="1.8" fill="#D8A820"/>
-<line x1="163.5" y1="53" x2="200" y2="60" stroke="#D8A820" stroke-width="0.7"/>
-<text x="202" y="63" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case neck</text>
-
-<circle cx="163.5" cy="90" r="1.8" fill="#D8A820"/>
-<line x1="163.5" y1="90" x2="200" y2="90" stroke="#D8A820" stroke-width="0.7"/>
-<text x="202" y="93" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case body</text>
-
+<line x1="151.5" y1="75" x2="235" y2="78" stroke="#C8D0E8" stroke-width="0.7"/>
 <circle cx="163.5" cy="131" r="1.8" fill="#E05050"/>
-<line x1="163.5" y1="131" x2="200" y2="126" stroke="#E05050" stroke-width="0.7"/>
-<text x="202" y="129" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Spent primer ↓</text>
-
-<!-- ══ LABELS left ══ -->
-<circle cx="111" cy="18" r="1.8" fill="#C8D0E8"/>
-<line x1="111" y1="18" x2="103" y2="18" stroke="#C8D0E8" stroke-width="0.7"/>
-<text x="2" y="21" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lock ring</text>
-
+<line x1="163.5" y1="131" x2="235" y2="131" stroke="#E05050" stroke-width="0.7"/>
+<!-- Left leaders -->
 <circle cx="136" cy="48" r="1.8" fill="#D8A820"/>
-<line x1="136" y1="48" x2="103" y2="48" stroke="#D8A820" stroke-width="0.7"/>
-<text x="2" y="51" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shoulder</text>
-
+<line x1="136" y1="48" x2="65" y2="48" stroke="#D8A820" stroke-width="0.7"/>
+<circle cx="135" cy="90" r="1.8" fill="#D8A820"/>
+<line x1="135" y1="90" x2="65" y2="90" stroke="#D8A820" stroke-width="0.7"/>
 <circle cx="135" cy="133" r="1.8" fill="#D8A820"/>
-<line x1="135" y1="133" x2="103" y2="133" stroke="#D8A820" stroke-width="0.7"/>
-<text x="2" y="136" fill="#D8A820" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Base / rim</text>
-
-<text x="150" y="225" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SIDE VIEW  ·  Case enters die neck-first  ·  Pin ejects primer downward</text>
+<line x1="135" y1="133" x2="65" y2="133" stroke="#D8A820" stroke-width="0.7"/>
+<!-- Numbered markers -->
+<g><circle cx="245" cy="18" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="245" y="21.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="245" cy="46" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="245" y="49.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="245" cy="78" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="245" y="81.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="55" cy="48" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="55" y="51.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+<g><circle cx="55" cy="90" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="55" y="93.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
+<g><circle cx="55" cy="133" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="55" y="136.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">6</text></g>
+<g><circle cx="245" cy="131" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="245" y="134.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">7</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> Lock ring — holds the die at the height you set it in the press.</li>
+          <li><b class="cx">2</b> Die body, threaded into the press.</li>
+          <li><b class="cx">3</b> Decapping pin — the thin rod that runs down the middle and punches the primer out.</li>
+          <li><b class="cx">4</b> Shoulder of the case.</li>
+          <li><b class="cx">5</b> Case body.</li>
+          <li><b class="cx">6</b> Base and rim — the primer pocket is in the centre of this face.</li>
+          <li><b class="cx">7</b> Spent primer, pushed downward and out.</li>
+        </ol>
+        </figure>
         <p>Do this <strong>before</strong> cleaning. Mount the decapping die in your press and run each case through to punch out the spent primer. With the pocket empty, the ultrasonic cleaner can reach inside and clean it — saving you the brush step.</p>
         <div class="tip">✅ Deprime first = ultrasonic does all the cleaning, inside pocket and out.</div>
       </div></div>
@@ -849,17 +818,10 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg id="svg-step3" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-<!-- COORDINATE SYSTEM
-  viewBox: 0 0 300 160
-  Tank outer: x=20 y=20 w=220 h=110
-  Tank inner: x=26 y=26 w=208 h=98
-  Basket grid: x=32 y=28 w=196 h=72  (bottom y=100)
-  Liquid zone: x=32 y=74 w=196 h=26  (wave pattern)
-  Cases: 8 across basket, baseY=100, scale=1.1
-  Control panel: x=30 y=105 w=80 h=28
-  Margins: left labels x=0-18, right labels x=252-300
--->
+        <figure class="figure">
+        <figcaption class="fig-title">Ultrasonic cleaning</figcaption>
+        <p class="fig-sub">Deprimed cases stand in a basket inside an ultrasonic tank of cleaning solution.</p>
+        <svg id="svg-step3" viewBox="4 4 288 154" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An ultrasonic cleaner: a stainless tank containing a wire basket of upright cases standing in cleaning solution, with a timer display and power and start buttons on the front panel.">
 <script>
 (function(){
   const svg = document.getElementById('svg-step3');
@@ -906,14 +868,41 @@
   svgRect(svg, 130, 108, 30, 9, {fill:'#1a3a1a', stroke:'#2a6a2a', sw:1});
   svgText(svg, 145, 116, 'START', {fontSize:6.5, fill:'#8fbc5a', fontWeight:'normal', anchor:'middle'});
   // Labels
-  drawLeader(svg, 34, 45, 15, 45, 'Tank.', {side:'left', color:'#C8D0E8'});
-  drawLeader(svg, 80, 30, 80, 10, 'Basket.', {side:'left', color:'#C8D0E8'});
-  drawLeader(svg, 130, 80, 252, 80, 'Liquid.', {side:'right', color:'#4090FF'});
-  drawLeader(svg, 150, 60, 252, 50, 'Cases.', {side:'right', color:'#D8A820'});
-  svgText(svg, 150, 155, 'Ultrasonic bath — cases standing in basket', {fontSize:6.5, fill:'#4090FF', fontWeight:'normal'});
+  function leader(pts, color) { 
+    const p = document.createElementNS(NS,'polyline');
+    p.setAttribute('points', pts); p.setAttribute('fill','none');
+    p.setAttribute('stroke', color); p.setAttribute('stroke-width','0.75');
+    svg.appendChild(p);
+  }
+  function marker(x, y, n) {
+    const g = document.createElementNS(NS,'g');
+    const c = document.createElementNS(NS,'circle');
+    c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r','8.5');
+    c.setAttribute('fill','#c8973a'); c.setAttribute('stroke','#242424'); c.setAttribute('stroke-width','1.2');
+    const t = document.createElementNS(NS,'text');
+    t.setAttribute('x',x); t.setAttribute('y',y+3.8); t.setAttribute('text-anchor','middle');
+    t.setAttribute('font-size','11'); t.setAttribute('font-weight','bold');
+    t.setAttribute('fill','#111'); t.setAttribute('font-family','Arial,sans-serif');
+    t.textContent = n;
+    g.appendChild(c); g.appendChild(t); svg.appendChild(g);
+  }
+  leader('34,45 22,45', '#C8D0E8');       marker(13, 45, '1');
+  leader('80,30 80,14 100,14', '#C8D0E8'); marker(110, 14, '2');
+  leader('130,80 255,80', '#4090FF');      marker(267, 80, '3');
+  leader('150,60 255,50', '#D8A820');      marker(267, 50, '4');
+  leader('70,130 70,140', '#C8D0E8');      marker(70, 149, '5');
 })();
 </script>
 </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> Stainless tank.</li>
+          <li><b class="cx">2</b> Basket — keeps the cases off the tank floor.</li>
+          <li><b class="cx">3</b> Cleaning solution, diluted as its maker directs.</li>
+          <li><b class="cx">4</b> Cases standing mouth-up so solution reaches inside.</li>
+          <li><b class="cx">5</b> Timer and power controls.</li>
+        </ol>
+        <p class="fig-note">Deprime before cleaning so the solution can reach into the primer pocket.</p>
+        </figure>
         <p>Run deprimed cases in your ultrasonic cleaner with diluted brass solution for 30–45 minutes. Because the primer pocket is already open, ultrasonic cleaning reaches inside and often reduces pocket brushing. <strong>Dry completely before moving on.</strong> Moisture near primers is dangerous.</p>
         <div class="tip">✅ Cases bright inside and out. If any pockets still have black carbon, a quick 5-second brush fixes it.</div>
       </div></div>
@@ -927,25 +916,16 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
-<!-- COORDINATE SYSTEM
-  viewBox: 0 0 300 180
-  LEFT panel center: cx=80
-  RIGHT panel center: cx=210
-  Case head (left): rect x=50 y=90 w=60 h=30
-  Pocket cutout (left): x=70 y=90 w=20 h=16
-  Full case (right): use #g-case translate(210,155) scale(2.2)
-  Tool rod (right): thin rect from y=20 down to y=140, cx=210
--->
+        <figure class="figure">
+        <figcaption class="fig-title">Primer pocket brush and flash hole deburring</figcaption>
+        <p class="fig-sub">Left: a brush cleaning carbon out of the primer pocket, shown in cross-section. Right: a deburring tool reaching down through the case to the inside of the flash hole.</p>
+        <svg viewBox="34 12 232 156" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two panels. On the left, a T-handled brush is lowered into the primer pocket of a case head shown in cross-section, with carbon deposits inside and the flash hole below. On the right, a long thin tool is inserted through the mouth of a standing case down to the flash hole at the case head.">
 <!-- Divider line -->
-<line x1="150" y1="10" x2="150" y2="168" stroke="#333" stroke-width="0.8" opacity="0.6"/>
+<line x1="150" y1="16" x2="150" y2="164" stroke="#333" stroke-width="0.8" opacity="0.6"/>
 
 <!-- ===== LEFT: POCKET BRUSH ===== -->
-<!-- T-handle crossbar -->
 <rect x="62" y="18" width="36" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Vertical rod -->
 <rect x="77" y="25" width="6" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Bristle head — rect body with dense short vertical bristle lines -->
 <rect x="73" y="53" width="14" height="11" fill="#2E2E3A" stroke="#D8DCF0" stroke-width="1.2"/>
 <line x1="75" y1="55" x2="75" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
 <line x1="77" y1="55" x2="77" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
@@ -953,57 +933,45 @@
 <line x1="81" y1="55" x2="81" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
 <line x1="83" y1="55" x2="83" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
 <line x1="85" y1="55" x2="85" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
-<!-- Arrow downward into pocket -->
 <line x1="80" y1="64" x2="80" y2="86" stroke="#C8D0E8" stroke-width="1.2"/>
 <path d="M76,83 L80,88 L84,83" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- Case head — brass rectangle -->
 <rect x="50" y="90" width="60" height="30" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
-<!-- Primer pocket cutout — flat square bottom, straight walls, NO rounding -->
 <rect x="70" y="90" width="20" height="16" fill="#1A1A22"/>
-<!-- Flash hole — 2px wide dark rect at pocket floor center going down -->
 <rect x="79" y="106" width="2" height="10" fill="#1C1C24"/>
-<!-- Carbon deposit dots -->
 <circle cx="74" cy="97" r="1.2" fill="#3A3A44"/>
 <circle cx="85" cy="100" r="1.0" fill="#3A3A44"/>
 <circle cx="78" cy="103" r="1.0" fill="#3A3A44"/>
-
-<!-- Left panel labels -->
-<line x1="86" y1="59" x2="125" y2="59" stroke="#7AB3E0" stroke-width="0.8"/>
-<circle cx="125" cy="59" r="1.2" fill="#7AB3E0"/>
-<text x="127" y="62" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pocket brush.</text>
+<!-- Left leaders -->
+<line x1="86" y1="59" x2="126" y2="59" stroke="#7AB3E0" stroke-width="0.8"/>
 <line x1="79" y1="113" x2="55" y2="130" stroke="#A0A8C0" stroke-width="0.8"/>
-<circle cx="55" cy="130" r="1.2" fill="#A0A8C0"/>
-<text x="10" y="133" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole.</text>
 
 <!-- ===== RIGHT: FLASH HOLE DEBURR ===== -->
-<!-- Full bottleneck case (side view) using g-case symbol, scaled ~2.2x, standing upright -->
 <g transform="translate(210,155) scale(2.2)" fill="#C09830">
   <use href="#g-case"/>
 </g>
-<!-- Long thin tool rod inserted from case mouth down to flash hole -->
-<!-- Case mouth is at y=155-27*2.2=155-59.4=95.6 → rod starts at y=68 (handle bottom), tip at y=148 -->
 <rect x="208.5" y="75" width="3" height="68" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
-<!-- Tool handle at top — wider grip block -->
 <rect x="203" y="62" width="14" height="14" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Conical cutter tip -->
 <polygon points="207,143 213,143 210,149" fill="#6A6A7A" stroke="#D8DCF0" stroke-width="0.8"/>
-<!-- Highlight circle at flash hole location (inside case head at base) -->
 <circle cx="210" cy="148" r="3.5" fill="none" stroke="#FFD060" stroke-width="1.2" opacity="0.85"/>
-
-<!-- Right panel labels -->
-<line x1="218" y1="68" x2="248" y2="33" stroke="#7AB3E0" stroke-width="0.8"/>
-<circle cx="248" cy="33" r="1.2" fill="#7AB3E0"/>
-<text x="250" y="36" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Flash hole deburr.</text>
-<line x1="213" y1="148" x2="245" y2="158" stroke="#A0A8C0" stroke-width="0.8"/>
-<circle cx="245" cy="158" r="1.2" fill="#A0A8C0"/>
-<text x="170" y="171" fill="#A0A8C0" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Inside of case head.</text>
-
-<!-- Footer caption -->
-<text x="150" y="178" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Brush pocket — deburr flash hole on new brass</text>
+<!-- Right leaders -->
+<line x1="218" y1="68" x2="246" y2="38" stroke="#7AB3E0" stroke-width="0.8"/>
+<line x1="213" y1="148" x2="246" y2="155" stroke="#A0A8C0" stroke-width="0.8"/>
+<!-- Numbered markers -->
+<g><circle cx="135" cy="59" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="135" y="62.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="46" cy="132" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="46" y="135.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="255" cy="35" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="255" y="38.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="255" cy="155" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="255" y="158.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> Pocket brush — a small stiff brush that clears carbon out of the primer pocket.</li>
+          <li><b class="cx">2</b> Flash hole — the small channel from the primer pocket into the case body.</li>
+          <li><b class="cx">3</b> Flash hole deburring tool, entering through the case mouth.</li>
+          <li><b class="cx">4</b> Inside of the case head, where the burr sits.</li>
+        </ol>
+        </figure>
 
-        <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — inspect the pocket after cleaning and brush only as needed. Do not enlarge the pocket or remove brass.</p>
-        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Flash Hole Deburr (optional)</strong> — do this only when your brass maker or documented process calls for it. Use a caliber-appropriate, depth-stopped tool exactly as its maker directs; uncontrolled cutting can alter the flash hole or case web. It is normally a one-time operation on suitable new brass.</p>
+        <p><strong style="color:#7ab3e0">Pocket brush</strong> — inspect the pocket after cleaning and brush only as needed. Do not enlarge the pocket or remove brass.</p>
+        <p style="margin-top:8px"><strong style="color:#8fbc5a">Flash hole deburring (optional)</strong> — do this only when your brass maker or documented process calls for it. Use a caliber-appropriate, depth-stopped tool exactly as its maker directs; uncontrolled cutting can alter the flash hole or case web. It is normally a one-time operation on suitable new brass.</p>
         <div class="tip">✅ Clean and inspect first. Remove material only with the correct controlled tool and a documented reason.</div>
         <div class="warn">⚠️ Military brass often has a <strong>crimped primer pocket</strong> — the crimp must be swaged or reamed out before you can seat a new primer. You'll feel it when the primer won't go in.</div>
       </div></div>
@@ -1017,15 +985,11 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
-<!-- COORDINATE SYSTEM
-  viewBox: 0 0 300 200
-  Box body: x=40 y=100 w=220 h=85
-  Disk center: cx=150 cy=88 (ellipse rx=100 ry=28)
-  Flame position: rightmost hole (angle=0), cx~228 cy~88
--->
-<!-- Background -->
-<rect width="300" height="200" fill="#1C1C24"/>
+        <figure class="figure">
+        <figcaption class="fig-title">Rotary flame annealer</figcaption>
+        <p class="fig-sub">Cases stand in a rotating disk and pass one at a time through a flame aimed at the neck and shoulder.</p>
+        <svg viewBox="4 36 292 152" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A rotary annealing machine: a horizontal disk with eight holes holds upright cases and turns them past a gas flame at the right-hand side, above a box-shaped body with a display and two control knobs.">
+<rect x="4" y="36" width="292" height="152" fill="#1C1C24"/>
 
 <!-- BOX CHASSIS BODY -->
 <rect x="40" y="100" width="220" height="85" fill="#2A2A3A" stroke="#D8DCF0" stroke-width="1.4"/>
@@ -1036,7 +1000,7 @@
 <rect x="65" y="115" width="170" height="55" fill="#0A0A0A" stroke="#333" stroke-width="1"/>
 <!-- Digital display -->
 <rect x="75" y="123" width="60" height="18" fill="#0D1A0D" stroke="#2A4A2A" stroke-width="0.8"/>
-<text x="105" y="136" text-anchor="middle" fill="#00CC44" font-size="9" font-family="Courier New,Courier,monospace" font-weight="bold">SPD 3</text>
+<text x="105" y="136" text-anchor="middle" fill="#00CC44" font-size="9" font-family="Courier New,Courier,monospace" font-weight="bold" aria-hidden="true">•••</text>
 <!-- Knob 1 (speed) -->
 <circle cx="175" cy="145" r="7" fill="#383840" stroke="#D8DCF0" stroke-width="1"/>
 <line x1="175" y1="138" x2="175" y2="141" stroke="#D8DCF0" stroke-width="1.2"/>
@@ -1124,35 +1088,33 @@
 <!-- Arrowhead -->
 <polygon points="123,78 117,74 119,81" fill="#C8D0E8"/>
 
-<!-- LEADER LINES & LABELS -->
-<!-- Left: Box body -->
+<!-- LEADER LINES & MARKERS -->
 <circle cx="42" cy="135" r="1.5" fill="#C8D0E8"/>
-<line x1="42" y1="135" x2="36" y2="135" stroke="#C8D0E8" stroke-width="0.75"/>
-<text x="34" y="133" text-anchor="end" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif" font-weight="bold">Box body.</text>
-
-<!-- Left: Controls -->
+<line x1="42" y1="135" x2="26" y2="135" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="65" cy="148" r="1.5" fill="#C8D0E8"/>
-<line x1="65" y1="148" x2="36" y2="152" stroke="#C8D0E8" stroke-width="0.75"/>
-<text x="34" y="150" text-anchor="end" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Controls.</text>
-
-<!-- Right: Disk -->
+<line x1="65" y1="148" x2="26" y2="160" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="248" cy="80" r="1.5" fill="#C8D0E8"/>
-<line x1="248" y1="80" x2="264" y2="76" stroke="#C8D0E8" stroke-width="0.75"/>
-<text x="266" y="79" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif" font-weight="bold">Disk.</text>
-
-<!-- Right: Case (spinning) -->
+<line x1="248" y1="80" x2="274" y2="70" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="228" cy="81" r="1.5" fill="#C8D0E8"/>
-<line x1="228" y1="81" x2="264" y2="90" stroke="#C8D0E8" stroke-width="0.75"/>
-<text x="266" y="93" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Case (spinning).</text>
-
-<!-- Right: Flame -->
+<line x1="228" y1="81" x2="274" y2="95" stroke="#C8D0E8" stroke-width="0.75"/>
 <circle cx="255" cy="76" r="1.5" fill="#C8D0E8"/>
-<line x1="255" y1="76" x2="264" y2="105" stroke="#C8D0E8" stroke-width="0.75"/>
-<text x="266" y="108" fill="#C8D0E8" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">Flame.</text>
-
-<!-- CAPTION -->
-<text x="150" y="196" text-anchor="middle" fill="#7A7A9A" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Rotary flame annealer — cases index through flame one at a time</text>
+<line x1="255" y1="76" x2="274" y2="120" stroke="#C8D0E8" stroke-width="0.75"/>
+<!-- Numbered markers -->
+<g><circle cx="284" cy="70" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="284" y="73.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="284" cy="95" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="284" y="98.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="284" cy="120" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="284" y="123.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="16" cy="135" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="16" y="138.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+<g><circle cx="16" cy="160" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="16" y="163.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> Rotating disk — carries cases round one position at a time.</li>
+          <li><b class="cx">2</b> Case in the heating position, spinning so the neck heats evenly.</li>
+          <li><b class="cx">3</b> Flame, aimed at the neck and shoulder only.</li>
+          <li><b class="cx">4</b> Machine body.</li>
+          <li><b class="cx">5</b> Controls — dwell time and disk speed.</li>
+        </ol>
+        <p class="fig-note">This shows one common style of machine. Follow the setup validated for your specific annealer, cartridge and case lot.</p>
+        </figure>
         <p>Annealing is an optional, advanced operation used to control neck and shoulder hardness. Follow the annealer and brass manufacturer's validated setup for the exact machine, cartridge, and case lot. Only the neck and shoulder may be annealed; the case head must remain hard.</p>
         <div class="tip">✅ Control the process by the equipment maker's prescribed time, power, temperature indicator, or calibration method — not appearance alone.</div>
         <div class="warn">⚠️ Brass colour is not a reliable temperature gauge. Overheating, especially toward the case head, can permanently weaken the case. When the setup is uncertain, skip annealing and seek qualified instruction.</div>
@@ -1167,48 +1129,44 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">LUBE CASES — THIN, EVEN FILM</text>
-<!-- Lube pad / tray — flat fills -->
+        <figure class="figure">
+        <figcaption class="fig-title">Lubricating cases</figcaption>
+        <p class="fig-sub">A case being rolled along a felt lube pad to leave a thin, even film on the body.</p>
+        <svg viewBox="8 14 274 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A case lying on its side is rolled across a felt lube pad. The body is marked as the area to lubricate; the shoulder is marked with a cross to show that excess lubricant there causes dents.">
+<!-- Lube pad / tray -->
 <rect x="30" y="60" width="130" height="40" fill="#2a3a1a" stroke="#5a7030" stroke-width="1.5"/>
 <rect x="34" y="63" width="122" height="34" fill="#3a5020" stroke="#6a8840" stroke-width="0.8"/>
-<!-- Felt texture lines -->
 <line x1="34" y1="70" x2="156" y2="70" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
 <line x1="34" y1="77" x2="156" y2="77" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
 <line x1="34" y1="84" x2="156" y2="84" stroke="#4a6830" stroke-width="0.5" opacity="0.7"/>
-<!-- Horizontal case: #g-case rotated -90° (neck right), scale=4 -->
-<!-- Rim left edge at x=44, CY=53. translateX=44+(6.5*4)=70 -->
-<!-- rotate(90)=neck RIGHT toward shoulder zone, base LEFT. translateX=44: base at x=44, neck tip at x=44+108=152. Shoulder at x=44+80..92=124-136. Red X at 122-134 aligns ✓ -->
+<!-- Horizontal case -->
 <use href="#g-case" transform="translate(44,53) rotate(90) scale(4)" fill="#C09830" color="#C09830"/>
-<!-- Red X over shoulder area -->
+<!-- Cross over shoulder area -->
 <line x1="122" y1="40" x2="134" y2="64" stroke="#E05050" stroke-width="2"/>
 <line x1="134" y1="40" x2="122" y2="64" stroke="#E05050" stroke-width="2"/>
-<!-- Rolling arrow — straight lines only -->
+<!-- Rolling arrow -->
 <line x1="75" y1="40" x2="83" y2="34" stroke="#C8D0E8" stroke-width="1.2"/>
 <line x1="83" y1="34" x2="95" y2="34" stroke="#C8D0E8" stroke-width="1.2"/>
 <line x1="93" y1="31" x2="96" y2="35" stroke="#C8D0E8" stroke-width="1.2"/>
 <line x1="96" y1="35" x2="93" y2="38" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- Lube pad label -->
-<text x="95" y="108" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Lube Pad</text>
-<text x="95" y="118" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">felt / lube pad</text>
-<!-- Callout: body zone -->
-<line x1="80" y1="44" x2="68" y2="28" stroke="#D8DCF0" stroke-width="0.75"/>
-<line x1="68" y1="28" x2="20" y2="28" stroke="#D8DCF0" stroke-width="0.75"/>
-<circle cx="20" cy="28" r="1" fill="#D8DCF0"/>
-<text x="20" y="25" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✓ Body.</text>
-<text x="20" y="34" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">apply lube here</text>
-<!-- Callout: avoid excess lube on shoulder -->
+<!-- Leaders -->
+<line x1="80" y1="44" x2="68" y2="28" stroke="#4CBB6A" stroke-width="0.75"/>
+<line x1="68" y1="28" x2="37" y2="28" stroke="#4CBB6A" stroke-width="0.75"/>
 <line x1="130" y1="50" x2="190" y2="30" stroke="#E05050" stroke-width="0.75"/>
-<line x1="190" y1="30" x2="250" y2="30" stroke="#E05050" stroke-width="0.75"/>
-<circle cx="250" cy="30" r="1" fill="#E05050"/>
-<text x="194" y="27" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Shoulder.</text>
-<text x="194" y="36" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">avoid excess</text>
-<!-- Warning label -->
-<rect x="170" y="60" width="120" height="40" fill="#2e1a0a" stroke="#7a4010" stroke-width="1"/>
-<text x="230" y="76" text-anchor="middle" fill="#F0A050" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">⚠ Excess lube</text>
-<text x="230" y="87" text-anchor="middle" fill="#F0A050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">= shoulder DENTS</text>
-<text x="230" y="97" text-anchor="middle" fill="#F0A050" font-size="7.5" font-family="Arial Narrow,Arial,sans-serif">in the die!</text>
+<line x1="190" y1="30" x2="253" y2="30" stroke="#E05050" stroke-width="0.75"/>
+<line x1="95" y1="100" x2="95" y2="103" stroke="#C8D0E8" stroke-width="0.75"/>
+<!-- Numbered markers -->
+<g><circle cx="27" cy="28" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="27" y="31.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="263" cy="30" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="263" y="33.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="95" cy="105" r="8.5" fill="#c8973a" stroke="#242424" stroke-width="1.2"/><text x="95" y="108.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> Case body — this is where the lubricant goes, as a thin, even film.</li>
+          <li><b class="cx">2</b> Shoulder — keep lubricant off it. Trapped excess here dents the shoulder when the case is sized.</li>
+          <li><b class="cx">3</b> Felt lube pad.</li>
+        </ol>
+        <p class="fig-note">Keep lubricant out of the case interior, the primer pocket, and away from primers and powder.</p>
+        </figure>
         <p>Apply the sizing-lubricant maker's recommended thin, even film. Cover the case body and avoid excess on the shoulder; follow the die maker's direction for any neck lubrication. Never contaminate the case interior, primer pocket, primer, or powder.</p>
         <div class="warn">⚠️ Excess lube can dent a shoulder; too little can stick a case. Remove all sizing lubricant after sizing and before priming or charging.</div>
       </div></div>
@@ -1458,12 +1416,13 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
-      <rect width="300" height="190" fill="#1C1C24"/>
-      <text x="150" y="12" text-anchor="middle" fill="#C8D0E8" font-size="8.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">TRIM TO LENGTH — LYMAN UNIVERSAL CASE TRIMMER</text>
-      <text x="150" y="22" text-anchor="middle" fill="#7080A8" font-size="6.8" font-family="Arial Narrow,Arial,sans-serif">Case seats in the chuck · cutter shaft advances to the case mouth</text>
+        <figure class="figure">
+        <figcaption class="fig-title">Trimming a case to length</figcaption>
+        <p class="fig-sub">A lathe-style case trimmer. The case is held in a chuck at one end and a cutter is advanced onto the case mouth from the other.</p>
+        <svg viewBox="2 60 296 108" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A bench case trimmer: a case is clamped in a chuck on the right with its mouth facing left, and a hand-cranked cutter shaft advances from the left until its cutting edge meets the case mouth.">
+      <rect x="2" y="60" width="296" height="108" fill="#1C1C24"/>
 
-      <!-- Orange base like the machine shown -->
+      <!-- Orange base -->
       <rect x="16" y="96" width="268" height="52" rx="6" fill="#E37A1C" stroke="#F5A24C" stroke-width="1.4"/>
       <rect x="16" y="112" width="268" height="36" rx="6" fill="#C96712" stroke="#E37A1C" stroke-width="1"/>
       <!-- End towers -->
@@ -1490,20 +1449,32 @@
       <circle cx="247" cy="92" r="6" fill="#111318" stroke="#4A4D58" stroke-width="0.8"/>
       <rect x="252" y="86" width="10" height="4" fill="#111318"/>
 
-      <!-- Labels: Chuck, Case, Cutting edge only -->
-      <line x1="247" y1="105" x2="247" y2="152" stroke="#C8D0E8" stroke-width="0.8"/>
-      <text x="247" y="155" text-anchor="middle" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Chuck</text>
-
-      <line x1="205" y1="106" x2="205" y2="152" stroke="#D8A820" stroke-width="0.8"/>
-      <text x="205" y="161" text-anchor="middle" fill="#D8A820" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Case</text>
-
-      <line x1="160" y1="100" x2="160" y2="152" stroke="#FFD060" stroke-width="0.8"/>
-      <text x="160" y="155" text-anchor="middle" fill="#FFD060" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cutting edge</text>
-
-      <!-- Reference table -->
-      <rect x="20" y="164" width="260" height="18" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
-      <text x="30" y="176" fill="#C8973A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">.308 Win: trim if ≥ 2.015" — trim to 2.005" (measure after)</text>
+      <!-- Leaders -->
+      <line x1="247" y1="105" x2="247" y2="148" stroke="#C8D0E8" stroke-width="0.8"/>
+      <line x1="205" y1="106" x2="205" y2="148" stroke="#D8A820" stroke-width="0.8"/>
+      <line x1="160" y1="100" x2="160" y2="148" stroke="#FFD060" stroke-width="0.8"/>
+      <line x1="20" y1="114" x2="20" y2="148" stroke="#C8D0E8" stroke-width="0.8"/>
+      <!-- Numbered markers -->
+      <g><circle cx="247" cy="157" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="247" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+      <g><circle cx="205" cy="157" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="205" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+      <g><circle cx="160" cy="157" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="160" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+      <g><circle cx="20" cy="157" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="20" y="160.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> Crank — turning it spins the cutter.</li>
+          <li><b class="cx">2</b> Chuck — grips the case by its rim and holds it square.</li>
+          <li><b class="cx">3</b> Case, mouth facing the cutter.</li>
+          <li><b class="cx">4</b> Cutting edge — trims the case mouth back to the length the trimmer is set to.</li>
+        </ol>
+        <table class="fig-table">
+          <caption>.308 Winchester case length (SAAMI)</caption>
+          <tbody>
+            <tr><th scope="row">Maximum case length</th><td>2.015"</td></tr>
+            <tr><th scope="row">Trim-to length</th><td>2.005"</td></tr>
+          </tbody>
+        </table>
+        <p class="fig-note">Measure after trimming to confirm. Do not trim below the minimum length in your manual.</p>
+        </figure>
         <p>Set the trimmer to <strong>2.005"</strong>. Seat the case in the chuck, then advance the cutter shaft until the cutting edge just trims the case mouth. Stop when cutting ends, then verify length with calipers.</p>
         <div class="tip">✅ After trimming, deburr and chamfer the case mouth — the next step.</div>
         <div class="warn">⚠️ Do not trim below your manual's minimum case length. Over-trimming reduces neck grip and can affect consistency.</div>
@@ -1518,52 +1489,54 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 155" xmlns="http://www.w3.org/2000/svg">
-      <text x="150" y="13" text-anchor="middle" fill="#C8D0E8" font-size="9" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">DEBURR &amp; CHAMFER CASE MOUTH</text>
-
+        <figure class="figure">
+        <figcaption class="fig-title">Deburring and chamfering the case mouth</figcaption>
+        <p class="fig-sub">Left: a freshly trimmed mouth with a sharp burr. Centre: the deburring and chamfering tool. Right: the finished mouth, with the inset showing it in cross-section.</p>
+        <svg viewBox="4 18 292 138" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three panels. On the left, a trimmed case has a sharp square burr at its mouth. In the middle is a cone-tipped deburring and chamfering tool, with arrows pointing to each case. On the right, the same case mouth is shown chamfered, with an enlarged cross-section of the smooth angled entry.">
       <!-- LEFT: BEFORE PANEL -->
       <rect x="8" y="22" width="92" height="112" rx="6" fill="#171721" stroke="#2C2C3D" stroke-width="1"/>
-      <text x="54" y="35" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">BEFORE: SHARP BURR</text>
       <use href="#g-case" transform="translate(30,118) scale(2.5)" fill="#C09830" color="#C09830"/>
       <line x1="20" y1="51" x2="40" y2="51" stroke="#E05050" stroke-width="3"/>
       <path d="M18,53 L20,50 L23,53" fill="none" stroke="#E05050" stroke-width="1.3"/>
-      <line x1="45" y1="52" x2="71" y2="52" stroke="#E05050" stroke-width="1"/>
-      <text x="74" y="55" fill="#E05050" font-size="6.8" font-family="Arial Narrow,Arial,sans-serif">Sharp edge</text>
-      <text x="54" y="128" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Can shave bullet jacket</text>
+      <line x1="45" y1="52" x2="66" y2="46" stroke="#E05050" stroke-width="1"/>
 
       <!-- CENTER: TOOL -->
       <line x1="103" y1="78" x2="116" y2="78" stroke="#C8D0E8" stroke-width="1.4"/>
       <path d="M113,74 L117,78 L113,82" fill="none" stroke="#C8D0E8" stroke-width="1.4"/>
       <rect x="118" y="44" width="16" height="48" rx="3" fill="#4B4B5F" stroke="#D8DCF0" stroke-width="1.4"/>
       <polygon points="118,92 126,108 134,92" fill="#4B4B5F" stroke="#D8DCF0" stroke-width="1.4"/>
-      <text x="126" y="38" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">TOOL</text>
-      <text x="126" y="118" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Deburr + chamfer</text>
       <line x1="136" y1="78" x2="149" y2="78" stroke="#C8D0E8" stroke-width="1.4"/>
       <path d="M146,74 L150,78 L146,82" fill="none" stroke="#C8D0E8" stroke-width="1.4"/>
 
       <!-- RIGHT: AFTER PANEL -->
       <rect x="152" y="22" width="140" height="112" rx="6" fill="#171721" stroke="#2C2C3D" stroke-width="1"/>
-      <text x="222" y="35" text-anchor="middle" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">AFTER: CLEAN CHAMFER</text>
-
-      <!-- Main after case -->
       <use href="#g-case" transform="translate(176,118) scale(2.5)" fill="#C09830" color="#C09830"/>
       <path d="M166,51 L170,51 L170,55 L166,59" fill="none" stroke="#4CBB6A" stroke-width="2"/>
       <path d="M186,51 L182,51 L182,55 L186,59" fill="none" stroke="#4CBB6A" stroke-width="2"/>
 
       <!-- Zoom callout box -->
       <rect x="198" y="46" width="86" height="64" rx="5" fill="#11152F" stroke="#3B4B90" stroke-width="1"/>
-      <text x="241" y="57" text-anchor="middle" fill="#C8D0E8" font-size="7.2" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">MOUTH CROSS-SECTION</text>
       <line x1="205" y1="61" x2="277" y2="61" stroke="#2D3A72" stroke-width="0.9"/>
       <line x1="222" y1="86" x2="248" y2="86" stroke="#C09830" stroke-width="6"/>
       <path d="M222,86 L228,80" fill="none" stroke="#4CBB6A" stroke-width="2"/>
       <path d="M248,86 L242,80" fill="none" stroke="#4CBB6A" stroke-width="2"/>
-      <text x="241" y="101" text-anchor="middle" fill="#4CBB6A" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Smooth 45° entry</text>
-
       <line x1="188" y1="52" x2="201" y2="52" stroke="#4CBB6A" stroke-width="0.9"/>
       <line x1="188" y1="58" x2="201" y2="66" stroke="#4CBB6A" stroke-width="0.9"/>
-
-      <text x="222" y="128" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Bullet starts straight, no shaving</text>
+      <line x1="241" y1="93" x2="241" y2="118" stroke="#4CBB6A" stroke-width="0.9"/>
+      <!-- Numbered markers -->
+      <g><circle cx="76" cy="44" r="8.5" fill="#c8973a" stroke="#171721" stroke-width="1.2"/><text x="76" y="47.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+      <g><circle cx="126" cy="122" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="126" y="125.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+      <g><circle cx="176" cy="145" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="176" y="148.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+      <g><circle cx="241" cy="127" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="241" y="130.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> <b>Before</b> — the trimmed mouth leaves a sharp square edge that can shave copper off a bullet as it is seated.</li>
+          <li><b class="cx">2</b> The tool: one end deburrs the outside of the mouth, the cone end cuts the inside chamfer.</li>
+          <li><b class="cx">3</b> <b>After</b> — outside burr removed and a light inside chamfer cut, so a bullet enters straight.</li>
+          <li><b class="cx">4</b> Cross-section of the finished mouth: a smooth angled entry, not a knife edge.</li>
+        </ol>
+        <p class="fig-note">Take off only enough to remove the burr. Repeated heavy chamfering thins the case mouth.</p>
+        </figure>
         <p>After trimming, remove the outside burr and add only a light inside chamfer, following the tool maker's directions. Then remove all sizing lubricant and metal chips using a method compatible with the lubricant. Cases must be clean and completely dry before primers or powder are introduced.</p>
         <div class="tip">✅ Before priming: mouth smooth, chips removed, primer pocket unobstructed, and no lubricant or moisture on or inside the case.</div>
       </div></div>
@@ -1651,79 +1624,80 @@
         <span class="chevron">▼</span>
       </button>
       <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 175" xmlns="http://www.w3.org/2000/svg">
-<rect width="300" height="175" fill="#1C1C24"/>
-<text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">ELECTRONIC POWDER SCALE / DISPENSER</text>
+        <figure class="figure">
+        <figcaption class="fig-title">Electronic powder scale and dispenser</figcaption>
+        <p class="fig-sub">A combined scale and dispenser: powder feeds from a hopper on top into a pan on the scale below.</p>
+        <svg viewBox="12 2 276 174" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An electronic powder dispenser. A hopper on top feeds through a trap door into the unit, which has a digital display and start and cancel buttons, and drops powder into a pan on the scale below. Calibration weights and a powder container stand to the right.">
+<rect x="12" y="2" width="276" height="174" fill="#1C1C24"/>
 
-<!-- ══ MAIN UNIT BODY ══ -->
+<!-- MAIN UNIT BODY -->
 <rect x="60" y="30" width="120" height="100" rx="4" fill="#2a2a2a" stroke="#D8DCF0" stroke-width="1.5"/>
 
-<!-- Powder hopper (top cylinder) -->
+<!-- Powder hopper -->
 <rect x="95" y="8" width="50" height="26" rx="3" fill="#383848" stroke="#D8DCF0" stroke-width="1.2"/>
 <ellipse cx="120" cy="8" rx="25" ry="5" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
-<text x="120" y="24" text-anchor="middle" fill="#9090A8" font-size="6" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">POWDER</text>
-<text x="120" y="31" text-anchor="middle" fill="#9090A8" font-size="5.5" font-family="Arial Narrow,Arial,sans-serif">HOPPER</text>
 
-<!-- Trap door / discharge at hopper base -->
+<!-- Trap door at hopper base -->
 <rect x="108" y="33" width="24" height="4" fill="#1a1a1a" stroke="#666" stroke-width="0.8"/>
-<text x="120" y="44" text-anchor="middle" fill="#7080A8" font-size="5.5" font-family="Arial Narrow,Arial,sans-serif">trap door</text>
 
-<!-- Touchscreen display (bottom of unit) -->
+<!-- Display -->
 <rect x="68" y="90" width="104" height="32" rx="2" fill="#0d1a0d" stroke="#2a6a2a" stroke-width="1.2"/>
-<text x="120" y="104" text-anchor="middle" fill="#40E040" font-size="11" font-weight="bold" font-family="monospace">TARGET gr</text>
-<text x="120" y="116" text-anchor="middle" fill="#2a8a2a" font-size="6" font-family="Arial Narrow,Arial,sans-serif">SET PER MANUAL</text>
+<text x="120" y="112" text-anchor="middle" fill="#40E040" font-size="15" font-weight="bold" font-family="monospace">— gr</text>
 
-<!-- GO button (green) -->
+<!-- Start button -->
 <rect x="68" y="126" width="44" height="16" rx="3" fill="#1a5a1a" stroke="#4CBB6A" stroke-width="1.5"/>
-<text x="90" y="137" text-anchor="middle" fill="#4CBB6A" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">▶ GO</text>
+<text x="90" y="139" text-anchor="middle" fill="#4CBB6A" font-size="11" font-weight="bold" font-family="Arial,sans-serif" aria-hidden="true">▶</text>
 
-<!-- CANCEL button (red) -->
+<!-- Cancel button -->
 <rect x="128" y="126" width="44" height="16" rx="3" fill="#5a1a1a" stroke="#E05050" stroke-width="1.5"/>
-<text x="150" y="137" text-anchor="middle" fill="#E05050" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">✕ CANCEL</text>
+<text x="150" y="139" text-anchor="middle" fill="#E05050" font-size="11" font-weight="bold" font-family="Arial,sans-serif" aria-hidden="true">✕</text>
 
-<!-- Scale pan (below unit) -->
+<!-- Scale pan -->
 <rect x="90" y="148" width="60" height="6" rx="1" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
 <path d="M85 154 L78 168 L162 168 L155 154" fill="#383848" stroke="#D8DCF0" stroke-width="1"/>
-<!-- Powder in pan -->
 <circle cx="105" cy="164" r="1.5" fill="#C09830"/><circle cx="112" cy="161" r="1.5" fill="#D4A828"/>
 <circle cx="120" cy="165" r="1.5" fill="#C09830"/><circle cx="128" cy="162" r="1.2" fill="#D4A828"/>
 <circle cx="136" cy="164" r="1.2" fill="#C09830"/><circle cx="118" cy="158" r="1" fill="#D4A828"/>
 
-<!-- Calibration weights (right side) -->
-<rect x="230" y="100" width="30" height="14" rx="2" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
-<text x="245" y="111" text-anchor="middle" fill="#C8D0E8" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">50g ×2</text>
-<rect x="232" y="114" width="26" height="6" rx="1" fill="#383848" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Calibration weights -->
+<rect x="220" y="100" width="30" height="14" rx="2" fill="#484858" stroke="#D8DCF0" stroke-width="1"/>
+<rect x="222" y="114" width="26" height="6" rx="1" fill="#383848" stroke="#D8DCF0" stroke-width="0.8"/>
 
-<!-- Powder container (right) — generic, not a product recommendation -->
-<rect x="228" y="40" width="40" height="56" fill="#3a2010" stroke="#7a5020" stroke-width="1.5"/>
-<rect x="230" y="46" width="36" height="12" fill="#cc2200" opacity="0.8"/>
-<text x="248" y="55" text-anchor="middle" fill="#fff" font-size="6.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">POWDER</text>
-<text x="248" y="70" text-anchor="middle" fill="#C8973A" font-size="6" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">AS PUBLISHED</text>
-<text x="248" y="82" text-anchor="middle" fill="#7080A8" font-size="5.5" font-family="Arial Narrow,Arial,sans-serif">check the label</text>
+<!-- Powder container — generic, not a product recommendation -->
+<rect x="215" y="40" width="40" height="56" fill="#3a2010" stroke="#7a5020" stroke-width="1.5"/>
+<rect x="217" y="46" width="36" height="12" fill="#cc2200" opacity="0.8"/>
+<text x="235" y="55" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">POWDER</text>
 
-<!-- Leader callouts -->
-<circle cx="120" cy="8" r="1.2" fill="#D8DCF0"/>
-<line x1="120" y1="8" x2="30" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="2" y="13" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Hopper.</text>
-
-<circle cx="120" cy="36" r="1.2" fill="#7080A8"/>
-<line x1="120" y1="36" x2="30" y2="44" stroke="#7080A8" stroke-width="0.75"/>
-<text x="2" y="42" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Trap door.</text>
-
-<circle cx="90" cy="137" r="1.2" fill="#4CBB6A"/>
-<line x1="68" y1="134" x2="30" y2="70" stroke="#4CBB6A" stroke-width="0.75"/>
-<text x="2" y="68" fill="#4CBB6A" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">GO.</text>
-
-<circle cx="120" cy="154" r="1.2" fill="#D8DCF0"/>
-<line x1="120" y1="162" x2="30" y2="170" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="2" y="168" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pan.</text>
-
-<circle cx="245" cy="100" r="1.2" fill="#D8DCF0"/>
-<line x1="245" y1="100" x2="265" y2="88" stroke="#D8DCF0" stroke-width="0.75"/>
-<text x="212" y="86" fill="#C8D0E8" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Cal. weights.</text>
+<!-- Leaders -->
+<line x1="120" y1="8" x2="34" y2="15" stroke="#D8DCF0" stroke-width="0.75"/>
+<line x1="120" y1="36" x2="34" y2="46" stroke="#7080A8" stroke-width="0.75"/>
+<line x1="68" y1="100" x2="34" y2="100" stroke="#D8DCF0" stroke-width="0.75"/>
+<line x1="68" y1="134" x2="34" y2="134" stroke="#4CBB6A" stroke-width="0.75"/>
+<line x1="90" y1="164" x2="34" y2="166" stroke="#D8DCF0" stroke-width="0.75"/>
+<line x1="255" y1="60" x2="266" y2="46" stroke="#D8DCF0" stroke-width="0.75"/>
+<line x1="250" y1="107" x2="266" y2="107" stroke="#D8DCF0" stroke-width="0.75"/>
+<!-- Numbered markers -->
+<g><circle cx="24" cy="15" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="24" y="18.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">1</text></g>
+<g><circle cx="24" cy="46" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="24" y="49.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">2</text></g>
+<g><circle cx="24" cy="100" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="24" y="103.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">3</text></g>
+<g><circle cx="24" cy="134" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="24" y="137.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">4</text></g>
+<g><circle cx="24" cy="166" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="24" y="169.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">5</text></g>
+<g><circle cx="276" cy="107" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="276" y="110.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">6</text></g>
+<g><circle cx="276" cy="46" r="8.5" fill="#c8973a" stroke="#1C1C24" stroke-width="1.2"/><text x="276" y="49.8" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Arial,sans-serif">7</text></g>
         </svg>
+        <ol class="callouts">
+          <li><b class="cx">1</b> Hopper — holds the powder above the dispenser.</li>
+          <li><b class="cx">2</b> Trap door at the hopper base, where powder feeds through.</li>
+          <li><b class="cx">3</b> Display — check it is reading in <b>grains (gr)</b>, not grams, before you dispense anything.</li>
+          <li><b class="cx">4</b> Start and cancel buttons.</li>
+          <li><b class="cx">5</b> Pan on the scale, catching the dispensed charge.</li>
+          <li><b class="cx">6</b> Calibration weights — used to verify the scale before a session.</li>
+          <li><b class="cx">7</b> Powder container. The one drawn here is generic and is not a recommendation.</li>
+        </ol>
+        <p class="fig-note">Keep one clearly identified powder on the bench at a time, and put it away before opening another.</p>
+        </figure>
         <p>Confirm the published recipe and that the display is set to the intended unit, normally <strong>grains (gr), not grams (g)</strong>. Enter the documented starting charge and operate the dispenser exactly as its manual directs. Independently verify its calibration and periodically compare charges with suitable check weights or a second trusted scale. Keep only one clearly identified powder on the bench.</p>
-        <div class="warn">⚠️ Before starting: run the calibration routine with both 50g weights as per the manual. Re-calibrate if you move the unit or bump the bench.</div>
+        <div class="warn">⚠️ Before starting: run the scale's calibration routine using the check weights and procedure its manual specifies. Re-calibrate if you move the unit or bump the bench.</div>
         <div class="warn">⚠️ After charging cases, look across all of them in the loading block. All powder levels should look the same height. An empty case or overfull case means a missed or double charge — stop and investigate every case.</div>
         <div class="warn">⚠️ A case with NO powder looks like a normal empty case. Firing with no powder can lodge the bullet inside the barrel. If you then fire a second round — the barrel can rupture. If a round fires with a soft "pop" and no recoil, STOP. Do not fire again. Check the barrel is clear before continuing.</div>
         <div class="tip">✅ Use the published starting load for the exact component combination and follow the source's work-up instructions. The container shown here is generic and is not a recommendation.</div>
