@@ -57,7 +57,7 @@
     background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; padding: 16px 12px; margin-bottom: 18px;
   }
-  .diagram-card svg { width: 100%; height: auto; display: block; }
+  .diagram-card svg { width: 100%; height: auto; display: block; border: 2px solid #555; border-radius: 8px; }
 
   /* STEP LIST */
   .step-list { display: flex; flex-direction: column; gap: 8px; }
@@ -117,7 +117,7 @@
     padding: 14px 14px 16px;
     display: flex; flex-direction: column; gap: 12px;
   }
-  .step-detail-inner svg { width: 100%; height: auto; display: block; border-radius: 8px; background: #1e1e1e; }
+  .step-detail-inner svg { width: 100%; height: auto; display: block; border-radius: 8px; background: #1e1e1e; border: 2px solid #555; }
   .step-detail p { font-size: 0.95rem; line-height: 1.6; color: #ddd; }
   .step-detail .tip {
     background: #1e2d1a; border: 1px solid #2a5020; border-radius: 8px;
@@ -180,7 +180,7 @@
 
     .diagram-card {
       background: #fafafa !important;
-      border: 1.5px solid #ccc !important;
+      border: 2px solid #111 !important;
       page-break-inside: avoid;
     }
 
@@ -271,7 +271,8 @@
 
     /* Print button hidden */
     .print-btn { display: none !important; }
-    .step-detail-inner svg { background: #fff !important; }
+    .step-detail-inner svg { background: #fff !important; border: 2.5px solid #111 !important; border-radius: 8px !important; }
+    .diagram-card svg { border: 2.5px solid #111 !important; border-radius: 8px !important; }
   }
 </style>
 </head>
