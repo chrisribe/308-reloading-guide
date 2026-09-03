@@ -404,7 +404,11 @@
 
   <div class="step-badge">📋 Overview</div>
   <h1 class="slide-title">The Full Process</h1>
-  <p class="slide-desc">Every reload follows the same order. Tap any step to see details.</p>
+  <p class="slide-desc">Precision + cost workflow for .308. Tap any step to see details.</p>
+  <div class="tip-box info" style="margin-top:10px">
+    <span class="tip-icon">🎯</span>
+    <div><strong>Two sizing paths:</strong> <strong>Precision path</strong> = mandrel + body bump + neck size. <strong>FL path</strong> = full-length resize (use when chambering gets tight / reliability reset), then skip neck-size step.</div>
+  </div>
 
   <!-- Cartridge anatomy diagram — FIXED -->
   <div class="diagram-card">
@@ -1076,7 +1080,7 @@
     <div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">8</div>
-        <div class="step-label"><strong>Shoulder Bump</strong><br><span>Body die only — set shoulder back 0.001"–0.002"</span></div>
+        <div class="step-label"><strong>Resize Body/Shoulder</strong><br><span>Body die (precision path) or FL die (reset path)</span></div>
         <span class="step-tag tag-prep">RESIZE</span>
         <span class="chevron">▼</span>
       </div>
@@ -1163,8 +1167,8 @@
 <text x="178" y="181" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">sized / bumped</text>
 <text x="150" y="215" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SECTION A-A  ·  Left = cut (hatched)  ·  Right = exterior</text>
         </svg>
-        <p>Set shoulder back 0.001"–0.002" for reliable chambering — body die only, neck untouched. The body die contacts only the case body and shoulder — the neck passes through the open cavity untouched.</p>
-        <div class="warn">⚠️ Body die does NOT size the neck. Neck tension is set separately in the next step.</div>
+        <p>Set shoulder back 0.001"–0.002" for reliable chambering. <strong>Precision path:</strong> use body die here (neck untouched), then do Step 10 neck-size. <strong>FL path:</strong> run your full-length die here to size body + shoulder + neck in one pass, then skip Step 10.</p>
+        <div class="warn">⚠️ If using full-length die, dial it to a light bump (about 0.001"–0.002") to avoid over-working brass.</div>
       </div></div>
     </div>
 
@@ -1180,7 +1184,7 @@
         <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
 <rect width="300" height="160" fill="#1C1C24"/>
 <text x="150" y="11" text-anchor="middle" fill="#C8D0E8" font-size="8" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">MEASURE SHOULDER — CASE COMPARATOR + CALIPERS</text>
-<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Measure before bump · bump die · measure again · target: 0.001"–0.002" less</text>
+<text x="150" y="20" text-anchor="middle" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Measure before resize · run body/FL die · measure again · target: 0.001"–0.002" less</text>
 <line x1="150" y1="22" x2="150" y2="145" stroke="#4090FF" stroke-width="0.5" stroke-dasharray="8,2,2,2" opacity="0.5"/>
 <rect x="15" y="60" width="220" height="8" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
 <rect x="15" y="68" width="9" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.1"/>
@@ -1215,7 +1219,7 @@
         <ul style="padding-left:18px; color:#ddd; font-size:0.9rem; line-height:1.9; margin-top:6px">
           <li>Slip comparator insert onto caliper jaw — .308 uses <strong>0.330" datum hole</strong></li>
           <li>Measure case: base on fixed jaw, comparator seated on shoulder → write down reading</li>
-          <li>Run case through body die — adjust die in small increments</li>
+          <li>Run case through your chosen die for this path: body die (precision path) or full-length die (reset path)</li>
           <li>Measure again — target is <strong>0.001"–0.002" less</strong> than your before reading</li>
           <li>Never bump more than 0.002" — over-working brass cracks necks</li>
         </ul>
@@ -1227,7 +1231,7 @@
     <div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">10</div>
-        <div class="step-label"><strong>Neck Size</strong><br><span>Neck die only — sets bullet tension</span></div>
+        <div class="step-label"><strong>Neck Size</strong><br><span>Precision path only — skip if you used FL die</span></div>
         <span class="step-tag tag-prep">RESIZE</span>
         <span class="chevron">▼</span>
       </div>
@@ -1302,9 +1306,9 @@
 <text x="2" y="97" fill="#7080A8" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">sets tension</text>
 <text x="150" y="208" text-anchor="middle" fill="#4090FF" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">SECTION A-A  ·  Left = cut (hatched)  ·  Right = exterior</text>
         </svg>
-        <p>Size the neck only — sets neck tension that holds the bullet firmly. The bushing controls how much the neck is squeezed. Keeping neck sizing separate from body sizing preserves case body dimensions and extends brass life significantly.</p>
+        <p>Precision path only: size the neck to set exact neck tension that holds the bullet firmly. The bushing controls how much the neck is squeezed. If you used a full-length die in Step 8, this step is already done — skip to Step 11.</p>
         <div class="tip">✅ Bushing neck dies let you dial exact neck tension by choosing bushing size. Most precision shooters use 0.001"–0.002" neck tension.</div>
-        <div class="warn">⚠️ Keeping neck sizing separate preserves case body dimensions and extends brass life significantly.</div>
+        <div class="warn">⚠️ Too much neck sizing work-hardens brass faster. Use only what your chambering reliability requires.</div>
       </div></div>
     </div>
 
