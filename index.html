@@ -522,9 +522,7 @@
   </div>
 
   <!-- Steps list — all tappable -->
-  <div class="step-list">
-
-    <div class="step-item prep" onclick="toggleStep(this)">
+  <div class="step-list"><div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">1</div>
         <div class="step-label"><strong>Sort &amp; Inspect</strong><br><span>Check brass for cracks or damage</span></div>
@@ -585,7 +583,7 @@
       </div></div>
     </div>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">2</div>
         <div class="step-label"><strong>Deprime</strong><br><span>Punch out old primer first</span></div>
@@ -683,177 +681,9 @@
       </div></div>
     </div>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">3</div>
-        <div class="step-label"><strong>Clean</strong><br><span>Ultrasound bath — pocket cleaned too</span></div>
-        <span class="step-tag tag-prep">PREP</span>
-        <span class="chevron">▼</span>
-      </div>
-      <div class="step-detail"><div class="step-detail-inner">
-        <svg id="svg-step3" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-<!-- COORDINATE SYSTEM
-  viewBox: 0 0 300 160
-  Tank outer: x=20 y=20 w=220 h=110
-  Tank inner: x=26 y=26 w=208 h=98
-  Basket grid: x=32 y=28 w=196 h=72  (bottom y=100)
-  Liquid zone: x=32 y=74 w=196 h=26  (wave pattern)
-  Cases: 8 across basket, baseY=100, scale=1.1
-  Control panel: x=30 y=105 w=80 h=28
-  Margins: left labels x=0-18, right labels x=252-300
--->
-<script>
-(function(){
-  const svg = document.getElementById('svg-step3');
-  if (!svg) return;
-  // Outer body
-  svgRect(svg, 20, 20, 220, 110, {fill:'#141414', stroke:'#555', sw:1.5});
-  // Rubber feet
-  svgRect(svg, 26, 128, 14, 6, {fill:'#0a0a0a', stroke:'#333', sw:0.8});
-  svgRect(svg, 220, 128, 14, 6, {fill:'#0a0a0a', stroke:'#333', sw:0.8});
-  // Stainless tank
-  svgRect(svg, 28, 16, 204, 92, {fill:'#3a3a3a', stroke:'#D8DCF0', sw:1.4});
-  // Inner tank
-  svgRect(svg, 34, 22, 192, 82, {fill:'#585858', stroke:'none', sw:0});
-  // Basket border
-  svgRect(svg, 38, 24, 184, 70, {fill:'none', stroke:'#AAAAAA', sw:1.2});
-  // Liquid (wave pattern)
-  drawWaves(svg, 38, 68, 184, 26, {opacity:0.55});
-  // 8 cases evenly spaced
-  drawCaseRow(svg, 8, 38, 184, 94, {scale:1.05, fill:'#C09830'});
-  // Basket handles — straight bent polylines
-  const NS = 'http://www.w3.org/2000/svg';
-  function poly(pts, parent) {
-    const p = document.createElementNS(NS,'polyline');
-    p.setAttribute('points', pts);
-    p.setAttribute('fill','none');
-    p.setAttribute('stroke','#AAAAAA');
-    p.setAttribute('stroke-width','1.8');
-    p.setAttribute('stroke-linejoin','miter');
-    parent.appendChild(p);
-  }
-  poly('58,24 58,16 68,12 78,12 78,16 78,24', svg);
-  poly('192,24 192,16 202,12 212,12 212,16 212,24', svg);
-  // Control panel
-  svgRect(svg, 30, 104, 80, 26, {fill:'#0A0A0A', stroke:'#333', sw:1});
-  svgRect(svg, 33, 107, 50, 16, {fill:'#091409', stroke:'none', sw:0});
-  const timer = document.createElementNS(NS,'text');
-  timer.setAttribute('x','58'); timer.setAttribute('y','119');
-  timer.setAttribute('text-anchor','middle'); timer.setAttribute('fill','#40E040');
-  timer.setAttribute('font-size','12'); timer.setAttribute('font-weight','bold');
-  timer.setAttribute('font-family','monospace');
-  timer.textContent = '30:00'; svg.appendChild(timer);
-  svgRect(svg, 96, 108, 30, 9, {fill:'#222', stroke:'#555', sw:1});
-  svgText(svg, 111, 116, 'POWER', {fontSize:6.5, fill:'#aaa', fontWeight:'normal', anchor:'middle'});
-  svgRect(svg, 130, 108, 30, 9, {fill:'#1a3a1a', stroke:'#2a6a2a', sw:1});
-  svgText(svg, 145, 116, 'START', {fontSize:6.5, fill:'#8fbc5a', fontWeight:'normal', anchor:'middle'});
-  // Labels
-  drawLeader(svg, 34, 45, 15, 45, 'Tank.', {side:'left', color:'#C8D0E8'});
-  drawLeader(svg, 80, 30, 80, 10, 'Basket.', {side:'left', color:'#C8D0E8'});
-  drawLeader(svg, 130, 80, 252, 80, 'Liquid.', {side:'right', color:'#4090FF'});
-  drawLeader(svg, 150, 60, 252, 50, 'Cases.', {side:'right', color:'#D8A820'});
-  svgText(svg, 150, 155, 'Ultrasonic bath — cases standing in basket', {fontSize:6.5, fill:'#4090FF', fontWeight:'normal'});
-})();
-</script>
-</svg>
-        <p>Run cases in your ultrasonic cleaner with diluted brass solution for 30–45 minutes (typically after depriming + annealing). Because the primer pocket is open, ultrasonic cleaning reaches inside and often reduces pocket brushing. <strong>Dry completely before moving on.</strong> Moisture near primers is dangerous.</p>
-        <div class="tip">✅ Cases bright inside and out. If any pockets still have black carbon, a quick 5-second brush fixes it.</div>
-      </div></div>
-    </div>
-
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
-        <div class="step-num">4</div>
-        <div class="step-label"><strong>Brush Pocket &amp; Deburr Flash Hole</strong><br><span>Carbon out of pocket — remove machining burr from flash hole</span></div>
-        <span class="step-tag tag-prep">PREP</span>
-        <span class="chevron">▼</span>
-      </div>
-      <div class="step-detail"><div class="step-detail-inner">
-        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
-<!-- COORDINATE SYSTEM
-  viewBox: 0 0 300 180
-  LEFT panel center: cx=80
-  RIGHT panel center: cx=210
-  Case head (left): rect x=50 y=90 w=60 h=30
-  Pocket cutout (left): x=70 y=90 w=20 h=16
-  Full case (right): use #g-case translate(210,155) scale(2.2)
-  Tool rod (right): thin rect from y=20 down to y=140, cx=210
--->
-<!-- Divider line -->
-<line x1="150" y1="10" x2="150" y2="168" stroke="#333" stroke-width="0.8" opacity="0.6"/>
-
-<!-- ===== LEFT: POCKET BRUSH ===== -->
-<!-- T-handle crossbar -->
-<rect x="62" y="18" width="36" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Vertical rod -->
-<rect x="77" y="25" width="6" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Bristle head — rect body with dense short vertical bristle lines -->
-<rect x="73" y="53" width="14" height="11" fill="#2E2E3A" stroke="#D8DCF0" stroke-width="1.2"/>
-<line x1="75" y1="55" x2="75" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
-<line x1="77" y1="55" x2="77" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
-<line x1="79" y1="55" x2="79" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
-<line x1="81" y1="55" x2="81" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
-<line x1="83" y1="55" x2="83" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
-<line x1="85" y1="55" x2="85" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
-<!-- Arrow downward into pocket -->
-<line x1="80" y1="64" x2="80" y2="86" stroke="#C8D0E8" stroke-width="1.2"/>
-<path d="M76,83 L80,88 L84,83" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
-<!-- Case head — brass rectangle -->
-<rect x="50" y="90" width="60" height="30" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
-<!-- Primer pocket cutout — flat square bottom, straight walls, NO rounding -->
-<rect x="70" y="90" width="20" height="16" fill="#1A1A22"/>
-<!-- Flash hole — 2px wide dark rect at pocket floor center going down -->
-<rect x="79" y="106" width="2" height="10" fill="#1C1C24"/>
-<!-- Carbon deposit dots -->
-<circle cx="74" cy="97" r="1.2" fill="#3A3A44"/>
-<circle cx="85" cy="100" r="1.0" fill="#3A3A44"/>
-<circle cx="78" cy="103" r="1.0" fill="#3A3A44"/>
-
-<!-- Left panel labels -->
-<line x1="86" y1="59" x2="125" y2="59" stroke="#7AB3E0" stroke-width="0.8"/>
-<circle cx="125" cy="59" r="1.2" fill="#7AB3E0"/>
-<text x="127" y="62" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pocket brush.</text>
-<line x1="79" y1="113" x2="55" y2="130" stroke="#A0A8C0" stroke-width="0.8"/>
-<circle cx="55" cy="130" r="1.2" fill="#A0A8C0"/>
-<text x="10" y="133" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole.</text>
-
-<!-- ===== RIGHT: FLASH HOLE DEBURR ===== -->
-<!-- Full bottleneck case (side view) using g-case symbol, scaled ~2.2x, standing upright -->
-<g transform="translate(210,155) scale(2.2)" fill="#C09830">
-  <use href="#g-case"/>
-</g>
-<!-- Long thin tool rod inserted from case mouth down to flash hole -->
-<!-- Case mouth is at y=155-27*2.2=155-59.4=95.6 → rod starts at y=68 (handle bottom), tip at y=148 -->
-<rect x="208.5" y="75" width="3" height="68" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
-<!-- Tool handle at top — wider grip block -->
-<rect x="203" y="62" width="14" height="14" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
-<!-- Conical cutter tip -->
-<polygon points="207,143 213,143 210,149" fill="#6A6A7A" stroke="#D8DCF0" stroke-width="0.8"/>
-<!-- Highlight circle at flash hole location (inside case head at base) -->
-<circle cx="210" cy="148" r="3.5" fill="none" stroke="#FFD060" stroke-width="1.2" opacity="0.85"/>
-
-<!-- Right panel labels -->
-<line x1="218" y1="68" x2="248" y2="33" stroke="#7AB3E0" stroke-width="0.8"/>
-<circle cx="248" cy="33" r="1.2" fill="#7AB3E0"/>
-<text x="250" y="36" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Flash hole deburr.</text>
-<line x1="213" y1="148" x2="245" y2="158" stroke="#A0A8C0" stroke-width="0.8"/>
-<circle cx="245" cy="158" r="1.2" fill="#A0A8C0"/>
-<text x="170" y="171" fill="#A0A8C0" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Inside of case head.</text>
-
-<!-- Footer caption -->
-<text x="150" y="178" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Brush pocket — deburr flash hole on new brass</text>
-        </svg>
-
-        <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — use the large rifle brush. Insert and rotate several times until all black carbon is gone. The ultrasonic bath will have done most of this already — you're just finishing any stubborn spots.</p>
-        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Flash Hole Deburr</strong> — on new, unfired brass only. A small conical cutter on a long shaft is inserted from the case mouth all the way down to the flash hole. It removes the machining burr left on the inside face of the case head where the flash hole was pierced during manufacture. A sharp burr can deflect the primer's flash unevenly, causing ignition inconsistency. One or two turns is all it takes — once done, never again on that piece of brass.</p>
-        <div class="tip">✅ Flash hole deburr is a one-time operation on new brass. Brush the pocket every firing. Takes about 10 seconds per case.</div>
-        <div class="warn">⚠️ Military brass often has a <strong>crimped primer pocket</strong> — the crimp must be swaged or reamed out before you can seat a new primer. You'll feel it when the primer won't go in.</div>
-      </div></div>
-    </div>
-
-    <div class="step-item prep" onclick="toggleStep(this)">
-      <div class="step-header">
-        <div class="step-num">5</div>
         <div class="step-label"><strong>Anneal Case Necks</strong><br><span>Restore brass softness — prevents neck cracking</span></div>
         <span class="step-tag tag-prep">PREP</span>
         <span class="chevron">▼</span>
@@ -1001,7 +831,175 @@
       </div></div>
     </div>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-label"><strong>Clean</strong><br><span>Ultrasound bath — pocket cleaned too</span></div>
+        <span class="step-tag tag-prep">PREP</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="step-detail"><div class="step-detail-inner">
+        <svg id="svg-step3" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+<!-- COORDINATE SYSTEM
+  viewBox: 0 0 300 160
+  Tank outer: x=20 y=20 w=220 h=110
+  Tank inner: x=26 y=26 w=208 h=98
+  Basket grid: x=32 y=28 w=196 h=72  (bottom y=100)
+  Liquid zone: x=32 y=74 w=196 h=26  (wave pattern)
+  Cases: 8 across basket, baseY=100, scale=1.1
+  Control panel: x=30 y=105 w=80 h=28
+  Margins: left labels x=0-18, right labels x=252-300
+-->
+<script>
+(function(){
+  const svg = document.getElementById('svg-step3');
+  if (!svg) return;
+  // Outer body
+  svgRect(svg, 20, 20, 220, 110, {fill:'#141414', stroke:'#555', sw:1.5});
+  // Rubber feet
+  svgRect(svg, 26, 128, 14, 6, {fill:'#0a0a0a', stroke:'#333', sw:0.8});
+  svgRect(svg, 220, 128, 14, 6, {fill:'#0a0a0a', stroke:'#333', sw:0.8});
+  // Stainless tank
+  svgRect(svg, 28, 16, 204, 92, {fill:'#3a3a3a', stroke:'#D8DCF0', sw:1.4});
+  // Inner tank
+  svgRect(svg, 34, 22, 192, 82, {fill:'#585858', stroke:'none', sw:0});
+  // Basket border
+  svgRect(svg, 38, 24, 184, 70, {fill:'none', stroke:'#AAAAAA', sw:1.2});
+  // Liquid (wave pattern)
+  drawWaves(svg, 38, 68, 184, 26, {opacity:0.55});
+  // 8 cases evenly spaced
+  drawCaseRow(svg, 8, 38, 184, 94, {scale:1.05, fill:'#C09830'});
+  // Basket handles — straight bent polylines
+  const NS = 'http://www.w3.org/2000/svg';
+  function poly(pts, parent) {
+    const p = document.createElementNS(NS,'polyline');
+    p.setAttribute('points', pts);
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke','#AAAAAA');
+    p.setAttribute('stroke-width','1.8');
+    p.setAttribute('stroke-linejoin','miter');
+    parent.appendChild(p);
+  }
+  poly('58,24 58,16 68,12 78,12 78,16 78,24', svg);
+  poly('192,24 192,16 202,12 212,12 212,16 212,24', svg);
+  // Control panel
+  svgRect(svg, 30, 104, 80, 26, {fill:'#0A0A0A', stroke:'#333', sw:1});
+  svgRect(svg, 33, 107, 50, 16, {fill:'#091409', stroke:'none', sw:0});
+  const timer = document.createElementNS(NS,'text');
+  timer.setAttribute('x','58'); timer.setAttribute('y','119');
+  timer.setAttribute('text-anchor','middle'); timer.setAttribute('fill','#40E040');
+  timer.setAttribute('font-size','12'); timer.setAttribute('font-weight','bold');
+  timer.setAttribute('font-family','monospace');
+  timer.textContent = '30:00'; svg.appendChild(timer);
+  svgRect(svg, 96, 108, 30, 9, {fill:'#222', stroke:'#555', sw:1});
+  svgText(svg, 111, 116, 'POWER', {fontSize:6.5, fill:'#aaa', fontWeight:'normal', anchor:'middle'});
+  svgRect(svg, 130, 108, 30, 9, {fill:'#1a3a1a', stroke:'#2a6a2a', sw:1});
+  svgText(svg, 145, 116, 'START', {fontSize:6.5, fill:'#8fbc5a', fontWeight:'normal', anchor:'middle'});
+  // Labels
+  drawLeader(svg, 34, 45, 15, 45, 'Tank.', {side:'left', color:'#C8D0E8'});
+  drawLeader(svg, 80, 30, 80, 10, 'Basket.', {side:'left', color:'#C8D0E8'});
+  drawLeader(svg, 130, 80, 252, 80, 'Liquid.', {side:'right', color:'#4090FF'});
+  drawLeader(svg, 150, 60, 252, 50, 'Cases.', {side:'right', color:'#D8A820'});
+  svgText(svg, 150, 155, 'Ultrasonic bath — cases standing in basket', {fontSize:6.5, fill:'#4090FF', fontWeight:'normal'});
+})();
+</script>
+</svg>
+        <p>Run cases in your ultrasonic cleaner with diluted brass solution for 30–45 minutes (typically after depriming + annealing). Because the primer pocket is open, ultrasonic cleaning reaches inside and often reduces pocket brushing. <strong>Dry completely before moving on.</strong> Moisture near primers is dangerous.</p>
+        <div class="tip">✅ Cases bright inside and out. If any pockets still have black carbon, a quick 5-second brush fixes it.</div>
+      </div></div>
+    </div>
+
+<div class="step-item prep" onclick="toggleStep(this)">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-label"><strong>Brush Pocket &amp; Deburr Flash Hole</strong><br><span>Carbon out of pocket — remove machining burr from flash hole</span></div>
+        <span class="step-tag tag-prep">PREP</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="step-detail"><div class="step-detail-inner">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+<!-- COORDINATE SYSTEM
+  viewBox: 0 0 300 180
+  LEFT panel center: cx=80
+  RIGHT panel center: cx=210
+  Case head (left): rect x=50 y=90 w=60 h=30
+  Pocket cutout (left): x=70 y=90 w=20 h=16
+  Full case (right): use #g-case translate(210,155) scale(2.2)
+  Tool rod (right): thin rect from y=20 down to y=140, cx=210
+-->
+<!-- Divider line -->
+<line x1="150" y1="10" x2="150" y2="168" stroke="#333" stroke-width="0.8" opacity="0.6"/>
+
+<!-- ===== LEFT: POCKET BRUSH ===== -->
+<!-- T-handle crossbar -->
+<rect x="62" y="18" width="36" height="7" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Vertical rod -->
+<rect x="77" y="25" width="6" height="28" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Bristle head — rect body with dense short vertical bristle lines -->
+<rect x="73" y="53" width="14" height="11" fill="#2E2E3A" stroke="#D8DCF0" stroke-width="1.2"/>
+<line x1="75" y1="55" x2="75" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="77" y1="55" x2="77" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="79" y1="55" x2="79" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="81" y1="55" x2="81" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="83" y1="55" x2="83" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<line x1="85" y1="55" x2="85" y2="63" stroke="#D8DCF0" stroke-width="0.7" opacity="0.85"/>
+<!-- Arrow downward into pocket -->
+<line x1="80" y1="64" x2="80" y2="86" stroke="#C8D0E8" stroke-width="1.2"/>
+<path d="M76,83 L80,88 L84,83" fill="none" stroke="#C8D0E8" stroke-width="1.2"/>
+<!-- Case head — brass rectangle -->
+<rect x="50" y="90" width="60" height="30" fill="#C09830" stroke="#D8A820" stroke-width="1.4"/>
+<!-- Primer pocket cutout — flat square bottom, straight walls, NO rounding -->
+<rect x="70" y="90" width="20" height="16" fill="#1A1A22"/>
+<!-- Flash hole — 2px wide dark rect at pocket floor center going down -->
+<rect x="79" y="106" width="2" height="10" fill="#1C1C24"/>
+<!-- Carbon deposit dots -->
+<circle cx="74" cy="97" r="1.2" fill="#3A3A44"/>
+<circle cx="85" cy="100" r="1.0" fill="#3A3A44"/>
+<circle cx="78" cy="103" r="1.0" fill="#3A3A44"/>
+
+<!-- Left panel labels -->
+<line x1="86" y1="59" x2="125" y2="59" stroke="#7AB3E0" stroke-width="0.8"/>
+<circle cx="125" cy="59" r="1.2" fill="#7AB3E0"/>
+<text x="127" y="62" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Pocket brush.</text>
+<line x1="79" y1="113" x2="55" y2="130" stroke="#A0A8C0" stroke-width="0.8"/>
+<circle cx="55" cy="130" r="1.2" fill="#A0A8C0"/>
+<text x="10" y="133" fill="#A0A8C0" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Flash hole.</text>
+
+<!-- ===== RIGHT: FLASH HOLE DEBURR ===== -->
+<!-- Full bottleneck case (side view) using g-case symbol, scaled ~2.2x, standing upright -->
+<g transform="translate(210,155) scale(2.2)" fill="#C09830">
+  <use href="#g-case"/>
+</g>
+<!-- Long thin tool rod inserted from case mouth down to flash hole -->
+<!-- Case mouth is at y=155-27*2.2=155-59.4=95.6 → rod starts at y=68 (handle bottom), tip at y=148 -->
+<rect x="208.5" y="75" width="3" height="68" fill="#484858" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Tool handle at top — wider grip block -->
+<rect x="203" y="62" width="14" height="14" fill="#484858" stroke="#D8DCF0" stroke-width="1.4"/>
+<!-- Conical cutter tip -->
+<polygon points="207,143 213,143 210,149" fill="#6A6A7A" stroke="#D8DCF0" stroke-width="0.8"/>
+<!-- Highlight circle at flash hole location (inside case head at base) -->
+<circle cx="210" cy="148" r="3.5" fill="none" stroke="#FFD060" stroke-width="1.2" opacity="0.85"/>
+
+<!-- Right panel labels -->
+<line x1="218" y1="68" x2="248" y2="33" stroke="#7AB3E0" stroke-width="0.8"/>
+<circle cx="248" cy="33" r="1.2" fill="#7AB3E0"/>
+<text x="250" y="36" fill="#7AB3E0" font-size="7.5" font-weight="bold" font-family="Arial Narrow,Arial,sans-serif">Flash hole deburr.</text>
+<line x1="213" y1="148" x2="245" y2="158" stroke="#A0A8C0" stroke-width="0.8"/>
+<circle cx="245" cy="158" r="1.2" fill="#A0A8C0"/>
+<text x="170" y="171" fill="#A0A8C0" font-size="6.5" font-family="Arial Narrow,Arial,sans-serif">Inside of case head.</text>
+
+<!-- Footer caption -->
+<text x="150" y="178" text-anchor="middle" fill="#7080A8" font-size="7" font-family="Arial Narrow,Arial,sans-serif">Brush pocket — deburr flash hole on new brass</text>
+        </svg>
+
+        <p><strong style="color:#7ab3e0">① Pocket Brush</strong> — use the large rifle brush. Insert and rotate several times until all black carbon is gone. The ultrasonic bath will have done most of this already — you're just finishing any stubborn spots.</p>
+        <p style="margin-top:8px"><strong style="color:#8fbc5a">② Flash Hole Deburr</strong> — on new, unfired brass only. A small conical cutter on a long shaft is inserted from the case mouth all the way down to the flash hole. It removes the machining burr left on the inside face of the case head where the flash hole was pierced during manufacture. A sharp burr can deflect the primer's flash unevenly, causing ignition inconsistency. One or two turns is all it takes — once done, never again on that piece of brass.</p>
+        <div class="tip">✅ Flash hole deburr is a one-time operation on new brass. Brush the pocket every firing. Takes about 10 seconds per case.</div>
+        <div class="warn">⚠️ Military brass often has a <strong>crimped primer pocket</strong> — the crimp must be swaged or reamed out before you can seat a new primer. You'll feel it when the primer won't go in.</div>
+      </div></div>
+    </div>
+
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">6</div>
         <div class="step-label"><strong>Lube Cases</strong><br><span>Prevents case from sticking in die</span></div>
@@ -1056,8 +1054,7 @@
       </div></div>
     </div>
 
-
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">7</div>
         <div class="step-label"><strong>Expand Neck (Mandrel)</strong><br><span>Round neck ID before sizing for consistency</span></div>
@@ -1106,8 +1103,7 @@
       </div></div>
     </div>
 
-
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">8</div>
         <div class="step-label"><strong>Resize Body/Shoulder</strong><br><span>Body die (precision path) or FL die (reset path)</span></div>
@@ -1203,8 +1199,7 @@
       </div></div>
     </div>
 
-
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">9</div>
         <div class="step-label"><strong>Measure Shoulder</strong><br><span>Case comparator — verify 0.001"–0.002" setback</span></div>
@@ -1258,8 +1253,7 @@
       </div></div>
     </div>
 
-
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">10</div>
         <div class="step-label"><strong>Neck Size</strong><br><span>Precision path only — skip if you used FL die</span></div>
@@ -1343,7 +1337,7 @@
       </div></div>
     </div>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">11</div>
         <div class="step-label"><strong>Trim to Length</strong><br><span>Trim to 2.005" — trim if at or over 2.015"</span></div>
@@ -1403,7 +1397,7 @@
       </div></div>
     </div>
 
-    <div class="step-item prep" onclick="toggleStep(this)">
+<div class="step-item prep" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">12</div>
         <div class="step-label"><strong>Deburr &amp; Chamfer</strong><br><span>Smooth the case mouth</span></div>
@@ -1462,7 +1456,7 @@
       </div></div>
     </div>
 
-    <div class="step-item critical" onclick="toggleStep(this)">
+<div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">13</div>
         <div class="step-label"><strong>Prime</strong><br><span>Seat new primer slightly below flush</span></div>
@@ -1549,7 +1543,7 @@
       </div></div>
     </div>
 
-    <div class="step-item critical" onclick="toggleStep(this)">
+<div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">14</div>
         <div class="step-label"><strong>Charge Powder</strong><br><span>Weigh every charge on a scale</span></div>
@@ -1636,7 +1630,7 @@
       </div></div>
     </div>
 
-    <div class="step-item load" onclick="toggleStep(this)">
+<div class="step-item load" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">15</div>
         <div class="step-label"><strong>Seat Bullet</strong><br><span>Press bullet to correct depth</span></div>
@@ -1715,7 +1709,7 @@
       </div></div>
     </div>
 
-    <div class="step-item critical" onclick="toggleStep(this)">
+<div class="step-item critical" onclick="toggleStep(this)">
       <div class="step-header">
         <div class="step-num">16</div>
         <div class="step-label"><strong>Final Inspect</strong><br><span>Plunk test + visual check every round</span></div>
@@ -1787,9 +1781,7 @@
         <div class="warn">⚠️ Also visually check all primers are seated below flush. Look for any rounds that look off — bent bullet, high primer, case dent.</div>
         <div class="tip">✅ When done: label your box with caliber, bullet, powder, charge weight, primer, and date. Store in a cool dry place.</div>
       </div></div>
-    </div>
-
-  </div><!-- /step-list -->
+    </div></div><!-- /step-list -->
 
   <div class="tip-box info" style="margin-top:18px">
     <span class="tip-icon">💡</span>
