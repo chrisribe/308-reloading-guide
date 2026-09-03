@@ -229,19 +229,49 @@
       page-break-before: always;
     }
 
-    /* SVG diagrams — keep dark backgrounds, don't break across pages */
+    /* SVG diagrams — print-friendly (no dark fills), don't break across pages */
     svg {
       page-break-inside: avoid;
       break-inside: avoid;
       max-width: 100% !important;
     }
 
+    /* Force dark SVG backgrounds to light for ink-saving readability */
+    .step-detail-inner svg [fill="#1C1C24"],
+    .step-detail-inner svg [fill="#141420"],
+    .step-detail-inner svg [fill="#1e1e1e"],
+    .step-detail-inner svg [fill="#1e1e1e"],
+    .step-detail-inner svg [fill="#1e1e2a"],
+    .step-detail-inner svg [fill="#171721"],
+    .step-detail-inner svg [fill="#1a1a1a"],
+    .step-detail-inner svg [fill="#111318"],
+    .step-detail-inner svg [fill="#0d1a0d"],
+    .step-detail-inner svg [fill="#2a2a2a"],
+    .step-detail-inner svg [fill="#2E2E3E"],
+    .step-detail-inner svg [fill="#2A2A3A"],
+    .step-detail-inner svg [fill="#383848"],
+    .step-detail-inner svg [fill="#484858"] {
+      fill: #f6f6f6 !important;
+    }
+
+    /* Keep line art visible after lightening fills */
+    .step-detail-inner svg [stroke="#333"],
+    .step-detail-inner svg [stroke="#444"],
+    .step-detail-inner svg [stroke="#555"],
+    .step-detail-inner svg [stroke="#666"] {
+      stroke: #777 !important;
+    }
+
+    /* Text in diagrams should stay legible on white/light backgrounds */
+    .step-detail-inner svg text {
+      fill: #222 !important;
+    }
+
     .tip-box { display: none !important; }
 
     /* Print button hidden */
     .print-btn { display: none !important; }
-    /* SVG diagrams — keep them visible, light bg */
-    .step-detail-inner svg { background: #f8f8f8 !important; }
+    .step-detail-inner svg { background: #fff !important; }
   }
 </style>
 </head>
